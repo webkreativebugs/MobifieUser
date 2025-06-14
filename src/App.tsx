@@ -1,25 +1,19 @@
-import { useState } from 'react'
-
-import './App.css'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import EmailPasswordSignIn from './auth/signIn/email-password/page'
+import ForgetPasswordPage from './auth/forgetPassword/page'
+import LandingPage from './landingpage/page'
+import OtpPage from './auth/signIn/otp/page'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<EmailPasswordSignIn />} />
+      <Route path="/forgetPassword" element={<ForgetPasswordPage />} />
+      <Route path="/otp" element={<OtpPage />} />
+    </Routes>
   )
 }
 
-export default App 
+export default App
