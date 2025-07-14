@@ -1,13 +1,14 @@
-import { useState } from 'react'
-
 import './App.css'
+import AlertsPage from './components/dynamic_table/pages/AlertsPage'
+import ProjectsPage from "./components/dynamic_table/pages/ProjectPage";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="card">
+    <AlertsPage />
+    <ProjectsPage />
+      {/* <div cla/ssName="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -17,7 +18,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
   )
 }
