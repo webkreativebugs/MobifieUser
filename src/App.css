@@ -132,3 +132,6 @@ body {
 .text-color:hover{
     color:black !important
 }
+.text-color-secondary{
+    color:var(--opposite-color)
+}

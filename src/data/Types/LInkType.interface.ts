@@ -5,7 +5,3 @@ export interface SidebarLink {
   icon: IconType;
 }
 
-export interface SidebarSection {
-  title: string;
-  links: SidebarLink[];
-}

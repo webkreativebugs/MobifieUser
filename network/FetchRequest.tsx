@@ -39,7 +39,7 @@ export async function fetchRequest(
         "x-forwarded-for":"0.0.0.0",
         "authorization":`Bearer ${customAuthorizationConfig.authorization}`,
         "x-kb-authorization":`${customAuthorizationConfig.kb_authorization}`,
-        "domain":`mobifie`,
+        "x-kb-domain":'quitiz',
         // "credentials": "include", // ✅ Send cookies & auth headers
         ...headers,
       },

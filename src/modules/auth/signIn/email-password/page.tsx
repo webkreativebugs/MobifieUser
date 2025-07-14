@@ -144,13 +144,13 @@ const validateField = (name: string, value: string) => {
   return (
     <>
     <Navbar onThemeChange={onThemeChange}/>
- <div className="flex justify-center items-center min-h-screen app-container">
+ <div className="flex justify-center items-center min-h-screen">
    
   <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-lg overflow-hidden p-4">
     
     {/* Left side: Form */}
     
-    <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
+    <div className="flex flex-col  items-center justify-center  md:w-1/2 rounded relative app-container  ">
      <img src={logo} className='absolute top-0 left-0 w-[80px]' />
       <div className="w-full max-w-xs ">
        

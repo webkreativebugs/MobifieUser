@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ onThemeChange }) => {
   },[selectedValue])
   return (
     <nav className="flex flex-wrap justify-between items-center p-4 bg-gray-100 shadow">
-      <div className="text-lg font-semibold">🌙 Theme Switcher</div>
+      <div className="text-lg font-semibold"></div>
       <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
         <div className='flex '>
           <input type="radio" id="light" name="Light" value={selectedValue} checked={ selectedValue ==="light"  } onChange={()=>handlechange("light")}/>
