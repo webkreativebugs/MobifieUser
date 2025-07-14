@@ -18,6 +18,7 @@ body {
    
 }
 
+
 .button-container {
     display: flex;
     flex-wrap: wrap;
@@ -81,7 +82,7 @@ body {
     color:var(--primary-color)
 }
 .primary-text-color:hover{
-    color:var(--secondary-color) ;
+    /* color:var(--secondary-color) ; */
 }
 
 .error-tooltip {
