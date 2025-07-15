@@ -99,7 +99,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
               <tr key={row.id || rowIndex}>
                 {columns.map((col) => (
                   <td key={col.key} style={col.style}>
-                    {renderCellByKey(col.key, row[col.key], row, page)}
+                    {renderCellByKey(col.key, row[col.key], row, page, col.style)}
                     {/* <div>{JSON.stringify(row)}</div> */}
                   </td>
                 ))}

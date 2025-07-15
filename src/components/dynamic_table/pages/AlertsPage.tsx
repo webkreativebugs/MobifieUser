@@ -21,11 +21,11 @@ const alerts = [
 ];
 
 const columns: ColumnConfig[] = [
-  { key: "icon", title: "Logo" },
+  { key: "icon", title: "Logo", style: { width: 40, height: 40 } },
   { key: "id", title: "ID" },
   { key: "type", title: "Type" },
   { key: "message", title: "Message" },
-  { key: "project_id", title: "Project ID" },
+  // { key: "project_id", title: "Project ID" },
   { key: "timestamp", title: "Timestamp" },
 
 ];
