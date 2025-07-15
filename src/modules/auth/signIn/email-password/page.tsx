@@ -86,7 +86,9 @@ const EmailPasswordSignIn = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
+        if (value=== ' ') {
+    e.preventDefault();
+  }
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
