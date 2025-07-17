@@ -4,11 +4,12 @@ interface ImageCellProps {
   value: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
-  page: string;
+  page?: string;
+  style?: React.CSSProperties;
 }
 
 
-const ImageCell: React.FC<ImageCellProps> = ({data, value, page}) => {
+const ImageCell: React.FC<ImageCellProps> = ({ data, value, page, style }) => {
   return (
     <>
       <img
@@ -20,6 +21,7 @@ const ImageCell: React.FC<ImageCellProps> = ({data, value, page}) => {
           borderRadius: "50%",
           objectFit: "cover",
           boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+          ...style,
         }}
       />
       <div>{page}</div>

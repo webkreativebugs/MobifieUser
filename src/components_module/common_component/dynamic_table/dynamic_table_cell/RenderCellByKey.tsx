@@ -4,9 +4,9 @@ import ImageCell from "./cell/ImageCell";
 import TextCell from "./cell/TextCell";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderCellByKey = (key: string, value: string, data: any, page: string) => {
+const renderCellByKey = (key: string, value: string, data: any, page?: string, style?: React.CSSProperties) => {
   if (key === "icon") {
-    return <ImageCell data={data} value={value} page={page} />;
+    return <ImageCell data={data} value={value} page={page} style={style} />;
   }
 
   if (key === "type") {
