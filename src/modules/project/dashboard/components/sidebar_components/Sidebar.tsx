@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
-import { AdminDashboardLinks } from '../../../../data/SidebarLinks';
+import { AdminDashboardLinks } from '../../../../../data/SidebarLinks';
 const logo ="../../../../public/assets/MobifieLogo.svg"
 
 
-const Sidebar = () => {
-  const [activeLinkName, setActiveLinkName] = useState('');
+interface SidebarProps {
+  active: string;
+}
+
+const Sidebar = ({ active }: SidebarProps) => {
+  const [activeLinkName, setActiveLinkName] = useState(active);
   const [show,setShow] = useState(true)
 
   const normalLink = 'flex items-center gap-3 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 hover:bg-gray-100 m-2';
@@ -36,8 +40,8 @@ const Sidebar = () => {
               {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
             
                 <NavLink
-                //   to={`/${link.name}`} 
-                to="#"
+                  to={section.link} 
+                
                   key={section.name}
                   onClick={() => setActiveLinkName(section.name)}
                   className={`  text-color ${activeLinkName === section.name ? "active-link " : normalLink }`}

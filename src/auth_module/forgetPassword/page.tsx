@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../../../common/components/Logo';
+import Logo from '../../components_module/common_component/Logo';
 
 const ForgotPassword = () => {
   const navigate = useNavigate();

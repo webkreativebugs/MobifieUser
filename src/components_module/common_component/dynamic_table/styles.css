@@ -1,0 +1,47 @@
+.dt-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+}
+
+.dt-search-bar {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dt-search-bar input {
+  padding: 8px;
+  width: 300px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.dt-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dt-table th,
+.dt-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+}
+
+.dt-table th {
+  background-color: #f9fafb;
+  text-align: left;
+  font-weight: 600;
+}
+
+.dt-filter-input {
+  margin-top: 4px;
+  width: 100%;
+  padding: 6px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}

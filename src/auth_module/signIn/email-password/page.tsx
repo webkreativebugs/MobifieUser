@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../../../App.css";
-import { useTheme } from "../../../../context/AppContext";
-import Navbar from "../../../../common/components/Navbar";
+import "../../../App.css";
+import { useTheme } from "../../../context/AppContext";
+import Navbar from "../../../components_module/common_component/Navbar";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 

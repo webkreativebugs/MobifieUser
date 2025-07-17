@@ -5,7 +5,7 @@ import { checkdomain } from '../../../network/public/domain/CheckDomain.api';
 import { VerifyDomainResponse } from '../../../network/public/domain/CheckDomain.interface';
 import { useNavigate } from 'react-router-dom';
 
-import Logo from '../../common/components/Logo';
+import Logo from '../../components_module/common_component/Logo';
 const LandingPage = ({setTheme}:any) => {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(10);
