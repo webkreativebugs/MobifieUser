@@ -120,11 +120,11 @@ body {
   padding-top: 0.75rem;
   padding-bottom: 0.625rem;
   border-radius: 0.5rem;
-  color:var(--background-color);
-  background-color: var(--secondary-color);
+  color:var(--text-on-primary) !important;
+  background-color: var(--primary-color);
   font-size: 1rem;
   margin: 0.5rem;
-  text-decoration: none; /* Optional: remove underline if it's a link */
+  text-decoration: none; 
 }
 
 .text-color{
@@ -135,4 +135,47 @@ body {
 }
 .text-color-secondary{
     color:var(--opposite-color)
+}
+
+.table-heading{
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom:20px;
+}
+
+
+    .primary-bg-color{
+        background-color: var(  --primary-color) !important;
+    }
+       
+    .primary-color{
+        color: var(  --primary-color);
+    }
+    .secondary-bg-color
+    {
+       background-color: var(--secondary-color);
+    }
+     .secondary-color
+    {
+       background-color: var(--secondary-color);
+    }
+    .same-bg-color{
+        background-color: var(--same-color);
+    }
+    .text-on-primary{
+        color: var(--text-on-primary) !important;
+    }
+
+    .normal-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;           /* gap-3 = 0.75rem (12px) */
+  padding-left: 1rem;     /* pl-4 = 1rem (16px) */
+  padding-top: 0.75rem;   /* pt-3 = 0.75rem (12px) */
+  padding-bottom: 0.625rem; /* pb-2.5 = 0.625rem (10px) */
+  border-radius: 0.5rem;  /* rounded-lg = 0.5rem (8px) */
+  font-size: 1rem;        /* text-md ≈ 1rem (16px) */
+  color: var(--text-color);         /* text-gray-700 = #4b5563 */
+  margin: 0.5rem;         /* m-2 = 0.5rem (8px) */
+  text-decoration: none;  /* optional, depends on element type */
 }

@@ -2,15 +2,22 @@ import './App.css'
 // import AlertsPage from './components_module/common_component/dynamic_table/pages/AlertsPage'
 // import ProjectsPage from "./components_module/common_component/dynamic_table/pages/ProjectPage";
 import { Routes, Route } from 'react-router-dom'
-import EmailPasswordSignIn from './auth_module/signIn/email-password/page'
-import ForgetPasswordPage from './auth_module/forgetPassword/page'
+import EmailPasswordSignIn from './pages/auth/signIn/email-password/page'
+import ForgetPasswordPage from './pages/auth/forgetPassword/page'
 // import LandingPage from './modules/landingpage/page'
-import OtpPage from './auth_module/signIn/otp/page'
-import Alert from './modules/project/pages/alert_page/page'
+import OtpPage from './pages/auth/signIn/otp/page'
+import Alert from './pages/modules/project/alert_page/page'
 import { useTheme } from './context/AppContext'
-import Projects from './modules/project/pages/projects_page/page'
+import Projects from './pages/modules/project/projects_page/page'
 export default function App() {
+  // const body = document.querySelector("body");
+  // if (body) {
+  //   body.style.overflow = "hidden";
+  // }
+
  const {theme} =useTheme()
+//  console.log(theme);
+ 
   return (
     <>
      <section className={theme} >
