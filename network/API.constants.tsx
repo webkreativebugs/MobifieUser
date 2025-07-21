@@ -1,3 +1,5 @@
+import { Verify } from "crypto";
+
 // import ENV from '../../env.json'
 const BASE_URL = "https://matlas-xi.vercel.app/api";
 // const BASE_URL = "http://localhost:7438/api";
@@ -55,6 +57,8 @@ type FetchFunction = (...params: any[]) => string;
  */
 export const API_ENDPOINTS: Record<string, FetchFunction> = {
   CHECK_DOMAIN: () => `${BASE_URL}/user/domain/`,
-   GET_IP: () => `https://api64.ipify.org?format=json`,
-
-}
+  GET_IP: () => `https://api64.ipify.org?format=json`,
+  OTP_LOGIN: () => `${BASE_URL}/user/auth/login-otp`,
+  RECENT_OTP: () => `${BASE_URL}/user/auth/resend-otp`,
+  Verify_OTP: () => `${BASE_URL}/user/auth/verify-otp`,
+};
