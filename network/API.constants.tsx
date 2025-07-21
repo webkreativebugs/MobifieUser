@@ -55,6 +55,8 @@ type FetchFunction = (...params: any[]) => string;
  */
 export const API_ENDPOINTS: Record<string, FetchFunction> = {
   CHECK_DOMAIN: () => `${BASE_URL}/user/domain/`,
+   EMAIL_PASSWORD_LOGIN:()=>`${BASE_URL}/user/auth/login`, 
    GET_IP: () => `https://api64.ipify.org?format=json`,
+
 
 }

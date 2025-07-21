@@ -7,6 +7,7 @@ import { useTheme } from "../../../../context/AppContext";
 import Navbar from "../../../../components/common_component/Navbar";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
+import PasswordLogin from "../../../../utils/PasswordLogin"
 
 const EmailPasswordSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -110,6 +111,7 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
+      PasswordLogin(formData)
       setSubmitting(true);
     }
   };
