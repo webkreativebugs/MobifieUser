@@ -166,7 +166,7 @@ body {
         color: var(--text-on-primary) !important;
     }
 
-    .normal-link {
+ .normal-link {
   display: flex;
   align-items: center;
   gap: 0.75rem;           /* gap-3 = 0.75rem (12px) */
@@ -178,4 +178,28 @@ body {
   color: var(--text-color);         /* text-gray-700 = #4b5563 */
   margin: 0.5rem;         /* m-2 = 0.5rem (8px) */
   text-decoration: none;  /* optional, depends on element type */
+}
+
+.tab-links{
+    color: var( --muted-color);
+    margin-right: 0.75rem;
+    cursor: pointer;
+    padding-bottom: 15px;
+}
+
+
+.tab-links:hover{
+     border-bottom :4px solid var( --muted-color);
+     border-radius: 5px;
+     clip-path: path("M0,0 H100% Vcalc(100% - 20px) Q50% 120% 100% calc(100% - 20px) V0 Z");
+
+}
+
+.active-tab-link{
+    margin-right: 0.75rem;
+    cursor: pointer;
+    padding-bottom: 15px;
+    border-bottom: 4px solid var( --text-color);
+    color:var(--text-color);
+    border-radius: 5px;
 }

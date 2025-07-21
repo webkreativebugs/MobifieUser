@@ -19,7 +19,7 @@ const Sidebar = ({ active }: SidebarProps) => {
     <>
   
 
-      <div className=" hidden xl:block overflow-auto hide-scrollbar border-r-2 pb-10 w-2/12 shadow-md ml-3  ">
+      <div className=" hidden xl:block overflow-auto hide-scrollbar border-r-2 pb-10 h-screen w-2/12 shadow-md ml-3   ">
         <div className="flex justify-between items-center">
           <Link to="/" className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight">
             <img src={logo} alt="Mobifie Logo" className="w-[80px] " />

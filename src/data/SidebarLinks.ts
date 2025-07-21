@@ -12,12 +12,13 @@ import type { SidebarLink } from '../data/Types/LInkType.interface';
 export const AdminDashboardLinks: SidebarLink[] = [
   { name: 'Projects', icon: FiShoppingBag ,link:'/projects'},
   { name: 'Alerts', icon: AiOutlineShoppingCart,link:"/alerts" },
-  { name: 'Activity Feed', icon: IoMdContacts,link:"active-feed" },
-  { name: 'Settings', icon: RiContactsLine,link:"/settings" },
-  { name: 'Help', icon: AiOutlineCalendar,link:"/help" },
   { name: 'Access Manager', icon: BsKanban,link:"/access-manager" },
   { name: 'Billing', icon: FiEdit,link:"/billings" },
   { name: 'Support', icon: BiColorFill ,link:"/support"},
+  { name: 'Settings', icon: RiContactsLine,link:"/settings" },
+
+  
+  
   // { name: 'line', icon: AiOutlineStock },
   // { name: 'area', icon: AiOutlineAreaChart },
   // { name: 'bar', icon: AiOutlineBarChart },

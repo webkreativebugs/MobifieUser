@@ -30,7 +30,7 @@
   --text-color: #0d47a1;
   --opposite-color: #000000;
   --same-color: #ffffff;
-
+  --muted-color:rgba(0, 0, 0, 0.5);
   --text-on-primary: #ffffff;
   --text-on-secondary: #000000;
 }
@@ -42,7 +42,7 @@
   --text-color: #b71c1c;
   --opposite-color: #000000;
   --same-color: #ffffff;
-
+  --muted-color:rgba(0, 0, 0, 0.5);
   --text-on-primary: #ffffff;
   --text-on-secondary: #000000;
 }
@@ -54,7 +54,7 @@
   --text-color: #e65100;
   --opposite-color: #000000;
   --same-color: #ffffff;
-
+  --muted-color:rgba(0, 0, 0, 0.5);
   --text-on-primary: #ffffff;
   --text-on-secondary: #000000;
 }
@@ -66,7 +66,7 @@
   --text-color: #6a1b9a;
   --opposite-color: #000000;
   --same-color: #ffffff;
-
+  --muted-color:rgba(0, 0, 0, 0.5);
   --text-on-primary: #ffffff;
   --text-on-secondary: #000000;
 }
@@ -78,7 +78,7 @@
   --text-color: #4A751E;
   --opposite-color: #000000;
   --same-color: #ffffff;
-
+  --muted-color:rgba(0, 0, 0, 0.5);
   --text-on-primary: #ffffff;; /* light green bg needs dark text */
   --text-on-secondary: #000000;
 }
@@ -103,7 +103,7 @@
   --text-color: #e3f2fd;
   --opposite-color: #ffffff;
   --same-color: #000000;
-
+  --muted-color:rgba(243, 240, 240,0.8);
   --text-on-primary: #000000;
   --text-on-secondary: #000000;
 }
@@ -115,7 +115,7 @@
   --text-color: #ffcdd2;
   --opposite-color: #ffffff;
   --same-color: #000000;
-
+  --muted-color:rgba(243, 240, 240,0.8);
   --text-on-primary: #ffffff; /* darker red bg needs white text */
   --text-on-secondary: #000000;
 }
@@ -127,7 +127,7 @@
   --text-color: #ffd180;
   --opposite-color: #ffffff;
   --same-color: #000000;
-
+  --muted-color:rgba(243, 240, 240,0.8);
   --text-on-primary: #000000;
   --text-on-secondary: #000000;
 }
@@ -139,7 +139,7 @@
   --text-color: #e1bee7;
   --opposite-color: #ffffff;
   --same-color: #000000;
-
+  --muted-color:rgba(243, 240, 240,0.8);
   --text-on-primary: #000000;
   --text-on-secondary: #000000;
 }
@@ -151,7 +151,7 @@
   --text-color: #e8f5e9;
   --opposite-color: #ffffff;
   --same-color: #000000;
-
+  --muted-color:rgba(243, 240, 240,0.8);
   --text-on-primary: #000000;
   --text-on-secondary: #000000;
 }

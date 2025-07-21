@@ -1,6 +1,6 @@
 import { ColumnConfig } from "../types";
 import DynamicTable from "..";
-
+import { useState ,useEffect } from "react";
 const alerts = [
   {
     id: "alert001",
@@ -30,11 +30,36 @@ const columns: ColumnConfig[] = [
 
 ];
 
-const AlertsPage = () => (
+
+
+const AlertsPage = () => {
+  const [selected , setSelected] = useState("");
+  // const [localData, setLocalData] =use
+ useEffect(() => {
+    const selectedTab: string | null = localStorage.getItem("active");
+
+    if (selectedTab) {
+      setSelected(selectedTab as string);
+    }
+  }, []);
+  function handleChange(data:string)
+  {
+    setSelected(data)
+    localStorage.setItem("active",data)
+  }
+  return(
   <div  style={{ padding: 24 }}>
     <h2 className="table-heading">Alerts Overview</h2>
+    {/* ********************************************************* */}
+    <div className="mb-5" >
+     <span className={`${selected==="open"?"active-tab-link":"tab-links"}`}    onClick={()=>handleChange("open")} >Open Alerts</span>
+     <span className={`${selected==="close"?"active-tab-link":"tab-links"}`}   onClick={()=>handleChange("close")}>Closed Alerts</span>
+     <span className={`${selected==="setting"?"active-tab-link":"tab-links"}`} onClick={()=>handleChange("setting")}>Alerts Settings</span>
+    </div>
+    {/* ********************************************************* */}
     <DynamicTable data={alerts} columns={columns} globalSearch={false}  emptyMessage="No Alert" page={"alert"} />
   </div>
-);
+  )
+}
 
 export default AlertsPage;

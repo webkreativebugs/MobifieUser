@@ -10,10 +10,10 @@ import Alert from './pages/modules/project/alert_page/page'
 import { useTheme } from './context/AppContext'
 import Projects from './pages/modules/project/projects_page/page'
 export default function App() {
-  // const body = document.querySelector("body");
-  // if (body) {
-  //   body.style.overflow = "hidden";
-  // }
+  const body = document.querySelector("body");
+  if (body) {
+    body.style.overflow = "hidden";
+  }
 
  const {theme} =useTheme()
 //  console.log(theme);
