@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import ValidateOtp from "../../../../utils/api/ValidateOTP";
 import { useauth } from "../../../../context/auth_context/AuthContext";
+import ResendOtp from "../../../../utils/api/ResentOTP";
 const OTPField = () => {
   const length = 6;
   // Initial OTP state with empty strings (length of OTP)
@@ -144,7 +145,7 @@ const OTPField = () => {
               <button
                 type="button"
                 className="text-black hover:underline transition-all"
-                // onClick={ResendOtp}
+                onClick={() => ResendOtp()}
                 style={{ fontWeight: 400 }}
               >
                 Resend OTP
