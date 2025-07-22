@@ -14,7 +14,10 @@ const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,e
     }
     console.log(response);
     if(response)
+    {
      setApiResponse(decoder(response.token))
+     sessionStorage.setItem("token",response.token)
+    }
     
   };
 

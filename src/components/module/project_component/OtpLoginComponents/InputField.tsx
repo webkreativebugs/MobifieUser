@@ -35,13 +35,22 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
       }
 
       case "mobile": {
-        if (!value.trim()) return "Mobile number is required";
-        if (!/^[0-9]{10}$/.test(value))
-          return "Mobile number must be 10 digits";
-        if (/^([0-9])\1{9}$/.test(value))
+        const trimmed = value.trim();
+
+        if (!trimmed) return "Mobile number is required";
+        if (/\s/.test(trimmed)) return "Mobile number cannot contain spaces";
+        if (!/^[0-9]+$/.test(trimmed))
+          return "Mobile number must contain only digits";
+        if (trimmed.length !== 10)
+          return "Mobile number must be exactly 10 digits";
+        if (/^([0-9])\1{9}$/.test(trimmed))
           return "Mobile number cannot be all the same digit";
+        if (!/^[6-9]/.test(trimmed))
+          return "Mobile number must start with 6, 7, 8, or 9";
+
         return "";
       }
+
       default:
         return "";
     }
@@ -107,93 +116,69 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
   }, [apiResponse]);
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
-      {showNum ? (
-        <div className="error-wrapper">
-          {/* <label className="text-sm">Email</label> */}
-          <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
-            <span className="px-2 text-gray-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 5a2 2 0 012-2h1.586a1 1 0 01.707.293l2.828 2.828a1 1 0 010 1.414l-1.415 1.415a1 1 0 000 1.414l5.657 5.657a1 1 0 001.414 0l1.415-1.415a1 1 0 011.414 0l2.828 2.828a1 1 0 01.293.707V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"
-                />
-              </svg>
-            </span>
-            <input
-              type="text"
-              placeholder="Enter your mobile"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="w-full p-2 outline-none text-black"
-              name="mobile"
-              //   onKeyDown={handleKeyDown}
-            />
-          </div>
-          {touched.email && errors.email && (
-            <div className="text-red-500 text-xs mt-0 error-tooltip ">
-              {" "}
-              {errors.email}
-            </div>
-          )}
+      <div className="error-wrapper">
+        {/* <label className="text-sm">Email</label> */}
+        <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
+          <span className="px-2 text-gray-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 5a2 2 0 012-2h1.586a1 1 0 01.707.293l2.828 2.828a1 1 0 010 1.414l-1.415 1.415a1 1 0 000 1.414l5.657 5.657a1 1 0 001.414 0l1.415-1.415a1 1 0 011.414 0l2.828 2.828a1 1 0 01.293.707V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"
+              />
+            </svg>
+          </span>
+          <input
+            type="tel"
+            placeholder="Enter your mobile"
+            name="mobile"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className="w-full p-2 outline-none text-black"
+            onKeyDown={(e) => {
+              const allowedControlKeys = [
+                "Backspace",
+                "Delete",
+                "ArrowLeft",
+                "ArrowRight",
+                "Tab",
+              ];
+              if (
+                !/^[0-9]$/.test(e.key) &&
+                !allowedControlKeys.includes(e.key)
+              ) {
+                e.preventDefault(); // Block non-numeric and space keys
+              }
+            }}
+          />
         </div>
-      ) : (
-        <div className="error-wrapper">
-          {/* <label className="text-sm">Email</label> */}
-          <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
-            <span className="px-2 text-gray-500">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.804 5.879 2.137M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </span>
-            <input
-              type="text"
-              placeholder="Enter your mobile"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className="w-full p-2 outline-none text-black"
-              name="mobile"
-              //   onKeyDown={handleKeyDown}
-            />
+        {touched.mobile && errors.mobile && (
+          <div className="text-red-500 text-xs mt-0 error-tooltip ">
+            {" "}
+            {errors.mobile}
           </div>
-          {touched.mobile && errors.mobile && (
-            <div className="text-red-500 text-xs mt-0 error-tooltip ">
-              {" "}
-              {errors.mobile}
-            </div>
-          )}
-        </div>
-      )}
+        )}
+      </div>
 
-      <div className="flex justify-end items-center">
-        {/* <a
+      {/* <div className="flex justify-end items-center">
+        <a
           onClick={() => setShowNum(!showNum)}
           className="text-sm text-end primary-text-color hover:underline cursor-pointer link-hover  "
         >
           {!showNum ? "OTP on mobile?" : "OTP on email?"}
-        </a> */}
-      </div>
+        </a>
+      </div> */}
 
       <button
         type="submit"
-        className="w-full   p-2 theme-button  rounded-md  transition"
+        className="w-full  mt-4 p-2 theme-button  rounded-md  transition"
       >
         {!submitting ? "Send OTP" : "Sending..."}
       </button>

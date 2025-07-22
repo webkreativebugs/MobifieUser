@@ -22,6 +22,7 @@ const AppContext = createContext({} as ITheme);
 const STORE_CONSTANT: string = "THEME";
 
 export const AppProvider = ({ children }: Props) => {
+
   const [theme, setTheme] = useState<string>("");
   const [domainResponse , setDomainResponse] =useState<VerifyDomainResponse|null>(null);
 
@@ -53,6 +54,8 @@ useEffect(()=>{
   const handleChange = (selectedTheme: string) => {
     setTheme(selectedTheme);
     localStorage.setItem(STORE_CONSTANT, selectedTheme);
+   
+    
   };
 
   return (

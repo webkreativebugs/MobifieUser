@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthMe from "../../utils/api/AuthMe";
 // import { useNavigate } from "react-router-dom";
 interface USERROLE {
@@ -19,6 +20,8 @@ type Props = {
 const AuthContext = createContext({} as USERROLE);
 const STORE_CONSTANT: string = "Role";
 export const AuthProvider = ({ children }: Props) => {
+  const navigate = useNavigate();
+
   const [role, setRole] = useState<string>("");
   const [apiResponse, setApiResponse] = useState<string>("");
   useEffect(() => {
@@ -41,10 +44,10 @@ export const AuthProvider = ({ children }: Props) => {
   }, [apiResponse]);
 
   const handleChange = (selectedTheme: string) => {
-    // const navigate = useNavigate()
     setRole(selectedTheme);
     localStorage.setItem(STORE_CONSTANT, selectedTheme);
-    // navigate("/")
+
+    navigate("/");
   };
   return (
     <AuthContext.Provider

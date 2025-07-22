@@ -39,7 +39,7 @@ function page() {
                 <div className='w-full rounded-[20px] shadow-md bg-white h-[8rem]'></div>   { /* Specify your Maintenance Window */}
                 <div className='w-full rounded-[20px] shadow-md bg-white h-[8rem]'></div>   {/* Project Overview */}
                 <div className='w-full rounded-[20px] shadow-md bg-white h-[8rem]'></div>   {/* Atlas Security Quickstart */}
-               <button onClick={()=>{onRoleChange("auth")}}> Change </button>
+               <button onClick={()=>{sessionStorage.clear();}}> Change </button>
               </div> 
             </div>
           </div>
