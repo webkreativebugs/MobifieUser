@@ -8,7 +8,7 @@ import { useTheme } from "../../../../context/AppContext";
 import Navbar from "../../../../components/common_component/Navbar";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
-import PasswordLogin from "../../../../utils/PasswordLogin"
+import PasswordLogin from "../../../../utils/api/PasswordLogin"
 
 const EmailPasswordSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +21,7 @@ const EmailPasswordSignIn = () => {
     password: "",
     email: "",
   });
-  const {theme, onThemeChange } = useTheme();
+  // const {theme, onThemeChange } = useTheme();
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
 
@@ -152,8 +152,7 @@ const EmailPasswordSignIn = () => {
 
   return (
     <>
-      <Navbar theme={theme} onThemeChange={onThemeChange} />
-      <div className="flex justify-center items-center min-h-screen app-container">
+      <div className="flex justify-center items-center min-h-screen ">
         <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-md overflow-hidden p-4">
           {/* Left side: Form */}
 

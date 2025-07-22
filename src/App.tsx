@@ -1,33 +1,32 @@
 import './App.css'
 import { useTheme } from './context/AppContext'
 import AuthRoutes from './routes/AuthRoutes'
+import AdminRoutes from './routes/AdminRoutes';
+import { useauth } from './context/auth_context/AuthContext';
 export default function App() {
   const body = document.querySelector("body");
   if (body) {
     body.style.overflow = "hidden";
   }
  const {theme} =useTheme()
-
+ const {role}= useauth()
 //  isLoggedIn
   return (
     <>
      <section className={theme} >
-      
-     <AuthRoutes/>
+   { processLoggedInUser(role)}
+     
     </section>
     </>
   )
 }
 
-// processLoggedInUser(role){
+function processLoggedInUser(role:string){
 
-//   role == admin {
-//     <AdminRoutes
-//   }else 
-//     role 
+ if( role == "admin") {
+   return (<AdminRoutes/>)
+  }
 
-//     else role 
-
-//     else 
-//       <Auth></Auth>
-// }
+    else 
+    return (<AuthRoutes/>)
+}

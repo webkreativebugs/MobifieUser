@@ -1,5 +1,5 @@
-import {emailpasswordlogin} from "../../network/public/email_password_login/EmailPasswordLogin.api"
-import { LoginResponse,LoginCallback } from "../../network/public/email_password_login/EmailPasswordLogin.interface";
+import {emailpasswordlogin} from "../../../network/public/email_password_login/EmailPasswordLogin.api"
+import { LoginResponse,LoginCallback } from "../../../network/public/email_password_login/EmailPasswordLogin.interface";
 
 interface FormData {
     email:string;

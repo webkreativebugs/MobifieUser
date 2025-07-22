@@ -10,7 +10,7 @@ export async function verifyOtp(
   userinfoRequest: OtpVerifyRequest,
   callback: OtpVerifyCallback
 ): Promise<OtpVerifyResponse | Error> {
-  const url = API_ENDPOINTS.USER_INFO_PLAN();
+  const url = API_ENDPOINTS. Verify_OTP();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
