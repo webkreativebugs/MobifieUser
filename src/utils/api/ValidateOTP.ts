@@ -14,6 +14,7 @@ const handleUserInfoResponse: OtpVerifyCallback= (  response: OtpVerifyResponse 
     if(response)
     {
      setApiResponse(decoder(response.data.token))
+     sessionStorage.setItem("token",response.data.token)
     }
    
   };

@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface USERROLE {
   role: string;
   onRoleChange: (theme: string) => void;
@@ -18,6 +18,7 @@ type Props = {
 const AuthContext = createContext({} as USERROLE);
 const STORE_CONSTANT: string = "Role";
 export const AuthProvider = ({ children }: Props) => {
+    const navigate = useNavigate()
    const [role, setRole] = useState<string>("");
     useEffect(() => {
       const savedTheme: string | null = localStorage.getItem(STORE_CONSTANT);
@@ -29,10 +30,11 @@ export const AuthProvider = ({ children }: Props) => {
 
  
   const handleChange = (selectedTheme: string) => {
-    // const navigate = useNavigate()
+  
     setRole(selectedTheme);
     localStorage.setItem(STORE_CONSTANT, selectedTheme);
-    // navigate("/")
+    
+    navigate("/")
   };
   return (
     <AuthContext.Provider
