@@ -169,7 +169,7 @@ const EmailPasswordSignIn = () => {
 
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="error-wrapper">
-                  <label className="text-sm">Email</label>
+                  {/* <label className="text-sm">Email</label> */}
                   <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
                     <span className="px-2 text-gray-500">
                       <svg
@@ -182,7 +182,7 @@ const EmailPasswordSignIn = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.804 5.879 2.137M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                         />
                       </svg>
                     </span>
@@ -196,15 +196,15 @@ const EmailPasswordSignIn = () => {
                     />
                   </div>
                   {touched.email && errors.email && (
-                    <div className="text-danger small mt-0 error-tooltip ">
+                    <div className="text-red-600 text-xs mt-0  error-tooltip ">
                       {" "}
                       {errors.email}
                     </div>
                   )}
                 </div>
 
-                <div className="error-wrapper">
-                  <label className="text-sm">Password</label>
+                <div className="error-wrapper  pt-1 ">
+                  {/* <label className="text-sm">Password</label> */}
                   <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
                     <span className="px-2 text-gray-500">
                       <svg
@@ -213,11 +213,22 @@ const EmailPasswordSignIn = () => {
                         stroke="currentColor"
                         strokeWidth="2"
                         viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M12 11c0-1.104-.895-2-2-2s-2 .896-2 2c0 1.105.895 2 2 2s2-.895 2-2zm0 0V7m0 4v4m6 4H6a2 2 0 01-2-2V7a2 2 0 012-2h2l1-1h6l1 1h2a2 2 0 012 2v10a2 2 0 01-2 2z"
+                          d="M17 10H7a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 14v2"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8 10V7a4 4 0 118 0v3"
                         />
                       </svg>
                     </span>
@@ -274,7 +285,7 @@ const EmailPasswordSignIn = () => {
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.056 10.056 0 012.263-3.592M6.6 6.6A9.964 9.964 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.965 9.965 0 01-1.241 2.272M15 12a3 3 0 00-3-3m0 0a3 3 0 00-3 3m0 0a3 3 0 003 3m0 0l7 7m-7-7L5 5"
+                            d="M15 12a3 3 0 00-3-3m0 0a3 3 0 00-3 3m6 0a3 3 0 01-6 0m6 0a9.97 9.97 0 01-1.125 6.825M12 5c-4.478 0-8.268 2.943-9.542 7A9.965 9.965 0 0012 19c4.478 0 8.268-2.943 9.542-7A9.964 9.964 0 0012 5zM19 19L5 5"
                           />
                         </svg>
                       )}
@@ -282,7 +293,7 @@ const EmailPasswordSignIn = () => {
                   </div>
 
                   {touched.password && errors.password && (
-                    <div className="text-danger text-sm mt-1 error-tooltip">
+                    <div className="text-red-600 text-xs mt-1 error-tooltip">
                       {errors.password}
                     </div>
                   )}
