@@ -1,6 +1,6 @@
 // OTP Request Interface
 interface OtpRequest {
-  mobile: string;
+  mobile:string;
 }
 
 // OTP Response Status Info
