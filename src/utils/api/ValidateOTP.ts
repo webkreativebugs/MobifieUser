@@ -13,8 +13,8 @@ const handleUserInfoResponse: OtpVerifyCallback= (  response: OtpVerifyResponse 
     console.log(response);
     if(response)
     {
-     setApiResponse(decoder(response.data.token))
-     sessionStorage.setItem("token",response.data.token)
+     setApiResponse(response.data.token)
+    //  sessionStorage.setItem("token",response.data.token)
     }
    
   };
