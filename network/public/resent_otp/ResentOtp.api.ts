@@ -6,7 +6,7 @@ import {  fetchRequest } from "../../FetchRequest";
 
 
 
-export async function recentOtp(
+export async function resendOtp(
   userinfoRequest: ResendOtpRequest,
   callback: ResendOtpCallback
 ): Promise<ResendOtpResponse | Error> {

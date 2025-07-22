@@ -1,9 +1,11 @@
-import {getOtp} from "../../../network/public/otp_login/OtpLogin.api"
-import {   OtpRequest,OtpResponse, OtpCallback} from "../../../network/public/otp_login/OtpLogin.interface";
+import {resendOtp} from "../../../network/public/resent_otp/ResentOtp.api"
+import {ResendOtpRequest,
+  ResendOtpResponse,
+  ResendOtpCallback} from "../../../network/public/resent_otp/ResentOtp.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function resentOtp(setApiResponse:any,OtpLoginformData:OtpRequest){
+function ResendOtp(){
     
-const handleUserInfoResponse: OtpCallback= (  response: OtpResponse | null,error: Error | null | undefined) => {
+const handleUserInfoResponse: ResendOtpCallback= (  response: ResendOtpResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
     }
@@ -11,7 +13,7 @@ const handleUserInfoResponse: OtpCallback= (  response: OtpResponse | null,error
     if(response)
     {
       customAuthorizationConfig.kb_authorization=response.data.token;
-      setApiResponse(response)
+      // setApiResponse(response)
     }
    
   };
@@ -19,7 +21,7 @@ const handleUserInfoResponse: OtpCallback= (  response: OtpResponse | null,error
 const sendOtp=async ()=>{
    
     try{
-        await getOtp(OtpLoginformData, handleUserInfoResponse);
+        await resendOtp( {token:"rtfgyhnjkm"},handleUserInfoResponse);
         
 
       } catch (error) {
@@ -28,4 +30,4 @@ const sendOtp=async ()=>{
 }
 sendOtp()
 }
-export default  resentOtp;
+export default  ResendOtp;
