@@ -58,10 +58,9 @@ type FetchFunction = (...params: any[]) => string;
 export const API_ENDPOINTS: Record<string, FetchFunction> = {
   GET_IP: () => `https://api64.ipify.org?format=json`,
   CHECK_DOMAIN: () => `${BASE_URL}/user/domain/`,
-  EMAIL_PASSWORD_LOGIN:()=>`${BASE_URL}/user/auth/login`, 
+  EMAIL_PASSWORD_LOGIN: () => `${BASE_URL}/user/auth/login`,
   OTP_LOGIN: () => `${BASE_URL}/user/auth/login-otp`,
   RECENT_OTP: () => `${BASE_URL}/user/auth/resend-otp`,
   Verify_OTP: () => `${BASE_URL}/user/auth/verify-otp`,
-
-
-}
+  AUTH_ME: () => `${BASE_URL}/user/auth/me`,
+};

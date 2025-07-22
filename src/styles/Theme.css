@@ -1,12 +1,12 @@
 :root {
-  --primary-color: #6200ea;
-  --secondary-color: #03dac6;
-  --background-color: #ffffff;
-  --text-color: #000000;
+  --primary-color: #7ed957;
+  --secondary-color: #A5D46F;
+  --background-color: #F1F9E9;
+  --text-color: #4A751E;
   --opposite-color: #000000;
   --same-color: #ffffff;
-
-  --text-on-primary: #ffffff;
+  --muted-color:rgba(0, 0, 0, 0.5);
+  --text-on-primary: #ffffff;; /* light green bg needs dark text */
   --text-on-secondary: #000000;
 }
 
