@@ -8,6 +8,11 @@ export const auth =[
         additional:""
     },
     {
+        route:"/login-with-password",
+        component: EmailPasswordSignIn,
+        additional:""
+    },
+    {
         route:"/login-with-otp",
         component: OtpSignin,
         additional:""

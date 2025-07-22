@@ -7,12 +7,15 @@ import { Link } from "react-router-dom";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import PasswordLogin from "../../../../utils/api/PasswordLogin";
+import { useauth } from "../../../../context/auth_context/AuthContext";
 
 const EmailPasswordSignIn = () => {
+  const { onRoleChange } = useauth();
   const [showPassword, setShowPassword] = useState(false);
   // const [showOtp, setShowOtp] = useState(false);
   const [disable, setDisable] = useState(true);
   const [timeLeft, setTimeLeft] = useState(30);
+  const [apiResponse, setApiResponse] = useState("");
 
   const togglePassword = () => setShowPassword((prev) => !prev);
   const [formData, setFormData] = useState({
@@ -110,11 +113,16 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
-      PasswordLogin(formData);
+      PasswordLogin(setApiResponse, formData);
       setSubmitting(true);
     }
   };
-
+  useEffect(() => {
+    if (apiResponse) {
+      console.log(apiResponse);
+      onRoleChange(apiResponse);
+    }
+  }, [apiResponse]);
   // setIsLoading(true);
 
   // try {
@@ -157,7 +165,7 @@ const EmailPasswordSignIn = () => {
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
-              <h1 className="text-center text-3xl font-semibold mb-2">
+              <h1 className="text-center text-3xl font-bold  mb-2">
                 Welcome Back
               </h1>
               <p className="text-center text-sm mb-6 text-gray-500">
@@ -188,7 +196,7 @@ const EmailPasswordSignIn = () => {
                       placeholder="Enter your email"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full p-2 outline-none text-black"
+                      className="w-full p-2 outline-none bg-none text-black "
                       name="email"
                     />
                   </div>
@@ -299,7 +307,7 @@ const EmailPasswordSignIn = () => {
                 <div className="flex justify-end items-center">
                   <a
                     href="/forgetPassword"
-                    className="text-sm text-end primary-text-color hover:underline"
+                    className="text-sm text-end primary-text-color hover:underline link-hover"
                   >
                     Forgot password?
                   </a>
@@ -314,7 +322,7 @@ const EmailPasswordSignIn = () => {
                 <div className="flex justify-center items-center">
                   <Link
                     to="/login-with-otp"
-                    className="flex items-center text-sm primary-text-color cursor-pointer"
+                    className="flex items-center text-sm primary-text-color cursor-pointer hover:underline link-hover"
                   >
                     Login with OTP{" "}
                   </Link>

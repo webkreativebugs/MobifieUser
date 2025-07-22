@@ -34,6 +34,11 @@ export const AuthProvider = ({ children }: Props) => {
       AuthMe(setApiResponse);
     }
   });
+  useEffect(() => {
+    if (apiResponse) {
+      handleChange(apiResponse);
+    }
+  }, [apiResponse]);
 
   const handleChange = (selectedTheme: string) => {
     // const navigate = useNavigate()

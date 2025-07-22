@@ -1,6 +1,4 @@
 import "../../../../App.css";
-import { useTheme } from "../../../../context/AppContext";
-import Navbar from "../../../../components/common_component/Navbar";
 import InputField from "../../../../components/module/project_component/OtpLoginComponents/InputField";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
@@ -19,7 +17,7 @@ const OtpSignin = () => {
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
-              <h1 className="text-center text-3xl font-semibold mb-2">
+              <h1 className="text-center text-3xl font-bold mb-5">
                 Welcome Back
               </h1>
               {showOtp ? <OTPField /> : <InputField setShowOtp={setShowOtp} />}
