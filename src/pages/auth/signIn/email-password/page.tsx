@@ -7,7 +7,7 @@ import { useTheme } from "../../../../context/AppContext";
 import Navbar from "../../../../components/common_component/Navbar";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
-import PasswordLogin from "../../../../utils/PasswordLogin"
+import PasswordLogin from "../../../../utils/PasswordLogin";
 
 const EmailPasswordSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +20,7 @@ const EmailPasswordSignIn = () => {
     password: "",
     email: "",
   });
-  const {theme, onThemeChange } = useTheme();
+  const { theme, onThemeChange } = useTheme();
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
 
@@ -87,9 +87,9 @@ const EmailPasswordSignIn = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-        if (value=== ' ') {
-    e.preventDefault();
-  }
+    if (value === " ") {
+      e.preventDefault();
+    }
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -111,7 +111,7 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
-      PasswordLogin(formData)
+      PasswordLogin(formData);
       setSubmitting(true);
     }
   };
@@ -308,37 +308,21 @@ const EmailPasswordSignIn = () => {
                     : "Submitting..."}
                 </button>
                 <div className="flex justify-center items-center">
-                  {!showOtp ? (
-                    <a
-                      className="flex items-center text-sm primary-text-color cursor-pointer"
-                      onClick={() => {
-                        setShowOtp(true);
-                        setErrors((prev) => ({
-                          ...prev,
-                          email: "",
-                          password: "",
-                        }));
-                        setTimeLeft(30);
-                      }}
-                    >
-                      Login with OTP{" "}
-                    </a>
-                  ) : (
-                    <a
-                      className="flex items-center text-sm primary-text-color cursor-pointer"
-                      onClick={() => {
-                        setShowOtp(false);
-                        setErrors((prev) => ({
-                          ...prev,
-                          email: "",
-                          password: "",
-                        }));
-                        setTimeLeft(30);
-                      }}
-                    >
-                      Login with Password{" "}
-                    </a>
-                  )}
+                  <a
+                    href="/otp"
+                    className="flex items-center text-sm primary-text-color cursor-pointer"
+                    onClick={() => {
+                      // setShowOtp(true);
+                      setErrors((prev) => ({
+                        ...prev,
+                        email: "",
+                        password: "",
+                      }));
+                      setTimeLeft(30);
+                    }}
+                  >
+                    Login with OTP{" "}
+                  </a>
                 </div>
               </form>
             </div>

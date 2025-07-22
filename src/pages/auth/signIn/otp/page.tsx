@@ -1,303 +1,357 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Logo from '../../../../components/common_component/Logo';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "../../../../App.css";
+import { useTheme } from "../../../../context/AppContext";
+import Navbar from "../../../../components/common_component/Navbar";
+const loginImg = "../../../../public/assets/login.png";
+const logo = "../../../../public/assets/MobifieLogo.svg";
+import PasswordLogin from "../../../../utils/PasswordLogin";
 
-const OTPVerification = () => {
+const EmailPasswordSignIn = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showOtp, setShowOtp] = useState(false);
+  const [disable, setDisable] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(30);
+
+  const togglePassword = () => setShowPassword((prev) => !prev);
+  const [formData, setFormData] = useState({
+    password: "",
+    email: "",
+  });
+  const { theme, onThemeChange } = useTheme();
   const navigate = useNavigate();
-  const [contact, setContact] = useState('');
-  const [otp, setOtp] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isOtpSent, setIsOtpSent] = useState(false);
-  const [isEmailMode, setIsEmailMode] = useState(true);
-  const [validationErrors, setValidationErrors] = useState({
-    contact: '',
-    otp: ''
+  const [submitting, setSubmitting] = useState(false);
+
+  const [touched, setTouched] = useState({
+    email: false,
+    password: false,
+  });
+  const [errors, setErrors] = useState({
+    password: "",
+    email: "",
   });
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailRegex.test(email);
-  };
+  const validateField = (name: string, value: string) => {
+    switch (name) {
+      case "email": {
+        if (!value.trim()) return "Email is required";
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+          return "Invalid email address";
+        }
+        return "";
+      }
 
-  const validateMobile = (mobile: string) => {
-    // Allows formats: +91XXXXXXXXXX, XXXXXXXXXX, XXX-XXX-XXXX
-    const mobileRegex = /^(\+91[\s-]?)?[0-9]{10}$/;
-    return mobileRegex.test(mobile);
-  };
+      case "password": {
+        if (!value.trim()) return "Password is required";
+        if (value.length < 8)
+          return "Password must be at least 8 characters long";
+        if (!/[A-Z]/.test(value))
+          return "Password must include at least one uppercase letter";
+        if (!/[a-z]/.test(value))
+          return "Password must include at least one lowercase letter";
+        if (!/[0-9]/.test(value))
+          return "Password must include at least one number";
+        if (!/[!@#$%^&*]/.test(value))
+          return "Password must include at least one special character (!@#$%^&*)";
+        if (!/^[^\s]+$/.test(value)) return "There will be no gap in password";
+        return "";
+      }
 
-  const validateContact = () => {
-    if (!contact.trim()) {
-      setValidationErrors(prev => ({
-        ...prev,
-        contact: `${isEmailMode ? 'Email' : 'Mobile number'} is required`
-      }));
-      return false;
-    }
-
-    if (isEmailMode && !validateEmail(contact)) {
-      setValidationErrors(prev => ({
-        ...prev,
-        contact: 'Please enter a valid email address'
-      }));
-      return false;
-    }
-
-    if (!isEmailMode && !validateMobile(contact)) {
-      setValidationErrors(prev => ({
-        ...prev,
-        contact: 'Please enter a valid 10-digit mobile number'
-      }));
-      return false;
-    }
-
-    setValidationErrors(prev => ({
-      ...prev,
-      contact: ''
-    }));
-    return true;
-  };
-
-  const validateOtp = () => {
-    if (!otp.trim()) {
-      setValidationErrors(prev => ({
-        ...prev,
-        otp: 'OTP is required'
-      }));
-      return false;
-    }
-
-    if (otp.length !== 6) {
-      setValidationErrors(prev => ({
-        ...prev,
-        otp: 'OTP must be 6 digits'
-      }));
-      return false;
-    }
-
-    if (!/^\d+$/.test(otp)) {
-      setValidationErrors(prev => ({
-        ...prev,
-        otp: 'OTP must contain only numbers'
-      }));
-      return false;
-    }
-
-    setValidationErrors(prev => ({
-      ...prev,
-      otp: ''
-    }));
-    return true;
-  };
-
-  const handleContactChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setContact(value);
-    // Clear validation error when user starts typing
-    if (validationErrors.contact) {
-      setValidationErrors(prev => ({
-        ...prev,
-        contact: ''
-      }));
+      default:
+        return "";
     }
   };
 
-  const handleOtpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 6);
-    setOtp(value);
-    // Clear validation error when user starts typing
-    if (validationErrors.otp) {
-      setValidationErrors(prev => ({
-        ...prev,
-        otp: ''
-      }));
-    }
-  };
-
-  const handleSendOtp = async () => {
-    if (!validateContact()) {
-      return;
-    }
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      // TODO: Replace with your actual OTP sending API call
-      // const response = await fetch('/api/send-otp', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ contact, method: isEmailMode ? 'email' : 'mobile' }),
-      // });
-
-      // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setIsOtpSent(true);
-    } catch (err) {
-      setError('Failed to send OTP. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateOtp()) {
-      return;
-    }
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      // TODO: Replace with your actual OTP verification API call
-      // const response = await fetch('/api/verify-otp', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ otp, contact }),
-      // });
-
-      // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      navigate('/'); // Navigate to home page on success
-    } catch (err) {
-      setError('Invalid OTP. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleBack = () => {
-    navigate('/login');
-  };
-
-  const toggleMode = () => {
-    setIsEmailMode(!isEmailMode);
-    setContact('');
-    setOtp('');
-    setIsOtpSent(false);
-    setValidationErrors({
-      contact: '',
-      otp: ''
+  const validate = () => {
+    let valid = true;
+    const newErrors: { [key: string]: string } = {};
+    Object.keys(formData).forEach((key) => {
+      if (key in errors) {
+        const err = validateField(key, formData[key as keyof typeof formData]);
+        newErrors[key] = err;
+        if (err) valid = false;
+      }
     });
+    setErrors((prev) => ({ ...prev, ...newErrors }));
+    setTouched((prev) => {
+      const allTouched = { ...prev };
+      Object.keys(errors).forEach((k) => {
+        allTouched[k as keyof typeof allTouched] = true;
+      });
+      return allTouched;
+    });
+    return valid;
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (value === " ") {
+      e.preventDefault();
+    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+
+    if (touched[name as keyof typeof touched]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log(formData);
+    if (validate()) {
+      PasswordLogin(formData);
+      setSubmitting(true);
+    }
+  };
+
+  // setIsLoading(true);
+
+  // try {
+  //   const response = await fetch('/api/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ email, password }),
+  //   });
+
+  //   if (response.ok) {
+  //     navigate('/');
+  //   } else {
+  //     setError('Invalid email or password');
+  //   }
+  // } catch (err) {
+  //   setError('An error occurred. Please try again.');
+  // } finally {
+  //   setIsLoading(false);
+  // }
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setDisable(false);
+      return;
+    }
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-2xl shadow-xl">
-        {/* Logo */}
-        <div className="text-center">
-          <Logo />
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">
-            Verify Your Account
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Enter your {isEmailMode ? 'email' : 'mobile number'} to receive OTP
-          </p>
-        </div>
+    <>
+      <Navbar theme={theme} onThemeChange={onThemeChange} />
+      <div className="flex justify-center items-center min-h-screen app-container">
+        <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-md overflow-hidden p-4">
+          {/* Left side: Form */}
 
-        <form onSubmit={handleVerifyOtp} className="space-y-6">
-          {/* Toggle Button */}
-          <div className="flex justify-center">
-            <button
-              type="button"
-              onClick={toggleMode}
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#79B93C] transition-all duration-200"
-            >
-              <svg className={`h-4 w-4 mr-1.5 ${isEmailMode ? 'text-[#79B93C]' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <span className={isEmailMode ? 'text-[#79B93C]' : 'text-gray-400'}>Email</span>
-              <div className="mx-2 h-4 w-px bg-gray-300"></div>
-              <svg className={`h-4 w-4 mr-1.5 ${!isEmailMode ? 'text-[#79B93C]' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span className={!isEmailMode ? 'text-[#79B93C]' : 'text-gray-400'}>Mobile</span>
-            </button>
-          </div>
+          <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
+            <img src={logo} className="absolute top-0 left-0 w-[80px]" />
+            <div className="w-full max-w-xs ">
+              <h1 className="text-center text-3xl font-semibold mb-2">
+                Welcome Back
+              </h1>
+              <p className="text-center text-sm mb-6 text-gray-500">
+                Enter your email and password to access your account
+              </p>
 
-          {/* Contact Input */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {isEmailMode ? 'Email Address' : 'Mobile Number'}
-            </label>
-            <input
-              type={isEmailMode ? 'email' : 'tel'}
-              value={contact}
-              onChange={handleContactChange}
-              placeholder={isEmailMode ? 'Enter your email' : 'Enter your mobile number'}
-              className={`block w-full px-4 py-3 text-lg border ${
-                validationErrors.contact ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:ring-2 focus:ring-[#79B93C] focus:border-[#79B93C] transition-all duration-200`}
-            />
-            {validationErrors.contact && (
-              <p className="mt-1 text-sm text-red-500">{validationErrors.contact}</p>
-            )}
-          </div>
-
-          {/* OTP Input */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Enter 6-digit OTP
-            </label>
-            <input
-              type="text"
-              value={otp}
-              onChange={handleOtpChange}
-              placeholder="Enter OTP"
-              disabled={!isOtpSent}
-              className={`block w-full px-4 py-3 text-center text-lg font-semibold border ${
-                validationErrors.otp ? 'border-red-500' : 'border-gray-300'
-              } rounded-lg focus:ring-2 focus:ring-[#79B93C] focus:border-[#79B93C] transition-all duration-200 ${
-                !isOtpSent ? 'bg-gray-100 cursor-not-allowed' : ''
-              }`}
-            />
-            {validationErrors.otp && (
-              <p className="mt-1 text-sm text-red-500">{validationErrors.otp}</p>
-            )}
-          </div>
-
-          {error && (
-            <div className="text-red-500 text-sm text-center bg-red-50 p-3 rounded-lg border border-red-100">
-              {error}
-            </div>
-          )}
-
-          <div className="space-y-4">
-            <button
-              type={isOtpSent ? 'submit' : 'button'}
-              onClick={isOtpSent ? undefined : handleSendOtp}
-              disabled={isLoading || (isOtpSent && otp.length !== 6)}
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#79B93C] hover:bg-[#6aa533] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#79B93C] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? (
-                <div className="flex items-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  {isOtpSent ? 'Verifying...' : 'Sending...'}
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="error-wrapper">
+                  <label className="text-sm">Email</label>
+                  <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
+                    <span className="px-2 text-gray-500">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.804 5.879 2.137M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="Enter your email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className="w-full p-2 outline-none text-black"
+                      name="email"
+                    />
+                  </div>
+                  {touched.email && errors.email && (
+                    <div className="text-danger small mt-0 error-tooltip ">
+                      {" "}
+                      {errors.email}
+                    </div>
+                  )}
                 </div>
-              ) : (
-                isOtpSent ? 'Verify OTP' : 'Send OTP'
-              )}
-            </button>
+                {!showOtp && (
+                  <div className="error-wrapper">
+                    <label className="text-sm">Password</label>
+                    <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
+                      <span className="px-2 text-gray-500">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 11c0-1.104-.895-2-2-2s-2 .896-2 2c0 1.105.895 2 2 2s2-.895 2-2zm0 0V7m0 4v4m6 4H6a2 2 0 01-2-2V7a2 2 0 012-2h2l1-1h6l1 1h2a2 2 0 012 2v10a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                      </span>
 
-            <button
-              type="button"
-              onClick={handleBack}
-              className="w-full text-sm font-medium text-[#79B93C] hover:text-[#6aa533] focus:outline-none focus:underline transition-colors"
-            >
-              Back to Login
-            </button>
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className="w-full p-2 outline-none text-black"
+                        name="password"
+                      />
+
+                      {/* Eye Toggle Icon */}
+                      <button
+                        type="button"
+                        onClick={togglePassword}
+                        className="px-2 text-gray-500 focus:outline-none bg-white "
+                        aria-label={
+                          showPassword ? "Hide password" : "Show password"
+                        }
+                      >
+                        {showPassword ? (
+                          // Eye Open
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 "
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"
+                            />
+                          </svg>
+                        ) : (
+                          // Eye Off
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.056 10.056 0 012.263-3.592M6.6 6.6A9.964 9.964 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.965 9.965 0 01-1.241 2.272M15 12a3 3 0 00-3-3m0 0a3 3 0 00-3 3m0 0a3 3 0 003 3m0 0l7 7m-7-7L5 5"
+                            />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
+
+                    {touched.password && errors.password && (
+                      <div className="text-danger text-sm mt-1 error-tooltip">
+                        {errors.password}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <div className="flex justify-end items-center">
+                  <a
+                    href="/forgetPassword"
+                    className="text-sm text-end primary-text-color hover:underline"
+                  >
+                    Forgot password?
+                  </a>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full   p-2 theme-button  rounded-md  transition"
+                >
+                  {!submitting
+                    ? showOtp
+                      ? "Send OTP"
+                      : "Login"
+                    : "Submitting..."}
+                </button>
+                <div className="flex justify-center items-center">
+                  <a
+                    href="/otp"
+                    className="flex items-center text-sm primary-text-color cursor-pointer"
+                    onClick={() => {
+                      // setShowOtp(true);
+                      setErrors((prev) => ({
+                        ...prev,
+                        email: "",
+                        password: "",
+                      }));
+                      setTimeLeft(30);
+                    }}
+                  >
+                    Login with OTP{" "}
+                  </a>
+                </div>
+              </form>
+            </div>
           </div>
-        </form>
+
+          {/* Right side: Image / color */}
+          <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
+            {/* Background Shapes */}
+            <div className="absolute -top-75 -left-100 w-60 h-60 bg-green-200 rounded-full opacity-30 blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-lime-400 rounded-full opacity-20 blur-xl rotate-45"></div>
+            <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-[#79B93C] rounded-full opacity-10 blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+
+            {/* Main Content */}
+            <div className="w-full relative z-10">
+              <h1 className="text-white text-3xl mb-2">
+                Effortlessly manage your team and operations
+              </h1>
+              <p className="text-white text-xs mb-6">
+                Login to access your dashboard and manage your team
+              </p>
+              <div className="max-h-[300px] flex justify-center">
+                <img src={loginImg} className="object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default OTPVerification;
+export default EmailPasswordSignIn;
