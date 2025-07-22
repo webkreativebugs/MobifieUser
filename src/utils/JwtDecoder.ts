@@ -10,7 +10,7 @@ interface Decoded  {
 "_id":string
 }
 
-export const decoder =(token:string)=>{
+export const decoder =(token:any)=>{
 // const {setRole} = useauth()
 try {
   const decoded:Decoded = jwtDecode(token);

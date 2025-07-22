@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const OtpSignin = () => {
   // const {theme ,onThemeChange} = useTheme()
-  const [showOtp,setShowOtp]=useState(false)
+  const [showOtp, setShowOtp] = useState(false);
   return (
     <>
       <div className="flex justify-center items-center min-h-screen ">
@@ -17,7 +17,7 @@ const OtpSignin = () => {
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
-              <h1 className="text-center text-3xl font-semibold mb-2">
+              <h1 className="text-center text-3xl font-bold mb-5">
                 Welcome Back
               </h1>
               {showOtp ? <OTPField /> : <InputField setShowOtp={setShowOtp} />}

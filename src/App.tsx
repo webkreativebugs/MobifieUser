@@ -24,13 +24,12 @@ export default function App() {
 
 function processLoggedInUser(role:string){
 const token=sessionStorage.getItem('token')
-if(token)
-{
-  
+  if(sessionStorage.getItem('token'))
+  {
  if( role == decoder(token)  ) {
    return (<AdminRoutes/>)
   }
-}
+  }
     else 
     {
       console.log(sessionStorage,role);

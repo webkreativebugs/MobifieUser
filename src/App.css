@@ -42,6 +42,10 @@ body {
     background-color: var(--secondary-color) !important;
 }
 
+.link-hover:hover {
+    color: var(--opposite-color) !important;
+}
+
 .content {
     text-align: center;
 }
