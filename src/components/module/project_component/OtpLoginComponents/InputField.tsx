@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import globalOtp from "../../../../utils/SendOtpLogin"
+import globalOtp from "../../../../utils/api/SendOtpLogin"
 // import { apiResponse } from "../../../../utils/SendOtpLogin";
 interface InputFieldProps {
   setShowOtp: React.Dispatch<React.SetStateAction<boolean>>;

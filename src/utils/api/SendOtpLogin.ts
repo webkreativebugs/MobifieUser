@@ -1,6 +1,6 @@
-import {getOtp} from "../../network/public/otp_login/OtpLogin.api"
-import {   OtpRequest,OtpResponse, OtpCallback} from "../../network/public/otp_login/OtpLogin.interface";
-import { customAuthorizationConfig } from "../../network/FetchRequest";
+import {getOtp} from "../../../network/public/otp_login/OtpLogin.api"
+import {   OtpRequest,OtpResponse, OtpCallback} from "../../../network/public/otp_login/OtpLogin.interface";
+import { customAuthorizationConfig } from "../../../network/FetchRequest";
 function globalOtp(setApiResponse:any,OtpLoginformData:OtpRequest){
     
 const handleUserInfoResponse: OtpCallback= (  response: OtpResponse | null,error: Error | null | undefined) => {

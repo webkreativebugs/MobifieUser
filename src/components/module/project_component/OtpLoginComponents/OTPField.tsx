@@ -1,7 +1,9 @@
 "use client"
 import { useEffect, useState } from "react";
+import ValidateOtp from "../../../../utils/api/ValidateOTP";
+import { useauth } from "../../../../context/auth_context/AuthContext";
 const OTPField = () => {
-
+  const length=6
   // Initial OTP state with empty strings (length of OTP)
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [otpData, setOtpData] = useState("");
@@ -9,9 +11,12 @@ const OTPField = () => {
   const [disable, setDisable] = useState(true)
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [apiResponse , setApiResponse] = useState("")
+  const {onRoleChange} = useauth()
 
   // Handle input change for each individual OTP block
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+
     let value = e.target.value;
 
     // Only allow digits
@@ -53,8 +58,10 @@ const OTPField = () => {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+    ValidateOtp({otp:otpData},setApiResponse)
     if (otpData.length !== length) {
       setError("Please enter the complete OTP.");
+      
       setSubmitting(false);
 
       return;
@@ -78,6 +85,14 @@ const OTPField = () => {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
+  useEffect(()=>{
+    if(apiResponse)
+    {
+      console.log(apiResponse);
+      onRoleChange(apiResponse)
+    }
+  },[apiResponse])
+
   return (
 <div className="flex justify-center items-center w-full">
   <div className="p-4 w-full max-w-[420px] rounded-[20px]">
@@ -94,7 +109,7 @@ const OTPField = () => {
             onChange={(e) => handleChange(e, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
             autoFocus={index === 0}
-            className="w-12 h-12 text-center font-bold text-xl rounded-[10px] border border-[var(--MONGO_COLOR)] bg-[#f9f9f9] focus:outline-none"
+            className="w-12 h-12 text-center font-bold text-xl rounded-[10px] border border-[var(--MONGO_COLOR)] focus:outline-none"
           />
         ))}
       </div>
@@ -105,7 +120,7 @@ const OTPField = () => {
 
       <button
         type="submit"
-        className="w-full py-2 rounded-full text-white font-medium transition-all duration-200"
+        className="w-full py-2 rounded-full  font-medium transition-all duration-200"
         disabled={submitting}
         style={{ background: 'var(--MONGO_COLOR)', border: 'none' }}
       >

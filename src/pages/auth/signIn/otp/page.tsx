@@ -8,12 +8,11 @@ import OTPField from "../../../../components/module/project_component/OtpLoginCo
 import { useState } from "react";
 
 const OtpSignin = () => {
-  const { theme, onThemeChange } = useTheme();
+  // const {theme ,onThemeChange} = useTheme()
   const [showOtp, setShowOtp] = useState(false);
   return (
     <>
-      <Navbar theme={theme} onThemeChange={onThemeChange} />
-      <div className="flex justify-center items-center min-h-screen app-container">
+      <div className="flex justify-center items-center min-h-screen ">
         <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-md overflow-hidden p-4">
           {/* Left side: Form */}
 
