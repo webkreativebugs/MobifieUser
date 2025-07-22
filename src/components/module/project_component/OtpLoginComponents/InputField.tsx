@@ -27,7 +27,7 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "email": {
-        if (!value.trim()) return "Email/Mobile is required";
+        if (!value.trim()) return "Mobile is required";
         if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
           return "Invalid email address";
         }
@@ -113,26 +113,27 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
           <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
             <span className="px-2 text-gray-500">
               <svg
+                xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
                 fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth="2"
-                viewBox="0 0 24 24"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.804 5.879 2.137M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  d="M3 5a2 2 0 012-2h1.586a1 1 0 01.707.293l2.828 2.828a1 1 0 010 1.414l-1.415 1.415a1 1 0 000 1.414l5.657 5.657a1 1 0 001.414 0l1.415-1.415a1 1 0 011.414 0l2.828 2.828a1 1 0 01.293.707V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"
                 />
               </svg>
             </span>
             <input
               type="text"
-              placeholder="Enter your email/mobile"
+              placeholder="Enter your mobile"
               onChange={handleChange}
               onBlur={handleBlur}
               className="w-full p-2 outline-none text-black"
-              name="email"
+              name="mobile"
               //   onKeyDown={handleKeyDown}
             />
           </div>
