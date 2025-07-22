@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../../App.css";
+import { Link } from "react-router-dom";
 import { useTheme } from "../../../../context/AppContext";
 import Navbar from "../../../../components/common_component/Navbar";
 const loginImg = "../../../../public/assets/login.png";
@@ -11,7 +12,7 @@ import PasswordLogin from "../../../../utils/PasswordLogin"
 
 const EmailPasswordSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showOtp, setShowOtp] = useState(false);
+  // const [showOtp, setShowOtp] = useState(false);
   const [disable, setDisable] = useState(true);
   const [timeLeft, setTimeLeft] = useState(30);
 
@@ -201,7 +202,7 @@ const EmailPasswordSignIn = () => {
                     </div>
                   )}
                 </div>
-                {!showOtp && (
+              
                   <div className="error-wrapper">
                     <label className="text-sm">Password</label>
                     <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
@@ -286,7 +287,6 @@ const EmailPasswordSignIn = () => {
                       </div>
                     )}
                   </div>
-                )}
 
                 <div className="flex justify-end items-center">
                   <a
@@ -301,14 +301,15 @@ const EmailPasswordSignIn = () => {
                   type="submit"
                   className="w-full   p-2 theme-button  rounded-md  transition"
                 >
-                  {!submitting
-                    ? showOtp
-                      ? "Send OTP"
-                      : "Login"
-                    : "Submitting..."}
+                  {!submitting ?"Login": "Submitting..."}
                 </button>
                 <div className="flex justify-center items-center">
-                  {!showOtp ? (
+                   <Link to="/login-with-otp"
+                      className="flex items-center text-sm primary-text-color cursor-pointer"
+                    >
+                      Login with OTP{" "}
+                    </Link>
+                  {/* {!showOtp ? (
                     <a
                       className="flex items-center text-sm primary-text-color cursor-pointer"
                       onClick={() => {
@@ -338,7 +339,7 @@ const EmailPasswordSignIn = () => {
                     >
                       Login with Password{" "}
                     </a>
-                  )}
+                  )} */}
                 </div>
               </form>
             </div>

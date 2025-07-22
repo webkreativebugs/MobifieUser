@@ -13,10 +13,10 @@ const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,e
     
   };
 
-const passwordApi=async (formData:FormData)=>{
+const passwordApi=async (EmailPasswordformData:FormData)=>{
    
     try{
-        await emailpasswordlogin(formData, handleUserInfoResponse);
+        await emailpasswordlogin(EmailPasswordformData, handleUserInfoResponse);
         
 
       } catch (error) {
