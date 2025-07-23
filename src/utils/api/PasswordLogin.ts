@@ -1,22 +1,29 @@
 import {emailpasswordlogin} from "../../../network/public/email_password_login/EmailPasswordLogin.api"
 import { LoginResponse,LoginCallback,LoginRequest } from "../../../network/public/email_password_login/EmailPasswordLogin.interface";
-import { decoder } from "../JwtDecoder";
 
 interface FormData {
     email:string;
     password:string
 }
-function passwordApi(setApiResponse:any,EmailPasswordformData:LoginRequest){
+function passwordApi(setApiResponse:any,EmailPasswordformData:LoginRequest ,setDisable:any,setApiError:any){
   
 const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setDisable(false)
+      setApiError(error)
+      
     }
     console.log(response);
     if(response)
     {
-     setApiResponse(decoder(response.token))
-     sessionStorage.setItem("token",response.token)
+      // if (response === null)
+      // {
+      // setDisable(false)
+ 
+      // }
+     setApiResponse(response.token)
+    //  sessionStorage.setItem("token",response.token)
     }
     
   };

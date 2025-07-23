@@ -1,11 +1,13 @@
 import {getOtp} from "../../../network/public/otp_login/OtpLogin.api"
 import {   OtpRequest,OtpResponse, OtpCallback} from "../../../network/public/otp_login/OtpLogin.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function globalOtp(setApiResponse:any,OtpLoginformData:OtpRequest){
+function globalOtp(setApiResponse:any,OtpLoginformData:OtpRequest,setSubmitting:any){
     
 const handleUserInfoResponse: OtpCallback= (  response: OtpResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setSubmitting(false)
+      // setApiResponse(error)
     }
     console.log(response);
     if(response)

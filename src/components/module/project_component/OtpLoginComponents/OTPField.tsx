@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import ValidateOtp from "../../../../utils/api/ValidateOTP";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import ResendOtp from "../../../../utils/api/ResentOTP";
-const OTPField = () => {
+import { customAuthorizationConfig } from "../../../../../network/FetchRequest";
+const OTPField = ({apiRequestData}:any) => {
   const length = 6;
   // Initial OTP state with empty strings (length of OTP)
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [otpData, setOtpData] = useState("");
-  const [timeLeft, setTimeLeft] = useState(30);
+  const [timeLeft, setTimeLeft] = useState(3);
   const [disable, setDisable] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -145,7 +146,7 @@ const OTPField = () => {
               <button
                 type="button"
                 className="text-black hover:underline transition-all"
-                onClick={() => ResendOtp()}
+                onClick={() => ResendOtp(apiRequestData)}
                 style={{ fontWeight: 400 }}
               >
                 Resend OTP

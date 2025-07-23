@@ -1,5 +1,6 @@
 interface ResendOtpRequest {
-  token: string;
+  email?:string;
+  mobile?:string
 }
 
 interface ResendOtpResponse {

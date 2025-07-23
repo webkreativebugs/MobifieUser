@@ -4,13 +4,21 @@ import AuthRoutes from './routes/AuthRoutes'
 import AdminRoutes from './routes/AdminRoutes';
 import { useauth } from './context/auth_context/AuthContext';
 import { decoder } from './utils/JwtDecoder';
+import AuthMe from './utils/api/AuthMe';
+import { useEffect } from 'react';
+import {AccessType} from '../enum/AccessType.enum'
 export default function App() {
   const body = document.querySelector("body");
   if (body) {
     body.style.overflow = "hidden";
   }
  const {theme} =useTheme()
- const {role}= useauth()
+ const {role,onRoleChange}= useauth()
+   useEffect(() => {
+     if (role) {
+       AuthMe(onRoleChange);
+     }
+   },[role]);
 //  isLoggedIn
   return (
     <>
@@ -23,14 +31,16 @@ export default function App() {
 }
 
 function processLoggedInUser(role:string){
-const token=sessionStorage.getItem('token')
-if(token)
-{
+  // sessionStorage.clear()
+  const Role=decoder(role)
+  // console.log(role);
   
- if( role == decoder(token)  ) {
+  if(Role)
+  {
+ if( Role == AccessType.ADMIN ) {
    return (<AdminRoutes/>)
   }
-}
+  }
     else 
     {
       console.log(sessionStorage,role);

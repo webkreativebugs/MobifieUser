@@ -3,7 +3,7 @@ import {ResendOtpRequest,
   ResendOtpResponse,
   ResendOtpCallback} from "../../../network/public/resent_otp/ResentOtp.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function ResendOtp(){
+function ResendOtp(data:ResendOtpRequest){
     
 const handleUserInfoResponse: ResendOtpCallback= (  response: ResendOtpResponse | null,error: Error | null | undefined) => {
     if (error) {
@@ -19,9 +19,11 @@ const handleUserInfoResponse: ResendOtpCallback= (  response: ResendOtpResponse 
   };
 
 const sendOtp=async ()=>{
+  console.log(data);
+  
    
     try{
-        await resendOtp( {token:"rtfgyhnjkm"},handleUserInfoResponse);
+        await resendOtp( data,handleUserInfoResponse);
         
 
       } catch (error) {

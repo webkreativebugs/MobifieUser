@@ -13,7 +13,7 @@ const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyToken
     if(response)
     {
       customAuthorizationConfig.kb_authorization=response.data.token;
-      setApiResponse(decoder(response.data.token))
+      setApiResponse(response.data.token)
       
     }
    

@@ -13,7 +13,7 @@ const EmailPasswordSignIn = () => {
   const { onRoleChange } = useauth();
   const [showPassword, setShowPassword] = useState(false);
   // const [showOtp, setShowOtp] = useState(false);
-  const [disable, setDisable] = useState(true);
+  const [disable, setDisable] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [apiResponse, setApiResponse] = useState("");
 
@@ -34,7 +34,7 @@ const EmailPasswordSignIn = () => {
     password: "",
     email: "",
   });
-
+ const [apiError,setApiError] = useState("")
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "email": {
@@ -46,7 +46,7 @@ const EmailPasswordSignIn = () => {
       }
 
       case "password": {
-        // if (!value.trim()) return "Password is required";
+        if (!value.trim()) return "Password is required";
         // if (value.length < 8)
         //   return "Password must be at least 8 characters long";
         // if (!/[A-Z]/.test(value))
@@ -113,8 +113,8 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
-      PasswordLogin(setApiResponse, formData);
-      setSubmitting(true);
+      PasswordLogin(setApiResponse, formData,setDisable ,setApiError);
+      setDisable(true)
     }
   };
   useEffect(() => {
@@ -123,27 +123,7 @@ const EmailPasswordSignIn = () => {
       onRoleChange(apiResponse);
     }
   }, [apiResponse]);
-  // setIsLoading(true);
 
-  // try {
-  //   const response = await fetch('/api/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ email, password }),
-  //   });
-
-  //   if (response.ok) {
-  //     navigate('/');
-  //   } else {
-  //     setError('Invalid email or password');
-  //   }
-  // } catch (err) {
-  //   setError('An error occurred. Please try again.');
-  // } finally {
-  //   setIsLoading(false);
-  // }
 
   useEffect(() => {
     if (timeLeft <= 0) {
@@ -166,13 +146,13 @@ const EmailPasswordSignIn = () => {
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
               <h1 className="text-center text-3xl font-bold  mb-2">
-                Welcome Back
+               Sign in to continue
               </h1>
               <p className="text-center text-sm mb-6 text-gray-500">
-                Enter your email and password to access your account
+                Access your business dashboard and track performance in one place.
               </p>
 
-              <form className="space-y-5" onSubmit={handleSubmit}>
+              <form className="space-y-5" onSubmit={handleSubmit} >
                 <div className="error-wrapper">
                   {/* <label className="text-sm">Email</label> */}
                   <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
@@ -198,6 +178,7 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none bg-none text-black "
                       name="email"
+                      disabled={disable}
                     />
                   </div>
                   {touched.email && errors.email && (
@@ -245,10 +226,12 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none text-black"
                       name="password"
+                      disabled={disable}
                     />
 
                     {/* Eye Toggle Icon */}
                     <button
+                      disabled={disable}
                       type="button"
                       onClick={togglePassword}
                       className="px-2 text-gray-500 focus:outline-none bg-white "
@@ -307,22 +290,30 @@ const EmailPasswordSignIn = () => {
                 <div className="flex justify-end items-center">
                   <a
                     href="/forgetPassword"
-                    className="text-sm text-end primary-text-color hover:underline link-hover"
+                    className="text-sm text-end primary-text-color  link-hover"
+                    
                   >
                     Forgot password?
                   </a>
                 </div>
 
                 <button
+                  disabled={disable}
                   type="submit"
-                  className="w-full   p-2 theme-button  rounded-md  transition"
+                  className="w-full   p-2 theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
                 >
-                  {!submitting ? "Login" : "Submitting..."}
+                  Login
                 </button>
+                { apiError&&
+                   <div className="flex justify-center items-center text-red-600 text-xs mt-1 error-tooltip">
+                    {apiError}
+                   </div>
+                }
                 <div className="flex justify-center items-center">
                   <Link
+                  
                     to="/login-with-otp"
-                    className="flex items-center text-sm primary-text-color cursor-pointer hover:underline link-hover"
+                    className="flex items-center text-sm primary-text-color cursor-pointer link-hover"
                   >
                     Login with OTP{" "}
                   </Link>
