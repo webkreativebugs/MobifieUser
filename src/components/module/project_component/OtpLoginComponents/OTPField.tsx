@@ -3,15 +3,18 @@ import { useEffect, useState } from "react";
 import ValidateOtp from "../../../../utils/api/ValidateOTP";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import ResendOtp from "../../../../utils/api/ResentOTP";
-import { customAuthorizationConfig } from "../../../../../network/FetchRequest";
+import { useloader } from "../../../../context/loader_context/LoaderContext";
+import Toast from "../../../common_component/Toast";
+// import { customAuthorizationConfig } from "../../../../../network/FetchRequest";
 const OTPField = ({apiRequestData}:any) => {
+  const {setLoader} = useloader()
   const length = 6;
   // Initial OTP state with empty strings (length of OTP)
   const [otp, setOtp] = useState(Array(6).fill(""));
+  const [showToast, setShowToast] = useState(false);
   const [otpData, setOtpData] = useState("");
   const [timeLeft, setTimeLeft] = useState(30);
-  const [disable, setDisable] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
+  const [Resntdisable, setResentDisable] = useState(true);
   const [error, setError] = useState("");
   const [apiResponse, setApiResponse] = useState("");
   const [apiError,setApiError] = useState("")
@@ -63,27 +66,28 @@ const OTPField = ({apiRequestData}:any) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitting(true);
     setError("");
-    ValidateOtp({ otp: otpData }, setApiResponse,setSubmitting,setDisable ,setApiError);
+   
     if (otpData.length !== length) {
       setError("Please enter the complete OTP.");
 
-      setSubmitting(false);
+      // setLoader(false)
 
       return;
     }
 
     try {
+       ValidateOtp({ otp: otpData }, setApiResponse,setLoader ,setApiError);
       // await getOtpToken({ 'otp': otpData }, handleOtpValidationResponse);
     } catch (error) {
-      setSubmitting(false);
+      // setSubmitting(false);
+      setLoader(false)
       setError("Error in submitting OTP.");
     }
   };
   useEffect(() => {
     if (timeLeft <= 0) {
-      setDisable(false);
+      setResentDisable(false);
       return;
     }
     const timer = setInterval(() => {
@@ -127,12 +131,12 @@ const OTPField = ({apiRequestData}:any) => {
           )}
 
           <button
+         
             type="submit"
            className="w-full mt-1  p-2 theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
-            disabled={submitting}
             style={{ background: "var(--MONGO_COLOR)", border: "none" }}
           >
-            {submitting ? "Submitting..." : "Submit OTP"}
+            { "Submit OTP"}
           </button>
         { apiError&&
                    <div className="flex justify-center items-center text-red-600 text-sm h-0 mt-4  ">
@@ -144,21 +148,27 @@ const OTPField = ({apiRequestData}:any) => {
         <div className="mt-4">
          
           <div className="text-xs text-gray-500 text-center">
-            {disable ? (
+            {Resntdisable ? (
               <div className="flex justify-center items-center gap-1">
                 <span>Resend OTP in:</span>
                 <span className="font-bold">{timeLeft}s</span>
               </div>
             ) : (
               <button
+               
                 type="button"
-                className="text-black hover:underline transition-all"
-                onClick={() => ResendOtp(apiRequestData)}
+                className="text-black transition-all"
+                onClick={() =>{ ResendOtp(apiRequestData , setShowToast); setTimeLeft(30);setResentDisable(true)}}
                 style={{ fontWeight: 400 }}
               >
                 Resend OTP
               </button>
             )}
+            <Toast
+            msg={"OTP sent sucessfully"}
+            show ={showToast}
+            onClose={()=>setShowToast(false)}
+            />
           </div>
         </div>
       </div>

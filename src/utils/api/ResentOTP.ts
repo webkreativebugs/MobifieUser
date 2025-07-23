@@ -3,7 +3,7 @@ import {ResendOtpRequest,
   ResendOtpResponse,
   ResendOtpCallback} from "../../../network/public/resent_otp/ResentOtp.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function ResendOtp(data:ResendOtpRequest){
+function ResendOtp(data:ResendOtpRequest,setShowToast:any){
     
 const handleUserInfoResponse: ResendOtpCallback= (  response: ResendOtpResponse | null,error: Error | null | undefined) => {
     if (error) {
@@ -12,8 +12,8 @@ const handleUserInfoResponse: ResendOtpCallback= (  response: ResendOtpResponse 
     console.log(response);
     if(response)
     {
-      customAuthorizationConfig.kb_authorization=response.data.token;
-      // setApiResponse(response)
+      customAuthorizationConfig.kb_authorization=response.data.token
+      setShowToast(true)
     }
    
   };

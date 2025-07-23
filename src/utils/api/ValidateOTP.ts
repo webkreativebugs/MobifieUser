@@ -3,25 +3,25 @@ import {  OtpVerifyRequest,OtpVerifyResponse,OtpVerifyCallback } from "../../../
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
 import { decoder } from "../JwtDecoder";
 
-function ValidateOtp(OtpLoginformData:OtpVerifyRequest,setApiResponse:any ,setSubmitting:any , setDisabled:any,setApiError:any){
+function ValidateOtp(OtpLoginformData:OtpVerifyRequest,setApiResponse:any , setLoader:any,setApiError:any){
 
     
 const handleUserInfoResponse: OtpVerifyCallback= (  response: OtpVerifyResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
-      setSubmitting(false)
-      setDisabled(false)
+     
+      setLoader(false)
     }
     console.log(response);
     if(response)
     {
      setApiResponse(response.data.token)
+     setLoader(false)
     //  sessionStorage.setItem("token",response.data.token)
     }
     if(response==null)
     {
-      setSubmitting(false)
-      setDisabled(false)
+      setLoader(false)
       setApiError("Invalid OTP")
     }
    

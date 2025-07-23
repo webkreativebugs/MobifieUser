@@ -8,12 +8,14 @@ const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import PasswordLogin from "../../../../utils/api/PasswordLogin";
 import { useauth } from "../../../../context/auth_context/AuthContext";
+import { useloader } from "../../../../context/loader_context/LoaderContext";
 
 const EmailPasswordSignIn = () => {
+  const {setLoader} = useloader()
   const { onRoleChange } = useauth();
   const [showPassword, setShowPassword] = useState(false);
   // const [showOtp, setShowOtp] = useState(false);
-  const [disable, setDisable] = useState(false);
+  // const [disable, setDisable] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [apiResponse, setApiResponse] = useState("");
 
@@ -113,8 +115,9 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
-      PasswordLogin(setApiResponse, formData,setDisable ,setApiError);
-      setDisable(true)
+      setLoader(true)
+      PasswordLogin(setApiResponse, formData ,setApiError,setLoader);
+     
     }
   };
   useEffect(() => {
@@ -127,7 +130,7 @@ const EmailPasswordSignIn = () => {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setDisable(false);
+
       return;
     }
     const timer = setInterval(() => {
@@ -178,7 +181,7 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none bg-none text-black "
                       name="email"
-                      disabled={disable}
+                     
                     />
                   </div>
                   {touched.email && errors.email && (
@@ -226,12 +229,12 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none text-black"
                       name="password"
-                      disabled={disable}
+                  
                     />
 
                     {/* Eye Toggle Icon */}
                     <button
-                      disabled={disable}
+          
                       type="button"
                       onClick={togglePassword}
                       className="px-2 text-gray-500 focus:outline-none bg-white "
@@ -298,7 +301,7 @@ const EmailPasswordSignIn = () => {
                 </div>
 
                 <button
-                  disabled={disable}
+          
                   type="submit"
                   className="w-full   p-2 theme-button  rounded-md  transition disabled:hover:bg-gray-400 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
                 >

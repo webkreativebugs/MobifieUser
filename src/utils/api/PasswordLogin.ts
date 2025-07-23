@@ -1,16 +1,18 @@
 import {emailpasswordlogin} from "../../../network/public/email_password_login/EmailPasswordLogin.api"
 import { LoginResponse,LoginCallback,LoginRequest } from "../../../network/public/email_password_login/EmailPasswordLogin.interface";
+// import { useloader } from "../../context/loader_context/LoaderContext";
 
 interface FormData {
     email:string;
     password:string
 }
-function passwordApi(setApiResponse:any,EmailPasswordformData:LoginRequest ,setDisable:any,setApiError:any){
-  
+function passwordApi(setApiResponse:any,EmailPasswordformData:LoginRequest ,setApiError:any,setLoader:any){
+
+  // const {setLoader} =useloader()
 const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
-      setDisable(false)
+      setLoader(false)
       setApiError(error)
       
     }
@@ -18,11 +20,12 @@ const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,e
     if(response)
     {
      setApiResponse(response.token)
+     setLoader(false)
     }
     if(response==null)
     {
       setApiError("Incorrect email or password")
-      setDisable(false)
+      setLoader(false)
     }
     
   };

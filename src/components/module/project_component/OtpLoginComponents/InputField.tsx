@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import globalOtp from "../../../../utils/api/SendOtpLogin";
 import ManualDropdown from "../../../common_component/ManualDropdown";
+import { useloader } from "../../../../context/loader_context/LoaderContext";
 // import { apiResponse } from "../../../../utils/SendOtpLogin";
 interface InputFieldProps {
   setShowOtp: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,6 +10,7 @@ interface InputFieldProps {
 }
 
 const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
+  const {setLoader} = useloader()
   const [apiResponse, setApiResponse] = useState();
   const [showNum, setShowNum] = useState(true);
   const [formData, setFormData] = useState({
@@ -16,9 +18,8 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
     mobile: "",
     country_code: "+91",
   });
-  const [submitting, setSubmitting] = useState(false);
-  const [disable, setDisable] = useState(false);
 
+  // const [apiError,setApiError] = useState("")
   const [touched, setTouched] = useState({
     email: false,
     mobile: false,
@@ -44,12 +45,13 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
         if (/\s/.test(trimmed)) return "Mobile number cannot contain spaces";
         if (!/^[0-9]+$/.test(trimmed))
           return "Mobile number must contain only digits";
+           if (!/^[6-9]/.test(trimmed))
+          return "Mobile number must start with 6, 7, 8, or 9";
         if (trimmed.length !== 10)
           return "Mobile number must be exactly 10 digits";
         if (/^([0-9])\1{9}$/.test(trimmed))
           return "Mobile number cannot be all the same digit";
-        if (!/^[6-9]/.test(trimmed))
-          return "Mobile number must start with 6, 7, 8, or 9";
+     
 
         return "";
       }
@@ -100,7 +102,9 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
 
     if (touched[name as keyof typeof touched]) {
       setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+       setApiError("")
     }
+     
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -113,25 +117,25 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
     e.preventDefault();
 
     // const parameter =showNum?formData.mobile:formData.email
-    if (validate()) console.log(formData);
+    if (validate()){ 
 
-    setSubmitting(true);
-    setDisable(true);
-    {
+ 
+    setLoader(true)
+    
       showNum
         ? globalOtp(
             setApiResponse,
             { mobile: formData.mobile, country_code: formData.country_code },
-            setSubmitting
+            setLoader,setApiError
           )
-        : globalOtp(setApiResponse, { email: formData.email }, setSubmitting);
+        : globalOtp(setApiResponse, { email: formData.email } ,setLoader, setApiError);
     }
   };
 
   useEffect(() => {
     console.log(apiResponse);
     if (apiResponse) {
-      setSubmitting(false);
+
       setShowOtp(true);
       showNum
         ? setApiRequestData({ mobile: formData.mobile })
@@ -141,6 +145,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
 
   function handleFieldChange() {
     setShowNum(!showNum);
+    setApiError("")
   }
 
   useEffect(() => {
@@ -179,6 +184,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
               value={formData.mobile}
               onBlur={handleBlur}
               className="w-full p-2  outline-none text-black"
+              maxLength={10}
               onKeyDown={(e) => {
                 const allowedControlKeys = [
                   "Backspace",
@@ -194,7 +200,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
                   e.preventDefault(); // Block non-numeric and space keys
                 }
               }}
-              disabled={disable}
+        
             />
           </div>
           {touched.mobile && errors.mobile && (
@@ -268,15 +274,20 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
           {!showNum ? "OTP on mobile?" : "OTP on email?"}
         </a>
       </div>
-
       <button
         type="submit"
         // onClick={() => }
         className="w-full  mt-4 m-0  theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
-        disabled={disable}
+   
       >
-        {!submitting ? "Send OTP" : "Sending..."}
+        { "Send OTP" }
       </button>
+      
+                 { apiError&&
+                   <div className="flex justify-center items-center text-red-600 text-sm h-0  ">
+                    {apiError}
+                   </div>
+                }
       <div className="flex justify-center items-center">
         <Link
           to="/login-with-password"
