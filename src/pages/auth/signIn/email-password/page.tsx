@@ -34,7 +34,7 @@ const EmailPasswordSignIn = () => {
     password: "",
     email: "",
   });
- const [apiError,setApiError] = useState("")
+  const [apiError, setApiError] = useState("");
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "email": {
@@ -113,8 +113,8 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
-      PasswordLogin(setApiResponse, formData,setDisable ,setApiError);
-      setDisable(true)
+      PasswordLogin(setApiResponse, formData, setDisable, setApiError);
+      setDisable(true);
     }
   };
   useEffect(() => {
@@ -123,7 +123,6 @@ const EmailPasswordSignIn = () => {
       onRoleChange(apiResponse);
     }
   }, [apiResponse]);
-
 
   useEffect(() => {
     if (timeLeft <= 0) {
@@ -146,13 +145,14 @@ const EmailPasswordSignIn = () => {
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
               <h1 className="text-center text-3xl font-bold  mb-2">
-               Sign in to continue
+                Sign in to continue
               </h1>
               <p className="text-center text-sm mb-6 text-gray-500">
-                Access your business dashboard and track performance in one place.
+                Access your business dashboard and track performance in one
+                place.
               </p>
 
-              <form className="space-y-5" onSubmit={handleSubmit} >
+              <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="error-wrapper">
                   {/* <label className="text-sm">Email</label> */}
                   <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
@@ -289,9 +289,8 @@ const EmailPasswordSignIn = () => {
 
                 <div className="flex justify-end items-center">
                   <a
-                    href="/forgetPassword"
+                    href="/forget-password"
                     className="text-sm text-end primary-text-color  link-hover"
-                    
                   >
                     Forgot password?
                   </a>
@@ -304,14 +303,13 @@ const EmailPasswordSignIn = () => {
                 >
                   Login
                 </button>
-                { apiError&&
-                   <div className="flex justify-center items-center text-red-600 text-xs mt-1 error-tooltip">
+                {apiError && (
+                  <div className="flex justify-center items-center text-red-600 text-xs mt-1 error-tooltip">
                     {apiError}
-                   </div>
-                }
+                  </div>
+                )}
                 <div className="flex justify-center items-center">
                   <Link
-                  
                     to="/login-with-otp"
                     className="flex items-center text-sm primary-text-color cursor-pointer link-hover"
                   >
