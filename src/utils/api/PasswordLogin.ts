@@ -17,13 +17,12 @@ const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,e
     console.log(response);
     if(response)
     {
-      // if (response === null)
-      // {
-      // setDisable(false)
- 
-      // }
      setApiResponse(response.token)
-    //  sessionStorage.setItem("token",response.token)
+    }
+    if(response==null)
+    {
+      setApiError("Incorrect email or password")
+      setDisable(false)
     }
     
   };

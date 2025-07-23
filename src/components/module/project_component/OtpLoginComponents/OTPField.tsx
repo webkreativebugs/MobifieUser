@@ -9,11 +9,12 @@ const OTPField = ({apiRequestData}:any) => {
   // Initial OTP state with empty strings (length of OTP)
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [otpData, setOtpData] = useState("");
-  const [timeLeft, setTimeLeft] = useState(3);
+  const [timeLeft, setTimeLeft] = useState(30);
   const [disable, setDisable] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [apiResponse, setApiResponse] = useState("");
+  const [apiError,setApiError] = useState("")
   const { onRoleChange } = useauth();
 
   // Handle input change for each individual OTP block
@@ -64,7 +65,7 @@ const OTPField = ({apiRequestData}:any) => {
     e.preventDefault();
     setSubmitting(true);
     setError("");
-    ValidateOtp({ otp: otpData }, setApiResponse);
+    ValidateOtp({ otp: otpData }, setApiResponse,setSubmitting,setDisable ,setApiError);
     if (otpData.length !== length) {
       setError("Please enter the complete OTP.");
 
@@ -102,7 +103,7 @@ const OTPField = ({apiRequestData}:any) => {
     <div className="flex justify-center items-center w-full">
       <div className="p-4 w-full max-w-[420px] rounded-[20px]">
         {/* <h5 className="mb-3 font-bold text-center">Enter OTP</h5> */}
-        <form onSubmit={handleSubmit} autoComplete="off">
+        <form onSubmit={handleSubmit} autoComplete="off" className="space-y-5">
           <div className="flex justify-center gap-2 mb-3">
             {otp.map((val, index) => (
               <input
@@ -127,15 +128,21 @@ const OTPField = ({apiRequestData}:any) => {
 
           <button
             type="submit"
-            className="w-full py-2 rounded-full  font-medium transition-all duration-200"
+           className="w-full mt-1  p-2 theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
             disabled={submitting}
             style={{ background: "var(--MONGO_COLOR)", border: "none" }}
           >
             {submitting ? "Submitting..." : "Submit OTP"}
           </button>
+        { apiError&&
+                   <div className="flex justify-center items-center text-red-600 text-sm h-0 mt-4  ">
+                    {apiError}
+                   </div>
+                }
         </form>
-
-        <div className="mt-2">
+         
+        <div className="mt-4">
+         
           <div className="text-xs text-gray-500 text-center">
             {disable ? (
               <div className="flex justify-center items-center gap-1">

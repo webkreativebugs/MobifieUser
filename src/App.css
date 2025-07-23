@@ -207,3 +207,8 @@ body {
     color:var(--text-color);
     border-radius: 5px;
 }
+
+/* input:active,input:focus{
+    background-color: white;
+    color:white
+} */

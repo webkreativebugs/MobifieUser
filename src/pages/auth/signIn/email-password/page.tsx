@@ -300,12 +300,12 @@ const EmailPasswordSignIn = () => {
                 <button
                   disabled={disable}
                   type="submit"
-                  className="w-full   p-2 theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
+                  className="w-full   p-2 theme-button  rounded-md  transition disabled:hover:bg-gray-400 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
                 >
                   Login
                 </button>
                 { apiError&&
-                   <div className="flex justify-center items-center text-red-600 text-xs mt-1 error-tooltip">
+                   <div className="flex justify-center items-center text-red-600 text-sm h-0 ">
                     {apiError}
                    </div>
                 }
