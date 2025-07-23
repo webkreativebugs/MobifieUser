@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 // import OTPField from "../../../../components/module/project_component/OtpLoginComponents/OTPField";
+import ForgetPass from "../../../../src/utils/api/ForgetPassword";
 import { useState } from "react";
 
 const ForgotPassword = () => {
@@ -90,21 +91,31 @@ const ForgotPassword = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // const parameter =showNum?formData.mobile:formData.email
-    if (validate()) console.log(formData);
-
-    setSubmitting(true);
-    setDisable(true);
-    // {
-    //   showNum
-    //     ? globalOtp(
-    //         setApiResponse,
-    //         { mobile: formData.mobile, country_code: formData.country_code },
-    //         setSubmitting
-    //       )
-    //     : globalOtp(setApiResponse, { email: formData.email }, setSubmitting);
-    // }
+    console.log(formData);
+    if (validate()) {
+      ForgetPass(formData, setApiResponse, setApiError);
+      setDisable(true);
+    }
   };
+
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   // const parameter =showNum?formData.mobile:formData.email
+  //   if (validate()) console.log(formData);
+
+  //   setSubmitting(true);
+  //   setDisable(true);
+  //   {
+  //     showNum
+  //       ? globalOtp(
+  //           setApiResponse,
+  //           { mobile: formData.mobile, country_code: formData.country_code },
+  //           setSubmitting
+  //         )
+  //       : globalOtp(setApiResponse, { email: formData.email }, setSubmitting);
+  //   }
+  // };
 
   // useEffect(() => {
   //   console.log(apiResponse);
@@ -190,26 +201,28 @@ const ForgotPassword = () => {
                     />
                   </div>
                   {touched.email && errors.email && (
-                    <div className="text-red-500 text-xs mt-0 mb-2 error-tooltip ">
+                    <div className="text-red-500 text-xs mt-0 mb-5  error-tooltip ">
                       {" "}
                       {errors.email}
                     </div>
                   )}
                 </div>
-                <button
-                  type="submit"
-                  // onClick={() => }
-                  className="w-full  mt-5 m-0  theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
-                >
-                  Submit
-                </button>
+                <div>
+                  <button
+                    type="submit"
+                    // onClick={() => }
+                    className="w-full  mt-2   theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
+                  >
+                    Submit
+                  </button>
+                </div>
                 <div className="flex justify-center items-center">
-                  I know my Password?{" "}
+                  <p className="pr-1 ">I know my Password?</p>
                   <Link
                     to="/login-with-password"
                     className="flex items-center text-sm primary-text-color cursor-pointer "
                   >
-                    SignIN{" "}
+                    LogIn{" "}
                   </Link>
                 </div>
               </form>
