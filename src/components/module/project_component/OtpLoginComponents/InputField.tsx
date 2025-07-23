@@ -135,30 +135,40 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
               />
             </svg>
           </span>
-          <input
-            type="tel"
-            placeholder="Enter your mobile"
-            name="mobile"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className="w-full p-2 outline-none text-black"
-            onKeyDown={(e) => {
-              const allowedControlKeys = [
-                "Backspace",
-                "Delete",
-                "ArrowLeft",
-                "ArrowRight",
-                "Tab",
-              ];
-              if (
-                !/^[0-9]$/.test(e.key) &&
-                !allowedControlKeys.includes(e.key)
-              ) {
-                e.preventDefault(); // Block non-numeric and space keys
-              }
-            }}
-          />
+          <div className="flex items-center gap-2">
+            <ManualDropdown
+              countriesData={countriesData}
+              formData={formData}
+              setFormData={setFormData}
+              stateDrop={false}
+            />
+
+            <input
+              type="tel"
+              placeholder="Enter your mobile"
+              name="mobile"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className="w-full p-2 outline-none text-black"
+              onKeyDown={(e) => {
+                const allowedControlKeys = [
+                  "Backspace",
+                  "Delete",
+                  "ArrowLeft",
+                  "ArrowRight",
+                  "Tab",
+                ];
+                if (
+                  !/^[0-9]$/.test(e.key) &&
+                  !allowedControlKeys.includes(e.key)
+                ) {
+                  e.preventDefault(); // Block non-numeric and space keys
+                }
+              }}
+            />
+          </div>
         </div>
+
         {touched.mobile && errors.mobile && (
           <div className="text-red-500 text-xs mt-0 error-tooltip ">
             {" "}
