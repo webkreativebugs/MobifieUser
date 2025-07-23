@@ -10,7 +10,7 @@ export async function resendOtp(
   userinfoRequest: ResendOtpRequest,
   callback: ResendOtpCallback
 ): Promise<ResendOtpResponse | Error> {
-  const url = API_ENDPOINTS.USER_INFO_PLAN();
+  const url = API_ENDPOINTS.RECENT_OTP();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

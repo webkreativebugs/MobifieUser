@@ -1,6 +1,8 @@
 // OTP Request Interface
 interface OtpRequest {
-  mobile:string;
+  mobile?:string;
+  email?:string;
+  country_code?:string
 }
 
 // OTP Response Status Info

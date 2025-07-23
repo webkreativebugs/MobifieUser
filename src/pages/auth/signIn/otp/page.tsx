@@ -8,6 +8,8 @@ import { useState } from "react";
 const OtpSignin = () => {
   // const {theme ,onThemeChange} = useTheme()
   const [showOtp, setShowOtp] = useState(false);
+  const [apiRequestData , setApiRequestData]=useState({
+  })
   return (
     <>
       <div className="flex justify-center items-center min-h-screen ">
@@ -24,7 +26,7 @@ const OtpSignin = () => {
                 Access your business dashboard and track performance in one place.
               </p>
 
-              {showOtp ? <OTPField /> : <InputField setShowOtp={setShowOtp} />}
+              {showOtp ? <OTPField apiRequestData={apiRequestData} /> : <InputField setShowOtp={setShowOtp} setApiRequestData={setApiRequestData} />}
             </div>
           </div>
 

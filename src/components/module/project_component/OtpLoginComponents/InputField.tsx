@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import globalOtp from "../../../../utils/api/SendOtpLogin";
+import ManualDropdown from "../../../common_component/ManualDropdown";
 // import { apiResponse } from "../../../../utils/SendOtpLogin";
 interface InputFieldProps {
   setShowOtp: React.Dispatch<React.SetStateAction<boolean>>;
+  setApiRequestData:React.Dispatch<React.SetStateAction<Object>>;
 }
 
-const InputField = ({ setShowOtp }: InputFieldProps) => {
+const InputField = ({ setShowOtp,  setApiRequestData}: InputFieldProps) => {
   const [apiResponse, setApiResponse] = useState();
   const [showNum, setShowNum] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
     mobile: "",
+    country_code:"+91"
   });
   const [submitting, setSubmitting] = useState(false);
 
@@ -26,13 +29,13 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
  const [apiError , setApiError] = useState("")
   const validateField = (name: string, value: string) => {
     switch (name) {
-      // case "email": {
-      //   if (!value.trim()) return "Mobile is required";
-      //   if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
-      //     return "Invalid email address";
-      //   }
-      //   return "";
-      // }
+      case "email": {
+        if (!value.trim()) return "Email is required";
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+          return "Invalid email address";
+        }
+        return "";
+      }
       case "mobile": {
         const trimmed = value.trim();
 
@@ -55,26 +58,35 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
     }
   };
 
-  const validate = () => {
-    let valid = true;
-    const newErrors: { [key: string]: string } = {};
-    Object.keys(formData).forEach((key) => {
-      if (key in errors) {
-        const err = validateField(key, formData[key as keyof typeof formData]);
-        newErrors[key] = err;
-        if (err) valid = false;
+const validate = () => {
+  let valid = false; // initially assume invalid
+  const newErrors: { [key: string]: string } = {};
+
+  Object.keys(formData).forEach((key) => {
+    if (key in errors) {
+      const value = formData[key as keyof typeof formData];
+      const err = validateField(key, value);
+      newErrors[key] = err;
+
+      // If the field is non-empty and has no error → set valid to true
+      if (value && !err) {
+        valid = true;
       }
+    }
+  });
+
+  setErrors((prev) => ({ ...prev, ...newErrors }));
+  setTouched((prev) => {
+    const allTouched = { ...prev };
+    Object.keys(errors).forEach((k) => {
+      allTouched[k as keyof typeof allTouched] = true;
     });
-    setErrors((prev) => ({ ...prev, ...newErrors }));
-    setTouched((prev) => {
-      const allTouched = { ...prev };
-      Object.keys(errors).forEach((k) => {
-        allTouched[k as keyof typeof allTouched] = true;
-      });
-      return allTouched;
-    });
-    return valid;
-  };
+    return allTouched;
+  });
+
+  return valid;
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -102,26 +114,47 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
 
     // const parameter =showNum?formData.mobile:formData.email
     if(validate())
+      console.log(formData);
+      
     setSubmitting(true);
-    globalOtp(setApiResponse, formData,setSubmitting);
+  {showNum?  globalOtp(setApiResponse, {mobile:formData.mobile,country_code:formData.country_code},setSubmitting): globalOtp(setApiResponse, {email:formData.email},setSubmitting)}
+   
 
     
   };
+
+
 
   useEffect(() => {
     console.log(apiResponse);
     if (apiResponse) {
       setSubmitting(false);
       setShowOtp(true);
+     showNum? setApiRequestData({mobile:formData.mobile}):setApiRequestData({email:formData.email})
     }
   }, [apiResponse]);
+
+  function handleFieldChange()
+  {
+    setShowNum(!showNum)
+    
+  
+
+  }
+
+  useEffect(()=>{
+setFormData((prev) => ({ ...prev, mobile: "",email:""}))
+setErrors((prev)=>({ ...prev, mobile: "",email:""}))
+  },[showNum])
+
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
       {showNum?
       <div className="error-wrapper">
         {/* <label className="text-sm">Email</label> */}
         <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
-          <span className="px-2 text-gray-500">
+          <ManualDropdown formData={formData} setFormData={setFormData} />
+          {/* <span className="px-2 text-gray-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5"
@@ -136,12 +169,13 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
                 d="M3 5a2 2 0 012-2h1.586a1 1 0 01.707.293l2.828 2.828a1 1 0 010 1.414l-1.415 1.415a1 1 0 000 1.414l5.657 5.657a1 1 0 001.414 0l1.415-1.415a1 1 0 011.414 0l2.828 2.828a1 1 0 01.293.707V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"
               />
             </svg>
-          </span>
+          </span> */}
           <input
             type="tel"
             placeholder="Enter your mobile"
             name="mobile"
             onChange={handleChange}
+            value={formData.mobile}
             onBlur={handleBlur}
             className="w-full p-2 outline-none text-black"
             onKeyDown={(e) => {
@@ -173,23 +207,23 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
         <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
           <span className="px-2 text-gray-500">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 5a2 2 0 012-2h1.586a1 1 0 01.707.293l2.828 2.828a1 1 0 010 1.414l-1.415 1.415a1 1 0 000 1.414l5.657 5.657a1 1 0 001.414 0l1.415-1.415a1 1 0 011.414 0l2.828 2.828a1 1 0 01.293.707V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"
-              />
-            </svg>
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
           </span>
           <input
             type="email"
             placeholder="Enter your email"
+            value={formData.email}
             name="email"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -212,10 +246,10 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
 
           />
         </div>
-        {touched.mobile && errors.mobile && (
+        {touched.email && errors.email && (
           <div className="text-red-500 text-xs mt-0 error-tooltip ">
             {" "}
-            {errors.mobile}
+            {errors.email}
           </div>
         )}
       </div>
@@ -223,8 +257,8 @@ const InputField = ({ setShowOtp }: InputFieldProps) => {
 
       <div className="flex justify-end items-center">
         <a
-          onClick={() => setShowNum(!showNum)}
-          className="text-sm text-end primary-text-color hover:underline link-hover  "
+          onClick={handleFieldChange}
+          className="text-sm text-end primary-text-color  link-hover cursor-pointer "
         >
           {!showNum ? "OTP on mobile?" : "OTP on email?"}
         </a>
