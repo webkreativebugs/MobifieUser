@@ -32,18 +32,16 @@ const ManualDropdown = ({ formData, setFormData }: any) => {
   }, []);
 
   return (
-    <div className="relative w-full" ref={dropdownRef}>
+    <div className="relative w-1/3" ref={dropdownRef}>
       <div
-        className={`w-full px-4 py-2 rounded-md border bg-white flex justify-between items-center cursor-pointer ${
+        className={`w-full px-1 py-2 rounded-md border-r-2 bg-white flex justify-center items-center cursor-pointer ${
           touched && !formData.country_code
             ? "border-red-500"
             : "border-gray-300"
         }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="text-gray-800">
-          {formData.country_code || "+91"}
-        </span>
+        <span className="text-gray-800">{formData.country_code || "+91"}</span>
         <svg
           className={`w-4 h-4 ml-2 transform transition-transform ${
             isOpen ? "rotate-180" : "rotate-0"
@@ -53,19 +51,23 @@ const ManualDropdown = ({ formData, setFormData }: any) => {
           strokeWidth="2"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </div>
 
       {isOpen && (
-        <ul className="absolute w-full z-50 bg-white mt-2 border rounded-md max-h-64 overflow-y-auto shadow-lg">
+        <ul className="absolute w-28 z-50 bg-white mt-2 border hide-scrollbar rounded-md max-h-64 overflow-y-auto shadow-lg">
           {countriesData.map((state, index) => (
             <li
               key={index}
               onClick={() => handleSelect(state.mobile_code)}
               className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
             >
-              <span>{state.mobile_code}</span> - {state.country.full_name}
+              <span>{state.mobile_code}</span> - {state.country.abbreviation}
             </li>
           ))}
         </ul>

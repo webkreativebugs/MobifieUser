@@ -8,8 +8,7 @@ import { useState } from "react";
 const OtpSignin = () => {
   // const {theme ,onThemeChange} = useTheme()
   const [showOtp, setShowOtp] = useState(false);
-  const [apiRequestData , setApiRequestData]=useState({
-  })
+  const [apiRequestData, setApiRequestData] = useState({});
   return (
     <>
       <div className="flex justify-center items-center min-h-screen ">
@@ -20,13 +19,21 @@ const OtpSignin = () => {
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
               <h1 className="text-center text-3xl font-bold  mb-2">
-               Sign in to continue
+                Sign in to continue
               </h1>
               <p className="text-center text-sm mb-6 text-gray-500">
-                Access your business dashboard and track performance in one place.
+                Access your business dashboard and track performance in one
+                place.
               </p>
 
-              {showOtp ? <OTPField apiRequestData={apiRequestData} /> : <InputField setShowOtp={setShowOtp} setApiRequestData={setApiRequestData} />}
+              {showOtp ? (
+                <OTPField apiRequestData={apiRequestData} />
+              ) : (
+                <InputField
+                  setShowOtp={setShowOtp}
+                  setApiRequestData={setApiRequestData}
+                />
+              )}
             </div>
           </div>
 
