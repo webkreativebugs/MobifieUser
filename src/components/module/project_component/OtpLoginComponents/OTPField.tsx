@@ -77,7 +77,9 @@ const OTPField = ({apiRequestData}:any) => {
     }
 
     try {
+      setLoader(true)
        ValidateOtp({ otp: otpData }, setApiResponse,setLoader ,setApiError);
+       
       // await getOtpToken({ 'otp': otpData }, handleOtpValidationResponse);
     } catch (error) {
       // setSubmitting(false);
@@ -157,9 +159,10 @@ const OTPField = ({apiRequestData}:any) => {
               <button
                
                 type="button"
-                className="text-black transition-all"
+                
+                className=" underline transition-all "
                 onClick={() =>{ ResendOtp(apiRequestData , setShowToast); setTimeLeft(30);setResentDisable(true)}}
-                style={{ fontWeight: 400 }}
+                style={{ fontWeight: 400,color:"blue" }}
               >
                 Resend OTP
               </button>
