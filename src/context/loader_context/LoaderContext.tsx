@@ -22,14 +22,13 @@ type Props = {
 
 const LoaderContext = createContext({} as USERROLE);
 export const LoaderProvider = ({ children }: Props) => {
-
   const [loader, setLoader] = useState<boolean>(false);
 
   return (
     <LoaderContext.Provider
       value={{
         loader,
-        setLoader
+        setLoader,
       }}
     >
       {children}

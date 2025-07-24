@@ -64,4 +64,5 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
   Verify_OTP: () => `${BASE_URL}/user/auth/verify-otp`,
   AUTH_ME: () => `${BASE_URL}/user/auth/me`,
   FORGET_PASSWORD: () => `${BASE_URL}/user/auth/forgot-password`,
+  LOGOUT: () => `${BASE_URL}/user/auth/logout`,
 };

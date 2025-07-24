@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 // import AuthMe from "../../utils/api/AuthMe";
 // import { decoder } from "../../utils/JwtDecoder";
 // import { useNavigate } from "react-router-dom";
@@ -44,8 +44,7 @@ export const AuthProvider = ({ children }: Props) => {
   const handleChange = (selectedTheme: string) => {
     setRole(selectedTheme);
     sessionStorage.setItem(STORE_CONSTANT, selectedTheme);
-
-    navigate('/', { replace: true })
+    navigate("/" , {replace:true})
   };
   return (
     <AuthContext.Provider

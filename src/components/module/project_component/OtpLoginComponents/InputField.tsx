@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import globalOtp from "../../../../utils/api/SendOtpLogin";
 import ManualDropdown from "../../../common_component/ManualDropdown";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
+import { useNavigate } from "react-router-dom";
 // import { apiResponse } from "../../../../utils/SendOtpLogin";
 interface InputFieldProps {
   setShowOtp: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,6 +11,7 @@ interface InputFieldProps {
 }
 
 const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
+  const navigate = useNavigate()
   const {setLoader} = useloader()
   const [apiResponse, setApiResponse] = useState();
   const [showNum, setShowNum] = useState(true);
@@ -289,12 +291,13 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
                    </div>
                 }
       <div className="flex justify-center items-center">
-        <Link
-          to="/login-with-password"
+        <a
+         onClick={()=>navigate("/login-with-password" , {replace:true})}
+          // to="/login-with-password"
           className="flex items-center text-sm primary-text-color cursor-pointer "
         >
           Login with Password{" "}
-        </Link>
+        </a>
       </div>
     </form>
   );

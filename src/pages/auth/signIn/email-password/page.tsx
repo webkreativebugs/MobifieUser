@@ -11,7 +11,7 @@ import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 
 const EmailPasswordSignIn = () => {
-  const {setLoader} = useloader()
+  const { setLoader } = useloader();
   const { onRoleChange } = useauth();
   const [showPassword, setShowPassword] = useState(false);
   // const [showOtp, setShowOtp] = useState(false);
@@ -115,9 +115,8 @@ const EmailPasswordSignIn = () => {
 
     console.log(formData);
     if (validate()) {
-      setLoader(true)
-      PasswordLogin(setApiResponse, formData ,setApiError,setLoader);
-     
+      setLoader(true);
+      PasswordLogin(setApiResponse, formData, setApiError, setLoader);
     }
   };
   useEffect(() => {
@@ -127,10 +126,8 @@ const EmailPasswordSignIn = () => {
     }
   }, [apiResponse]);
 
-
   useEffect(() => {
     if (timeLeft <= 0) {
-
       return;
     }
     const timer = setInterval(() => {
@@ -271,7 +268,6 @@ const EmailPasswordSignIn = () => {
 
                     {/* Eye Toggle Icon */}
                     <button
-          
                       type="button"
                       onClick={togglePassword}
                       className="px-2 text-gray-500 focus:outline-none bg-white "
@@ -337,24 +333,24 @@ const EmailPasswordSignIn = () => {
                 </div>
 
                 <button
-          
                   type="submit"
                   className="w-full   p-2 theme-button  rounded-md  transition disabled:hover:bg-gray-400 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
                 >
                   Login
                 </button>
-                { apiError&&
-                   <div className="flex justify-center items-center text-red-600 text-sm h-0 ">
+                {apiError && (
+                  <div className="flex justify-center items-center text-red-600 text-sm h-0 ">
                     {apiError}
                   </div>
-                }
+                )}
                 <div className="flex justify-center items-center">
-                  <Link
-                    to="/login-with-otp"
+                  <a
+                  onClick={()=>navigate("/login-with-otp" , {replace:true})}
+                    // to="/login-with-otp"
                     className="flex items-center text-sm primary-text-color cursor-pointer link-hover"
                   >
                     Login with OTP{" "}
-                  </Link>
+                  </a>
                   {/* {!showOtp ? (
                     <a
                       className="flex items-center text-sm primary-text-color cursor-pointer"
