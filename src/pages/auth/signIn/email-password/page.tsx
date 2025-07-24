@@ -182,6 +182,24 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none bg-none text-black "
                       name="email"
+                       onKeyDown={(e) => {
+                        const allowedControlKeys = [
+                          "Backspace",
+                          "Delete",
+                          "ArrowLeft",
+                          "ArrowRight",
+                          "Tab",
+                        ];
+
+                        const allowedEmailChars = /^[a-zA-Z0-9@._%+-]$/;
+
+                        if (
+                          !allowedEmailChars.test(e.key) &&
+                          !allowedControlKeys.includes(e.key)
+                        ) {
+                          e.preventDefault(); // Block any character not allowed in an email
+                        }
+                      }}
                      
                     />
                   </div>
@@ -230,6 +248,24 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none text-black"
                       name="password"
+                       onKeyDown={(e) => {
+                        const allowedControlKeys = [
+                          "Backspace",
+                          "Delete",
+                          "ArrowLeft",
+                          "ArrowRight",
+                          "Tab",
+                        ];
+
+                        const allowedEmailChars = /^[a-zA-Z0-9@._%+-]$/;
+
+                        if (
+                          !allowedEmailChars.test(e.key) &&
+                          !allowedControlKeys.includes(e.key)
+                        ) {
+                          e.preventDefault(); // Block any character not allowed in an email
+                        }
+                      }}
                   
                     />
 

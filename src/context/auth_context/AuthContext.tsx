@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }: Props) => {
     setRole(selectedTheme);
     sessionStorage.setItem(STORE_CONSTANT, selectedTheme);
 
-    navigate("/")
+    navigate('/', { replace: true })
   };
   return (
     <AuthContext.Provider
