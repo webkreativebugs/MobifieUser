@@ -5,7 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+const loaderAnimation ="/assets/animation/LoaderAnimation.gif"
 import { Dispatch, SetStateAction } from "react";
 // import AuthMe from "../../utils/api/AuthMe";
 // import { decoder } from "../../utils/JwtDecoder";
@@ -34,15 +35,13 @@ export const LoaderProvider = ({ children }: Props) => {
       {children}
        {loader && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50"
         >
           <div className="text-white text-xl font-semibold">
             {/* Optionally add a spinner here */}
-  <div className="flex space-x-2">
-  <div className="w-3 h-3 bg-gray-900 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-  <div className="w-3 h-3 bg-gray-900 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-  <div className="w-3 h-3 bg-gray-900 rounded-full animate-bounce"></div>
-  </div>
+        <div className="flex space-x-2">
+        <img src={loaderAnimation}  className="w-28 h-28" />
+        </div>
 
           </div>
         </div>

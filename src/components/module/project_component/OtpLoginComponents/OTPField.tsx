@@ -5,8 +5,10 @@ import { useauth } from "../../../../context/auth_context/AuthContext";
 import ResendOtp from "../../../../utils/api/ResentOTP";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 import Toast from "../../../common_component/Toast";
+import { useNavigate } from "react-router-dom";
 // import { customAuthorizationConfig } from "../../../../../network/FetchRequest";
 const OTPField = ({apiRequestData}:any) => {
+  const navigate = useNavigate()
   const {setLoader} = useloader()
   const length = 6;
   // Initial OTP state with empty strings (length of OTP)
@@ -102,6 +104,7 @@ const OTPField = ({apiRequestData}:any) => {
     if (apiResponse) {
       console.log(apiResponse);
       onRoleChange(apiResponse);
+      navigate("/projects" , {replace:true})
     }
   }, [apiResponse]);
 

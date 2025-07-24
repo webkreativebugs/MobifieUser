@@ -123,6 +123,8 @@ const EmailPasswordSignIn = () => {
     if (apiResponse) {
       console.log(apiResponse);
       onRoleChange(apiResponse);
+      navigate("/projects",{replace:true})
+      
     }
   }, [apiResponse]);
 
