@@ -3,13 +3,14 @@ import {ForgotPasswordRequest,
   ForgotPasswordResponse,
   ForgotPasswordCallback} from "../../../network/public/forget_password/ForgetPassword.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function ForgetPass(data:ForgotPasswordRequest,setApiResponse:any,setApiError:any){
+function ForgetPass(data:ForgotPasswordRequest,setApiResponse:any,setApiError:any, setLoader: (loading: boolean) => void){
     
 const handleUserInfoResponse: ForgotPasswordCallback= (  response: ForgotPasswordResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
     }
     console.log(response);
+    setLoader(false)
 
     if(response===null){
        setApiError("invalid credentials")
