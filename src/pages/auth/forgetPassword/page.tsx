@@ -215,6 +215,8 @@ const ForgotPassword = () => {
                   >
                     Submit
                   </button>
+
+                  <p className="text-red-500 text-center"> {apiError}</p>
                 </div>
                 <div className="flex justify-center items-center">
                   <p className="pr-1 ">I know my Password?</p>
