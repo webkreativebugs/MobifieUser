@@ -14,7 +14,7 @@ export const admin =[
         additional:""
     },
      {
-        route:"/alert",
+        route:"/alerts",
         component: AlertPage,
         additional:""
     },

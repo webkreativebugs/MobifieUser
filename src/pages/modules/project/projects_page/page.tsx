@@ -4,7 +4,7 @@ import Sidebar from '../../../../components/common_component/Sidebar';
 import { useauth } from '../../../../context/auth_context/AuthContext';
 // import ProjectsPage from '../../../../components_module/common_component/dynamic_table/pages/ProjectPage';
 function page() {
-   const {onRoleChange} = useauth()
+  //  const {onRoleChange} = useauth()
    const {theme, onThemeChange } = useTheme();
    
   return (
@@ -40,8 +40,6 @@ function page() {
                 <div className='w-full rounded-[20px] shadow-md bg-white h-[8rem]'></div>   { /* Specify your Maintenance Window */}
                 <div className='w-full rounded-[20px] shadow-md bg-white h-[8rem]'></div>   {/* Project Overview */}
                 <div className='w-full rounded-[20px] shadow-md bg-white h-[8rem]'></div>   {/* Atlas Security Quickstart */}
-               <button onClick={()=>{sessionStorage.clear();window.location.replace("/login-with-password");onRoleChange("")
-               }}> Change </button>
               </div> 
             </div>
           </div>
