@@ -61,7 +61,28 @@ function page() {
                 <div className=" mt-2 flex gap-3 py-5">
                   <div className="w-1/3 rounded-[20px] shadow-md bg-white  p-6 flex flex-col gap-5">
                     <div className="flex justify-between">
-                      <p className="text-2xl">Organization ID</p> <p>copy</p>
+                      <p className="text-2xl">Organization ID</p>{" "}
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="1"
+                          y="1"
+                          width="22"
+                          height="22"
+                          rx="6"
+                          fill="#f9fafa"
+                          stroke="#94a3b8"
+                          stroke-width="1.5"
+                        />
+
+                        <path d="M8 8H16V16H8V8Z" fill="#0f172a" />
+                        <path d="M10 6H18V14H16V8H10V6Z" fill="#0f172a" />
+                      </svg>
                     </div>
                     <div>
                       <p>345werwe345wesde4ee5</p>
@@ -108,11 +129,38 @@ function page() {
                       <p>07/10/25 - 07:43:53 AM</p>
                     </div>
                   </div>{" "}
-                  {/*  project time zone*/}
+                  {/*  disable*/}
                 </div>
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-3"></div>{" "}
-                {/*  tags */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>
+                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-5 p-6 flex flex-col gap-5">
+                  <div className="flex justify-between">
+                    <p className="text-2xl">Disable Organization</p>{" "}
+                    <button className="mr-4 border rounded-lg px-4 py-1">
+                      Disable
+                    </button>
+                  </div>
+                  <div>
+                    <p>
+                      Disabling this organization will temporarily deactivate
+                      all associated projects and integrations. You can
+                      re-enable it anytime from the settings.
+                    </p>
+                  </div>
+                </div>
+                {/*  delete org */}
+                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] p-6 flex flex-col gap-5">
+                  <div className="flex justify-between">
+                    <p className="text-2xl">Delete Organization</p>{" "}
+                    <button className="mr-4 border rounded-lg px-4 py-1">
+                      Delete
+                    </button>
+                  </div>
+                  <div>
+                    <p>
+                      Before deleting this organization, you must delete all its
+                      projects and integrations. This action cannot be undone.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
