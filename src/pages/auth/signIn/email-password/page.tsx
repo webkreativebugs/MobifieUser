@@ -179,6 +179,25 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none bg-none text-black "
                       name="email"
+                       onKeyDown={(e) => {
+                        const allowedControlKeys = [
+                          "Backspace",
+                          "Delete",
+                          "ArrowLeft",
+                          "ArrowRight",
+                          "Tab",
+                        ];
+
+                        const allowedEmailChars = /^[a-zA-Z0-9@._%+-]$/;
+
+                        if (
+                          !allowedEmailChars.test(e.key) &&
+                          !allowedControlKeys.includes(e.key)
+                        ) {
+                          e.preventDefault(); // Block any character not allowed in an email
+                        }
+                      }}
+                     
                     />
                   </div>
                   {touched.email && errors.email && (
@@ -226,6 +245,25 @@ const EmailPasswordSignIn = () => {
                       onBlur={handleBlur}
                       className="w-full p-2 outline-none text-black"
                       name="password"
+                       onKeyDown={(e) => {
+                        const allowedControlKeys = [
+                          "Backspace",
+                          "Delete",
+                          "ArrowLeft",
+                          "ArrowRight",
+                          "Tab",
+                        ];
+
+                        const allowedEmailChars = /^[a-zA-Z0-9@._%+-]$/;
+
+                        if (
+                          !allowedEmailChars.test(e.key) &&
+                          !allowedControlKeys.includes(e.key)
+                        ) {
+                          e.preventDefault(); // Block any character not allowed in an email
+                        }
+                      }}
+                  
                     />
 
                     {/* Eye Toggle Icon */}
@@ -306,12 +344,13 @@ const EmailPasswordSignIn = () => {
                   </div>
                 )}
                 <div className="flex justify-center items-center">
-                  <Link
-                    to="/login-with-otp"
+                  <a
+                  onClick={()=>navigate("/login-with-otp" , {replace:true})}
+                    // to="/login-with-otp"
                     className="flex items-center text-sm primary-text-color cursor-pointer link-hover"
                   >
                     Login with OTP{" "}
-                  </Link>
+                  </a>
                   {/* {!showOtp ? (
                     <a
                       className="flex items-center text-sm primary-text-color cursor-pointer"

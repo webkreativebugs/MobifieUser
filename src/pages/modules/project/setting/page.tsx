@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
 import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
@@ -7,30 +7,64 @@ import { useauth } from "../../../../context/auth_context/AuthContext";
 function page() {
   const { onRoleChange } = useauth();
   const { theme, onThemeChange } = useTheme();
+  const [display, setDisplay] = useState("Project");
+  const handleChange = (value: string) => {
+    switch (value) {
+      //   case "Account":
+      //     setDisplay("Account");
+      //     break;
+
+      case "Project":
+        setDisplay("Project");
+        break;
+
+      case "Appearance":
+        setDisplay("Appearance");
+        break;
+      case "Billing":
+        setDisplay("Billing");
+        break;
+      case "Security":
+        setDisplay("Security");
+        break;
+    }
+  };
+
   return (
     <>
       <div className="app-container flex">
         <Sidebar active={"Settings"} />
-        <div className=" w-full">
+        <div className=" w-full ">
           <Navbar theme={theme} onThemeChange={onThemeChange} />
-          <div className="p-3 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] ">
+          <div className="p-5 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] ">
             <div>
               <div className="mt-2">
-                <h1 className="table-heading">Project Settings</h1>
+                <h1 className="table-heading pl-2">Settings</h1>
               </div>
-              <div>
-                <p></p>
+              <div className="mt-2 pl-4 flex  gap-6">
+                {["Project", "Appearance", "Billing"].map((value) => (
+                  <button
+                    key={value}
+                    value={value}
+                    className={`text-lg font-medium px-5 py-1  ${
+                      display === value ? "border rounded-lg  shadow-sm" : ""
+                    }`}
+                    onClick={(e) => handleChange(e.currentTarget.value)}
+                  >
+                    {value}
+                  </button>
+                ))}
               </div>
-              <div className="p-3 gap-3 flex flex-col ">
-                <div className="w-full flex gap-3">
-                  {" "}
-                  {/*  project description */}
+              <div className="h-auto border-t-2 mt-4">
+                {" "}
+                {/* //component */}
+                <div className=" mt-2 flex gap-3 py-5">
                   <div className="w-1/3 rounded-[20px] shadow-md bg-white h-[8rem]">
-                    <div>
+                    {/* <div>
                       <h3>Project ID</h3>
                       <p></p>
                     </div>
-                    <div></div>
+                    <div></div> */}
                   </div>{" "}
                   {/*  project id*/}
                   <div className="w-1/3 rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
@@ -38,30 +72,9 @@ function page() {
                   <div className="w-1/3 rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
                   {/*  project time zone*/}
                 </div>
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
+                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-3"></div>{" "}
                 {/*  tags */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
-                {/*  Collect Database Specific Statistics */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
-                {/* Backup Compliance Policy */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
-                {/* Multiple Regionalized Private Endpoints */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
-                {/* Specify your Maintenance Window */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
-                {/* Project Overview */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>{" "}
-                {/* Atlas Security Quickstart */}
-                <button
-                  onClick={() => {
-                    sessionStorage.clear();
-                    console.log(sessionStorage);
-                    onRoleChange("");
-                  }}
-                >
-                  {" "}
-                  Change{" "}
-                </button>
+                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem]"></div>
               </div>
             </div>
           </div>

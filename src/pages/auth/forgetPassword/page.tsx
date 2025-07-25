@@ -117,45 +117,6 @@ const ForgotPassword = () => {
     }
   };
 
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-
-  //   // const parameter =showNum?formData.mobile:formData.email
-  //   if (validate()) console.log(formData);
-
-  //   setSubmitting(true);
-  //   setDisable(true);
-  //   {
-  //     showNum
-  //       ? globalOtp(
-  //           setApiResponse,
-  //           { mobile: formData.mobile, country_code: formData.country_code },
-  //           setSubmitting
-  //         )
-  //       : globalOtp(setApiResponse, { email: formData.email }, setSubmitting);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   console.log(apiResponse);
-  //   if (apiResponse) {
-  //     setSubmitting(false);
-  //     setShowOtp(true);
-  //     showNum
-  //       ? setApiRequestData({ mobile: formData.mobile })
-  //       : setApiRequestData({ email: formData.email });
-  //   }
-  // }, [apiResponse]);
-
-  // function handleFieldChange() {
-  //   setShowNum(!showNum);
-  // }
-
-  // useEffect(() => {
-  //   setFormData((prev) => ({ ...prev, mobile: "", email: "" }));
-  //   setErrors((prev) => ({ ...prev, mobile: "", email: "" }));
-  // }, [showNum]);
-
   return (
     <>
       <div className="flex justify-center items-center min-h-screen ">
