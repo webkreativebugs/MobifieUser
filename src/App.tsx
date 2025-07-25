@@ -14,11 +14,11 @@ export default function App() {
   }
  const {theme} =useTheme()
  const {role,onRoleChange}= useauth()
-   useEffect(() => {
-     if (role) {
-       AuthMe(onRoleChange);
-     }
-   },[role]);
+  //  useEffect(() => {
+  //    if (role) {
+  //      AuthMe(onRoleChange);
+  //    }
+  //  },[role]);
 //  isLoggedIn
   return (
     <>

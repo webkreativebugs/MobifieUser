@@ -33,7 +33,7 @@ export const OrganizationProvider = ({ children }: Props) => {
 
 
 
-  useEffect(()=>{
+useEffect(()=>{
  if(orgDetails)
  {
     console.log(orgDetails);
