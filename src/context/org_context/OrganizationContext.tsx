@@ -6,12 +6,11 @@ import {
   useState,
 } from "react";
 import OrgDetails from "../../utils/api/OrganizationDetailsApi";
-import { Dispatch, SetStateAction } from "react";
 import {useauth} from "../auth_context/AuthContext"
 
 interface ORG {
-  orgDetails: string;
-  setOrgDetails: Dispatch<SetStateAction<string>>;
+  orgDetails: object;
+//   setOrgDetails: Dispatch<SetStateAction<string>>;
 }
 
 type Props = {
@@ -21,22 +20,31 @@ type Props = {
 
 const OrganizationContext = createContext({} as ORG);
 export const OrganizationProvider = ({ children }: Props) => {
+    const [orgDetails, setOrgDetails] = useState<object>({});
     const {role} =useauth()
     useEffect(()=>{
    
     if(role)
     {
-      OrgDetails() 
+      OrgDetails(setOrgDetails) 
     }
 },[role])
 
-  const [orgDetails, setOrgDetails] = useState<string>("");
+
+
+
+  useEffect(()=>{
+ if(orgDetails)
+ {
+    console.log(orgDetails);
+    
+ }
+},[orgDetails])
 
   return (
     <OrganizationContext.Provider
       value={{
         orgDetails,
-        setOrgDetails,
       }}
     >
       {children}

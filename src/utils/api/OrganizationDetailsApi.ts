@@ -1,16 +1,17 @@
 import {org_details} from "../../../network/public/organization_detail/OrganizationalDetails.api"
-import {  LogoutResponse,LogoutCallback} from "../../../network/public/logout/Logout.interface";
+import { OrganizationResponse,OrganizationCallback} from "../../../network/public/organization_detail/OrganizationalDetails.interface"
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function OrgDetails(){
+import { Dispatch, SetStateAction } from "react";
+function OrgDetails(setOrgDetails: Dispatch<SetStateAction<object>>){
     
-const handleUserInfoResponse: LogoutCallback= (  response: LogoutResponse | null,error: Error | null | undefined) => {
+const handleUserInfoResponse: OrganizationCallback= (  response: OrganizationResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
     }
    
     if(response)
     {
-     console.log(response);
+     setOrgDetails(response)
     }
    
   };
