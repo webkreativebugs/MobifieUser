@@ -8,6 +8,7 @@ function page() {
   const { onRoleChange } = useauth();
   const { theme, onThemeChange } = useTheme();
   const [display, setDisplay] = useState("Project");
+
   const handleChange = (value: string) => {
     switch (value) {
       //   case "Account":
@@ -131,12 +132,11 @@ function page() {
                   </div>{" "}
                   {/*  disable*/}
                 </div>
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-5 p-6 flex flex-col gap-5">
+                {/* <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-5 p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
                     <p className="text-2xl">Disable Organization</p>{" "}
-                    <button className="mr-4 border rounded-lg px-4 py-1">
-                      Disable
-                    </button>
+                   
+                    
                   </div>
                   <div>
                     <p>
@@ -145,14 +145,19 @@ function page() {
                       re-enable it anytime from the settings.
                     </p>
                   </div>
-                </div>
+                </div> */}
                 {/*  delete org */}
                 <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
-                    <p className="text-2xl">Delete Organization</p>{" "}
-                    <button className="mr-4 border rounded-lg px-4 py-1">
-                      Delete
-                    </button>
+                    <p className="text-2xl ">Delete Organization</p>{" "}
+                    <div>
+                      <button className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600">
+                        Disable
+                      </button>
+                      <button className="mr-4 border rounded-lg px-6 py-1 bg-red-400 text-white hover:bg-[#baf2ba]">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                   <div>
                     <p>
