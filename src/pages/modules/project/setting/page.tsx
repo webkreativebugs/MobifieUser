@@ -3,11 +3,18 @@ import Navbar from "../../../../components/common_component/Navbar";
 import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
 import { useauth } from "../../../../context/auth_context/AuthContext";
+import { useorg } from "../../../../context/org_context/OrganizationContext";
+// import {OrganizationResponse} from "../../../../../network/public/organization_detail/OrganizationalDetails.interface"
 
 function page() {
   const { onRoleChange } = useauth();
   const { theme, onThemeChange } = useTheme();
   const [display, setDisplay] = useState("Project");
+  const { orgDetails } = useorg();
+  const [iscopy, setIscopy] = useState(false);
+  const [ispop, setIspop] = useState(false);
+  const [orgName, setOrgName] = useState(orgDetails?.data.name);
+  //   console.log(orgDetails);
 
   const handleChange = (value: string) => {
     switch (value) {
@@ -30,6 +37,32 @@ function page() {
         break;
     }
   };
+
+  function formatDateWithTime(isoDateString: string): string {
+    const date = new Date(isoDateString);
+
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true, // for AM/PM format
+      //   timeZone: "Asia/Kolkata", // change based on your timezone
+    };
+
+    return date.toLocaleString("en-US", options);
+  }
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(orgDetails?.data._id ?? "");
+      setIscopy(true);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
+  const handleSubmit = () => {};
 
   return (
     <>
@@ -63,62 +96,96 @@ function page() {
                   <div className="w-1/3 rounded-[20px] shadow-md bg-white  p-6 flex flex-col gap-5">
                     <div className="flex justify-between">
                       <p className="text-2xl">Organization ID</p>{" "}
-                      <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          x="1"
-                          y="1"
-                          width="22"
-                          height="22"
-                          rx="6"
-                          fill="#f9fafa"
-                          stroke="#94a3b8"
-                          stroke-width="1.5"
-                        />
+                      <button onClick={() => handleCopy()}>
+                        {iscopy ? (
+                          <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="1"
+                              y="1"
+                              width="22"
+                              height="22"
+                              rx="6"
+                              fill="#ecfdf5"
+                              stroke="#10b981"
+                              stroke-width="1.5"
+                            />
+                            <path
+                              d="M7 12l3 3 7-7"
+                              stroke="#10b981"
+                              stroke-width="2"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              x="1"
+                              y="1"
+                              width="22"
+                              height="22"
+                              rx="6"
+                              fill="#f9fafa"
+                              stroke="#94a3b8"
+                              stroke-width="1.5"
+                            />
 
-                        <path d="M8 8H16V16H8V8Z" fill="#0f172a" />
-                        <path d="M10 6H18V14H16V8H10V6Z" fill="#0f172a" />
-                      </svg>
+                            <path d="M8 8H16V16H8V8Z" fill="#0f172a" />
+                            <path d="M10 6H18V14H16V8H10V6Z" fill="#0f172a" />
+                          </svg>
+                        )}
+                      </button>
                     </div>
                     <div>
-                      <p>345werwe345wesde4ee5</p>
+                      <p>{orgDetails?.data._id}</p>
                     </div>
                   </div>{" "}
                   {/*  project id*/}
                   <div className="w-1/3 rounded-[20px] shadow-md bg-white  p-6 flex flex-col gap-5">
                     <div className="flex justify-between">
                       <p className="text-2xl">Organization Name</p>{" "}
-                      <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          x="1"
-                          y="1"
-                          width="22"
-                          height="22"
-                          rx="6"
-                          fill="#f9fafa"
-                          stroke="#94a3b8"
-                          stroke-width="1.5"
-                        />
+                      <button onClick={() => setIspop(true)}>
+                        {" "}
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            x="1"
+                            y="1"
+                            width="22"
+                            height="22"
+                            rx="6"
+                            fill="#f9fafa"
+                            stroke="#94a3b8"
+                            stroke-width="1.5"
+                          />
 
-                        <path
-                          d="M15.232 5.232l3.536 3.536-9.192 9.192H6v-3.576l9.232-9.152z"
-                          fill="#0f172a"
-                        />
-                      </svg>
+                          <path
+                            d="M15.232 5.232l3.536 3.536-9.192 9.192H6v-3.576l9.232-9.152z"
+                            fill="#0f172a"
+                          />
+                        </svg>
+                      </button>
                     </div>
                     <div>
-                      <p>Anubhav's Org - 2025-07-10</p>
+                      <p>{orgDetails?.data.name}</p>
                     </div>
                   </div>{" "}
                   {/*  project name*/}
@@ -127,7 +194,9 @@ function page() {
                       <p className="text-2xl">Created On</p>
                     </div>
                     <div>
-                      <p>07/10/25 - 07:43:53 AM</p>
+                      <p>
+                        {formatDateWithTime(orgDetails?.data.created_at ?? "")}
+                      </p>
                     </div>
                   </div>{" "}
                   {/*  disable*/}
@@ -171,6 +240,91 @@ function page() {
           </div>
         </div>
       </div>
+      {ispop && (
+        <div
+          onClick={() => setIspop(false)}
+          className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50 mt-[-5rem]"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="p-6 bg-white  h-72 w-1/3 rounded-[20px] shadow-md font-semibold"
+          >
+            <div className="flex justify-between mt-2">
+              <p className="text-3xl">Organization Name</p>{" "}
+              <button
+                className="mt-[-40px] mr-[-16px] "
+                onClick={() => {
+                  setIspop(false);
+                  setOrgName(orgDetails?.data.name);
+                }}
+              >
+                {" "}
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 6L18 18M18 6L6 18"
+                    stroke="#1d1e1d"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="mt-10 flex flex-col gap-2">
+              <label htmlFor="org" className="text-sm">
+                Organization Name
+              </label>
+              <input
+                id="org"
+                type="text"
+                value={orgName}
+                placeholder="Please Enter Organization Name"
+                // onChange={(e) => setOrgName(e.target.value)}
+                onChange={(e) => {
+                  //   const value = ;
+
+                  // Prevent leading space
+                  if (
+                    e.target.value === " " ||
+                    (orgName === "" && e.target.value.startsWith(" "))
+                  )
+                    return;
+
+                  setOrgName(e.target.value);
+                }}
+                className="border py-2 pl-3 rounded-lg "
+              />
+            </div>
+            <div className="flex justify-end mt-10">
+              <button
+                onClick={() => {
+                  setIspop(false);
+                  setOrgName(orgDetails?.data.name);
+                }}
+                className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSubmit}
+                className={`mr-4 border rounded-lg px-6 py-1 bg- text-white ${
+                  orgDetails?.data.name === orgName?.trim()
+                    ? "bg-[#baf2ba]"
+                    : "bg-[#32cd32]"
+                }`}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

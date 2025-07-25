@@ -47,8 +47,9 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
         if (/\s/.test(trimmed)) return "Mobile number cannot contain spaces";
         if (!/^[0-9]+$/.test(trimmed))
           return "Mobile number must contain only digits";
-           if (!/^[6-9]/.test(trimmed))
-          return "Mobile number must start with 6, 7, 8, or 9";
+         if (/^0/.test(trimmed)) 
+          return "Mobile number must not start with 0";
+
         if (trimmed.length !== 10)
           return "Mobile number must be exactly 10 digits";
         if (/^([0-9])\1{9}$/.test(trimmed))
