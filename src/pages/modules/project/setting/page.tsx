@@ -223,7 +223,7 @@ function page() {
                       <button className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600">
                         Disable
                       </button>
-                      <button className="mr-4 border rounded-lg px-6 py-1 bg-red-400 text-white hover:bg-[#baf2ba]">
+                      <button className="mr-4 border rounded-lg px-6 py-1 bg-red-500 text-white hover:bg-[#baf2ba]">
                         Delete
                       </button>
                     </div>
@@ -242,11 +242,16 @@ function page() {
       </div>
       {ispop && (
         <div
-          onClick={() => setIspop(false)}
+          onClick={() => {
+            setIspop(false);
+            setOrgName(orgDetails?.data.name);
+          }}
           className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50 mt-[-5rem]"
         >
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             className="p-6 bg-white  h-72 w-1/3 rounded-[20px] shadow-md font-semibold"
           >
             <div className="flex justify-between mt-2">
@@ -299,9 +304,16 @@ function page() {
                   setOrgName(e.target.value);
                 }}
                 className="border py-2 pl-3 rounded-lg "
-              />
+              />{" "}
+              <div className=" mt-[-5px] h-3">
+                {orgName === "" && (
+                  <p className="text-red-500 text-xs">
+                    you must enter Organization's name{" "}
+                  </p>
+                )}
+              </div>
             </div>
-            <div className="flex justify-end mt-10">
+            <div className="flex justify-end mt-6">
               <button
                 onClick={() => {
                   setIspop(false);
@@ -314,7 +326,7 @@ function page() {
               <button
                 onClick={handleSubmit}
                 className={`mr-4 border rounded-lg px-6 py-1 bg- text-white ${
-                  orgDetails?.data.name === orgName?.trim()
+                  orgDetails?.data.name === orgName?.trim() || orgName === ""
                     ? "bg-[#baf2ba]"
                     : "bg-[#32cd32]"
                 }`}
