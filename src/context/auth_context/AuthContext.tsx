@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: Props) => {
   const handleChange = (selectedTheme: string) => {
     setRole(selectedTheme);
     sessionStorage.setItem(STORE_CONSTANT, selectedTheme);
-    navigate("/" , {replace:true})
+  
   };
   return (
     <AuthContext.Provider

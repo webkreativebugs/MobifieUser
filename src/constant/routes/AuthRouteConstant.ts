@@ -24,11 +24,5 @@ export const auth =[
         component: ForgotPassword,
         additional:""
     },
-      {
-        route:"/",
-        component: EmailPasswordSignIn,
-        additional:""
-    },
-    
 
 ]

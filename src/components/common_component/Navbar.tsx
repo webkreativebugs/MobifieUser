@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+
 import { MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import "../../styles/Navbar.css"
+import { useauth } from '../../context/auth_context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import LogOut from '../../utils/api/LogOut';
 type NavbarProps = {
   onThemeChange: (theme: string) => void;
   theme:string
@@ -9,7 +11,8 @@ type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
   const mode = theme.split('-')[0];
-
+  const navigate = useNavigate()
+  const {onRoleChange} = useauth()
 // const [selectedValue, setSelectedValue] = useState(mode);
   // const [data , setData] = useState("light")
   // console.log(selectedValue);
@@ -18,12 +21,21 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
   {
    onThemeChange(e)
   }
-
+ function handleClick()
+ {
+    LogOut()
+    navigate("/login-with-password",{replace:true});
+    onRoleChange("")
+               
+ }
 
   return (
     <nav className="flex flex-wrap justify-between items-center p-4 bg-gray-100 shadow">
-      <div className="text-lg font-semibold"></div>
+      <div className="text-lg font-semibold">
+         <button onClick={handleClick}>Logout</button>
+      </div>
       <div className="flex flex-wrap gap-2 mt-2 md:mt-0 morning">
+       
  <div className="flex items-center gap-4 relative">
   <label htmlFor="light" className="flex items-center cursor-pointer ">
     <input
@@ -61,6 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
     />
   </label>
 </div>
+
       <div className='custom-theme-dropdown shadow-lg'>
         <button
           onClick={() => onThemeChange(`${mode}-red`)}

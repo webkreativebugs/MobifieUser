@@ -1,17 +1,16 @@
-import {logOut} from "../../../network/public/logout/Logout.api"
+import {org_details} from "../../../network/public/organization_detail/OrganizationalDetails.api"
 import {  LogoutResponse,LogoutCallback} from "../../../network/public/logout/Logout.interface";
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function LogOut(){
+function OrgDetails(){
     
 const handleUserInfoResponse: LogoutCallback= (  response: LogoutResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
     }
-    console.log(response);
+   
     if(response)
     {
-    //   customAuthorizationConfig.kb_authorization=response.data;
-      // setApiResponse(response)
+     console.log(response);
     }
    
   };
@@ -21,8 +20,7 @@ const sendOtp=async ()=>{
   
    
     try{
-        await logOut( handleUserInfoResponse);
-        sessionStorage.clear();  
+        await org_details( handleUserInfoResponse);
         
 
       } catch (error) {
@@ -31,4 +29,4 @@ const sendOtp=async ()=>{
 }
 sendOtp()
 }
-export default  LogOut;
+export default  OrgDetails;
