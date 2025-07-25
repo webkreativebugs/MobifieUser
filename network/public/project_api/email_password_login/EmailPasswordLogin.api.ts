@@ -1,16 +1,15 @@
-import { API_ENDPOINTS } from "../../../network/API.constants";
-import {  OtpVerifyRequest,
-  OtpVerifyResponse,
-  OtpVerifyCallback } from "./OtpVerification.interface";
-import {  fetchRequest } from "../../FetchRequest";
+
+import { API_ENDPOINTS } from "../../../../network/API.constants";
+import {  LoginRequest,LoginResponse,LoginCallback } from "./EmailPasswordLogin.interface";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
 
-export async function verifyOtp(
-  userinfoRequest: OtpVerifyRequest,
-  callback: OtpVerifyCallback
-): Promise<OtpVerifyResponse | Error> {
-  const url = API_ENDPOINTS. Verify_OTP();
+export async function emailpasswordlogin(
+  userinfoRequest: LoginRequest,
+  callback: LoginCallback
+): Promise<LoginResponse | Error> {
+  const url = API_ENDPOINTS.EMAIL_PASSWORD_LOGIN();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

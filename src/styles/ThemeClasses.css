@@ -1,0 +1,151 @@
+@import "./Theme.css";
+
+/* Text Color Utilities */
+
+.primary-color     { color: var(--primary-color); }
+.secondary-color   { color: var(--secondary-color); }
+.text-color        { color: var(--text-color); }
+.opposite-color    { color: var(--opposite-color); }
+.same-color        { color: var(--same-color); }
+.muted-color       { color: var(--muted-color); }
+.text-on-primary   { color: var(--text-on-primary); }
+.text-on-secondary { color: var(--text-on-secondary); }
+.theme-color       { color: var(--theme-color); }
+.theme-inverse     { color: var(--theme-inverse-color); }
+.error-color       { color: var(--error-color); }
+.success-color     { color: var(--success-color); }
+.warning-color     { color: var(--warning-color); }
+.info-color        { color: var(--info-color); }
+
+/* Background Color Utilities */
+.bg-primary        { background-color: var(--primary-color); }
+.bg-secondary      { background-color: var(--secondary-color); }
+.bg-background     { background-color: var(--background-color); }
+.bg-opposite       { background-color: var(--opposite-color); }
+.bg-same           { background-color: var(--same-color); }
+.bg-muted          { background-color: var(--muted-color); }
+.bg-theme          { background-color: var(--theme-color); }
+.bg-theme-inverse  { background-color: var(--theme-inverse-color); }
+.bg-error          { background-color: var(--error-color); }
+.bg-success        { background-color: var(--success-color); }
+.bg-warning        { background-color: var(--warning-color); }
+.bg-info           { background-color: var(--info-color); }
+
+/* Border Color Utilities */
+.border-primary    { border-color: var(--primary-color); }
+.border-secondary  { border-color: var(--secondary-color); }
+.border-theme      { border-color: var(--theme-color); }
+.border-error      { border-color: var(--error-color); }
+.border-success    { border-color: var(--success-color); }
+.border-warning    { border-color: var(--warning-color); }
+.border-info       { border-color: var(--info-color); }
+
+/* Fill and Stroke (SVG) */
+.fill-theme        { fill: var(--theme-color); }
+.stroke-theme      { stroke: var(--theme-color); }
+
+
+/* Buttons */
+.button {
+  background-color: var(--theme-color) !important;
+  color: var(--text-on-primary);
+  border: 1px solid var(--theme-color);
+}
+
+.button:hover {
+  background-color: var(--theme-inverse-color) !important ;
+  color: var(--text-on-primary);
+  border-color: var(--theme-color);
+}
+
+.button.secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-on-secondary);
+  border: 1px solid var(--secondary-color);
+}
+
+.button.secondary:hover {
+  background-color: var(--text-on-secondary);
+  color: var(--secondary-color);
+}
+
+/* Links */
+.link {
+  color: var(--info-color);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--theme-color);
+  text-decoration: underline;
+}
+
+/* Containers */
+.custom-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--muted-color);
+}
+
+/* Cards */
+.card {
+  background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  border: 1px solid var(--muted-color);
+}
+
+.card-header {
+  background-color: var(--secondary-color);
+  color: var(--text-on-secondary);
+}
+
+.card-footer {
+  background-color: var(--theme-color);
+  color: var(--text-on-primary);
+}
+
+/* Alert Variants */
+.alert {
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+.alert.error {
+  background-color: var(--error-color);
+  color: var(--text-on-primary);
+}
+
+.alert.success {
+  background-color: var(--success-color);
+  color: var(--text-on-primary);
+}
+
+.alert.warning {
+  background-color: var(--warning-color);
+  color: var(--text-on-primary);
+}
+
+.alert.info {
+  background-color: var(--info-color);
+  color: var(--text-on-primary);
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  background-color: var(--theme-color);
+  color: var(--text-on-primary);
+  border: 1px solid var(--theme-inverse-color);
+}
+
+/* Inputs */
+.input {
+  background-color: var(--same-color);
+  color: var(--text-color);
+  border: 1px solid var(--muted-color);
+}
+
+.input:focus {
+  border-color: var(--theme-color);
+  outline: none;
+}

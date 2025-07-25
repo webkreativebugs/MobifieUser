@@ -1,19 +1,18 @@
-
-import { API_ENDPOINTS } from "../../../network/API.constants";
-import {  LoginRequest,LoginResponse,LoginCallback } from "./EmailPasswordLogin.interface";
-import {  fetchRequest } from "../../FetchRequest";
-
+import { API_ENDPOINTS } from "../../../API.constants";
+import {  OrganizationResponse,OrganizationCallback } from "./OrganizationalDetails.interface";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
-export async function emailpasswordlogin(
-  userinfoRequest: LoginRequest,
-  callback: LoginCallback
-): Promise<LoginResponse | Error> {
-  const url = API_ENDPOINTS.EMAIL_PASSWORD_LOGIN();
+
+export async function org_details(
+  
+  callback: OrganizationCallback
+): Promise<OrganizationResponse | Error> {
+  const url = API_ENDPOINTS.ORG_DETAILS();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
-    const responseData = await fetchRequest(url, "POST", userinfoRequest);
+    const responseData = await fetchRequest(url, "GET");
     console.log('API response:', responseData);
     if (responseData instanceof Error) {
 

@@ -1,5 +1,5 @@
-import {getOtp} from "../../../network/public/otp_login/OtpLogin.api"
-import {   OtpRequest,OtpResponse, OtpCallback} from "../../../network/public/otp_login/OtpLogin.interface";
+import {getOtp} from "../../../network/public/project_api/otp_login/OtpLogin.api"
+import {   OtpRequest,OtpResponse, OtpCallback} from "../../../network/public/project_api/otp_login/OtpLogin.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
 function globalOtp(setApiResponse:any,OtpLoginformData:OtpRequest,setLoader:any,setApiError:any){
     

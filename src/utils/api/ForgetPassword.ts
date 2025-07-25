@@ -1,8 +1,8 @@
-import {forgetPassword} from "../../../network/public/forget_password/ForgetPassword.api"
+import {forgetPassword} from "../../../network/public/project_api/forget_password/ForgetPassword.api"
 import {ForgotPasswordRequest,
   ForgotPasswordResponse,
-  ForgotPasswordCallback} from "../../../network/public/forget_password/ForgetPassword.interface";
-import { customAuthorizationConfig } from "../../../network/FetchRequest";
+  ForgotPasswordCallback} from "../../../network/public/project_api/forget_password/ForgetPassword.interface";
+// import { customAuthorizationConfig } from "../../../network/FetchRequest";
 function ForgetPass(data:ForgotPasswordRequest,setApiResponse:any,setApiError:any, setLoader: (loading: boolean) => void){
     
 const handleUserInfoResponse: ForgotPasswordCallback= (  response: ForgotPasswordResponse | null,error: Error | null | undefined) => {

@@ -1,5 +1,5 @@
-import {logOut} from "../../../network/public/logout/Logout.api"
-import {  LogoutResponse,LogoutCallback} from "../../../network/public/logout/Logout.interface";
+import {logOut} from "../../../network/public/project_api/logout/Logout.api"
+import {  LogoutResponse,LogoutCallback} from "../../../network/public/project_api/logout/Logout.interface";
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
 function LogOut(){
     

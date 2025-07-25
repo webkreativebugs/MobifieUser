@@ -1,18 +1,20 @@
-import { API_ENDPOINTS } from "../../../network/API.constants";
-import {  OrganizationResponse,OrganizationCallback } from "./OrganizationalDetails.interface";
-import {  fetchRequest } from "../../FetchRequest";
+import { API_ENDPOINTS } from "../../../../network/API.constants";
+import {  OtpRequest,
+  OtpResponse,
+  OtpCallback } from "./OtpLogin.interface";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
 
-export async function org_details(
-  
-  callback: OrganizationCallback
-): Promise<OrganizationResponse | Error> {
-  const url = API_ENDPOINTS.ORG_DETAILS();
+export async function getOtp(
+  userinfoRequest: OtpRequest,
+  callback: OtpCallback
+): Promise<OtpResponse | Error> {
+  const url = API_ENDPOINTS.OTP_LOGIN();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
-    const responseData = await fetchRequest(url, "GET");
+    const responseData = await fetchRequest(url, "POST", userinfoRequest);
     console.log('API response:', responseData);
     if (responseData instanceof Error) {
 

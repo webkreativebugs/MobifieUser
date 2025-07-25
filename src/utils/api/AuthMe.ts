@@ -1,6 +1,6 @@
-import {authMe} from "../../../network/public/auth_me/AuthMe.api"
+import {authMe} from "../../../network/public/project_api/auth_me/AuthMe.api"
 import {  VerifyTokenResponse,
-  FetchVerifyTokenCallback} from "../../../network/public/auth_me/AuthMe.interface";
+  FetchVerifyTokenCallback} from "../../../network/public/project_api/auth_me/AuthMe.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
 import { decoder } from "../JwtDecoder";
 function AuthMe(onRoleChange:any,){

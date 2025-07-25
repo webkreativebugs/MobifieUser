@@ -7,7 +7,7 @@ import {
 } from "react";
 import OrgDetails from "../../utils/api/OrganizationDetailsApi";
 import { useauth } from "../auth_context/AuthContext";
-import { OrganizationResponse } from "../../../network/public/organization_detail/OrganizationalDetails.interface";
+import { OrganizationResponse } from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.interface";
 
 interface ORG {
   orgDetails: OrganizationResponse | undefined;

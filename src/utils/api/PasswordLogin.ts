@@ -1,5 +1,5 @@
-import {emailpasswordlogin} from "../../../network/public/email_password_login/EmailPasswordLogin.api"
-import { LoginResponse,LoginCallback,LoginRequest } from "../../../network/public/email_password_login/EmailPasswordLogin.interface";
+import {emailpasswordlogin} from "../../../network/public/project_api/email_password_login/EmailPasswordLogin.api"
+import { LoginResponse,LoginCallback,LoginRequest } from "../../../network/public/project_api/email_password_login/EmailPasswordLogin.interface";
 // import { useloader } from "../../context/loader_context/LoaderContext";
 
 interface FormData {

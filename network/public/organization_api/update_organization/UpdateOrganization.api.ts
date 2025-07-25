@@ -1,20 +1,18 @@
-import { API_ENDPOINTS } from "../../../network/API.constants";
-import {  OtpRequest,
-  OtpResponse,
-  OtpCallback } from "./OtpLogin.interface";
-import {  fetchRequest } from "../../FetchRequest";
+import { API_ENDPOINTS } from "../../../API.constants";
+import { UpdateOrganizationNameRequest,UpdateOrganizationNameResponse,UpdateOrganizationNameCallback} from "./UpdateOrganization.interface";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
 
-export async function getOtp(
-  userinfoRequest: OtpRequest,
-  callback: OtpCallback
-): Promise<OtpResponse | Error> {
-  const url = API_ENDPOINTS.OTP_LOGIN();
+export async function update_org(
+  userinfoRequest: UpdateOrganizationNameRequest,
+  callback: UpdateOrganizationNameCallback
+): Promise<UpdateOrganizationNameResponse | Error> {
+  const url = API_ENDPOINTS.ORG_UPDATE();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
-    const responseData = await fetchRequest(url, "POST", userinfoRequest);
+    const responseData = await fetchRequest(url, "PATCH", userinfoRequest);
     console.log('API response:', responseData);
     if (responseData instanceof Error) {
 

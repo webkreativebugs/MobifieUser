@@ -1,20 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
 import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useorg } from "../../../../context/org_context/OrganizationContext";
-// import {OrganizationResponse} from "../../../../../network/public/organization_detail/OrganizationalDetails.interface"
+import {
+  UpdateOrganizationNameRequest,
+  UpdateOrganizationNameResponse,
+} from "../../../../../network/public/organization_api/update_organization/UpdateOrganization.interface";
+// import OrgDetailsUpdate from "../../../../src/utils";
+import OrgDetailsUpdate from "../../../../utils/api/OrganizationDetailUpdateApi";
+import { useloader } from "../../../../context/loader_context/LoaderContext";
 
 function page() {
   const { onRoleChange } = useauth();
+  const { setLoader } = useloader();
   const { theme, onThemeChange } = useTheme();
   const [display, setDisplay] = useState("Project");
   const { orgDetails } = useorg();
   const [iscopy, setIscopy] = useState(false);
   const [ispop, setIspop] = useState(false);
-  const [orgName, setOrgName] = useState(orgDetails?.data.name);
+  const [disable, setDisable] = useState(false);
+  const [orgName, setOrgName] = useState<UpdateOrganizationNameRequest>({
+    name: orgDetails?.data.name ?? "",
+    tag: {
+      key: "Tag 1",
+      value: "Tag 1",
+    },
+  });
+
+  useEffect(() => {
+    setOrgName((prev) => ({
+      ...prev,
+      name: orgDetails?.data.name || "",
+    }));
+  });
   //   console.log(orgDetails);
+  const [apiResponse, setApiResponse] = useState<
+    UpdateOrganizationNameResponse | undefined
+  >();
+  const [apiError, setApiError] = useState("");
 
   const handleChange = (value: string) => {
     switch (value) {
@@ -62,7 +87,23 @@ function page() {
       console.error("Failed to copy: ", err);
     }
   };
-  const handleSubmit = () => {};
+  //   const handleSubmit = () => {
+
+  //       console.log(orgName);
+  //     }
+  //   };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (orgDetails?.data.name !== orgName.name?.trim() && orgName.name !== "") {
+      setLoader(true);
+      e.preventDefault();
+
+      //   console.log(orgName);
+
+      OrgDetailsUpdate(setApiResponse, orgName, setApiError, setLoader);
+      setDisable(true);
+    }
+  };
+  //   console.log(apiResponse);
 
   return (
     <>
@@ -244,7 +285,11 @@ function page() {
         <div
           onClick={() => {
             setIspop(false);
-            setOrgName(orgDetails?.data.name);
+            setOrgName((prev) => ({
+              ...prev,
+              name: orgDetails?.data.name || "",
+            }));
+            // setOrgName(orgDetails?.data.name);
           }}
           className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50 mt-[-5rem]"
         >
@@ -260,7 +305,11 @@ function page() {
                 className="mt-[-40px] mr-[-16px] "
                 onClick={() => {
                   setIspop(false);
-                  setOrgName(orgDetails?.data.name);
+                  setOrgName((prev) => ({
+                    ...prev,
+                    name: orgDetails?.data.name || "",
+                  }));
+                  //   setOrgName(orgDetails?.data.name);
                 }}
               >
                 {" "}
@@ -288,7 +337,7 @@ function page() {
               <input
                 id="org"
                 type="text"
-                value={orgName}
+                value={orgName.name}
                 placeholder="Please Enter Organization Name"
                 // onChange={(e) => setOrgName(e.target.value)}
                 onChange={(e) => {
@@ -297,16 +346,21 @@ function page() {
                   // Prevent leading space
                   if (
                     e.target.value === " " ||
-                    (orgName === "" && e.target.value.startsWith(" "))
+                    (orgName.name === "" && e.target.value.startsWith(" "))
                   )
                     return;
 
-                  setOrgName(e.target.value);
+                  setOrgName((prev) => ({
+                    ...prev,
+                    name: e.target.value,
+                  }));
+
+                  //   setOrgName(e.target.value);
                 }}
                 className="border py-2 pl-3 rounded-lg "
               />{" "}
               <div className=" mt-[-5px] h-3">
-                {orgName === "" && (
+                {orgName.name === "" && (
                   <p className="text-red-500 text-xs">
                     you must enter Organization's name{" "}
                   </p>
@@ -317,16 +371,22 @@ function page() {
               <button
                 onClick={() => {
                   setIspop(false);
-                  setOrgName(orgDetails?.data.name);
+                  setOrgName((prev) => ({
+                    ...prev,
+                    name: orgDetails?.data.name || "",
+                  }));
                 }}
                 className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600"
               >
                 Cancel
               </button>
               <button
-                onClick={handleSubmit}
+                onClick={(e) =>
+                  handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>)
+                }
                 className={`mr-4 border rounded-lg px-6 py-1 bg- text-white ${
-                  orgDetails?.data.name === orgName?.trim() || orgName === ""
+                  orgDetails?.data.name === orgName.name?.trim() ||
+                  orgName.name === ""
                     ? "bg-[#baf2ba]"
                     : "bg-[#32cd32]"
                 }`}
