@@ -3,6 +3,7 @@ import { MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import "../../styles/Navbar.css"
 import { useauth } from '../../context/auth_context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import LogOut from '../../utils/api/LogOut';
 type NavbarProps = {
   onThemeChange: (theme: string) => void;
   theme:string
@@ -22,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
   }
  function handleClick()
  {
+    LogOut()
     navigate("/login-with-password",{replace:true});
     onRoleChange("")
                
