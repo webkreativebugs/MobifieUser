@@ -1,5 +1,5 @@
-import {org_details} from "../../../network/public/organization_detail/OrganizationalDetails.api"
-import { OrganizationResponse,OrganizationCallback} from "../../../network/public/organization_detail/OrganizationalDetails.interface"
+import {org_details} from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.api"
+import { OrganizationResponse,OrganizationCallback} from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.interface"
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
 import { Dispatch, SetStateAction } from "react";
 function OrgDetails(setOrgDetails: Dispatch<SetStateAction<object>>){

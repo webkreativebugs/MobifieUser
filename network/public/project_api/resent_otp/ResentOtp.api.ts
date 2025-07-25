@@ -1,8 +1,8 @@
-import { API_ENDPOINTS } from "../../../network/API.constants";
+import { API_ENDPOINTS } from "../../../API.constants";
 import { ResendOtpRequest,
   ResendOtpResponse,
   ResendOtpCallback } from "./ResentOtp.interface";
-import {  fetchRequest } from "../../FetchRequest";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
 

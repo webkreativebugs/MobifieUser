@@ -1,7 +1,7 @@
-import {resendOtp} from "../../../network/public/resent_otp/ResentOtp.api"
+import {resendOtp} from "../../../network/public/project_api/resent_otp/ResentOtp.api"
 import {ResendOtpRequest,
   ResendOtpResponse,
-  ResendOtpCallback} from "../../../network/public/resent_otp/ResentOtp.interface";
+  ResendOtpCallback} from "../../../network/public/project_api/resent_otp/ResentOtp.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
 function ResendOtp(data:ResendOtpRequest,setShowToast:any){
     

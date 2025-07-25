@@ -3,14 +3,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../../App.css";
-import { Link } from "react-router-dom";
+import "../../../../styles/ThemeClasses.css"
 const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import PasswordLogin from "../../../../utils/api/PasswordLogin";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
+import Navbar from "../../../../components/common_component/Navbar";
+import { useTheme } from "../../../../context/AppContext";
 
 const EmailPasswordSignIn = () => {
+  const {theme , onThemeChange} = useTheme()
   const { setLoader } = useloader();
   const { onRoleChange } = useauth();
   const [showPassword, setShowPassword] = useState(false);
@@ -140,7 +143,8 @@ const EmailPasswordSignIn = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen ">
+    <Navbar theme={theme} onThemeChange={onThemeChange}/>
+      <div className="flex justify-center items-center min-h-screen custom-container ">
         <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-md overflow-hidden p-4">
           {/* Left side: Form */}
 
@@ -272,7 +276,7 @@ const EmailPasswordSignIn = () => {
                     <button
                       type="button"
                       onClick={togglePassword}
-                      className="px-2 text-gray-500 focus:outline-none bg-white "
+                      className="px-2 text-gray-500 focus:outline-none bg-white link "
                       aria-label={
                         showPassword ? "Hide password" : "Show password"
                       }
@@ -336,7 +340,7 @@ const EmailPasswordSignIn = () => {
 
                 <button
                   type="submit"
-                  className="w-full   p-2 theme-button  rounded-md  transition disabled:hover:bg-gray-400 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
+                  className="w-full button  p-2   rounded-md  transition"
                 >
                   Login
                 </button>

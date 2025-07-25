@@ -1,157 +1,88 @@
 :root {
-  --primary-color: #7ed957;
-  --secondary-color: #A5D46F;
-  --background-color: #F1F9E9;
-  --text-color: #4A751E;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-  --muted-color:rgba(0, 0, 0, 0.5);
-  --text-on-primary: #ffffff;; /* light green bg needs dark text */
-  --text-on-secondary: #000000;
+ --primary-color: #7ed957  ;              /* Vibrant green */
+  --secondary-color: #A5D46F;            /* Softer olive green */
+  --background-color: #F1F9E9;           /* Gentle pastel background */
+  --text-color: #4A751E;                 /* Earthy dark green */
+  --opposite-color: #000000;             /* Black for high contrast */
+  --same-color: #ffffff;                 /* White for components */
+  --muted-color: rgba(0, 0, 0, 0.5);      /* Muted/faded text/icons */
+  --text-on-primary: #ffffff;            /* White on vibrant green */
+  --text-on-secondary: #000000;          /* Black on olive */
+  --theme-color: #7ed957;                /* Same as primary for button/link base */
+  --theme-inverse-color: #4A751E;        /* Dark green for text/icons */
+  --error-color: #F44336;                /* Default red */
+  --success-color: #4CAF50;              /* Default green */
+  --warning-color: #FFC107;              /* Default yellow */
+  --info-color: #03A9F4;  
+}
+.midnight-dark {
+  --primary-color: #0D1117;              /* Near black */
+  --secondary-color: #1F2933;            /* Dark blue-gray */
+  --background-color: #121212;           /* Dark mode bg */
+  --text-color: #CFD8DC;                 /* Soft steel text */
+  --opposite-color: #ffffff;             /* White for contrast */
+  --same-color: #000000;                 /* Black for elements */
+  --muted-color: rgba(255, 255, 255, 0.4); /* Muted text/icons on dark */
+  --text-on-primary: #FFFFFF;            /* White text on deep bg */
+  --text-on-secondary: #ECEFF1;          /* Soft text on steel bg */
+  --theme-color: #263238;                /* Deep blue-gray tone */
+  --theme-inverse-color: #ECEFF1;        /* Light elements on theme */
+  --error-color: #E57373;
+  --success-color: #81C784;
+  --warning-color: #FFD54F;
+  --info-color: #4FC3F7;
 }
 
-/* LIGHT THEMES */
-/* .light {
-  --primary-color: #6200ea;
-  --secondary-color: #03dac6;
-  --background-color: #ffffff;
-  --text-color: #000000;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-
-  --text-on-primary: #ffffff;
-  --text-on-secondary: #000000;
-} */
-
-.light-blue {
-  --primary-color: #1e88e5;
-  --secondary-color: #28fff8;
-  --background-color: #e3f2fd;
-  --text-color: #0d47a1;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-  --muted-color:rgba(0, 0, 0, 0.5);
-  --text-on-primary: #ffffff;
-  --text-on-secondary: #000000;
+.midnight-light {
+  --primary-color: #ECEFF1;              /* Soft cool gray */
+  --secondary-color: #B0BEC5;            /* Muted steel blue */
+  --background-color: #FFFFFF;           /* White base */
+  --text-color: #263238;                 /* Dark blue-gray for text */
+  --opposite-color: #000000;             /* Black for contrast */
+  --same-color: #ffffff;                 /* White for elements */
+  --muted-color: rgba(0, 0, 0, 0.5);      /* Muted text/icon shade */
+  --text-on-primary: #263238;            /* Text on light backgrounds */
+  --text-on-secondary: #37474F;          /* Text on steel blue */
+  --theme-color: #37474F;                /* Deep blue-gray (midnight) */
+  --theme-inverse-color: #ECEFF1;        /* Light text/icons on theme */
+  --error-color: #D32F2F;
+  --success-color: #388E3C;
+  --warning-color: #FBC02D;
+  --info-color: #0288D1;
 }
 
-.light-red {
-  --primary-color: #d32f2f;
-  --secondary-color: #ff6659;
-  --background-color: #ffebee;
-  --text-color: #b71c1c;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-  --muted-color:rgba(0, 0, 0, 0.5);
-  --text-on-primary: #ffffff;
-  --text-on-secondary: #000000;
+.sunny-dark {
+  --primary-color: #212121;            /* Charcoal base */
+  --secondary-color: #424242;          /* Mid-gray */
+  --background-color: #1A1A1A;         /* Deep blackish background */
+  --text-color: #FFFDE7;               /* Pale yellow text */
+  --opposite-color: #ffffff;           /* White for contrast */
+  --same-color: #000000;               /* Solid black */
+  --muted-color: rgba(255, 255, 255, 0.5); /* Muted white */
+  --text-on-primary: #FFFDE7;          /* Yellow on dark bg */
+  --text-on-secondary: #FFF9C4;        /* Soft yellow on gray */
+  --theme-color: #FBC02D;              /* Golden yellow */
+  --theme-inverse-color: #212121;      /* Dark foreground element */
+  --error-color: #EF5350;
+  --success-color: #81C784;
+  --warning-color: #FFB74D;
+  --info-color: #4FC3F7;
 }
 
-.light-orange {
-  --primary-color: #ef6c00;
-  --secondary-color: #ffcc80;
-  --background-color: #fff3e0;
-  --text-color: #e65100;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-  --muted-color:rgba(0, 0, 0, 0.5);
-  --text-on-primary: #ffffff;
-  --text-on-secondary: #000000;
-}
-
-.light-purple {
-  --primary-color: #9c27b0;
-  --secondary-color: #ce93d8;
-  --background-color: #f3e5f5;
-  --text-color: #6a1b9a;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-  --muted-color:rgba(0, 0, 0, 0.5);
-  --text-on-primary: #ffffff;
-  --text-on-secondary: #000000;
-}
-
-.light-green {
-  --primary-color: #7ed957;
-  --secondary-color: #A5D46F;
-  --background-color: #F1F9E9;
-  --text-color: #4A751E;
-  --opposite-color: #000000;
-  --same-color: #ffffff;
-  --muted-color:rgba(0, 0, 0, 0.5);
-  --text-on-primary: #ffffff;; /* light green bg needs dark text */
-  --text-on-secondary: #000000;
-}
-
-/* DARK THEMES */
-/* .dark {
-  --primary-color: #bb86fc;
-  --secondary-color: #03dac6;
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --opposite-color: #ffffff;
-  --same-color: #000000;
-
-  --text-on-primary: #000000; 
-  --text-on-secondary: #000000;
-} */
-
-.dark-blue {
-  --primary-color: #90caf9;
-  --secondary-color: #ffe082;
-  --background-color: #0d1b2a;
-  --text-color: #e3f2fd;
-  --opposite-color: #ffffff;
-  --same-color: #000000;
-  --muted-color:rgba(243, 240, 240,0.8);
-  --text-on-primary: #000000;
-  --text-on-secondary: #000000;
-}
-
-.dark-red {
-  --primary-color: #ef5350;
-  --secondary-color: #ff8a80;
-  --background-color: #2c0e0e;
-  --text-color: #ffcdd2;
-  --opposite-color: #ffffff;
-  --same-color: #000000;
-  --muted-color:rgba(243, 240, 240,0.8);
-  --text-on-primary: #ffffff; /* darker red bg needs white text */
-  --text-on-secondary: #000000;
-}
-
-.dark-orange {
-  --primary-color: #ff9800;
-  --secondary-color: #ffe0b2;
-  --background-color: #261a00;
-  --text-color: #ffd180;
-  --opposite-color: #ffffff;
-  --same-color: #000000;
-  --muted-color:rgba(243, 240, 240,0.8);
-  --text-on-primary: #000000;
-  --text-on-secondary: #000000;
-}
-
-.dark-purple {
-  --primary-color: #ce93d8;
-  --secondary-color: #f3e5f5;
-  --background-color: #1a0f1f;
-  --text-color: #e1bee7;
-  --opposite-color: #ffffff;
-  --same-color: #000000;
-  --muted-color:rgba(243, 240, 240,0.8);
-  --text-on-primary: #000000;
-  --text-on-secondary: #000000;
-}
-
-.dark-green {
-  --primary-color: #a5d6a7;
-  --secondary-color: #c5e1a5;
-  --background-color: #122e13;
-  --text-color: #e8f5e9;
-  --opposite-color: #ffffff;
-  --same-color: #000000;
-  --muted-color:rgba(243, 240, 240,0.8);
-  --text-on-primary: #000000;
-  --text-on-secondary: #000000;
+.sunny-light {
+  --primary-color: #FFFDE7;            /* Soft pale yellow */
+  --secondary-color: #FFF9C4;          /* Mellow sunshine */
+  --background-color: #FFFFFF;         /* Clean white base */
+  --text-color: #212121;               /* Deep gray text */
+  --opposite-color: #000000;           /* Full black */
+  --same-color: #ffffff;               /* Pure white */
+  --muted-color: rgba(0, 0, 0, 0.5);    /* Faded text/icons */
+  --text-on-primary: #212121;          /* Text on light yellow */
+  --text-on-secondary: #424242;        /* Text on lighter yellow */
+  --theme-color: #FFEB3B;              /* Bright sunny yellow */
+  --theme-inverse-color: #212121;      /* Contrast text/icon */
+  --error-color: #F44336;
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --info-color: #03A9F4;
 }

@@ -1,19 +1,20 @@
-import { API_ENDPOINTS } from "../../../network/API.constants";
-import { LogoutResponse,
-  LogoutCallback } from "./Logout.interface";
-import {  fetchRequest } from "../../FetchRequest";
+import { API_ENDPOINTS } from "../../../../network/API.constants";
+import {  OtpVerifyRequest,
+  OtpVerifyResponse,
+  OtpVerifyCallback } from "./OtpVerification.interface";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
 
-export async function logOut(
-  
-  callback: LogoutCallback
-): Promise<LogoutResponse | Error> {
-  const url = API_ENDPOINTS.LOGOUT();
+export async function verifyOtp(
+  userinfoRequest: OtpVerifyRequest,
+  callback: OtpVerifyCallback
+): Promise<OtpVerifyResponse | Error> {
+  const url = API_ENDPOINTS. Verify_OTP();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
-    const responseData = await fetchRequest(url, "GET");
+    const responseData = await fetchRequest(url, "POST", userinfoRequest);
     console.log('API response:', responseData);
     if (responseData instanceof Error) {
 

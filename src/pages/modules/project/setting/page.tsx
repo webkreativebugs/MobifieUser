@@ -77,7 +77,7 @@ function page() {
                           rx="6"
                           fill="#f9fafa"
                           stroke="#94a3b8"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                         />
 
                         <path d="M8 8H16V16H8V8Z" fill="#0f172a" />
@@ -107,7 +107,7 @@ function page() {
                           rx="6"
                           fill="#f9fafa"
                           stroke="#94a3b8"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                         />
 
                         <path

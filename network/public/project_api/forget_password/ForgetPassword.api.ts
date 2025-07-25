@@ -1,16 +1,16 @@
-import { API_ENDPOINTS } from "../../../network/API.constants";
-import {  OtpRequest,
-  OtpResponse,
-  OtpCallback } from "./OtpLogin.interface";
-import {  fetchRequest } from "../../FetchRequest";
+import { API_ENDPOINTS } from "../../../API.constants";
+import {  ForgotPasswordRequest,
+  ForgotPasswordResponse,
+  ForgotPasswordCallback } from "./ForgetPassword.interface";
+import {  fetchRequest } from "../../../FetchRequest";
 
 
 
-export async function getOtp(
-  userinfoRequest: OtpRequest,
-  callback: OtpCallback
-): Promise<OtpResponse | Error> {
-  const url = API_ENDPOINTS.OTP_LOGIN();
+export async function forgetPassword(
+  userinfoRequest: ForgotPasswordRequest,
+  callback: ForgotPasswordCallback
+): Promise<ForgotPasswordResponse | Error> {
+  const url = API_ENDPOINTS.FORGET_PASSWORD();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
