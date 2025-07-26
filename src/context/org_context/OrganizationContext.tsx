@@ -6,40 +6,35 @@ import {
   useState,
 } from "react";
 import OrgDetails from "../../utils/api/OrganizationDetailsApi";
-import {useauth} from "../auth_context/AuthContext"
+import { useauth } from "../auth_context/AuthContext";
+import { OrganizationResponse } from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.interface";
 
 interface ORG {
-  orgDetails: object;
-//   setOrgDetails: Dispatch<SetStateAction<string>>;
+  orgDetails: OrganizationResponse | undefined;
+  //   setOrgDetails: Dispatch<SetStateAction<string>>;
 }
 
 type Props = {
   children: ReactNode;
 };
 
-
 const OrganizationContext = createContext({} as ORG);
 export const OrganizationProvider = ({ children }: Props) => {
-    const [orgDetails, setOrgDetails] = useState<object>({});
-    const {role} =useauth()
-    useEffect(()=>{
-   
-    if(role)
-    {
-      OrgDetails(setOrgDetails) 
+  const [orgDetails, setOrgDetails] = useState<
+    OrganizationResponse | undefined
+  >();
+  const { role } = useauth();
+  useEffect(() => {
+    if (role) {
+      OrgDetails(setOrgDetails);
     }
-},[role])
+  }, [role]);
 
-
-
-
-useEffect(()=>{
- if(orgDetails)
- {
-    console.log(orgDetails);
-    
- }
-},[orgDetails])
+  useEffect(() => {
+    if (orgDetails) {
+      console.log(orgDetails);
+    }
+  }, [orgDetails]);
 
   return (
     <OrganizationContext.Provider

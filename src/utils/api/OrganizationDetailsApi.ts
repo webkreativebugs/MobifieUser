@@ -2,7 +2,7 @@ import {org_details} from "../../../network/public/organization_api/organization
 import { OrganizationResponse,OrganizationCallback} from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.interface"
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
 import { Dispatch, SetStateAction } from "react";
-function OrgDetails(setOrgDetails: Dispatch<SetStateAction<object>>){
+function OrgDetails(setOrgDetails: Dispatch<SetStateAction<OrganizationResponse|undefined>>){
     
 const handleUserInfoResponse: OrganizationCallback= (  response: OrganizationResponse | null,error: Error | null | undefined) => {
     if (error) {

@@ -4,11 +4,11 @@ import {  fetchRequest } from "../../../FetchRequest";
 
 
 
-export async function resendOtp(
+export async function update_org(
   userinfoRequest: UpdateOrganizationNameRequest,
   callback: UpdateOrganizationNameCallback
 ): Promise<UpdateOrganizationNameResponse | Error> {
-  const url = API_ENDPOINTS.RECENT_OTP();
+  const url = API_ENDPOINTS.ORG_UPDATE();
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
