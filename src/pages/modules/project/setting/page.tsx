@@ -21,8 +21,12 @@ function page() {
   const [iscopy, setIscopy] = useState(false);
   const [ispop, setIspop] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [apiError, setApiError] = useState("");
+  const [apiResponse, setApiResponse] = useState<
+    UpdateOrganizationNameResponse | undefined
+  >();
   const [orgName, setOrgName] = useState<UpdateOrganizationNameRequest>({
-    name: orgDetails?.data.name ?? "",
+    name: "",
     tag: {
       key: "Tag 1",
       value: "Tag 1",
@@ -30,16 +34,14 @@ function page() {
   });
 
   useEffect(() => {
-    setOrgName((prev) => ({
-      ...prev,
-      name: orgDetails?.data.name || "",
-    }));
-  });
+    if (orgDetails?.data?.name) {
+      setOrgName((prev) => ({
+        ...prev,
+        name: orgDetails.data.name,
+      }));
+    }
+  }, [orgDetails?.data?.name]);
   //   console.log(orgDetails);
-  const [apiResponse, setApiResponse] = useState<
-    UpdateOrganizationNameResponse | undefined
-  >();
-  const [apiError, setApiError] = useState("");
 
   const handleChange = (value: string) => {
     switch (value) {
@@ -97,7 +99,7 @@ function page() {
       setLoader(true);
       e.preventDefault();
 
-      //   console.log(orgName);
+      console.log(orgName);
 
       OrgDetailsUpdate(setApiResponse, orgName, setApiError, setLoader);
       setDisable(true);
