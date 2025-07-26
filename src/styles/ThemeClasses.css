@@ -259,3 +259,10 @@
 .secondary-graphite-bg {
   background-color: #CFD8DC; /* Graphite Gray */
 }
+
+/* .bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+.text-secondary {
+  color: var(--secondary-color) !important;
+} */

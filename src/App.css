@@ -162,7 +162,7 @@ body {
 }
 
 .tab-links{
-    /* color: var( --muted-color); */
+    /* color: var( --muted-color);*/
     margin-right: 0.75rem;
     cursor: pointer;
     padding-bottom: 15px;

@@ -9,6 +9,7 @@ import {checkdomain} from '../../network/public/domain/CheckDomain.api'
 import {VerifyDomainResponse} from '../../network/public/domain/CheckDomain.interface'
 interface ITheme {
   theme: string;
+  secondaryColor: string;
   onThemeChange: (theme: string) => void;
   onColorChange: (color:string)  => void
   domainResponse:VerifyDomainResponse|null
@@ -63,13 +64,16 @@ useEffect(()=>{
   };
   const handleColorChange = (selectedColor: string) => {
     setSecondaryColor(selectedColor);
-    localStorage.setItem(COLOR_CONSTANT, selectedColor);  
+    localStorage.setItem(COLOR_CONSTANT, selectedColor);
+    console.log(theme);
+    
   };
 
   return (
     <AppContext.Provider
       value={{
         theme,
+        secondaryColor,
         onThemeChange: handleChange,
         onColorChange: handleColorChange,
         domainResponse
