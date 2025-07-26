@@ -29,12 +29,12 @@ function page() {
     },
   });
 
-  useEffect(() => {
-    setOrgName((prev) => ({
-      ...prev,
-      name: orgDetails?.data.name || "",
-    }));
-  });
+  // useEffect(() => {
+  //   setOrgName((prev) => ({
+  //     ...prev,
+  //     name: orgDetails?.data.name || "",
+  //   }));
+  // });
   //   console.log(orgDetails);
   const [apiResponse, setApiResponse] = useState<
     UpdateOrganizationNameResponse | undefined
@@ -107,7 +107,7 @@ function page() {
 
   return (
     <>
-      <div className="app-container flex">
+      <div className="custom-container flex">
         <Sidebar active={"Settings"} />
         <div className=" w-full ">
           <Navbar theme={theme} onThemeChange={onThemeChange} />
@@ -134,9 +134,9 @@ function page() {
                 {" "}
                 {/* //component */}
                 <div className=" mt-2 flex gap-3 py-5">
-                  <div className="w-1/3 rounded-[20px] shadow-md bg-white  p-6 flex flex-col gap-5">
-                    <div className="flex justify-between">
-                      <p className="text-2xl">Organization ID</p>{" "}
+                  <div className="w-1/3 rounded-[20px] shadow-card bg-primary   p-6 flex flex-col gap-5">
+                    <div className="flex justify-between ">
+                      <p className="text-2xl ">Organization ID</p>{" "}
                       <button onClick={() => handleCopy()}>
                         {iscopy ? (
                           <svg
@@ -195,7 +195,7 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  project id*/}
-                  <div className="w-1/3 rounded-[20px] shadow-md bg-white  p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-card bg-primary  p-6 flex flex-col gap-5">
                     <div className="flex justify-between">
                       <p className="text-2xl">Organization Name</p>{" "}
                       <button onClick={() => setIspop(true)}>
@@ -230,7 +230,7 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  project name*/}
-                  <div className="w-1/3 rounded-[20px] shadow-md bg-white  p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-card bg-primary   p-6 flex flex-col gap-5">
                     <div className="">
                       <p className="text-2xl">Created On</p>
                     </div>
@@ -257,7 +257,7 @@ function page() {
                   </div>
                 </div> */}
                 {/*  delete org */}
-                <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] p-6 flex flex-col gap-5">
+                <div className="w-full rounded-[20px]  shadow-card bg-primary  h-[8rem] p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
                     <p className="text-2xl ">Delete Organization</p>{" "}
                     <div>
@@ -297,7 +297,7 @@ function page() {
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="p-6 bg-white  h-72 w-1/3 rounded-[20px] shadow-md font-semibold"
+            className="p-6 bg-primary   h-72 w-1/3 rounded-[20px] shadow-card font-semibold"
           >
             <div className="flex justify-between mt-2">
               <p className="text-3xl">Organization Name</p>{" "}

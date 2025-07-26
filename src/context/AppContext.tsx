@@ -10,6 +10,7 @@ import {VerifyDomainResponse} from '../../network/public/domain/CheckDomain.inte
 interface ITheme {
   theme: string;
   onThemeChange: (theme: string) => void;
+  onColorChange: (color:string)  => void
   domainResponse:VerifyDomainResponse|null
 
 }
@@ -20,17 +21,22 @@ type Props = {
 
 const AppContext = createContext({} as ITheme);
 const STORE_CONSTANT: string = "THEME";
+const COLOR_CONSTANT:string ="COLOR"
 
 export const AppProvider = ({ children }: Props) => {
 
   const [theme, setTheme] = useState<string>("");
+  const [secondaryColor , setSecondaryColor] = useState<string>("")
   const [domainResponse , setDomainResponse] =useState<VerifyDomainResponse|null>(null);
 
   useEffect(() => {
     const savedTheme: string | null = localStorage.getItem(STORE_CONSTANT);
-
+    const savedColor: string | null = localStorage.getItem(COLOR_CONSTANT);
     if (savedTheme) {
       setTheme(savedTheme as string);
+    }
+     if (savedColor) {
+      setSecondaryColor(savedColor as string);
     }
     VerifyDomain()
   }, []);
@@ -53,9 +59,11 @@ useEffect(()=>{
 },[domainResponse])
   const handleChange = (selectedTheme: string) => {
     setTheme(selectedTheme);
-    localStorage.setItem(STORE_CONSTANT, selectedTheme);
-   
-    
+    localStorage.setItem(STORE_CONSTANT, selectedTheme);  
+  };
+  const handleColorChange = (selectedColor: string) => {
+    setSecondaryColor(selectedColor);
+    localStorage.setItem(COLOR_CONSTANT, selectedColor);  
   };
 
   return (
@@ -63,6 +71,7 @@ useEffect(()=>{
       value={{
         theme,
         onThemeChange: handleChange,
+        onColorChange: handleColorChange,
         domainResponse
       }}
     >

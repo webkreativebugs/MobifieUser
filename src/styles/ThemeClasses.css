@@ -189,3 +189,73 @@
 .shadow-glow {
   box-shadow: 0 0 10px 2px var(--theme-color);
 }
+
+/* Variant 1: Steel (Default) */
+.secondary-steel {
+  color: #B0BEC5 !important; /* Muted Steel */
+}
+
+/* Variant 2: Sky Blue */
+.secondary-sky-blue {
+  color: #B3E5FC !important; /* Sky Blue */
+}
+
+/* Variant 3: Emerald */
+.secondary-emerald {
+  color: #A5D6A7; /* Emerald Green */
+}
+
+/* Variant 4: Lavender */
+.secondary-lavender {
+  color: #E1BEE7; /* Soft Lavender */
+}
+
+/* Variant 5: Amber */
+.secondary-amber {
+  color: #FFECB3; /* Warm Amber */
+}
+
+/* Variant 6: Coral */
+.secondary-coral {
+  color: #FFCDD2; /* Coral Pink */
+}
+
+/* Variant 7: Graphite */
+.secondary-graphite {
+  color: #CFD8DC; /* Graphite Gray */
+}
+
+/* Variant 1: Steel (Default) */
+.secondary-steel-bg {
+  background-color: #B0BEC5 !important; /* Muted Steel */
+}
+
+/* Variant 2: Sky Blue */
+.secondary-sky-blue-bg {
+  background-color: #B3E5FC !important; /* Sky Blue */
+}
+
+/* Variant 3: Emerald */
+.secondary-emerald-bg {
+  background-color: #A5D6A7; /* Emerald Green */
+}
+
+/* Variant 4: Lavender */
+.secondary-lavender-bg {
+  background-color: #E1BEE7; /* Soft Lavender */
+}
+
+/* Variant 5: Amber */
+.secondary-amber-bg {
+  background-color: #FFECB3; /* Warm Amber */
+}
+
+/* Variant 6: Coral */
+.secondary-coral-bg {
+  background-color: #FFCDD2; /* Coral Pink */
+}
+
+/* Variant 7: Graphite */
+.secondary-graphite-bg {
+  background-color: #CFD8DC; /* Graphite Gray */
+}
