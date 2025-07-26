@@ -65,6 +65,8 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
   AUTH_ME: () => `${BASE_URL}/user/auth/me`,
   FORGET_PASSWORD: () => `${BASE_URL}/user/auth/forgot-password`,
   LOGOUT: () => `${BASE_URL}/user/auth/logout`,
-  ORG_DETAILS:() =>`${BASE_URL}/user/organization/org002`,
-  ORG_UPDATE:() =>`${BASE_URL}/user/organization/org002`,
+  ORG_DETAILS: () => `${BASE_URL}/user/organization/org002`,
+  ORG_UPDATE: () => `${BASE_URL}/user/organization/org002`,
+  ORG_DELETE: () => `${BASE_URL}/user/organization/org002/delete`,
+  ORG_DEACTIVATE: () => `${BASE_URL}/user/organization/org002/deactivate`,
 };
