@@ -12,7 +12,7 @@ export async function update_org(
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
-    const responseData = await fetchRequest(url, "PATCH", userinfoRequest);
+    const responseData = await fetchRequest(url, "POST", userinfoRequest);
     console.log('API response:', responseData);
     if (responseData instanceof Error) {
 
