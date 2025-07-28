@@ -49,3 +49,30 @@ export const secondaryBackgroundColors = [
     description: "Graphite Gray"
   }
 ];
+
+export const oceanBlueLightSecondaryVariants = [
+   {
+    id: 'secondary-deep-sky',
+    name: 'Deep Sky',
+    secondaryColor: '#0288D1',
+    secondaryInverseColor: '#E0F7FA',     // Pale Aqua
+  },
+  {
+    id: 'secondary-graphite',
+    name: 'Graphite',
+    secondaryColor: '#546E7A',
+    secondaryInverseColor: '#FFFFFF',     // White
+  },
+  {
+    id: 'secondary-night-lavender',
+    name: 'Night Lavender',
+    secondaryColor: '#6A1B9A',
+    secondaryInverseColor: '#E1BEE7',     // Soft Purple
+  },
+  {
+    id: 'secondary-soft-blue',
+    name: 'Soft Blue',
+    secondaryColor: '#4FC3F7',
+    secondaryInverseColor: '#013A63',     // Deep Navy
+  },
+];

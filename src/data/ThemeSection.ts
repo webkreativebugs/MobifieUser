@@ -1,52 +1,39 @@
+
 export const themes = [
   {
-    id: "midnight-light",
-    name: "Midnight Light",
-    slug: "midnight-light",
-    defaultSecondary: "secondary-steel",
+    light: "oceanblue-light",
+    dark: "oceanblue-dark",
+    name: "Ocean Blue",
+    themeColor: "#03A9F4",
+ 
+  },
+   {
+    light: "midnight-light",
+    dark: "midnight-dark",
+    name: "Midnight",
     themeColor: "#37474F",
-    textColor: "#263238",
-    variations: ["light"],
+ 
+  },
+   {
+    light: "limegreen-light",
+    dark: "limegreen-dark",
+    name: "Midnight",
+    themeColor: "#2E7D32",
  
   },
   {
-    id: "midnight-dark",
-    name: "Midnight Dark",
-    slug: "midnight-dark",
-    defaultSecondary: "secondary-steel",
-    themeColor: "#37474F",
-    textColor: "#ffffff",
-    variations: ["dark"],
-   
+    light: "sunsetcoral-light",
+    dark: "sunsetcoral-dark",
+    name: "Sunset Coral",
+    themeColor: "#FF6F61",
+ 
   },
   {
-    id: "light-lime-green",
-    name: "Lime Green Light",
-    slug: "light-lime-green",
-    defaultSecondary: "secondary-emerald",
-    themeColor: "#32CD32",
-    textColor: "#2E7D32",
-    variations: ["light"],
+    light: "royalindigo-light",
+    dark: "royalindigo-dark",
+    name: "Royal Indigo",
+    themeColor: "#3F51B5",
+ 
+  },
 
-  },
-  {
-    id: "sunny-light",
-    name: "Sunny Light",
-    slug: "sunny-light",
-    defaultSecondary: "secondary-emerald",
-    themeColor: "#FFEB3B",
-    textColor: "#212121",
-    variations: ["light"],
-  
-  },
-  {
-    id: "sunny-dark",
-    name: "Sunny Dark",
-    slug: "sunny-dark",
-    defaultSecondary: "secondary-emerald",
-    themeColor: "#FBC02D",
-    textColor: "#FFFDE7",
-    variations: ["light"],
-  
-  }
 ];

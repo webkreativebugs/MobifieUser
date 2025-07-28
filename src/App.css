@@ -99,14 +99,14 @@ body {
 }
 
 .active-link{
-    display: flex;
+  display: flex;
   align-items: center;
   gap: 0.75rem;
   padding-left: 1rem;
   padding-top: 0.75rem;
   padding-bottom: 0.625rem;
   border-radius: 0.5rem;
-  color:var(--text-on-primary) !important;
+  color:var(--primary-inverse-color) !important;
   background-color: var(--primary-color);
   font-size: 1rem;
   margin: 0.5rem;
@@ -159,6 +159,7 @@ body {
   /* color: var(--text-color);      */
   margin: 0.5rem;         /* m-2 = 0.5rem (8px) */
   text-decoration: none;  
+  color:var(--secondary-inverse-color)
 }
 
 .tab-links{

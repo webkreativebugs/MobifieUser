@@ -11,6 +11,7 @@ import {
 // import OrgDetailsUpdate from "../../../../src/utils";
 import OrgDetailsUpdate from "../../../../utils/api/OrganizationDetailUpdateApi";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
+// import PopComponent from "../../../../components/common_component/";
 
 function page() {
   const { onRoleChange } = useauth();
@@ -22,7 +23,7 @@ function page() {
   const [ispop, setIspop] = useState(false);
   const [disable, setDisable] = useState(false);
   const [apiError, setApiError] = useState("");
-  const [apiResponse, setApiResponse] = useState<
+  const [apiResponse, setApiResponse1] = useState<
     UpdateOrganizationNameResponse | undefined
   >();
   const [orgName, setOrgName] = useState<UpdateOrganizationNameRequest>({
@@ -101,7 +102,20 @@ function page() {
 
       console.log(orgName);
 
-      OrgDetailsUpdate(setApiResponse, orgName, setApiError, setLoader);
+      OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
+      setDisable(true);
+    }
+  };
+
+  const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
+    //pop wiil set if return true then call api
+    if (orgDetails?.data.name !== orgName.name?.trim() && orgName.name !== "") {
+      setLoader(true);
+      e.preventDefault();
+
+      console.log(orgName);
+
+      OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
       setDisable(true);
     }
   };
@@ -266,7 +280,14 @@ function page() {
                       <button className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600">
                         Disable
                       </button>
-                      <button className="mr-4 border rounded-lg px-6 py-1 bg-red-500 text-white hover:bg-[#baf2ba]">
+                      <button
+                        onClick={(e) =>
+                          handleDelete(
+                            e as unknown as React.FormEvent<HTMLFormElement>
+                          )
+                        }
+                        className="mr-4 border rounded-lg px-6 py-1 bg-red-500 text-white hover:bg-[#baf2ba]"
+                      >
                         Delete
                       </button>
                     </div>
@@ -283,122 +304,16 @@ function page() {
           </div>
         </div>
       </div>
-      {ispop && (
-        <div
-          onClick={() => {
-            setIspop(false);
-            setOrgName((prev) => ({
-              ...prev,
-              name: orgDetails?.data.name || "",
-            }));
-            // setOrgName(orgDetails?.data.name);
-          }}
-          className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50 mt-[-5rem]"
-        >
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            className="p-6 bg-primary   h-72 w-1/3 rounded-[20px] shadow-card font-semibold"
-          >
-            <div className="flex justify-between mt-2">
-              <p className="text-3xl">Organization Name</p>{" "}
-              <button
-                className="mt-[-40px] mr-[-16px] "
-                onClick={() => {
-                  setIspop(false);
-                  setOrgName((prev) => ({
-                    ...prev,
-                    name: orgDetails?.data.name || "",
-                  }));
-                  //   setOrgName(orgDetails?.data.name);
-                }}
-              >
-                {" "}
-                <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 6L18 18M18 6L6 18"
-                    stroke="#1d1e1d"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="mt-10 flex flex-col gap-2">
-              <label htmlFor="org" className="text-sm">
-                Organization Name
-              </label>
-              <input
-                id="org"
-                type="text"
-                value={orgName.name}
-                placeholder="Please Enter Organization Name"
-                // onChange={(e) => setOrgName(e.target.value)}
-                onChange={(e) => {
-                  //   const value = ;
-
-                  // Prevent leading space
-                  if (
-                    e.target.value === " " ||
-                    (orgName.name === "" && e.target.value.startsWith(" "))
-                  )
-                    return;
-
-                  setOrgName((prev) => ({
-                    ...prev,
-                    name: e.target.value,
-                  }));
-
-                  //   setOrgName(e.target.value);
-                }}
-                className="border py-2 pl-3 rounded-lg "
-              />{" "}
-              <div className=" mt-[-5px] h-3">
-                {orgName.name === "" && (
-                  <p className="text-red-500 text-xs">
-                    you must enter Organization's name{" "}
-                  </p>
-                )}
-              </div>
-            </div>
-            <div className="flex justify-end mt-6">
-              <button
-                onClick={() => {
-                  setIspop(false);
-                  setOrgName((prev) => ({
-                    ...prev,
-                    name: orgDetails?.data.name || "",
-                  }));
-                }}
-                className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={(e) =>
-                  handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>)
-                }
-                className={`mr-4 border rounded-lg px-6 py-1 bg- text-white ${
-                  orgDetails?.data.name === orgName.name?.trim() ||
-                  orgName.name === ""
-                    ? "bg-[#baf2ba]"
-                    : "bg-[#32cd32]"
-                }`}
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* {ispop && (
+        <PopComponent
+          isPop={ispop}
+          setIsPop={setIspop}
+          orgName={orgName}
+          setOrgName={setOrgName}
+          orgDetails={orgDetails}
+          handleSubmit={handleSubmit}
+        />
+      )} */}
     </>
   );
 }

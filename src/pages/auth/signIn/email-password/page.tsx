@@ -9,7 +9,7 @@ const logo = "../../../../public/assets/MobifieLogo.svg";
 import PasswordLogin from "../../../../utils/api/PasswordLogin";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
-import Navbar from "../../../../components/common_component/Navbar";
+
 import { useTheme } from "../../../../context/AppContext";
 
 const EmailPasswordSignIn = () => {
@@ -143,9 +143,9 @@ const EmailPasswordSignIn = () => {
 
   return (
     <>
-    <Navbar theme={theme} onThemeChange={onThemeChange} />
+    {/* <Navbar theme={theme} onThemeChange={onThemeChange} /> */}
       <div className="flex justify-center items-center min-h-screen custom-container ">
-        <div className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-glow rounded-md overflow-hidden p-4 ${theme.split('-')[1]==="dark"?"custom-container-secondary" :""}`}>
+        <div className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-card rounded-md overflow-hidden p-4 ${theme.split('-')[1]==="dark"?"custom-container-secondary" :""}`}>
           {/* Left side: Form */}
 
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
@@ -332,7 +332,7 @@ const EmailPasswordSignIn = () => {
                 <div className="flex justify-end items-center">
                   <a
                     href="/forget-password"
-                    className="text-sm text-end primary-text-color  link-hover"
+                    className="text-sm text-end primary-text-color  link"
                   >
                     Forgot password?
                   </a>
@@ -353,7 +353,7 @@ const EmailPasswordSignIn = () => {
                   <a
                   onClick={()=>navigate("/login-with-otp" , {replace:true})}
                     // to="/login-with-otp"
-                    className="flex items-center text-sm primary-text-color cursor-pointer link-hover"
+                    className="flex items-center text-sm primary-text-color cursor-pointer link"
                   >
                     Login with OTP{" "}
                   </a>
@@ -399,10 +399,10 @@ const EmailPasswordSignIn = () => {
 
             {/* Main Content */}
             <div className="w-full relative z-10">
-              <h1 className="text-color   text-3xl mb-2">
+              <h1 className=" text-3xl mb-2">
                 Effortlessly manage your team and operations
               </h1>
-              <p className="text-color text-xs mb-6">
+              <p className="text-xs mb-6">
                 Login to access your dashboard and manage your team
               </p>
               <div className="max-h-[300px] flex justify-center">

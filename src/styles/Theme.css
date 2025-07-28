@@ -3,11 +3,8 @@
   /* --secondary-color: #A5D46F;            Softer olive green */
   --background-color: #F1F9E9;           /* Gentle pastel background */
   --text-color: #4A751E;                 /* Earthy dark green */
-  --opposite-color: #000000;             /* Black for high contrast */
-  --same-color: #ffffff;                 /* White for components */
-  --muted-color: rgba(0, 0, 0, 0.5);      /* Muted/faded text/icons */
-  --text-on-primary: #ffffff;            /* White on vibrant green */
-  --text-on-secondary: #000000;          /* Black on olive */
+  --primary-inverse-color: #ffffff;            /* White on vibrant green */
+ --secondary-inverse-color: #000000;          /* Black on olive */
   --theme-color: #7ed957;                /* Same as primary for button/link base */
   --theme-inverse-color: #4A751E;        /* Dark green for text/icons */
   --error-color: #F44336;                /* Default red */
@@ -15,110 +12,141 @@
   --warning-color: #FFC107;              /* Default yellow */
   --info-color: #03A9F4;  
 }
-.midnight-dark {
-  --primary-color: #0D1117;              /* Near black */
-  --secondary-color: #1F2933;            /* Dark blue-gray */
-  --background-color: #121212;           /* Dark mode bg */
-  --text-color: #CFD8DC;                 /* Soft steel text */
-  --opposite-color: #ffffff;             /* White for contrast */
-  --same-color: #000000;                 /* Black for elements */
-  --muted-color: rgba(255, 255, 255, 0.4); /* Muted text/icons on dark */
-  --text-on-primary: #FFFFFF;            /* White text on deep bg */
-  --text-on-secondary: #ECEFF1;          /* Soft text on steel bg */
-  --theme-color: #263238;                /* Deep blue-gray tone */
-  --theme-inverse-color: #ECEFF1;        /* Light elements on theme */
-  --error-color: #E57373;
-  --success-color: #81C784;
-  --warning-color: #FFD54F;
-  --info-color: #4FC3F7;
+
+.oceanblue-light {
+  --primary-color: #FFFFFF;              /* Clean white base */
+  --primary-inverse-color: #01579B;      /* Deep blue for text/icons */
+  --secondary-color: #E0F7FA;            /* Pale aqua */
+  --secondary-inverse-color: #004D60;    /* Darker aqua */
+  --error-color: #D32F2F;                /* Red */
+  --success-color: #388E3C;              /* Green */
+  --warning-color: #FBC02D;              /* Yellow */
+  --info-color: #0288D1;                 /* Ocean blue info */
+  --black: #000000;
+  --white: #FFFFFF;
+  --transparent: transparent;
+  --theme-color: #03A9F4;                /* 🌤️ Sky Blue (Light Theme) */
+  --theme-inverse-color: #FFFFFF;        /* Text on theme */
+}
+.oceanblue-dark {
+  --primary-color: #012D41;              /* Deep ocean background */
+  --primary-inverse-color: #E0F7FA;      /* Aqua text/icons */
+  --secondary-color: #01475F;            /* Muted blue-gray accent */
+  --secondary-inverse-color: #B3E5FC;    /* Bright aqua contrast */
+  --error-color: #EF5350;                /* Brighter red for dark bg */
+  --success-color: #66BB6A;              /* Green */
+  --warning-color: #FFEE58;              /* Yellow */
+  --info-color: #4FC3F7;                 /* Light blue info */
+  --black: #000000;
+  --white: #FFFFFF;
+  --transparent: transparent;
+  --theme-color: #0288D1;                /* 🌊 Deeper Ocean Blue (Dark Theme) */
+  --theme-inverse-color: #E0F7FA;        /* Text on theme */
 }
 
+
 .midnight-light {
-  --primary-color: #ECEFF1;              /* Soft cool gray */
-  --secondary-color: #B0BEC5;            /* Muted steel blue */
-  --background-color: #FFFFFF;           /* White base */
-  --text-color: #263238;                 /* Dark blue-gray for text */
-  --opposite-color: #000000;             /* Black for contrast */
-  --same-color: #ffffff;                 /* White for elements */
-  --muted-color: rgba(0, 0, 0, 0.5);      /* Muted text/icon shade */
-  --text-on-primary: #263238;            /* Text on light backgrounds */
-  --text-on-secondary: #37474F;          /* Text on steel blue */
-  --theme-color: #37474F;                /* Deep blue-gray (midnight) */
-  --theme-inverse-color: #ECEFF1;        /* Light text/icons on theme */
+  --primary-color: #ECEFF1;              /* Light slate background */
+  --primary-inverse-color: #263238;      /* Deep blue-gray for text */
+  --theme-color: #37474F;                /* Slate gray */
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #B0BEC5;            /* Steel */
+  --secondary-inverse-color: #263238;
   --error-color: #D32F2F;
   --success-color: #388E3C;
   --warning-color: #FBC02D;
   --info-color: #0288D1;
 }
 
-.sunny-dark {
-  --primary-color: #212121;            /* Charcoal base */
-  --secondary-color: #424242;          /* Mid-gray */
-  --background-color: #1A1A1A;         /* Deep blackish background */
-  --text-color: #FFFDE7;               /* Pale yellow text */
-  --opposite-color: #ffffff;           /* White for contrast */
-  --same-color: #000000;               /* Solid black */
-  --muted-color: rgba(255, 255, 255, 0.5); /* Muted white */
-  --text-on-primary: #FFFDE7;          /* Yellow on dark bg */
-  --text-on-secondary: #FFF9C4;        /* Soft yellow on gray */
-  --theme-color: #FBC02D;              /* Golden yellow */
-  --theme-inverse-color: #212121;      /* Dark foreground element */
+.midnight-dark {
+  --primary-color: #263238;              /* Deep slate */
+  --primary-inverse-color: #ECEFF1;      /* Pale gray */
+  --theme-color: #37474F;                /* Slate gray */
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #90A4AE;            /* Muted steel */
+  --secondary-inverse-color: #FFFFFF;
   --error-color: #EF5350;
-  --success-color: #81C784;
-  --warning-color: #FFB74D;
+  --success-color: #66BB6A;
+  --warning-color: #FFEE58;
   --info-color: #4FC3F7;
 }
 
-.sunny-light {
-  --primary-color: #FFFDE7;            /* Soft pale yellow */
-  --secondary-color: #FFF9C4;          /* Mellow sunshine */
-  --background-color: #FFFFFF;         /* Clean white base */
-  --text-color: #212121;               /* Deep gray text */
-  --opposite-color: #000000;           /* Full black */
-  --same-color: #ffffff;               /* Pure white */
-  --muted-color: rgba(0, 0, 0, 0.5);    /* Faded text/icons */
-  --text-on-primary: #212121;          /* Text on light yellow */
-  --text-on-secondary: #424242;        /* Text on lighter yellow */
-  --theme-color: #FFEB3B;              /* Bright sunny yellow */
-  --theme-inverse-color: #212121;      /* Contrast text/icon */
-  --error-color: #F44336;
-  --success-color: #4CAF50;
-  --warning-color: #FF9800;
-  --info-color: #03A9F4;
+.limegreen-light {
+  --primary-color: #F1F8E9;
+  --primary-inverse-color: #2E7D32;
+  --theme-color: #32CD32;
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #33691E;            /* Deep olive */
+  --secondary-inverse-color: #C8E6C9;
+ 
+  --error-color: #D32F2F;
+  --success-color: #388E3C;
+  --warning-color: #FBC02D;
+  --info-color: #0288D1;
 }
 
-/* Variant 1: Steel (Default) */
-.secondary-steel {
-  --secondary-color: #B0BEC5 !important; /* Muted Steel */
+.limegreen-dark {
+  --primary-color: #1B5E20;
+  --primary-inverse-color: #E8F5E9;
+  --theme-color: #32CD32;
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #A5D6A7;            /* Emerald */
+  --secondary-inverse-color: #1B5E20;
+  --error-color: #EF5350;
+  --success-color: #66BB6A;
+  --warning-color: #FFEE58;
+  --info-color: #4FC3F7;
 }
 
-/* Variant 2: Sky Blue */
-.secondary-sky-blue {
-  --secondary-color: #B3E5FC !important; /* Sky Blue */
+.sunsetcoral-light {
+  --primary-color: #FFF3E0;
+  --primary-inverse-color: #BF360C;
+  --theme-color: #FF6F61;
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #FFCCBC;            /* Peach */
+  --secondary-inverse-color: #BF360C;
+  --error-color: #D32F2F;
+  --success-color: #388E3C;
+  --warning-color: #FBC02D;
+  --info-color: #0288D1;
 }
 
-/* Variant 3: Emerald */
-.secondary-emerald {
-  --secondary-color: #A5D6A7; /* Emerald Green */
+
+.sunsetcoral-dark {
+  --primary-color: #3E2723;
+  --primary-inverse-color: #FFE0B2;
+  --theme-color: #FF6F61;
+  --theme-inverse-color: #FFF3E0;
+  --secondary-color: #BF360C;
+  --secondary-inverse-color: #FFCCBC;
+  --error-color: #EF5350;
+  --success-color: #66BB6A;
+  --warning-color: #FFEE58;
+  --info-color: #4FC3F7;
+}
+.royalindigo-light {
+  --primary-color: #E8EAF6;
+  --primary-inverse-color: #1A237E;
+  --theme-color: #3F51B5;
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #D1C4E9;            /* Lilac */
+  --secondary-inverse-color: #4A148C;
+  --error-color: #D32F2F;
+  --success-color: #388E3C;
+  --warning-color: #FBC02D;
+  --info-color: #0288D1;
 }
 
-/* Variant 4: Lavender */
-.secondary-lavender {
-  --secondary-color: #E1BEE7; /* Soft Lavender */
-}
-
-/* Variant 5: Amber */
-.secondary-amber {
-  --secondary-color: #FFECB3; /* Warm Amber */
-}
-
-/* Variant 6: Coral */
-.secondary-coral {
-  --secondary-color: #FFCDD2; /* Coral Pink */
-}
-
-/* Variant 7: Graphite */
-.secondary-graphite {
-  --secondary-color: #CFD8DC; /* Graphite Gray */
+.royalindigo-dark {
+  --primary-color: #1A237E;
+  --primary-inverse-color: #E8EAF6;
+  --theme-color: #3F51B5;
+  --theme-inverse-color: #FFFFFF;
+  --secondary-color: #D1C4E9;            /* Lilac */
+  --secondary-inverse-color: #4A148C;
+  --error-color: #EF5350;
+  --success-color: #66BB6A;
+  --warning-color: #FFEE58;
+  --info-color: #4FC3F7;
 }
 

@@ -9,7 +9,7 @@ function page() {
    
   return (
     <>
-    <div className='custom-container flex'>
+    <div className='custom-container flex bg-primary'>
  
       <Sidebar active={"Projects"}/>
       <div className=' w-full' >

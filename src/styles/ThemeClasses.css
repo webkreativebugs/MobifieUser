@@ -8,8 +8,8 @@
 .opposite-color    { color: var(--opposite-color); }
 .same-color        { color: var(--same-color); }
 .muted-color       { color: var(--muted-color); }
-.text-on-primary   { color: var(--text-on-primary); }
-.text-on-secondary { color: var(--text-on-secondary); }
+.primary-inverse   { color: var(--primary-inverse-color); }
+.secondary-inverse { color: var(--success-inverse-color) !important; }
 .theme-color       { color: var(--theme-color); }
 .theme-inverse     { color: var(--theme-inverse-color); }
 .error-color       { color: var(--error-color); }
@@ -18,13 +18,14 @@
 .info-color        { color: var(--info-color); }
 
 /* Background Color Utilities */
-.bg-primary        { background-color: var(--primary-color); }
-.bg-secondary      { background-color: var(--secondary-color); }
+.bg-primary        { background-color: var(--primary-color) !important; }
+.bg-secondary      { background-color: var(--secondary-color) !important; }
+.bg-secondary-inverse { background-color: var(--secondary-inverse-color) !important; }
 .bg-background     { background-color: var(--background-color); }
 .bg-opposite       { background-color: var(--opposite-color); }
 .bg-same           { background-color: var(--same-color); }
 .bg-muted          { background-color: var(--muted-color); }
-.bg-theme          { background-color: var(--theme-color); }
+.bg-theme          { background-color: var(--theme-color) !important; }
 .bg-theme-inverse  { background-color: var(--theme-inverse-color); }
 .bg-error          { background-color: var(--error-color); }
 .bg-success        { background-color: var(--success-color); }
@@ -32,7 +33,7 @@
 .bg-info           { background-color: var(--info-color); }
 
 /* Border Color Utilities */
-.border-primary    { border-color: var(--primary-color); }
+.border-primary    { border-color: var(--primary-color) !important; }
 .border-secondary  { border-color: var(--secondary-color); }
 .border-theme      { border-color: var(--theme-color); }
 .border-error      { border-color: var(--error-color); }
@@ -47,8 +48,8 @@
 
 /* Buttons */
 .button {
-  background-color: var(--theme-inverse-color) !important ;
-  color: var(--theme-color) !important;
+  background-color: var(--theme-color) !important ;
+  color:var(--text-color) !important;
   border-color: var(--theme-color) !important;
 }
 
@@ -77,13 +78,13 @@
 
 .link:hover {
   color: var(--theme-color);
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 /* Containers */
 .custom-container {
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--text-on-secondary);
   /* border: 1px solid var(--muted-color); */
 }
 
@@ -189,80 +190,3 @@
 .shadow-glow {
   box-shadow: 0 0 10px 2px var(--theme-color);
 }
-
-/* Variant 1: Steel (Default) */
-.secondary-steel {
-  color: #B0BEC5 !important; /* Muted Steel */
-}
-
-/* Variant 2: Sky Blue */
-.secondary-sky-blue {
-  color: #B3E5FC !important; /* Sky Blue */
-}
-
-/* Variant 3: Emerald */
-.secondary-emerald {
-  color: #A5D6A7; /* Emerald Green */
-}
-
-/* Variant 4: Lavender */
-.secondary-lavender {
-  color: #E1BEE7; /* Soft Lavender */
-}
-
-/* Variant 5: Amber */
-.secondary-amber {
-  color: #FFECB3; /* Warm Amber */
-}
-
-/* Variant 6: Coral */
-.secondary-coral {
-  color: #FFCDD2; /* Coral Pink */
-}
-
-/* Variant 7: Graphite */
-.secondary-graphite {
-  color: #CFD8DC; /* Graphite Gray */
-}
-
-/* Variant 1: Steel (Default) */
-.secondary-steel-bg {
-  background-color: #B0BEC5 !important; /* Muted Steel */
-}
-
-/* Variant 2: Sky Blue */
-.secondary-sky-blue-bg {
-  background-color: #B3E5FC !important; /* Sky Blue */
-}
-
-/* Variant 3: Emerald */
-.secondary-emerald-bg {
-  background-color: #A5D6A7; /* Emerald Green */
-}
-
-/* Variant 4: Lavender */
-.secondary-lavender-bg {
-  background-color: #E1BEE7; /* Soft Lavender */
-}
-
-/* Variant 5: Amber */
-.secondary-amber-bg {
-  background-color: #FFECB3; /* Warm Amber */
-}
-
-/* Variant 6: Coral */
-.secondary-coral-bg {
-  background-color: #FFCDD2; /* Coral Pink */
-}
-
-/* Variant 7: Graphite */
-.secondary-graphite-bg {
-  background-color: #CFD8DC; /* Graphite Gray */
-}
-
-/* .bg-secondary {
-  background-color: var(--secondary-color) !important;
-}
-.text-secondary {
-  color: var(--secondary-color) !important;
-} */

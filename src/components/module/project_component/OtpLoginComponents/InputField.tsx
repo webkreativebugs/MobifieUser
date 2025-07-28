@@ -280,7 +280,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
       <button
         type="submit"
         // onClick={() => }
-        className="w-full  mt-4 m-0  theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
+       className="w-full button  p-2   rounded-md  transition"
    
       >
         { "Send OTP" }

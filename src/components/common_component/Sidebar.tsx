@@ -21,7 +21,7 @@ const Sidebar = ({ active }: SidebarProps) => {
     <>
   
 
-      <div className=" hidden xl:block overflow-auto hide-scrollbar border-r-2 pb-10 h-screen w-2/12 shadow-md ml-3   ">
+      <div className=" hidden xl:block overflow-auto hide-scrollbar  pb-10 h-screen w-2/12 shadow-md   bg-secondary  ">
         <div className="flex justify-between items-center">
           <Link to="/" className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight">
             <img src={logo} alt="Mobifie Logo" className="w-[80px] " />
@@ -46,9 +46,9 @@ const Sidebar = ({ active }: SidebarProps) => {
                 
                   key={section.name}
                   onClick={() => setActiveLinkName(section.name)}
-                  className={` ${activeLinkName === section.name ? "active-link border-l-4  " : "normal-link" }`}
+                  className={` ${activeLinkName === section.name ? "active-link   " : "normal-link" }`}
                 >
-                 <span className='secondary-color'> <section.icon /></span>
+                 <span   className={` ${activeLinkName === section.name ? "secondary-inverse" : "" }`}> <section.icon /></span>
                   <span className="capitalize ">{section.name}</span>
                 </NavLink>
             </div>
@@ -81,7 +81,7 @@ const Sidebar = ({ active }: SidebarProps) => {
                   // to={`/${section.link}`} 
                   key={section.name}
                   onClick={() => {setActiveLinkName(section.name);navigate(`/${section.link}`,{replace:true})}}
-                  className={`  text-color ${activeLinkName === section.name ? "active-link " : "normalLink" }`}
+                  className={`   ${activeLinkName === section.name ? "active-link " : "normal-link" }`}
                 >
                   <section.icon />
                   <span className="capitalize ">{section.name}</span>
