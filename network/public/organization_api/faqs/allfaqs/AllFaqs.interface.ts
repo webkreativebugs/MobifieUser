@@ -35,6 +35,9 @@ export interface FAQResponse {
   status: Status;
   data: FAQData;
 }
+export interface urlConfig {
+  search: string;
+  }
 
 export type FAQCallback = (
   response: FAQResponse | null,

@@ -5,27 +5,48 @@ import Sidebar from "../../../../components/common_component/Sidebar";
 import Faq from "../../../../components/common_component/Faq";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
+import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
 import {
   FAQResponse,
   FAQCallback,
 } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
+
+interface Quary {
+  type?: string;
+  search?: string;
+}
 
 function page() {
   // const { onRoleChange } = useauth();
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState("");
   const { theme, onThemeChange } = useTheme();
+  const [quary, setQuary] = useState<Quary>();
   //   const [apiResponse, setApiResponse] = useState();
   const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>(
     undefined
   );
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setQuary((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   useEffect(() => {
+    modifiedUrlConfig.search = `?category=${encodeURIComponent(
+      quary?.type?.toString() || ""
+    )}${quary?.search ? `&search=${encodeURIComponent(quary.search)}` : ""}`;
+
     if (!apiResponse) {
+      console.log("srger");
       setLoader(true);
       fetchAllFaqs(setApiResponse, setApiError, setLoader);
     }
-  });
+  }, [handleInputChange]);
 
   return (
     <div className="custom-container flex">
@@ -44,6 +65,9 @@ function page() {
                   <input
                     type="text"
                     placeholder="Search..."
+                    value={quary?.search?.toString()}
+                    name="search"
+                    onChange={handleInputChange}
                     className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
                   />
                   {/* Search Icon */}
@@ -64,9 +88,15 @@ function page() {
                 </div>
 
                 {/* Select Dropdown */}
-                <select className="w-1/4 py-2 px-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white">
-                  <option>Project</option>
-                  <option>Organization</option>
+                <select
+                  value={quary?.type?.toString()} // fallback to empty string to avoid uncontrolled warning
+                  name="type"
+                  onChange={handleInputChange}
+                  className="w-1/4 py-2 px-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
+                >
+                  <option value="">Select</option>
+                  <option value="Project">Project</option>
+                  <option value="Organization">Organization</option>
                 </select>
               </div>
               {apiResponse && <Faq data={apiResponse?.data} />}
