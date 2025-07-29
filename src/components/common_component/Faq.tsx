@@ -67,6 +67,9 @@ export default function Faq({ data }: FaqProps) {
           </div>
         );
       })}
+      {
+        !data&&<p>OOPs on result</p>
+      }
     </div>
   );
 }
