@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
-import { useTheme } from "../../../../context/AppContext";
+// import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
 import Faq from "../../../../components/common_component/Faq";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
-import {
-  FAQResponse,
-  FAQCallback,
-} from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
+import { FAQResponse,} from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
 
 function page() {
   // const { onRoleChange } = useauth();
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState("");
-  const { theme, onThemeChange } = useTheme();
   //   const [apiResponse, setApiResponse] = useState();
   const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>(
     undefined
@@ -31,7 +27,7 @@ function page() {
     <div className="custom-container flex">
       <Sidebar active={"Help"} />
       <div className=" w-full ">
-        <Navbar theme={theme} onThemeChange={onThemeChange} />
+        <Navbar/>
         <div className="p-5 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] ">
           <div>
             <div className="mt-2">
@@ -74,6 +70,8 @@ function page() {
           </div>
         </div>
       </div>
+
+      {apiError}
     </div>
   );
 }

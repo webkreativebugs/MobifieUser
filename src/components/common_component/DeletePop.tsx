@@ -11,7 +11,7 @@ function DeletePop({
   const [apiResponse, setApiResponse] = useState<any>(null);
   const [apiError, setApiError] = useState<any>(null);
   const [disable, setDisable] = useState<boolean>(false);
-  const [orgName, setOrgName] = useState<{ name: string }>({ name: "" });
+  // const [orgName, setOrgName] = useState<{ name: string }>({ name: "" });
 
   const handleDelete = () => {
     setLoader(true); // ✅ starts the loader
@@ -78,6 +78,7 @@ function DeletePop({
           </div>
         </div>
       )}
+      {apiError}
     </>
   );
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
-import { useTheme } from "../../../../context/AppContext";
+// import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
 // import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useorg } from "../../../../context/org_context/OrganizationContext";
@@ -15,7 +15,7 @@ import DeletePop from "../../../../components/common_component/DeletePop";
 function page() {
   // const { onRoleChange } = useauth();
   // const { setLoader } = useloader();
-  const { theme, onThemeChange } = useTheme();
+  // const { theme, onThemeChange } = useTheme();
   // const [display, setDisplay] = useState("Project");
   const { orgDetails } = useorg();
   const [iscopy, setIscopy] = useState(false);
@@ -160,7 +160,7 @@ function page() {
       <div className=" flex">
         <Sidebar active={"Settings"} />
         <div className=" w-full ">
-          <Navbar theme={theme} onThemeChange={onThemeChange} />
+          <Navbar />
           <div className="p-5 w-full hide-scrollbar custom-container overflow-scroll max-h-[90vh] h-[100vh] ">
             <div>
               <div className="mt-2">

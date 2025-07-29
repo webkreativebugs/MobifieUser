@@ -1,25 +1,17 @@
 
-import { MdWbSunny, MdNightlightRound } from 'react-icons/md';
+// import { MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import "../../styles/Navbar.css"
 import { useauth } from '../../context/auth_context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import LogOut from '../../utils/api/LogOut';
-type NavbarProps = {
-  onThemeChange: (theme: string) => void;
-  theme:string
-};
 
-const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
+const Navbar = () => {
   const navigate = useNavigate()
   const {onRoleChange} = useauth()
 // const [selectedValue, setSelectedValue] = useState(mode);
   // const [data , setData] = useState("light")
   // console.log(selectedValue);
-  
-  function handlechange(e: string)
-  {
-   onThemeChange(e)
-  }
+
  function handleClick()
  {
     LogOut()
