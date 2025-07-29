@@ -1,6 +1,6 @@
 import {fetchFaqs} from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api"
 import {FAQResponse ,FAQCallback  } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
-import { Dispatch, SetStateAction } from "react";
+// import { Dispatch, SetStateAction } from "react";
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
 function fetchAllFaqs(setApiResponse:any,setApiError:any, setLoader: (loading: boolean) => void){
     

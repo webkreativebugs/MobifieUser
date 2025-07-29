@@ -5,15 +5,10 @@ import Sidebar from "../../../../components/common_component/Sidebar";
 import Faq from "../../../../components/common_component/Faq";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
-<<<<<<< HEAD
-import { FAQResponse,} from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
-=======
 import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
 import {
   FAQResponse,
-  FAQCallback,
 } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
->>>>>>> 283f200b96db00e8fa8057c4226b89234d2fbd1a
 
 interface Quary {
   type?: string;
@@ -24,11 +19,8 @@ function page() {
   // const { onRoleChange } = useauth();
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState("");
-<<<<<<< HEAD
-=======
-  const { theme, onThemeChange } = useTheme();
+  // const { theme, onThemeChange } = useTheme();
   const [quary, setQuary] = useState<Quary>();
->>>>>>> 283f200b96db00e8fa8057c4226b89234d2fbd1a
   //   const [apiResponse, setApiResponse] = useState();
   const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>(
     undefined
@@ -41,6 +33,9 @@ function page() {
       ...prev,
       [name]: value,
     }));
+
+
+
   };
 
   useEffect(() => {
@@ -48,12 +43,12 @@ function page() {
       quary?.type?.toString() || ""
     )}${quary?.search ? `&search=${encodeURIComponent(quary.search)}` : ""}`;
 
-    if (!apiResponse) {
+  
       console.log("srger");
       setLoader(true);
       fetchAllFaqs(setApiResponse, setApiError, setLoader);
-    }
-  }, [handleInputChange]);
+
+  }, [quary]);
 
   return (
     <div className="custom-container flex">

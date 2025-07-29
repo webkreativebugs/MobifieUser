@@ -21,7 +21,7 @@ const Navbar = () => {
  }
 
   return (
-    <nav className="flex flex-wrap justify-between items-center p-4 bg-secondary shadow">
+    <nav className="flex justify-end items-center p-4 bg-secondary shadow">
       <div className="text-lg font-semibold ">
          <button className='p-2 bg-secondary-inverse rounded secondary-color pl-3 pr-3 ' onClick={handleClick}>Logout</button>
       </div>
