@@ -12,7 +12,7 @@ const OtpSignin = () => {
   return (
     <>
       <div className="flex justify-center items-center min-h-screen custom-container ">
-        <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-card rounded-md overflow-hidden p-4">
+        <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 card shadow-card rounded-md overflow-hidden p-4">
           {/* Left side: Form */}
 
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">

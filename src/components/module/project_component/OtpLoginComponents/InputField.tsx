@@ -161,7 +161,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
       {showNum ? (
         <div className="error-wrapper">
           {/* <label className="text-sm">Email</label> */}
-          <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
+          <div className="flex items-center border-gray-300 border-2  mt-1 bg-white">
             <ManualDropdown formData={formData} setFormData={setFormData} />
             {/* <span className="px-2 text-gray-500">
             <svg

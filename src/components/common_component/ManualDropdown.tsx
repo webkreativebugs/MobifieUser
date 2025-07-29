@@ -34,7 +34,7 @@ const ManualDropdown = ({ formData, setFormData }: any) => {
   return (
     <div className="relative w-1/3" ref={dropdownRef}>
       <div
-        className={`w-full px-1 py-2 rounded-md border-r-2 bg-white flex justify-center items-center cursor-pointer ${
+        className={`w-full px-1 py-2  border-r-2 bg-white flex justify-center items-center cursor-pointer ${
           touched && !formData.country_code
             ? "border-red-500"
             : "border-gray-300"
