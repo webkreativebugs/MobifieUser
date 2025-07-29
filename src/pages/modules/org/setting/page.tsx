@@ -2,69 +2,70 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
 import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
-import { useauth } from "../../../../context/auth_context/AuthContext";
+// import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useorg } from "../../../../context/org_context/OrganizationContext";
-import {
-  UpdateOrganizationNameRequest,
-  UpdateOrganizationNameResponse,
-} from "../../../../../network/public/organization_api/update_organization/UpdateOrganization.interface";
-// import OrgDetailsUpdate from "../../../../src/utils";
-import OrgDetailsUpdate from "../../../../utils/api/OrganizationDetailUpdateApi";
-import { useloader } from "../../../../context/loader_context/LoaderContext";
-// import PopComponent from "../../../../components/common_component/";
+// import {UpdateOrganizationNameRequest,UpdateOrganizationNameResponse} from "../../../../../network/public/organization_api/update_organization/UpdateOrganization.interface";
+import ThemePicker from "../../../../components/module/org_component/theme_component/ThemePicker";
+// import OrgDetailsUpdate from "../../../../utils/api/OrganizationDetailUpdateApi";
+// import { useloader } from "../../../../context/loader_context/LoaderContext";
+import DisablePop from "../../../../components/common_component/DisablePop";
+import UpdatePop from "../../../../components/common_component/UpdatePop";
+import DeletePop from "../../../../components/common_component/DeletePop";
 
 function page() {
-  const { onRoleChange } = useauth();
-  const { setLoader } = useloader();
+  // const { onRoleChange } = useauth();
+  // const { setLoader } = useloader();
   const { theme, onThemeChange } = useTheme();
-  const [display, setDisplay] = useState("Project");
+  // const [display, setDisplay] = useState("Project");
   const { orgDetails } = useorg();
   const [iscopy, setIscopy] = useState(false);
   const [ispop, setIspop] = useState(false);
-  const [disable, setDisable] = useState(false);
-  const [apiError, setApiError] = useState("");
-  const [apiResponse, setApiResponse1] = useState<
-    UpdateOrganizationNameResponse | undefined
-  >();
-  const [orgName, setOrgName] = useState<UpdateOrganizationNameRequest>({
-    name: "",
-    tag: {
-      key: "Tag 1",
-      value: "Tag 1",
-    },
-  });
+  const [themePopup , setThemePopup] = useState(false)
+  // const [disable, setDisable] = useState(false);
+  // const [apiError, setApiError] = useState("");
 
-  useEffect(() => {
-    if (orgDetails?.data?.name) {
-      setOrgName((prev) => ({
-        ...prev,
-        name: orgDetails.data.name,
-      }));
-    }
-  }, [orgDetails?.data?.name]);
+  // const [apiResponse, setApiResponse1] = useState<
+  //   UpdateOrganizationNameResponse | undefined
+  // >();
+  // const [orgName, setOrgName] = useState<UpdateOrganizationNameRequest>({
+  //   name: orgDetails?.data.name,
+  //   tag: {
+  //     key: "Tag 1",
+  //     value: "Tag 1",
+  //   },
+  // });
+
+  // useEffect(() => {
+  //   if (orgDetails?.data?.name) {
+  //     setOrgName((prev) => ({
+  //       ...prev,
+  //       name: orgDetails.data.name,
+  //     }));
+  //   }
+  // }, []);
   //   console.log(orgDetails);
 
-  const handleChange = (value: string) => {
-    switch (value) {
-      //   case "Account":
-      //     setDisplay("Account");
-      //     break;
+  // const handleChange = (value: string) => {
+  //   switch (value) {
+  //     //   case "Account":
+  //     //     setDisplay("Account");
+  //     //     break;
 
-      case "Project":
-        setDisplay("Project");
-        break;
+  //     case "Project":
+  //       setDisplay("Project");
+  //       break;
 
-      case "Appearance":
-        setDisplay("Appearance");
-        break;
-      case "Billing":
-        setDisplay("Billing");
-        break;
-      case "Security":
-        setDisplay("Security");
-        break;
-    }
-  };
+  //     case "Appearance":
+  //       setDisplay("Appearance");
+  //       break;
+  //     case "Billing":
+  //       setDisplay("Billing");
+  //       break;
+  //     case "Security":
+  //       setDisplay("Security");
+  //       break;
+  //   }
+  // };
 
   function formatDateWithTime(isoDateString: string): string {
     const date = new Date(isoDateString);
@@ -95,39 +96,72 @@ function page() {
   //       console.log(orgName);
   //     }
   //   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (orgDetails?.data.name !== orgName.name?.trim() && orgName.name !== "") {
-      setLoader(true);
-      e.preventDefault();
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   if (orgDetails?.data.name !== orgName.name?.trim() && orgName.name !== "") {
+  //     setLoader(true);
+  //     e.preventDefault();
 
-      console.log(orgName);
+  //     console.log(orgName);
 
-      OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
-      setDisable(true);
+  //     OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
+  //     setDisable(true);
+  //   }
+  // };
+
+  // const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
+  //   //pop wiil set if return true then call api
+  //   if (orgDetails?.data.name !== orgName.name?.trim() && orgName.name !== "") {
+  //     setLoader(true);
+  //     e.preventDefault();
+
+  //     console.log(orgName);
+
+  //     OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
+  //     setDisable(true);
+  //   }
+  // };
+
+  // const SwitchRenderer = (value:String) => {
+  //   // const [selectedComponent, setSelectedComponent] = useState<ComponentKey | null>(null);
+
+  //   const renderComponent = () => {
+  //     switch (value) {
+  //       case "A":
+  //         return <DisablePop />;
+  //       case "B":
+  //         return <UpdatePop />;
+  //       case "C":
+  //         return <DeletePop />;
+  //     }
+
+  // };
+  const [ComponentToRender, setComponentToRender] =
+    useState<React.ReactNode>(null);
+
+  const YourComponent = (value: String) => {
+    switch (value) {
+      case "Disable":
+        setComponentToRender(<DisablePop setIspop={setIspop} />);
+        break;
+      case "Update":
+        setComponentToRender(<UpdatePop setIspop={setIspop} />);
+        break;
+      case "Delete":
+        setComponentToRender(<DeletePop setIspop={setIspop} />);
+        break;
+      default:
+        setComponentToRender(null);
+        break;
     }
   };
-
-  const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
-    //pop wiil set if return true then call api
-    if (orgDetails?.data.name !== orgName.name?.trim() && orgName.name !== "") {
-      setLoader(true);
-      e.preventDefault();
-
-      console.log(orgName);
-
-      OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
-      setDisable(true);
-    }
-  };
-  //   console.log(apiResponse);
 
   return (
     <>
-      <div className="custom-container flex">
+      <div className=" flex">
         <Sidebar active={"Settings"} />
         <div className=" w-full ">
           <Navbar theme={theme} onThemeChange={onThemeChange} />
-          <div className="p-5 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] ">
+          <div className="p-5 w-full hide-scrollbar custom-container overflow-scroll max-h-[90vh] h-[100vh] ">
             <div>
               <div className="mt-2">
                 <h1 className="table-heading pl-2">Settings</h1>
@@ -150,8 +184,8 @@ function page() {
                 {" "}
                 {/* //component */}
                 <div className=" mt-2 flex gap-3 py-5">
-                  <div className="w-1/3 rounded-[20px] shadow-card bg-primary   p-6 flex flex-col gap-5">
-                    <div className="flex justify-between ">
+                  <div className="w-1/3 rounded-[20px] shadow-card card  p-6 flex flex-col gap-5">
+                    <div className="flex justify-between  ">
                       <p className="text-2xl ">Organization ID</p>{" "}
                       <button onClick={() => handleCopy()}>
                         {iscopy ? (
@@ -211,10 +245,15 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  project id*/}
-                  <div className="w-1/3 rounded-[20px] shadow-card bg-primary  p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-card card  p-6 flex flex-col gap-5">
                     <div className="flex justify-between">
                       <p className="text-2xl">Organization Name</p>{" "}
-                      <button onClick={() => setIspop(true)}>
+                      <button
+                        onClick={() => {
+                          setIspop(true);
+                          YourComponent("Update");
+                        }}
+                      >
                         {" "}
                         <svg
                           width="32"
@@ -246,7 +285,7 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  project name*/}
-                  <div className="w-1/3 rounded-[20px] shadow-card bg-primary   p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-card card   p-6 flex flex-col gap-5">
                     <div className="">
                       <p className="text-2xl">Created On</p>
                     </div>
@@ -257,7 +296,9 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  disable*/}
+                  
                 </div>
+                
                 {/* <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-5 p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
                     <p className="text-2xl">Disable Organization</p>{" "}
@@ -273,20 +314,26 @@ function page() {
                   </div>
                 </div> */}
                 {/*  delete org */}
-                <div className="w-full rounded-[20px]  shadow-card bg-primary  h-[8rem] p-6 flex flex-col gap-5">
+                
+                <div className="w-full rounded-[20px]  shadow-card card h-[8rem] p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
                     <p className="text-2xl ">Delete Organization</p>{" "}
                     <div>
-                      <button className="mr-4 border rounded-lg px-5 py-1 hover:bg-[#baf2ba] hover:shadow-green-600">
+                      <button
+                        onClick={() => {
+                          setIspop(true);
+                          YourComponent("Disable");
+                        }}
+                        className="mr-4 border rounded-lg px-5 py-1 button"
+                      >
                         Disable
                       </button>
                       <button
-                        onClick={(e) =>
-                          handleDelete(
-                            e as unknown as React.FormEvent<HTMLFormElement>
-                          )
-                        }
-                        className="mr-4 border rounded-lg px-6 py-1 bg-red-500 text-white hover:bg-[#baf2ba]"
+                        onClick={(e) => {
+                          setIspop(true);
+                          YourComponent("Delete");
+                        }}
+                        className="mr-4 border rounded-lg px-6 py-1 bg-red-500 text-white hover:bg-red-600"
                       >
                         Delete
                       </button>
@@ -299,21 +346,64 @@ function page() {
                     </p>
                   </div>
                 </div>
+                
               </div>
+              <div className="w-full mt-5 rounded-[20px] shadow-card card h-[8rem] p-6 flex items-center justify-between bg-white">
+  {/* Left side: Icon + Theme Name */}
+  <div className="flex items-center gap-4">
+    {/* Top view open box icon (SVG or Font Awesome fallback) */}
+    <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full">
+      {/* Replace with custom SVG if needed */}
+      <i className="fas fa-cube text-xl text-gray-600"></i>
+    </div>
+
+    {/* Theme name + color */}
+    <div>
+      <div className="text-sm text-gray-500">Selected Theme</div>
+      <div className="flex items-center gap-2">
+        <span className="text-lg font-semibold text-gray-800">Ocean Blue</span>
+        <span className="w-4 h-4 rounded-full bg-blue-500 border border-gray-300"></span>
+      </div>
+    </div>
+  </div>
+
+  {/* Right side: Action button */}
+  <button className="px-4 py-2 rounded-lg text-sm font-medium button transition"
+  onClick={()=>setThemePopup(true)}
+   >
+    Change Theme
+  </button>
+  </div>
+              
             </div>
+            
           </div>
+          
         </div>
       </div>
-      {/* {ispop && (
-        <PopComponent
-          isPop={ispop}
-          setIsPop={setIspop}
-          orgName={orgName}
-          setOrgName={setOrgName}
-          orgDetails={orgDetails}
-          handleSubmit={handleSubmit}
-        />
-      )} */}
+      {ispop && (
+        <div
+          onClick={() => {
+            setIspop(false);
+            // setOrgName((prev) => ({
+            //   ...prev,
+            //   name: orgDetails?.data.name || "",
+            // }));
+            // setOrgName(orgDetails?.data.name);
+          }}
+          className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50 mt-[-5rem]"
+        >
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className="p-6 bg-white  h-72 w-1/3 rounded-[20px] shadow-md font-semibold"
+          >
+            {ComponentToRender}
+          </div>
+        </div>
+      )}
+      {themePopup&&<ThemePicker onClose={() => setThemePopup(false)} />}
     </>
   );
 }

@@ -19,6 +19,7 @@
 
 /* Background Color Utilities */
 .bg-primary        { background-color: var(--primary-color) !important; }
+.bg-primary-inverse{ background-color: var(--primary-inverse-color) !important ; }
 .bg-secondary      { background-color: var(--secondary-color) !important; }
 .bg-secondary-inverse { background-color: var(--secondary-inverse-color) !important; }
 .bg-background     { background-color: var(--background-color); }
@@ -49,8 +50,8 @@
 /* Buttons */
 .button {
   background-color: var(--theme-color) !important ;
-  color:var(--text-color) !important;
-  border-color: var(--theme-color) !important;
+  color:var(--theme-inverse-color) !important;
+  
 }
 
 /* .button:hover {
@@ -72,33 +73,27 @@
 
 /* Links */
 .link {
-  color: var(--info-color);
-  text-decoration: none;
-}
-
-.link:hover {
   color: var(--theme-color);
-  /* text-decoration: underline; */
+  text-decoration: none;
 }
 
 /* Containers */
 .custom-container {
-  background-color: var(--background-color);
-  color: var(--text-on-secondary);
+  background-color: var(--primary-color);
+  color: var(--primary-inverse-color);
   /* border: 1px solid var(--muted-color); */
 }
 
-.custom-container-secondary {
+/* .custom-container-secondary {
   background-color: var(--secondary-color);
   color: var(--text-on-secondary);
-  /* border: 1px solid var(--theme-color); */
-  /* box-shadow: 0 0 6px 2px var(--theme-color); */
-}
+ 
+} */
 
 /* Cards */
 .card {
-  background-color: var(--primary-color);
-  color: var(--text-on-primary);
+  background-color: var(--secondary-color) !important;
+  color: var(--secondary-inverse-color) !important;
   /* border: 1px solid var(--muted-color); */
 }
 

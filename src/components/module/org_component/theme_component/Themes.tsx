@@ -45,7 +45,7 @@ const Themes = () => {
     <div className='flex justify-between '>
       {
         themes.map((theme,id)=>(
-            <button key={id} className={` h-[8rem] w-[8rem] m-3 `  }  style={{ backgroundColor: theme.themeColor }} onClick={()=>handleClick(theme)} />
+            <button key={id} className={` h-[4rem] w-[4rem] m-3 `  }  style={{ backgroundColor: theme.themeColor }} onClick={()=>handleClick(theme)} />
              
         ))
       }

@@ -1,5 +1,5 @@
 interface UpdateOrganizationNameRequest {
-  name: string;
+  name: string | undefined;
   tag: {
     key: string;
     value: string;

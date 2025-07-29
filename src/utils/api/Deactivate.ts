@@ -1,4 +1,4 @@
-import {logOut} from "../../../network/public/project_api/logout/Logout.api"
+import {deactivateOrg} from "../../../network/public/organization_api/deactivate_organization/deactivate_organization.api"
 import {DeactivateResponse,
   DeactivateCallback} from "../../../network/public/organization_api/deactivate_organization/deactivate_organization.interface";
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
@@ -13,6 +13,7 @@ const handleUserInfoResponse: DeactivateCallback= (  response: DeactivateRespons
     {
     //   customAuthorizationConfig.kb_authorization=response.data;
       setApiResponse(response)
+      setLoader(false)
     }
    
   };
@@ -22,7 +23,7 @@ const sendOtp=async ()=>{
   
    
     try{
-        await logOut( handleUserInfoResponse);
+        await deactivateOrg( handleUserInfoResponse);
         sessionStorage.clear();  
         
 

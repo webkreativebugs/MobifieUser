@@ -15,7 +15,7 @@ function page() {
       <div className=' w-full' >
           <Navbar theme={theme} onThemeChange={onThemeChange} />
           <div className='p-3 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] '>
-          <ThemePicker/>
+          {/* <ThemePicker/> */}
           </div>
       </div>
     </div>
