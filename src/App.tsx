@@ -12,7 +12,7 @@ export default function App() {
   if (body) {
     body.style.overflow = "hidden";
   }
- const {theme} =useTheme()
+ const {theme,secondaryColor} =useTheme()
  const {role,onRoleChange}= useauth()
    useEffect(() => {
      if (role) {
@@ -22,7 +22,7 @@ export default function App() {
 //  isLoggedIn
   return (
     <>
-     <section className={theme} >
+     <section className={`${theme} ${secondaryColor}`} >
    { processLoggedInUser(role)}
      
     </section>

@@ -123,11 +123,6 @@ body {
     color:var(--opposite-color)
 }
 
-.table-heading{
-    font-weight: 600;
-    font-size: 2rem;
-    margin-bottom:20px;
-}
 
 
     .primary-bg-color{
@@ -161,13 +156,13 @@ body {
   padding-bottom: 0.625rem; /* pb-2.5 = 0.625rem (10px) */
   border-radius: 0.5rem;  /* rounded-lg = 0.5rem (8px) */
   font-size: 1rem;        /* text-md ≈ 1rem (16px) */
-  color: var(--text-color);         /* text-gray-700 = #4b5563 */
+  /* color: var(--text-color);      */
   margin: 0.5rem;         /* m-2 = 0.5rem (8px) */
   text-decoration: none;  
 }
 
 .tab-links{
-    color: var( --muted-color);
+    /* color: var( --muted-color);*/
     margin-right: 0.75rem;
     cursor: pointer;
     padding-bottom: 15px;
@@ -186,7 +181,12 @@ body {
     cursor: pointer;
     padding-bottom: 15px;
     border-bottom: 4px solid var( --text-color);
-    color:var(--text-color);
+    /* color:var(--text-color); */
     border-radius: 5px;
 }
 
+.table-heading{
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom:20px;
+}

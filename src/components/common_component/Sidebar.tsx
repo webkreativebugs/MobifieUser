@@ -46,9 +46,9 @@ const Sidebar = ({ active }: SidebarProps) => {
                 
                   key={section.name}
                   onClick={() => setActiveLinkName(section.name)}
-                  className={`  ${activeLinkName === section.name ? "active-link " : "normal-link" }`}
+                  className={` ${activeLinkName === section.name ? "active-link border-l-4  " : "normal-link" }`}
                 >
-                  <section.icon />
+                 <span className='secondary-color'> <section.icon /></span>
                   <span className="capitalize ">{section.name}</span>
                 </NavLink>
             </div>

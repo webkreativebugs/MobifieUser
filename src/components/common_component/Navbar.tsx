@@ -3,7 +3,6 @@ import { MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import "../../styles/Navbar.css"
 import { useauth } from '../../context/auth_context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import LogOut from '../../utils/api/LogOut';
 type NavbarProps = {
   onThemeChange: (theme: string) => void;
@@ -11,7 +10,7 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
-  const [mode,setMode] = useState(theme.split('-')[1]);
+  const mode = theme.split('-')[1];
   const navigate = useNavigate()
   const {onRoleChange} = useauth()
 // const [selectedValue, setSelectedValue] = useState(mode);
@@ -38,7 +37,6 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
       <div className="flex flex-wrap gap-2 mt-2 md:mt-0 morning">
        
  <div className="flex items-center gap-4 relative">
-  {mode==="light"?
   <label htmlFor="light" className="flex items-center cursor-pointer ">
     <input
       type="radio"
@@ -48,7 +46,6 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
       checked={mode === "light"}
       onChange={() => handlechange(`${theme.split('-')[0]}-light`)}
       className={`hidden ${mode === "light"?"morning":""} `}
-      onClick={()=>{setMode("dark");handlechange(`${theme.split('-')[0]}-light`)}}
     />
     <MdWbSunny
       size={24}
@@ -57,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
       }`}
     />
   </label>
-:
+
   <label htmlFor="dark" className="flex items-center cursor-pointer">
     <input
       type="radio"
@@ -67,7 +64,6 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
       checked={mode === "dark"}
       onChange={() => handlechange(`${theme.split('-')[1]}-dark`)}
       className={`hidden ${mode === "light"?"morning":""} `}
-      onClick={()=>{setMode("light");handlechange(`${theme.split('-')[0]}-dark`)}}
     />
     <MdNightlightRound
       size={24}
@@ -76,23 +72,46 @@ const Navbar: React.FC<NavbarProps> = ({theme, onThemeChange }) => {
       }`}
     />
   </label>
-}
 </div>
 
       <div className='custom-theme-dropdown shadow-lg'>
         <button
           onClick={() => onThemeChange(`midnight-${mode}`)}
-          className="px-3 py-1 my-1 rounded bg-gray-500 text-white hover:bg-gray-600 text-sm"
+          className="px-3 py-1 my-1 rounded bg-red-500 text-white hover:bg-red-600 text-sm"
         >
-           midnight-{mode}
+          midnight-{mode}
         </button>
-       <button
+         <button
           onClick={() => onThemeChange(`sunny-${mode}`)}
-          className="px-3 py-1 my-1 rounded bg-orange-500 text-white hover:bg-orange-600 text-sm"
+          className="px-3 py-1 my-1 rounded bg-red-500 text-white hover:bg-red-600 text-sm"
         >
            sunny-{mode}
         </button>
-      
+     
+        {/* <button
+          onClick={() => onThemeChange(`${mode}-blue`)}
+          className="px-3 py-1 my-1  rounded bg-blue-600 text-white hover:bg-blue-700 text-sm"
+        >
+         {mode}-blue
+        </button>
+        <button
+          onClick={() => onThemeChange(`${mode}-orange`)}
+          className="px-3 py-1 my-1  rounded bg-orange-500 text-white hover:bg-orange-600 text-sm"
+        >
+          {mode}-orange
+        </button>
+        <button
+          onClick={() => onThemeChange(`${mode}-purple`)}
+          className="px-3 py-1 my-1  rounded bg-purple-600 text-white hover:bg-purple-700 text-sm"
+        >
+          {mode}-purple
+        </button>
+         <button
+          onClick={() => onThemeChange(`${mode}-green`)}
+          className="px-3 py-1 my-1  rounded bg-green-600 text-white hover:bg-green-700 text-sm"
+        >
+          {mode}-green
+        </button> */}
         </div>
       </div>
     </nav>

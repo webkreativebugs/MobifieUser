@@ -47,16 +47,16 @@
 
 /* Buttons */
 .button {
-  background-color: var(--theme-color) !important;
-  color: var(--text-on-primary);
-  border: 1px solid var(--theme-color);
+  background-color: var(--theme-inverse-color) !important ;
+  color: var(--theme-color) !important;
+  border-color: var(--theme-color) !important;
 }
 
-.button:hover {
-  background-color: var(--theme-inverse-color) !important ;
-  color: var(--text-on-primary);
-  border-color: var(--theme-color);
-}
+/* .button:hover {
+  background-color: var(--theme-color) !important;
+  color: var(--text-on-primary) !important;
+  border: 1px solid var(--theme-color) !important;
+} */
 
 .button.secondary {
   background-color: var(--secondary-color);
@@ -84,14 +84,21 @@
 .custom-container {
   background-color: var(--background-color);
   color: var(--text-color);
-  border: 1px solid var(--muted-color);
+  /* border: 1px solid var(--muted-color); */
+}
+
+.custom-container-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-on-secondary);
+  /* border: 1px solid var(--theme-color); */
+  /* box-shadow: 0 0 6px 2px var(--theme-color); */
 }
 
 /* Cards */
 .card {
   background-color: var(--primary-color);
   color: var(--text-on-primary);
-  border: 1px solid var(--muted-color);
+  /* border: 1px solid var(--muted-color); */
 }
 
 .card-header {
@@ -149,3 +156,113 @@
   border-color: var(--theme-color);
   outline: none;
 }
+
+/* Base shadow using theme color */
+.shadow-theme {
+  box-shadow: 0 2px 8px var(--theme-color);
+}
+
+/* Shadow using muted color (for subtle depth) */
+.shadow-muted {
+  box-shadow: 0 2px 6px var(--muted-color);
+}
+
+/* Inverse shadow (useful for dark theme glow) */
+.shadow-inverse {
+  box-shadow: 0 2px 8px var(--theme-inverse-color);
+}
+
+/* Soft shadow using secondary color */
+.shadow-secondary {
+  box-shadow: 0 1px 5px var(--secondary-color);
+}
+
+/* Elevated card-style shadow */
+.shadow-card {
+  box-shadow: 0 4px 12px var(--muted-color);
+}
+
+/* Inner shadow with theme color */
+.shadow-inner {
+  box-shadow: inset 0 2px 4px var(--theme-color);
+}
+.shadow-glow {
+  box-shadow: 0 0 10px 2px var(--theme-color);
+}
+
+/* Variant 1: Steel (Default) */
+.secondary-steel {
+  color: #B0BEC5 !important; /* Muted Steel */
+}
+
+/* Variant 2: Sky Blue */
+.secondary-sky-blue {
+  color: #B3E5FC !important; /* Sky Blue */
+}
+
+/* Variant 3: Emerald */
+.secondary-emerald {
+  color: #A5D6A7; /* Emerald Green */
+}
+
+/* Variant 4: Lavender */
+.secondary-lavender {
+  color: #E1BEE7; /* Soft Lavender */
+}
+
+/* Variant 5: Amber */
+.secondary-amber {
+  color: #FFECB3; /* Warm Amber */
+}
+
+/* Variant 6: Coral */
+.secondary-coral {
+  color: #FFCDD2; /* Coral Pink */
+}
+
+/* Variant 7: Graphite */
+.secondary-graphite {
+  color: #CFD8DC; /* Graphite Gray */
+}
+
+/* Variant 1: Steel (Default) */
+.secondary-steel-bg {
+  background-color: #B0BEC5 !important; /* Muted Steel */
+}
+
+/* Variant 2: Sky Blue */
+.secondary-sky-blue-bg {
+  background-color: #B3E5FC !important; /* Sky Blue */
+}
+
+/* Variant 3: Emerald */
+.secondary-emerald-bg {
+  background-color: #A5D6A7; /* Emerald Green */
+}
+
+/* Variant 4: Lavender */
+.secondary-lavender-bg {
+  background-color: #E1BEE7; /* Soft Lavender */
+}
+
+/* Variant 5: Amber */
+.secondary-amber-bg {
+  background-color: #FFECB3; /* Warm Amber */
+}
+
+/* Variant 6: Coral */
+.secondary-coral-bg {
+  background-color: #FFCDD2; /* Coral Pink */
+}
+
+/* Variant 7: Graphite */
+.secondary-graphite-bg {
+  background-color: #CFD8DC; /* Graphite Gray */
+}
+
+/* .bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+.text-secondary {
+  color: var(--secondary-color) !important;
+} */

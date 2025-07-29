@@ -1,6 +1,6 @@
 :root {
  --primary-color: #7ed957  ;              /* Vibrant green */
-  --secondary-color: #A5D46F;            /* Softer olive green */
+  /* --secondary-color: #A5D46F;            Softer olive green */
   --background-color: #F1F9E9;           /* Gentle pastel background */
   --text-color: #4A751E;                 /* Earthy dark green */
   --opposite-color: #000000;             /* Black for high contrast */
@@ -86,3 +86,39 @@
   --warning-color: #FF9800;
   --info-color: #03A9F4;
 }
+
+/* Variant 1: Steel (Default) */
+.secondary-steel {
+  --secondary-color: #B0BEC5 !important; /* Muted Steel */
+}
+
+/* Variant 2: Sky Blue */
+.secondary-sky-blue {
+  --secondary-color: #B3E5FC !important; /* Sky Blue */
+}
+
+/* Variant 3: Emerald */
+.secondary-emerald {
+  --secondary-color: #A5D6A7; /* Emerald Green */
+}
+
+/* Variant 4: Lavender */
+.secondary-lavender {
+  --secondary-color: #E1BEE7; /* Soft Lavender */
+}
+
+/* Variant 5: Amber */
+.secondary-amber {
+  --secondary-color: #FFECB3; /* Warm Amber */
+}
+
+/* Variant 6: Coral */
+.secondary-coral {
+  --secondary-color: #FFCDD2; /* Coral Pink */
+}
+
+/* Variant 7: Graphite */
+.secondary-graphite {
+  --secondary-color: #CFD8DC; /* Graphite Gray */
+}
+

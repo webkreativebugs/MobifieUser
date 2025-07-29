@@ -6,6 +6,7 @@ import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { BsKanban, BsBarChart } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
 import { GiLouvrePyramid } from 'react-icons/gi';
+import { LuCircleHelp } from "react-icons/lu";
 
 import type { SidebarLink } from '../data/Types/LInkType.interface';
 
@@ -16,6 +17,7 @@ export const AdminDashboardLinks: SidebarLink[] = [
   { name: 'Billing', icon: FiEdit,link:"/billings" },
   { name: 'Support', icon: BiColorFill ,link:"/support"},
   { name: 'Settings', icon: RiContactsLine,link:"/settings" },
+  { name: 'Help', icon: LuCircleHelp,link:"/help" },
 
   
   

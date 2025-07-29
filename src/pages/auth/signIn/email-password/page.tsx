@@ -143,9 +143,9 @@ const EmailPasswordSignIn = () => {
 
   return (
     <>
-    <Navbar theme={theme} onThemeChange={onThemeChange}/>
+    <Navbar theme={theme} onThemeChange={onThemeChange} />
       <div className="flex justify-center items-center min-h-screen custom-container ">
-        <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-md overflow-hidden p-4">
+        <div className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-glow rounded-md overflow-hidden p-4 ${theme.split('-')[1]==="dark"?"custom-container-secondary" :""}`}>
           {/* Left side: Form */}
 
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
@@ -395,17 +395,14 @@ const EmailPasswordSignIn = () => {
 
           {/* Right side: Image / color */}
           <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
-            {/* Background Shapes */}
-            <div className="absolute -top-75 -left-100 w-60 h-60 bg-green-200 rounded-full opacity-30 blur-2xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-lime-400 rounded-full opacity-20 blur-xl rotate-45"></div>
-            <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-[#79B93C] rounded-full opacity-10 blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+            
 
             {/* Main Content */}
             <div className="w-full relative z-10">
-              <h1 className="text-white text-3xl mb-2">
+              <h1 className="text-color   text-3xl mb-2">
                 Effortlessly manage your team and operations
               </h1>
-              <p className="text-white text-xs mb-6">
+              <p className="text-color text-xs mb-6">
                 Login to access your dashboard and manage your team
               </p>
               <div className="max-h-[300px] flex justify-center">
