@@ -1,9 +1,9 @@
 import Navbar from '../../../../components/common_component/Navbar';
-import { useTheme } from '../../../../context/AppContext';
+// import { useTheme } from '../../../../context/AppContext';
 import Sidebar from '../../../../components/common_component/Sidebar';
 import AlertPage from '../../../../components/common_component/dynamic_table/pages/AlertsPage';
 function page() {
-   const {theme, onThemeChange } = useTheme();
+  //  const {theme, onThemeChange } = useTheme();
   return (
     <>
     
@@ -11,7 +11,7 @@ function page() {
  
       <Sidebar active={"Alerts"}/>
       <div className=' w-full' >
-        <Navbar theme={theme} onThemeChange={onThemeChange} />
+        <Navbar />
         <AlertPage/>
       </div>
     </div>

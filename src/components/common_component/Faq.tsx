@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { FAQData } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
 interface FaqProps {
   data?: FAQData;
 }
+import { useState } from "react";
 export default function Faq({ data }: FaqProps) {
   const [openIndexes, setOpenIndexes] = useState<number[]>([0]);
 
@@ -18,9 +18,9 @@ export default function Faq({ data }: FaqProps) {
                 isOpen ? "shadow-md" : ""
               }`}
               onClick={() =>
-                setOpenIndexes((prev) =>
+                setOpenIndexes((prev:any) =>
                   prev.includes(index)
-                    ? prev.filter((i) => i !== index)
+                    ? prev.filter((i:any) => i !== index)
                     : [...prev, index]
                 )
               }

@@ -1,11 +1,11 @@
 import Navbar from '../../../../components/common_component/Navbar';
-import { useTheme } from '../../../../context/AppContext';
+// import { useTheme } from '../../../../context/AppContext';
 import Sidebar from '../../../../components/common_component/Sidebar';
-import ThemePicker from '../../../../components/module/org_component/theme_component/ThemePicker';
+// import ThemePicker from '../../../../components/module/org_component/theme_component/ThemePicker';
 // import ProjectsPage from '../../../../components_module/common_component/dynamic_table/pages/ProjectPage';
 function page() {
   //  const {onRoleChange} = useauth()
-   const {theme, onThemeChange } = useTheme();
+  //  const {theme, onThemeChange } = useTheme();
    
   return (
     <>
@@ -13,7 +13,7 @@ function page() {
  
       <Sidebar active={"Projects"}/>
       <div className=' w-full' >
-          <Navbar theme={theme} onThemeChange={onThemeChange} />
+          <Navbar />
           <div className='p-3 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] '>
           {/* <ThemePicker/> */}
           </div>

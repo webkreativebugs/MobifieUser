@@ -19,7 +19,7 @@ export async function fetchRequest(
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
   body: any = null,
   headers: Record<string, string> = {},
-  callback?: (data: any | null, error: Error | null) => void
+  // callback?: (data: any | null, error: Error | null) => void
 ): Promise<any> {
   try {
 

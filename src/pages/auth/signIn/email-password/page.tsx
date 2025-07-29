@@ -10,7 +10,7 @@ import PasswordLogin from "../../../../utils/api/PasswordLogin";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 
-import { useTheme } from "../../../../context/AppContext";
+// import { useTheme } from "../../../../context/AppContext";
 
 const EmailPasswordSignIn = () => {
   // const {theme , onThemeChange} = useTheme()
@@ -29,7 +29,7 @@ const EmailPasswordSignIn = () => {
   });
   // const {theme, onThemeChange } = useTheme();
   const navigate = useNavigate();
-  const [submitting, setSubmitting] = useState(false);
+  // const [submitting, setSubmitting] = useState(false);
 
   const [touched, setTouched] = useState({
     email: false,
