@@ -16,39 +16,72 @@ interface Quary {
 }
 
 function page() {
-  // const { onRoleChange } = useauth();
-  const { setLoader } = useloader();
-  const [apiError, setApiError] = useState("");
-  // const { theme, onThemeChange } = useTheme();
-  const [quary, setQuary] = useState<Quary>();
-  //   const [apiResponse, setApiResponse] = useState();
-  const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>(
-    undefined
-  );
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setQuary((prev) => ({
+ const { setLoader } = useloader();
+const [apiError, setApiError] = useState("");
+const [selectQuary, setSelectQuary] = useState<Quary>({ type: "All" });
+const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
+const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
+
+const handleInputChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+) => {
+  const { name, value } = e.target;
+
+  if (e.target.tagName === "INPUT") {
+    setInputQuary((prev) => ({
       ...prev,
       [name]: value,
     }));
+  } else {
+    setSelectQuary((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+};
 
 
+ useEffect(() => {
+  if (!selectQuary) return;
 
-  };
+  setLoader(true);
 
-  useEffect(() => {
-    modifiedUrlConfig.search = `?category=${encodeURIComponent(
-      quary?.type?.toString() || ""
-    )}${quary?.search ? `&search=${encodeURIComponent(quary.search)}` : ""}`;
+  const type = selectQuary?.type?.toString();
 
-  
-      console.log("srger");
-      setLoader(true);
-      fetchAllFaqs(setApiResponse, setApiError, setLoader);
+  if (type === "All") {
+    modifiedUrlConfig.search = "";
+  } else {
+    modifiedUrlConfig.search = `?category=${encodeURIComponent(type || "")}`;
+    if (selectQuary.search) {
+      modifiedUrlConfig.search += `&search=${encodeURIComponent(selectQuary.search)}`;
+    }
+  }
 
-  }, [quary]);
+  fetchAllFaqs(setApiResponse, setApiError,setLoader);
+  // setLoader(false);
+}, [selectQuary]);
+
+
+ useEffect(() => {
+  if (!inputQuary?.search?.trim()) return;
+
+  const type = selectQuary?.type?.toString();
+  const categoryParam = type && type !== "All" ? `?category=${encodeURIComponent(type)}` : "?category=";
+  const searchParam = `&search=${encodeURIComponent(inputQuary.search.trim())}`;
+
+  modifiedUrlConfig.search = `${categoryParam}${searchParam}`;
+
+  // setLoader(true);
+  fetchAllFaqs(setApiResponse, setApiError , setLoader);
+  // setLoader(false);
+}, [inputQuary]);
+
+
+ useEffect(() => {
+  setLoader(true);
+  setSelectQuary({ type: "All" });
+}, []);
+
 
   return (
     <div className="custom-container flex">
@@ -67,7 +100,7 @@ function page() {
                   <input
                     type="text"
                     placeholder="Search..."
-                    value={quary?.search?.toString()}
+                    value={inputQuary?.search?.toString()??""}
                     name="search"
                     onChange={handleInputChange}
                     className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
@@ -91,12 +124,12 @@ function page() {
 
                 {/* Select Dropdown */}
                 <select
-                  value={quary?.type?.toString()} // fallback to empty string to avoid uncontrolled warning
+                  value={selectQuary?.type?.toString()} // fallback to empty string to avoid uncontrolled warning
                   name="type"
                   onChange={handleInputChange}
                   className="w-1/4 py-2 px-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
                 >
-                  <option value="">Select</option>
+                  <option value="All">All</option>
                   <option value="Project">Project</option>
                   <option value="Organization">Organization</option>
                 </select>
