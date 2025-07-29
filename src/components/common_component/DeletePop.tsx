@@ -22,18 +22,16 @@ function DeletePop({
   return (
     <>
       {apiResponse ? (
-        <div>
-          <div className=" ">
-            <h1 className="text-2xl font-semibold text-gray-800 mb-6 px-4">
-              {apiResponse.message}
-            </h1>
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 ease-in-out"
-              onClick={() => setIspop(false)}
-            >
-              OK
-            </button>
-          </div>
+        <div className="flex h-full flex-col justify-around items-center  ">
+          <h1 className="text-2xl font-semibold text-gray-800 mb-6 px-4">
+            {apiResponse.message}
+          </h1>
+          <button
+            className=" font-medium py-2 px-8 rounded-full transition duration-300 ease-in-out ml-[26rem] text-2xl border"
+            onClick={() => setIspop(false)}
+          >
+            OK
+          </button>
         </div>
       ) : (
         <div>

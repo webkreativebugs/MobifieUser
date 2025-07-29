@@ -11,6 +11,9 @@ import ThemePicker from "../../../../components/module/org_component/theme_compo
 import DisablePop from "../../../../components/common_component/DisablePop";
 import UpdatePop from "../../../../components/common_component/UpdatePop";
 import DeletePop from "../../../../components/common_component/DeletePop";
+import { FaRegEdit } from "react-icons/fa";
+import { IoCopyOutline } from "react-icons/io5";
+import Toast from "../../../../components/common_component/Toast";
 
 function page() {
   // const { onRoleChange } = useauth();
@@ -20,7 +23,7 @@ function page() {
   const { orgDetails } = useorg();
   const [iscopy, setIscopy] = useState(false);
   const [ispop, setIspop] = useState(false);
-  const [themePopup , setThemePopup] = useState(false)
+  const [themePopup, setThemePopup] = useState(false);
   // const [disable, setDisable] = useState(false);
   // const [apiError, setApiError] = useState("");
 
@@ -188,56 +191,7 @@ function page() {
                     <div className="flex justify-between  ">
                       <p className="text-2xl ">Organization ID</p>{" "}
                       <button onClick={() => handleCopy()}>
-                        {iscopy ? (
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              x="1"
-                              y="1"
-                              width="22"
-                              height="22"
-                              rx="6"
-                              fill="#ecfdf5"
-                              stroke="#10b981"
-                              stroke-width="1.5"
-                            />
-                            <path
-                              d="M7 12l3 3 7-7"
-                              stroke="#10b981"
-                              stroke-width="2"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </svg>
-                        ) : (
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              x="1"
-                              y="1"
-                              width="22"
-                              height="22"
-                              rx="6"
-                              fill="#f9fafa"
-                              stroke="#94a3b8"
-                              stroke-width="1.5"
-                            />
-
-                            <path d="M8 8H16V16H8V8Z" fill="#0f172a" />
-                            <path d="M10 6H18V14H16V8H10V6Z" fill="#0f172a" />
-                          </svg>
-                        )}
+                        <IoCopyOutline className=" w-7 h-7" />
                       </button>
                     </div>
                     <div>
@@ -255,29 +209,7 @@ function page() {
                         }}
                       >
                         {" "}
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            x="1"
-                            y="1"
-                            width="22"
-                            height="22"
-                            rx="6"
-                            fill="#f9fafa"
-                            stroke="#94a3b8"
-                            stroke-width="1.5"
-                          />
-
-                          <path
-                            d="M15.232 5.232l3.536 3.536-9.192 9.192H6v-3.576l9.232-9.152z"
-                            fill="#0f172a"
-                          />
-                        </svg>
+                        <FaRegEdit className=" w-7 h-7" />
                       </button>
                     </div>
                     <div>
@@ -296,9 +228,7 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  disable*/}
-                  
                 </div>
-                
                 {/* <div className="w-full rounded-[20px] shadow-md bg-white h-[8rem] mb-5 p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
                     <p className="text-2xl">Disable Organization</p>{" "}
@@ -314,7 +244,6 @@ function page() {
                   </div>
                 </div> */}
                 {/*  delete org */}
-                
                 <div className="w-full rounded-[20px]  shadow-card card h-[8rem] p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
                     <p className="text-2xl ">Delete Organization</p>{" "}
@@ -326,10 +255,10 @@ function page() {
                         }}
                         className="mr-4 border rounded-lg px-5 py-1 button"
                       >
-                        Disable
+                        Deactivate
                       </button>
                       <button
-                        onClick={(e) => {
+                        onClick={() => {
                           setIspop(true);
                           YourComponent("Delete");
                         }}
@@ -346,39 +275,43 @@ function page() {
                     </p>
                   </div>
                 </div>
-                
               </div>
               <div className="w-full mt-5 rounded-[20px] shadow-card card h-[8rem] p-6 flex items-center justify-between bg-white">
-  {/* Left side: Icon + Theme Name */}
-  <div className="flex items-center gap-4">
-    {/* Top view open box icon (SVG or Font Awesome fallback) */}
-    <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full">
-      {/* Replace with custom SVG if needed */}
-      <i className="fas fa-cube text-xl text-gray-600"></i>
-    </div>
+                {/* Left side: Icon + Theme Name */}
+                <div className="flex items-center gap-4">
+                  {/* Top view open box icon (SVG or Font Awesome fallback) */}
+                  <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full">
+                    {/* Replace with custom SVG if needed */}
+                    <i className="fas fa-cube text-xl text-gray-600"></i>
+                  </div>
 
-    {/* Theme name + color */}
-    <div>
-      <div className="text-sm text-gray-500">Selected Theme</div>
-      <div className="flex items-center gap-2">
-        <span className="text-lg font-semibold text-gray-800">Ocean Blue</span>
-        <span className="w-4 h-4 rounded-full bg-blue-500 border border-gray-300"></span>
-      </div>
-    </div>
-  </div>
+                  {/* Theme name + color */}
+                  <div>
+                    <div className="text-sm text-gray-500">Selected Theme</div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-semibold text-gray-800">
+                        Ocean Blue
+                      </span>
+                      <span className="w-4 h-4 rounded-full bg-blue-500 border border-gray-300"></span>
+                    </div>
+                  </div>
+                </div>
 
-  {/* Right side: Action button */}
-  <button className="px-4 py-2 rounded-lg text-sm font-medium button transition"
-  onClick={()=>setThemePopup(true)}
-   >
-    Change Theme
-  </button>
-  </div>
-              
+                {/* Right side: Action button */}
+                <button
+                  className="px-4 py-2 rounded-lg text-sm font-medium button transition"
+                  onClick={() => setThemePopup(true)}
+                >
+                  Change Theme
+                </button>
+              </div>
             </div>
-            
           </div>
-          
+          <Toast
+            msg={"ID copied"}
+            show={iscopy}
+            onClose={() => setIscopy(false)}
+          />
         </div>
       </div>
       {ispop && (
@@ -403,7 +336,7 @@ function page() {
           </div>
         </div>
       )}
-      {themePopup&&<ThemePicker onClose={() => setThemePopup(false)} />}
+      {themePopup && <ThemePicker onClose={() => setThemePopup(false)} />}
     </>
   );
 }
