@@ -22,28 +22,30 @@ function DeletePop({
   return (
     <>
       {apiResponse ? (
-        <div>
+        <div className=" ">
           <div className=" ">
-            <h1 className="text-2xl font-semibold text-gray-800 mb-6 px-4">
+            <h1 className="text-2xl  text-center font-semibold mb-6 px-4">
               {apiResponse.message}
             </h1>
+            <div className="flex justify-center">
             <button
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 ease-in-out"
+              className="button font-medium py-2 px-6 rounded-full "
               onClick={() => setIspop(false)}
             >
               OK
             </button>
+            </div>
           </div>
         </div>
       ) : (
         <div>
           {/* Header */}
           <div className="flex justify-between items-center mb-12">
-            <p className="text-2xl font-bold text-gray-900 tracking-wide">
+            <p className="text-2xl font-boldtracking-wide">
               Delete Organization
             </p>
             <button
-              className="text-gray-400 hover:text-red-500 transition duration-200 text-2xl font-semibold"
+              className=" hover:text-red-500 transition duration-200 text-2xl font-semibold"
               onClick={() => setIspop(false)}
               aria-label="Close"
             >
@@ -52,7 +54,7 @@ function DeletePop({
           </div>
 
           {/* Body */}
-          <p className="text-gray-600 text-lg leading-relaxed mb-16">
+          <p className="text-lg leading-relaxed mb-16">
             Are you sure you want to delete this organization? This action can
             be reversed later.
           </p>
@@ -60,7 +62,7 @@ function DeletePop({
           {/* Footer */}
           <div className="flex justify-end gap-3">
             <button
-              className="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 hover:shadow-sm transition"
+              className="px-5 py-2 rounded-lg border button"
               onClick={() => setIspop(false)}
               disabled={disable}
             >

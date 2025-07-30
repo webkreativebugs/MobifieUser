@@ -21,7 +21,7 @@ function DisablePop({
   return (
     <>
       {apiResponse ? (
-        <div>
+        <div className="">
           <h1 className="text-2xl font-semibold text-gray-800 mb-6 px-4">
             {apiResponse.message}
           </h1>
@@ -33,14 +33,14 @@ function DisablePop({
           </button>
         </div>
       ) : (
-        <div>
+        <div className="">
           {/* Header */}
           <div className="flex justify-between items-center mb-12">
-            <p className="text-2xl font-bold text-gray-900 tracking-wide">
+            <p className="text-2xl font-bold  tracking-wide">
               Deactivate Organization
             </p>
             <button
-              className="text-gray-400 hover:text-red-500 transition duration-200 text-2xl font-semibold"
+              className=" hover:text-red-500 transition duration-200 text-2xl font-semibold"
               onClick={() => setIspop(false)}
               aria-label="Close"
             >
@@ -49,7 +49,7 @@ function DisablePop({
           </div>
 
           {/* Body */}
-          <p className="text-gray-600 text-lg leading-relaxed mb-16">
+          <p className="text-lg leading-relaxed mb-16">
             Are you sure you want to deactivate this organization? This action
             can be reversed later.
           </p>
@@ -57,7 +57,7 @@ function DisablePop({
           {/* Footer */}
           <div className="flex justify-end gap-3">
             <button
-              className="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 hover:shadow-sm transition"
+              className="px-5 py-2 rounded-lg border button"
               onClick={() => setIspop(false)}
               disabled={disable}
             >

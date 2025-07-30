@@ -397,7 +397,7 @@ function page() {
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="p-6 bg-white  h-72 w-1/3 rounded-[20px] shadow-md font-semibold"
+            className="p-6 card h-fit w-1/3 rounded-[20px] shadow-md font-semibold"
           >
             {ComponentToRender}
           </div>
