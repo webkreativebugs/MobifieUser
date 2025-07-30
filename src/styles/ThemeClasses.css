@@ -9,7 +9,7 @@
 .same-color        { color: var(--same-color); }
 .muted-color       { color: var(--muted-color); }
 .primary-inverse   { color: var(--primary-inverse-color); }
-.secondary-inverse { color: var(--success-inverse-color) !important; }
+.secondary-inverse { color: var(--secondary-inverse-color) !important; }
 .theme-color       { color: var(--theme-color); }
 .theme-inverse     { color: var(--theme-inverse-color); }
 .error-color       { color: var(--error-color); }

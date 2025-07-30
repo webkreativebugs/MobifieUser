@@ -127,7 +127,7 @@ const handleInputChange = (
                   value={selectQuary?.type?.toString()} // fallback to empty string to avoid uncontrolled warning
                   name="type"
                   onChange={handleInputChange}
-                  className="w-1/4 py-2 px-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
+                  className="w-1/4 py-2 px-3 text-black rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
                 >
                   <option value="All">All</option>
                   <option value="Project">Project</option>

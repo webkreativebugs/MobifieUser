@@ -11,12 +11,10 @@ export default function Faq({ data }: FaqProps) {
       {data?.faqs?.map((item, index) => {
         const isOpen = openIndexes.includes(index);
         return (
-          <div key={index} className="w-full border border-gray-200  shadow-sm">
+          <div key={index} className="w-full border  shadow-sm">
             {/* Question */}
             <div
-              className={`flex justify-between items-center px-6 py-6 bg-gray-100 cursor-pointer transition duration-300 rounded-t-lg ${
-                isOpen ? "shadow-md" : ""
-              }`}
+              className={`flex justify-between items-center px-6 py-6 bg-secondary secondary-inverse cursor-pointer transition duration-300 `}
               onClick={() =>
                 setOpenIndexes((prev:any) =>
                   prev.includes(index)
@@ -25,7 +23,7 @@ export default function Faq({ data }: FaqProps) {
                 )
               }
             >
-              <h5 className="text-base font-medium text-gray-800">
+              <h5 className=" font-medium secondary-inverse">
                 {item.question}
               </h5>
               <div className="text-green-600">
@@ -62,7 +60,7 @@ export default function Faq({ data }: FaqProps) {
                   : "max-h-0 opacity-0 py-0"
               }`}
             >
-              <p className="text-gray-600 text-sm">{item.answer}</p>
+              <p className="primary-inverse text-sm">{item.answer}</p>
             </div>
           </div>
         );
