@@ -19,10 +19,17 @@ interface Quary {
 function page() {
  const { setLoader } = useloader();
 const [apiError, setApiError] = useState<Error>();
+const [clicked, setClicked] = useState(1)
 const [selectQuary, setSelectQuary] = useState<Quary>({ type: "All" });
 const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
 const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
 
+if(apiError)
+{
+  console.log(apiError);
+  
+}
+ 
 const handleInputChange = (
   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 ) => {
@@ -57,8 +64,9 @@ const handleInputChange = (
       modifiedUrlConfig.search += `&search=${encodeURIComponent(selectQuary.search)}`;
     }
   }
-
+  
   fetchAllFaqs(setApiResponse, setApiError,setLoader);
+  setClicked(1)
   // setLoader(false);
 }, [selectQuary]);
 
@@ -137,7 +145,13 @@ const handleInputChange = (
               </div>
               {apiResponse &&<>
               <Faq data={apiResponse?.data} />
-              <Pagination setApiResponse={setApiResponse} type={"faq"} length={apiResponse.data.pagination.total_pages}/>
+              <Pagination
+               setApiResponse={setApiResponse} 
+               type={"faq"}
+               length={apiResponse.data.pagination.total_pages}
+               clicked={clicked}
+               setClicked={setClicked}
+               />
               </> }
             </div>
           </div>

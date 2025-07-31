@@ -15,6 +15,7 @@ function page() {
   
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
+  const [clicked, setClicked] = useState(1)
   const [apiResponse, setApiResponse] = useState<MemberResponse | undefined>();
   const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
   if(apiError)
@@ -105,7 +106,13 @@ const handleInputChange = (
       <div className="mt-10">
         <DynamicTable data={apiResponse.data.members} columns={columns} globalSearch={false} emptyMessage="No Alert" page={"access-manager"} />
       </div>
-      <Pagination length={apiResponse.data.pagination.total_pages} setApiResponse={setApiResponse} type={"access"} />
+      <Pagination 
+      length={apiResponse.data.pagination.total_pages} 
+      setApiResponse={setApiResponse} 
+      type={"access"} 
+      clicked={clicked}
+      setClicked={setClicked}
+      />
     </>
   }
 </div>

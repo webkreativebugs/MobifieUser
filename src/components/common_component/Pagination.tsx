@@ -5,19 +5,21 @@ import { CustomConfigPageLimits } from "../../../network/public/accessManager_ap
 import { modifiedUrlConfig } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api"
 import fetchAllFaqs from "../../utils/api/Faqs"
 // import { MemberResponse } from "../../../network/public/accessManager_api/AccessManager.interface"
-// import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 // import { FAQResponse } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface"
 // const forward = "../../../../public/assets/forward.svg"
 // const backward = "../../../../public/assets/backward.svg"
 interface Props{
     length:number,
     setApiResponse:any,
-    type:string
+    type:string,
+    clicked:number,
+    setClicked:Dispatch<SetStateAction<number>>
 }
 
-const Pagination = ({length,setApiResponse,type}:Props) => {
+const Pagination = ({length,setApiResponse,type,clicked,setClicked}:Props) => {
     const {setLoader} = useloader();
-    const [clicked, setClicked] = useState(1)
+    
     const [apiError , setApiError] = useState<Error>()
     if(apiError)
     {
