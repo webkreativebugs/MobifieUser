@@ -1,13 +1,46 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import { useloader } from "../../context/loader_context/LoaderContext"
+import getAccessManagerData from "../../utils/api/AccessManager"
+import { CustomConfigPageLimits } from "../../../network/public/accessManager_api/AccessManager.api"
+import { MemberResponse } from "../../../network/public/accessManager_api/AccessManager.interface"
+import { Dispatch, SetStateAction } from "react";
+// const forward = "../../../../public/assets/forward.svg"
+// const backward = "../../../../public/assets/backward.svg"
+interface Props{
+    length:number,
+    setApiResponse:Dispatch<SetStateAction<MemberResponse|undefined>>,
+    type:string
+}
 
-const Pagination = () => {
+const Pagination = ({length,setApiResponse,type}:Props) => {
+    const {setLoader} = useloader();
     const [clicked, setClicked] = useState(1)
-
+    const [apiError , setApiError] = useState<Error>()
+    if(apiError)
+    {
+        console.log(apiError);
+        
+    }
      function handleClick(i:number) {
+        
+
     setClicked(i + 1)
   }
+
+  useEffect(()=>{
+    if(type==="access")
+    {
+    setLoader(true)
+  CustomConfigPageLimits.page=(clicked).toString();
+  CustomConfigPageLimits.limit="10"
+  CustomConfigPageLimits.search=""
+  getAccessManagerData(setApiResponse,setApiError,setLoader)
+    }
+   
+  },[clicked])
+
   return (
-          <div className="pagination-container container mt-4  gap-2">
+          <div className="pagination-container container mt-10 mb-10  gap-2">
                 <button className={`px-2 pagination ${clicked !== 1 ? "" : "arrow-hidden"} `} style={{ width: "40px" }} onClick={
                   () => {
                     if (clicked > 1)
@@ -16,21 +49,21 @@ const Pagination = () => {
 
                   }} >
 
-                  {/* <img className="" src={`${clicked !== 1 ? backward.src : ""}`} /> */}
+                  {/* <img className="" src={`${clicked !== 1 ? backward : ""}`} /> */}
                 </button>
                 {
                   Array.from({ length }).map((_, i) => (
                     <button key={i} className={`text-center pagination p-0 ${clicked == i + 1 && "active"}`} onClick={() => handleClick(i)} >
-                      <p className="  mt-4  fs-6" style={{ height: 'auto' }} > {i + 1}</p>
+                      <p className="   fs-6" style={{ height: 'auto' }} > {i + 1}</p>
                     </button>
                   ))
                 }
                 <button className={`pagination px-2 ${clicked !== Math.floor(length) ? "" : "arrow-hidden"}  `} style={{ width: "40px" }} onClick={
                   () => {
-                    if (clicked < 5)
+                    if (clicked < length)
                       setClicked(clicked + 1)
                   }}>
-                  {/* {clicked !== Math.floor(length) ? <img src={forward.src} style={{ width: "24px", height: "24px" }} /> : ''} */}
+                  {/* {clicked !== Math.floor(length) ? <img src={forward} style={{ width: "24px", height: "24px" }} /> : ''} */}
 
                 </button>
               </div>

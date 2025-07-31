@@ -192,3 +192,31 @@ body {
     margin-bottom:20px;
 }
 
+.pagination{
+  border:1px solid var(--theme-color) !important;
+
+  height:40px;
+  width:40px;
+  border-radius:10px;
+  background-color:var(--primary-color);
+  font-weight:700;
+  display:flex;
+  
+  justify-content:center;
+  align-items: center;
+  color:var(--primary-inverse-color) !important;
+  
+}
+
+.pagination-container{
+  display:flex;
+  /* border:1px solid black; */
+  justify-content:center;
+}
+
+.pagination.active{
+  background-color:var(--theme-color) !important;
+  color:var(--theme-inverse-color) !important;
+  /* border:none; */
+    /* padding:6px 6px 6px 6px; */
+}
