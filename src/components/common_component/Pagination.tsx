@@ -2,13 +2,16 @@ import { useState,useEffect } from "react"
 import { useloader } from "../../context/loader_context/LoaderContext"
 import getAccessManagerData from "../../utils/api/AccessManager"
 import { CustomConfigPageLimits } from "../../../network/public/accessManager_api/AccessManager.api"
-import { MemberResponse } from "../../../network/public/accessManager_api/AccessManager.interface"
-import { Dispatch, SetStateAction } from "react";
+import { modifiedUrlConfig } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api"
+import fetchAllFaqs from "../../utils/api/Faqs"
+// import { MemberResponse } from "../../../network/public/accessManager_api/AccessManager.interface"
+// import { Dispatch, SetStateAction } from "react";
+// import { FAQResponse } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface"
 // const forward = "../../../../public/assets/forward.svg"
 // const backward = "../../../../public/assets/backward.svg"
 interface Props{
     length:number,
-    setApiResponse:Dispatch<SetStateAction<MemberResponse|undefined>>,
+    setApiResponse:any,
     type:string
 }
 
@@ -36,7 +39,13 @@ const Pagination = ({length,setApiResponse,type}:Props) => {
   CustomConfigPageLimits.search=""
   getAccessManagerData(setApiResponse,setApiError,setLoader)
     }
-   
+     if(type==="faq")
+    {
+    setLoader(true)
+  modifiedUrlConfig.page=(clicked).toString();
+  modifiedUrlConfig.limit="10"
+  fetchAllFaqs(setApiResponse,setApiError,setLoader)
+    }
   },[clicked])
 
   return (

@@ -6,6 +6,7 @@ import Faq from "../../../../components/common_component/Faq";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
+import Pagination from "../../../../components/common_component/Pagination";
 import {
   FAQResponse,
 } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
@@ -17,7 +18,7 @@ interface Quary {
 
 function page() {
  const { setLoader } = useloader();
-const [apiError, setApiError] = useState("");
+const [apiError, setApiError] = useState<Error>();
 const [selectQuary, setSelectQuary] = useState<Quary>({ type: "All" });
 const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
 const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
@@ -51,7 +52,7 @@ const handleInputChange = (
   if (type === "All") {
     modifiedUrlConfig.search = "";
   } else {
-    modifiedUrlConfig.search = `?category=${encodeURIComponent(type || "")}`;
+    modifiedUrlConfig.search = `&category=${encodeURIComponent(type || "")}`;
     if (selectQuary.search) {
       modifiedUrlConfig.search += `&search=${encodeURIComponent(selectQuary.search)}`;
     }
@@ -66,7 +67,7 @@ const handleInputChange = (
   if (!inputQuary?.search?.trim()) return;
 
   const type = selectQuary?.type?.toString();
-  const categoryParam = type && type !== "All" ? `?category=${encodeURIComponent(type)}` : "?category=";
+  const categoryParam = type && type !== "All" ? `&category=${encodeURIComponent(type)}` : "?category=";
   const searchParam = `&search=${encodeURIComponent(inputQuary.search.trim())}`;
 
   modifiedUrlConfig.search = `${categoryParam}${searchParam}`;
@@ -134,13 +135,15 @@ const handleInputChange = (
                   <option value="Organization">Organization</option>
                 </select>
               </div>
-              {apiResponse && <Faq data={apiResponse?.data} />}
+              {apiResponse &&<>
+              <Faq data={apiResponse?.data} />
+              <Pagination setApiResponse={setApiResponse} type={"faq"} length={apiResponse.data.pagination.total_pages}/>
+              </> }
             </div>
           </div>
         </div>
       </div>
 
-      {apiError}
     </div>
   );
 }
