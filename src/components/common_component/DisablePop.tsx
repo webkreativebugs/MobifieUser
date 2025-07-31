@@ -21,16 +21,18 @@ function DisablePop({
   return (
     <>
       {apiResponse ? (
-        <div className="">
+        <div className="flex h-full flex-col justify-around items-center  ">
           <h1 className="text-2xl font-semibold text-gray-800 mb-6 px-4">
             {apiResponse.message}
           </h1>
-          <button
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 ease-in-out"
-            onClick={() => setIspop(false)}
-          >
+           <button
+              className="px-5 py-2 rounded-lg bg-gradient-to-r border  text-white  shadow-md transition "
+              onClick={() => setIspop(false)}
+       
+            >
             OK
-          </button>
+            </button>
+          
         </div>
       ) : (
         <div className="">
@@ -39,6 +41,7 @@ function DisablePop({
             <p className="text-2xl font-bold  tracking-wide">
               Deactivate Organization
             </p>
+
             <button
               className=" hover:text-red-500 transition duration-200 text-2xl font-semibold"
               onClick={() => setIspop(false)}

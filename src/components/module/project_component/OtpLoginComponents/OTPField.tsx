@@ -124,7 +124,7 @@ const OTPField = ({apiRequestData}:any) => {
                 onChange={(e) => handleChange(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
                 autoFocus={index === 0}
-                className="w-12 h-12 text-center font-bold text-xl rounded-[10px] border border-[var(--MONGO_COLOR)] focus:outline-none"
+                className="w-12 h-12 text-center font-bold text-xl rounded-[10px] border text-black focus:outline-none"
               />
             ))}
           </div>

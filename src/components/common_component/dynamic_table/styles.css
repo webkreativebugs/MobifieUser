@@ -32,7 +32,8 @@
 }
 
 .dt-table th {
-  background-color: #f9fafb;
+  background-color: var(--secondary-color);
+  color: var( --secondary-inverse-color);
   text-align: left;
   font-weight: 600;
 }

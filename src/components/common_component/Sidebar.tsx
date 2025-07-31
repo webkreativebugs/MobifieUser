@@ -48,7 +48,7 @@ const Sidebar = ({ active }: SidebarProps) => {
                   onClick={() => setActiveLinkName(section.name)}
                   className={` ${activeLinkName === section.name ? "active-link   " : "normal-link" }`}
                 >
-                 <span   className={` ${activeLinkName === section.name ? "secondary-inverse" : "" }`}> <section.icon /></span>
+                 <span   className={` ${activeLinkName === section.name ? "primary-inverse" : "secondary-inverse" }`}> <section.icon /></span>
                   <span className="capitalize ">{section.name}</span>
                 </NavLink>
             </div>

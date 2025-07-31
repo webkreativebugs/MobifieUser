@@ -79,7 +79,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
         </div>
       )}
 
-      <table className="dt-table same-bg-color">
+      <table className="dt-table">
         <thead  >
           <tr  >
             {columns.map((col) => (
@@ -87,7 +87,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="primary-inverse">
           {data.length === 0 ? (
             <tr>
               <td colSpan={columns.length}>
