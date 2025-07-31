@@ -22,17 +22,15 @@ function DisablePop({
     <>
       {apiResponse ? (
         <div className="flex h-full flex-col justify-around items-center  ">
-          <h1 className="text-2xl font-semibold text-gray-800 mb-6 px-4">
+          <h1 className="text-2xl font-semibold  mb-6 px-4 primary-inverse">
             {apiResponse.message}
           </h1>
-           <button
-              className="px-5 py-2 rounded-lg bg-gradient-to-r border  text-white  shadow-md transition "
-              onClick={() => setIspop(false)}
-       
-            >
+          <button
+            className="px-5 py-2 rounded-lg bg-gradient-to-r border button text-white  shadow-md transition "
+            onClick={() => setIspop(false)}
+          >
             OK
-            </button>
-          
+          </button>
         </div>
       ) : (
         <div className="">
