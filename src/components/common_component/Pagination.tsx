@@ -5,7 +5,8 @@ import { CustomConfigPageLimits } from "../../../network/public/accessManager_ap
 import { modifiedUrlConfig } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
 import { AlertmodifiedUrlConfig } from "../../../network/public/organization_api/alerts/Alerts.api";
 import fetchAllFaqs from "../../utils/api/Faqs";
-import fetchAllAlerts from "../../utils/api/Alerts";
+// import fetchAllAlerts from "../../utils/api/Alerts";
+import getAlerts from "../../utils/api/Alert";
 // import { MemberResponse } from "../../../network/public/accessManager_api/AccessManager.interface"
 import { Dispatch, SetStateAction } from "react";
 // import { FAQResponse } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface"
@@ -57,7 +58,7 @@ const Pagination = ({
       setLoader(true);
       AlertmodifiedUrlConfig.page = clicked.toString();
       AlertmodifiedUrlConfig.limit = "10";
-      fetchAllAlerts(setApiResponse, setApiError, setLoader);
+      getAlerts(setApiResponse, setApiError, setLoader);
     }
   }, [clicked]);
 
