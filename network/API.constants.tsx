@@ -69,6 +69,10 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
   ORG_UPDATE: () => `${BASE_URL}/user/organization/org002`,
   ORG_DELETE: () => `${BASE_URL}/user/organization/org002/delete`,
   ORG_DEACTIVATE: () => `${BASE_URL}/user/organization/org002/deactivate`,
-  ALL_FAQS: (modifiedUrl) =>`${BASE_URL}/user/organization/org002/faqs${modifiedUrl}`,
-  ACCESS_Manager: (page,limit,search) =>`${BASE_URL}/user/organization/org002/members?page=${page}&limit=${limit}${search}`,
+  ALL_FAQS: (modifiedUrl, page, limit) =>
+    `${BASE_URL}/user/organization/org002/faqs?page=${page}&limit${limit}${modifiedUrl}`,
+  ACCESS_Manager: (page, limit, search) =>
+    `${BASE_URL}/user/organization/org002/members?page=${page}&limit=${limit}${search}`,
+  ALERTS: (modifiedUrl, page, limit) =>
+    `${BASE_URL}/user/organization/org002/alerts?page=${page}&limit${limit}${modifiedUrl}`,
 };

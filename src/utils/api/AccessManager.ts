@@ -3,11 +3,12 @@ import { MemberResponse, MemberCallback  } from "../../../network/public/accessM
 import { Dispatch, SetStateAction } from "react";
 
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function getAccessManagerData(setApiResponse:Dispatch<SetStateAction<MemberResponse|undefined>>,setApiError:Dispatch<SetStateAction<string>>, setLoader: (loading: boolean) => void){
+function getAccessManagerData(setApiResponse:Dispatch<SetStateAction<MemberResponse|undefined>>,setApiError:Dispatch<SetStateAction<Error|undefined>>, setLoader: (loading: boolean) => void){
     
 const handleUserInfoResponse:MemberCallback= (  response: MemberResponse | null, error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setApiError(error)
     }
     console.log(response);
     if(response)

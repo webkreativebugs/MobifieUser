@@ -24,8 +24,8 @@ const Sidebar = ({ active }: SidebarProps) => {
       <div className=" hidden xl:block overflow-auto hide-scrollbar  pb-10 h-screen w-2/12 shadow-md   bg-secondary  ">
         <div className="flex justify-between items-center">
           <Link to="/" className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight">
-            <img src={logo} alt="Mobifie Logo" className="w-[80px] " />
-            <span className="mt-4 text-2xl">Mobifie</span>
+            <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
+            <span className="mt-4 text-xl">Mobifie</span>
           </Link>
           <button
             type="button"
@@ -49,7 +49,7 @@ const Sidebar = ({ active }: SidebarProps) => {
                   className={` ${activeLinkName === section.name ? "active-link   " : "normal-link" }`}
                 >
                  <span   className={` ${activeLinkName === section.name ? "primary-inverse" : "secondary-inverse" }`}> <section.icon /></span>
-                  <span className="capitalize ">{section.name}</span>
+                  <span className="capitalize text-xs ">{section.name}</span>
                 </NavLink>
             </div>
           ))}

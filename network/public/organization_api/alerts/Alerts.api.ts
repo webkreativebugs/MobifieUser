@@ -3,14 +3,16 @@ import { API_ENDPOINTS } from "../../../API.constants";
 import {  fetchRequest } from "../../../FetchRequest";
 
 import {AlertResponse,AlertCallback,AlertUrlConfig } from "./Alerts.interface"
-export const modifiedUrlConfig: AlertUrlConfig = {
+export const AlertmodifiedUrlConfig = {
   search: "",
+   page:"1",
+  limit:"10",
 };
 export async function fetchAlerts(
   //  quary:string|null,
   callback: AlertCallback
 ): Promise<AlertResponse | Error> {
-  const url = API_ENDPOINTS.ALL_FAQS(modifiedUrlConfig.search);
+  const url = API_ENDPOINTS.ALERTS(AlertmodifiedUrlConfig.search,AlertmodifiedUrlConfig.page,AlertmodifiedUrlConfig.limit);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

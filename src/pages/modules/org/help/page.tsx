@@ -6,6 +6,7 @@ import Faq from "../../../../components/common_component/Faq";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
+import Pagination from "../../../../components/common_component/Pagination";
 import {
   FAQResponse,
 } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
@@ -17,11 +18,18 @@ interface Quary {
 
 function page() {
  const { setLoader } = useloader();
-const [apiError, setApiError] = useState("");
+const [apiError, setApiError] = useState<Error>();
+const [clicked, setClicked] = useState(1)
 const [selectQuary, setSelectQuary] = useState<Quary>({ type: "All" });
 const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
 const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
 
+if(apiError)
+{
+  console.log(apiError);
+  
+}
+ 
 const handleInputChange = (
   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 ) => {
@@ -51,13 +59,14 @@ const handleInputChange = (
   if (type === "All") {
     modifiedUrlConfig.search = "";
   } else {
-    modifiedUrlConfig.search = `?category=${encodeURIComponent(type || "")}`;
+    modifiedUrlConfig.search = `&category=${encodeURIComponent(type || "")}`;
     if (selectQuary.search) {
       modifiedUrlConfig.search += `&search=${encodeURIComponent(selectQuary.search)}`;
     }
   }
-
+  
   fetchAllFaqs(setApiResponse, setApiError,setLoader);
+  setClicked(1)
   // setLoader(false);
 }, [selectQuary]);
 
@@ -66,7 +75,7 @@ const handleInputChange = (
   if (!inputQuary?.search?.trim()) return;
 
   const type = selectQuary?.type?.toString();
-  const categoryParam = type && type !== "All" ? `?category=${encodeURIComponent(type)}` : "?category=";
+  const categoryParam = type && type !== "All" ? `&category=${encodeURIComponent(type)}` : "?category=";
   const searchParam = `&search=${encodeURIComponent(inputQuary.search.trim())}`;
 
   modifiedUrlConfig.search = `${categoryParam}${searchParam}`;
@@ -134,13 +143,21 @@ const handleInputChange = (
                   <option value="Organization">Organization</option>
                 </select>
               </div>
-              {apiResponse && <Faq data={apiResponse?.data} />}
+              {apiResponse &&<>
+              <Faq data={apiResponse?.data} />
+              <Pagination
+               setApiResponse={setApiResponse} 
+               type={"faq"}
+               length={apiResponse.data.pagination.total_pages}
+               clicked={clicked}
+               setClicked={setClicked}
+               />
+              </> }
             </div>
           </div>
         </div>
       </div>
 
-      {apiError}
     </div>
   );
 }
