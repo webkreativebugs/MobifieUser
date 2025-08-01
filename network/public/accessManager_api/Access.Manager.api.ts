@@ -2,7 +2,7 @@ import { API_ENDPOINTS } from "../../API.constants";
 // import {  FAQResponse } from "./AllFaqs.interface";
 import {  fetchRequest } from "../../FetchRequest";
 
-import {  MemberResponse,MemberCallback } from "./AccessManager.interface"
+import {  MemberResponse,MemberCallback } from "./Access.Manager.interface"
 export const CustomConfigPageLimits = {
   page: "",
   limit:"",

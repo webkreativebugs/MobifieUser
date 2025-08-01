@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useloader } from "../../context/loader_context/LoaderContext";
 import getAccessManagerData from "../../utils/api/AccessManager";
-import { CustomConfigPageLimits } from "../../../network/public/accessManager_api/AccessManager.api";
+import { CustomConfigPageLimits } from "../../../network/public/accessManager_api/Access.Manager.api";
 import { modifiedUrlConfig } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
 import { AlertmodifiedUrlConfig } from "../../../network/public/organization_api/alerts/Alerts.api";
 import { ActivitymodifiedUrlConfig } from "../../../network/public/organization_api/activity/Activity.api";

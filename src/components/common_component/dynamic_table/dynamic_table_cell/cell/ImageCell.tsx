@@ -3,13 +3,15 @@ import React from 'react';
 interface ImageCellProps {
   value: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // data: any;
+  data: any;
   page?: string;
   style?: React.CSSProperties;
 }
 
 
-const ImageCell: React.FC<ImageCellProps> = ({  value, page, style }) => {
+const ImageCell: React.FC<ImageCellProps> = ({data,  value, page, style }) => {
+  console.log(data);
+  
   return (
     <>
       <img
