@@ -16,6 +16,7 @@ function DisablePop({
     setLoader(true); // ✅ show loader globally
     Deactivate(setApiResponse, setApiError, setLoader);
     setDisable(true);
+    console.log(apiError);
   };
 
   return (

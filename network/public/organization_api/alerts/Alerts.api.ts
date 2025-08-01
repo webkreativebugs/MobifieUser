@@ -2,7 +2,7 @@ import { API_ENDPOINTS } from "../../../API.constants";
 // import {  FAQResponse } from "./AllFaqs.interface";
 import {  fetchRequest } from "../../../FetchRequest";
 
-import {AlertResponse,AlertCallback,AlertUrlConfig } from "./Alerts.interface"
+import {AlertResponse,AlertCallback } from "./Alerts.interface"
 export const AlertmodifiedUrlConfig = {
   search: "",
    page:"1",
