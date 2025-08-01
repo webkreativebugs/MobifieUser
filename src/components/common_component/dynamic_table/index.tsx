@@ -88,14 +88,14 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
           </tr>
         </thead>
         <tbody className="primary-inverse">
-          {data?.length === 0 ? (
+          {data.length === 0 ? (
             <tr>
               <td colSpan={columns.length}>
                 <EmptyState message={emptyMessage} />
               </td>
             </tr>
           ) : (
-            data?.map((row, rowIndex) => (
+            data.map((row, rowIndex) => (
               <tr key={row.id || rowIndex}>
                 {columns.map((col) => (
                   <td key={col.key} style={col.style} >

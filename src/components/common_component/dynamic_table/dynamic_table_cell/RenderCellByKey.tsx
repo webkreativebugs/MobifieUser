@@ -20,6 +20,14 @@ const renderCellByKey = (key: string, value: string, data: any, page?: string, s
     return <TextCell data={data} value={value} />;
   }
 
+  if(key==="created_at")
+  {
+  const date = new Date(value);
+  const readable = date.toLocaleString();
+  // console.log(value);
+  return  <TextCell data={data} value={readable}/>
+  }
+
   return <TextCell data={data} value={value} />;
 };
 

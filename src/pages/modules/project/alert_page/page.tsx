@@ -69,7 +69,7 @@ function page() {
         <div className="p-5 w-full max-h-[90vh] overflow-auto ">
           <div>
             <div className="mt-2">
-              <h1 className="table-heading pl-2">Access Manager</h1>
+              <h1 className="table-heading pl-2">Alerts</h1>
             </div>
           </div>
           <div className="w-3/5 flex justify-between items-center mt-4 gap-4">

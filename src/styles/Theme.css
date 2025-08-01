@@ -1,7 +1,7 @@
 :root {
  --primary-color: #7ed957  ;              /* Vibrant green */
   /* --secondary-color: #A5D46F;            Softer olive green */
-  --background-color: #F1F9E9;           /* Gentle pastel background */
+  --background-color: white;           /* Gentle pastel background */
   --text-color: #4A751E;                 /* Earthy dark green */
   --primary-inverse-color: #ffffff;            /* White on vibrant green */
  --secondary-inverse-color: #000000;          /* Black on olive */
@@ -24,6 +24,7 @@
   --info-color: #0288D1;                 /* Ocean blue info */
   --black: #000000;
   --white: #FFFFFF;
+  --background-color: white;  
   --transparent: transparent;
   --theme-color: #03A9F4;                /* 🌤️ Sky Blue (Light Theme) */
   --theme-inverse-color: #FFFFFF;        /* Text on theme */
@@ -34,7 +35,8 @@
   --secondary-color: #01475F;            /* Muted blue-gray accent */
   --secondary-inverse-color: #B3E5FC;    /* Bright aqua contrast */
   --error-color: #EF5350;                /* Brighter red for dark bg */
-  --success-color: #66BB6A;              /* Green */
+  --success-color: #66BB6A; 
+  --background-color: black;               /* Green */
   --warning-color: #FFEE58;              /* Yellow */
   --info-color: #4FC3F7;                 /* Light blue info */
   --black: #000000;
@@ -46,6 +48,7 @@
 
 
 .midnight-light {
+  --background-color: white;  
   --primary-color: #ECEFF1;              /* Light slate background */
   --primary-inverse-color: #263238;      /* Deep blue-gray for text */
   --theme-color: #37474F;                /* Slate gray */
@@ -59,6 +62,7 @@
 }
 
 .midnight-dark {
+  --background-color: black;  
   --primary-color: #263238;              /* Deep slate */
   --primary-inverse-color: #ECEFF1;      /* Pale gray */
   --theme-color: #37474F;                /* Slate gray */
@@ -78,7 +82,7 @@
   --theme-inverse-color: #FFFFFF;
   --secondary-color: #33691E;            /* Deep olive */
   --secondary-inverse-color: #C8E6C9;
- 
+  --background-color: white;  
   --error-color: #D32F2F;
   --success-color: #388E3C;
   --warning-color: #FBC02D;
@@ -86,6 +90,7 @@
 }
 
 .limegreen-dark {
+  --background-color: black;  
   --primary-color: #1B5E20;
   --primary-inverse-color: #E8F5E9;
   --theme-color: #32CD32;
@@ -99,6 +104,7 @@
 }
 
 .sunsetcoral-light {
+  --background-color: white;  
   --primary-color: #FFF3E0;
   --primary-inverse-color: #BF360C;
   --theme-color: #FF6F61;
@@ -113,6 +119,7 @@
 
 
 .sunsetcoral-dark {
+  --background-color: black;  
   --primary-color: #3E2723;
   --primary-inverse-color: #FFE0B2;
   --theme-color: #FF6F61;
@@ -125,6 +132,7 @@
   --info-color: #4FC3F7;
 }
 .royalindigo-light {
+  --background-color: white;  
   --primary-color: #E8EAF6;
   --primary-inverse-color: #1A237E;
   --theme-color: #3F51B5;
@@ -138,6 +146,7 @@
 }
 
 .royalindigo-dark {
+  --background-color: black;  
   --primary-color: #1A237E;
   --primary-inverse-color: #E8EAF6;
   --theme-color: #3F51B5;

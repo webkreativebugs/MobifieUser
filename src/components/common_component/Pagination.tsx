@@ -75,7 +75,7 @@ const Pagination = ({
   return (
     <div className="pagination-container container mt-10 mb-10  gap-2">
       <button
-        className={`px-2 pagination ${clicked !== 1 ? "" : "arrow-hidden"} `}
+        className={`px-2 pagination ${clicked !== 1 ? "" : "hidden"} `}
         style={{ width: "40px" }}
         onClick={() => {
           if (clicked > 1) setClicked(clicked - 1);
@@ -100,7 +100,7 @@ const Pagination = ({
       ))}
       <button
         className={`pagination px-2 ${
-          clicked !== Math.floor(length) ? "" : "arrow-hidden"
+          clicked !== Math.floor(length) ? "" : "hidden"
         }  `}
         style={{ width: "40px" }}
         onClick={() => {

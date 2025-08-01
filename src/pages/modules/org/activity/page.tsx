@@ -26,7 +26,9 @@ function page() {
   }
   const columns: ColumnConfig[] = [
   { key: "activity_details", title: "Activity" },
-  // { key: "project_id", title: "Project ID" },
+  { key: "email", title: "Email" },
+  { key: "submodule", title: "Module" },
+  { key: "created_at", title:"Created At"}
 ];
   // console.log(apiError);
 
