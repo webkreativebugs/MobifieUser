@@ -1,9 +1,8 @@
-import React from 'react';
-import { FiShoppingBag, FiEdit, FiPieChart } from 'react-icons/fi';
-import { AiOutlineShoppingCart, AiOutlineCalendar, AiOutlineStock, AiOutlineAreaChart, AiOutlineBarChart } from 'react-icons/ai';
+import { FiShoppingBag, FiEdit } from 'react-icons/fi';
+import { AiOutlineShoppingCart, AiOutlineCalendar } from 'react-icons/ai';
 import { IoMdContacts } from 'react-icons/io';
-import { RiContactsLine, RiStockLine } from 'react-icons/ri';
-import { BsKanban, BsBarChart } from 'react-icons/bs';
+import { RiContactsLine } from 'react-icons/ri';
+import { BsKanban } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
 import { GiLouvrePyramid } from 'react-icons/gi';
 import { LuCircleHelp } from "react-icons/lu";
@@ -13,6 +12,7 @@ import type { SidebarLink } from '../data/Types/LInkType.interface';
 export const AdminDashboardLinks: SidebarLink[] = [
   { name: 'Projects', icon: FiShoppingBag ,link:'/projects'},
   { name: 'Alerts', icon: AiOutlineShoppingCart,link:"/alerts" },
+  { name: 'Activity', icon: GiLouvrePyramid,link:"/activity" },
   { name: 'Access Manager', icon: BsKanban,link:"/access-manager" },
   { name: 'Billing', icon: FiEdit,link:"/billings" },
   { name: 'Support', icon: BiColorFill ,link:"/support"},

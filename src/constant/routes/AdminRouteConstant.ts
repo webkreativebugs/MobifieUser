@@ -4,6 +4,7 @@ import LandingPage from '../../pages/modules/project/redirecting_page/LandingPag
 import Settings from "../../pages/modules/org/setting/page"
 import Help from "../../pages/modules/org/help/page"
 import AccessManager from "../../pages/modules/org/access-manager/page"
+import Activity from "../../pages/modules/org/activity/page"
 export const admin =[
     {
         route:"/",
@@ -33,6 +34,11 @@ export const admin =[
      {
         route:"/help",
         component: Help,
+        additional:""
+    },
+    {
+        route:"/activity",
+        component: Activity,
         additional:""
     },
     

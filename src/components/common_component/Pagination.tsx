@@ -4,7 +4,9 @@ import getAccessManagerData from "../../utils/api/AccessManager";
 import { CustomConfigPageLimits } from "../../../network/public/accessManager_api/AccessManager.api";
 import { modifiedUrlConfig } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
 import { AlertmodifiedUrlConfig } from "../../../network/public/organization_api/alerts/Alerts.api";
+import { ActivitymodifiedUrlConfig } from "../../../network/public/organization_api/activity/Activity.api";
 import fetchAllFaqs from "../../utils/api/Faqs";
+import fetchAllActivity from "../../utils/api/Activity";
 // import fetchAllAlerts from "../../utils/api/Alerts";
 import getAlerts from "../../utils/api/Alert";
 // import { MemberResponse } from "../../../network/public/accessManager_api/AccessManager.interface"
@@ -59,6 +61,14 @@ const Pagination = ({
       AlertmodifiedUrlConfig.page = clicked.toString();
       AlertmodifiedUrlConfig.limit = "10";
       getAlerts(setApiResponse, setApiError, setLoader);
+    }
+    if(type==="activity")
+    {
+      setLoader(true);
+      ActivitymodifiedUrlConfig.page = clicked.toString();
+      ActivitymodifiedUrlConfig.limit = "10";
+      fetchAllActivity(setApiResponse, setApiError, setLoader)
+
     }
   }, [clicked]);
 

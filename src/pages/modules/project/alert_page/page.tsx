@@ -24,10 +24,7 @@ function page() {
     console.log(apiError);
   }
   const columns: ColumnConfig[] = [
-    { key: "title", title: "Alert" },
-    { key: "message", title: "Alert Message" },
-    { key: "priority", title: "Priority" },
-    { key: "status", title: "Status" },
+    { key: "message", title: "Alerts" },
     // { key: "project_id", title: "Project ID" },
   ];
   // console.log(apiError);

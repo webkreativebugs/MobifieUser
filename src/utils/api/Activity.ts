@@ -8,7 +8,6 @@ const handleUserInfoResponse:ActivityCallback= (  response: ActivityResponse | n
     if (error) {
       console.error("Error while fetching user info:", error);
     }
-    console.log(response);
     if(response)
     {
     //   customAuthorizationConfig.kb_authorization=response.data;

@@ -2,7 +2,7 @@ import { API_ENDPOINTS } from "../../../API.constants";
 // import {  FAQResponse } from "./AllFaqs.interface";
 import {  fetchRequest } from "../../../FetchRequest";
 
-import {ActivityResponse,ActivityCallback,ActivityUrlConfig } from "./Activity.interface"
+import {ActivityResponse,ActivityCallback } from "./Activity.interface"
 export const ActivitymodifiedUrlConfig = {
   search: "",
    page:"1",
