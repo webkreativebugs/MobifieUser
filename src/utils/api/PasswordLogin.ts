@@ -2,10 +2,6 @@ import {emailpasswordlogin} from "../../../network/public/project_api/email_pass
 import { LoginResponse,LoginCallback,LoginRequest } from "../../../network/public/project_api/email_password_login/EmailPasswordLogin.interface";
 // import { useloader } from "../../context/loader_context/LoaderContext";
 
-interface FormData {
-    email:string;
-    password:string
-}
 function passwordApi(setApiResponse:any,EmailPasswordformData:LoginRequest ,setApiError:any,setLoader:any){
 
   // const {setLoader} =useloader()

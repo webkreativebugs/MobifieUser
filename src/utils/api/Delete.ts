@@ -7,6 +7,7 @@ function DeleteOrg(setApiResponse:any,setApiError:any, setLoader: (loading: bool
 const handleUserInfoResponse: ApiCallback= (  response: ApiResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setApiError(error)
     }
     console.log(response);
     if(response)

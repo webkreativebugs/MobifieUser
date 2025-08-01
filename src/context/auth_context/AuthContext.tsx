@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { replace, useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 // import AuthMe from "../../utils/api/AuthMe";
 // import { decoder } from "../../utils/JwtDecoder";
 // import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ const AuthContext = createContext({} as USERROLE);
 const STORE_CONSTANT: string = "token";
 export const AuthProvider = ({ children }: Props) => {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [role, setRole] = useState<string>("");
   const [apiResponse, setApiResponse] = useState<string>("");
   useEffect(() => {
@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: Props) => {
   useEffect(() => {
     if (apiResponse) {
       handleChange(apiResponse);
+      setApiResponse("hello")
     }
   }, [apiResponse]);
 

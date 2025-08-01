@@ -6,10 +6,6 @@ import {  UpdateOrganizationNameRequest,
 // import { useloader } from "../../context/loader_context/LoaderContext";
 import { Dispatch, SetStateAction } from "react";
 
-interface FormData {
-    email:string;
-    password:string
-}
 
 function OrgDetailsUpdate(setApiResponse: Dispatch<SetStateAction<UpdateOrganizationNameResponse|undefined>>,UpdatedOrgData:UpdateOrganizationNameRequest ,setApiError:any,setLoader:any){
 

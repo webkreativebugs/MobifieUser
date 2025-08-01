@@ -62,7 +62,7 @@ const COLORS = {
 };
 
 // 🎨 Map Log Types to Colors
-const logColors: Record<LogTypeEnum, string> = {
+export const logColors: Record<LogTypeEnum, string> = {
   [LogTypeEnum.LOG]: COLORS.BLACK_BG_WHITE_TEXT,
   [LogTypeEnum.ERROR]: COLORS.RED_BG_WHITE_TEXT,
   [LogTypeEnum.WARN]: COLORS.YELLOW_BG_BLACK_TEXT,
@@ -130,6 +130,8 @@ function safeStringify(obj: any, space = 2): string {
       if (typeof value === "object" && value !== null) {
         if (seen.has(value)) return "[Circular]"; // Detect circular structures
         seen.add(value);
+        console.log(key);
+        
       }
       if (typeof value === "function") return "[Function]"; // Handle functions
       if (typeof value === "bigint") return value.toString(); // Handle BigInt

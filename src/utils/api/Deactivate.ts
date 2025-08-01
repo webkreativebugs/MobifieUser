@@ -7,6 +7,7 @@ function Deactivate(setApiResponse:any,setApiError:any, setLoader: (loading: boo
 const handleUserInfoResponse: DeactivateCallback= (  response: DeactivateResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setApiError(error)
     }
     console.log(response);
     if(response)

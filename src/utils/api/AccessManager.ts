@@ -1,5 +1,5 @@
-import {accessManager} from "../../../network/public/accessManager_api/AccessManager.api"
-import { MemberResponse, MemberCallback  } from "../../../network/public/accessManager_api/AccessManager.interface";
+import { accessManager } from "../../../network/public/accessManager_api/AccessManager.api";
+import { MemberResponse , MemberCallback } from "../../../network/public/accessManager_api/AccessManager.interface"; 
 import { Dispatch, SetStateAction } from "react";
 
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";

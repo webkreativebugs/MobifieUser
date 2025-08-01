@@ -7,6 +7,7 @@ function fetchAllActivity(setApiResponse:any,setApiError:any, setLoader:any ){
 const handleUserInfoResponse:ActivityCallback= (  response: ActivityResponse | null, error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setApiError(error)
     }
     if(response)
     {

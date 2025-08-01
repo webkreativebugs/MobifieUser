@@ -17,6 +17,11 @@ function DisablePop({
     Deactivate(setApiResponse, setApiError, setLoader);
     setDisable(true);
   };
+  if(apiError)
+  {
+    console.log(apiError);
+    
+  }
 
   return (
     <>

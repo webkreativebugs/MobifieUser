@@ -7,6 +7,7 @@ function fetchAllFaqs(setApiResponse:any,setApiError:any, setLoader:any ){
 const handleUserInfoResponse:FAQCallback= (  response: FAQResponse | null, error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      setApiError(error)
     }
     console.log(response);
     if(response)

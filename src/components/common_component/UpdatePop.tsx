@@ -42,7 +42,7 @@ const UpdatePop = ({
   const { orgDetails } = useorg();
   const { setLoader } = useloader();
   // const [ispop, setIspop] = useState(false);
-  const [disable, setDisable] = useState(false);
+  // const [disable, setDisable] = useState(false);
   const [apiError, setApiError] = useState("");
 
   const [apiResponse, setApiResponse1] = useState<
@@ -73,7 +73,7 @@ const UpdatePop = ({
       console.log(orgName);
 
       OrgDetailsUpdate(setApiResponse1, orgName, setApiError, setLoader);
-      setDisable(true);
+      // setDisable(true);
     }
   };
   console.log(apiError);

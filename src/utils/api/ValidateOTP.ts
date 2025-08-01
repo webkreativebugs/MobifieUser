@@ -1,7 +1,7 @@
 import {verifyOtp} from "../../../network/public/project_api/otp_verification/OtpVerification.api"
 import {  OtpVerifyRequest,OtpVerifyResponse,OtpVerifyCallback } from "../../../network/public/project_api/otp_verification/OtpVerification.interface";
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
-import { decoder } from "../JwtDecoder";
+// import { decoder } from "../JwtDecoder";
 
 function ValidateOtp(OtpLoginformData:OtpVerifyRequest,setApiResponse:any , setLoader:any,setApiError:any){
 

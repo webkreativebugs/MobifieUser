@@ -1,6 +1,6 @@
 import { themes } from '../../../../data/ThemeSection'
 import { useTheme } from '../../../../context/AppContext'
-import ColorPicker from './ColorPicker'
+// import ColorPicker from './ColorPicker'
 import { useEffect, useState } from 'react'
 
 interface Theme {
