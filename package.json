@@ -21,6 +21,7 @@
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^24.0.1",
     "@types/react": "^18.2.55",

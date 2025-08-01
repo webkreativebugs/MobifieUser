@@ -1,4 +1,4 @@
-import "../../../../src/app.css";
+import "../../../App.css"
 import { Link } from "react-router-dom";
 // import InputField from "../../../../components/module/project_component/OtpLoginComponents/InputField";
 const loginImg = "../../../../public/assets/login.png";
