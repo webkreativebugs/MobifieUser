@@ -1,21 +1,21 @@
 .dt-container {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--secondary-color);
+  /* border: 1px solid var(--secondary-color); */
   border-radius: 6px;
   font-family: Arial, sans-serif;
 }
 
 .dt-search-bar {
   padding: 12px;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--theme-color);
 }
 
 .dt-search-bar input {
   padding: 8px;
   width: 300px;
   font-size: 14px;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--theme-color);
   border-radius: 4px;
 }
 
@@ -27,14 +27,14 @@
 .dt-table th,
 .dt-table td {
   padding: 12px 16px;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--theme-color);
   font-size: 14px;
   background-color: var(--primary-color);
   color:var(--primary-inverse-color);
 }
 
 .dt-table th {
-  background-color: var(--secondary-color);
+  /* background-color: var(--secondary-color); */
   color: var( --secondary-inverse-color);
   text-align: left;
   font-weight: 600;

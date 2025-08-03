@@ -4,13 +4,14 @@
   --background-color: white;           /* Gentle pastel background */
   --text-color: #4A751E;                 /* Earthy dark green */
   --primary-inverse-color: #ffffff;            /* White on vibrant green */
- --secondary-inverse-color: #000000;          /* Black on olive */
+  --secondary-inverse-color: #000000;          /* Black on olive */
   --theme-color: #7ed957;                /* Same as primary for button/link base */
   --theme-inverse-color: #4A751E;        /* Dark green for text/icons */
   --error-color: #F44336;                /* Default red */
   --success-color: #4CAF50;              /* Default green */
   --warning-color: #FFC107;              /* Default yellow */
   --info-color: #03A9F4;  
+  --opposite-color:black;
 }
 
 .oceanblue-light {
@@ -27,7 +28,8 @@
   --background-color: white;  
   --transparent: transparent;
   --theme-color: #03A9F4;                /* 🌤️ Sky Blue (Light Theme) */
-  --theme-inverse-color: #FFFFFF;        /* Text on theme */
+  --theme-inverse-color: #FFFFFF; 
+  --opposite-color:black;       /* Text on theme */
 }
 .oceanblue-dark {
   --primary-color: #012D41;              /* Deep ocean background */
@@ -43,7 +45,8 @@
   --white: #FFFFFF;
   --transparent: transparent;
   --theme-color: #0288D1;                /* 🌊 Deeper Ocean Blue (Dark Theme) */
-  --theme-inverse-color: #E0F7FA;        /* Text on theme */
+  --theme-inverse-color: #E0F7FA;     
+  --opposite-color:white;   /* Text on theme */
 }
 
 
@@ -59,6 +62,7 @@
   --success-color: #388E3C;
   --warning-color: #FBC02D;
   --info-color: #0288D1;
+  --opposite-color:black;
 }
 
 .midnight-dark {
@@ -72,6 +76,7 @@
   --error-color: #EF5350;
   --success-color: #66BB6A;
   --warning-color: #FFEE58;
+  --opposite-color:white;
   --info-color: #4FC3F7;
 }
 
@@ -87,6 +92,7 @@
   --success-color: #388E3C;
   --warning-color: #FBC02D;
   --info-color: #0288D1;
+  --opposite-color:black;
 }
 
 .limegreen-dark {
@@ -101,6 +107,7 @@
   --success-color: #66BB6A;
   --warning-color: #FFEE58;
   --info-color: #4FC3F7;
+  --opposite-color:white;
 }
 
 .sunsetcoral-light {
@@ -115,6 +122,7 @@
   --success-color: #388E3C;
   --warning-color: #FBC02D;
   --info-color: #0288D1;
+  --opposite-color:black;
 }
 
 
@@ -130,6 +138,7 @@
   --success-color: #66BB6A;
   --warning-color: #FFEE58;
   --info-color: #4FC3F7;
+  --opposite-color:white;
 }
 .royalindigo-light {
   --background-color: white;  
@@ -143,6 +152,7 @@
   --success-color: #388E3C;
   --warning-color: #FBC02D;
   --info-color: #0288D1;
+  --opposite-color:black;
 }
 
 .royalindigo-dark {
@@ -157,5 +167,6 @@
   --success-color: #66BB6A;
   --warning-color: #FFEE58;
   --info-color: #4FC3F7;
+  --opposite-color:white;
 }
 

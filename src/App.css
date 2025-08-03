@@ -106,8 +106,8 @@ body {
   padding-top: 0.75rem;
   padding-bottom: 0.625rem;
   border-radius: 0.5rem;
-  color:var(--primary-inverse-color) !important;
-  background-color: var(--primary-color);
+  color:var(--theme-inverse-color) !important;
+  background-color: var(--theme-color);
   font-size: 1rem;
   margin: 0.5rem;
   text-decoration: none; 
@@ -159,7 +159,7 @@ body {
   /* color: var(--text-color);      */
   margin: 0.5rem;         /* m-2 = 0.5rem (8px) */
   text-decoration: none;  
-  color:var(--secondary-inverse-color)
+  color:var(--theme-color)
 }
 
 .tab-links{
@@ -187,9 +187,10 @@ body {
 }
 
 .table-heading{
-    font-weight: 600;
-    font-size: 2rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     margin-bottom:20px;
+    color:var(--theme-color)
 }
 
 .pagination{

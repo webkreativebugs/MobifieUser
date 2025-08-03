@@ -187,11 +187,11 @@ function page() {
                 {" "}
                 {/* //component */}
                 <div className=" mt-2 flex gap-3 py-5">
-                  <div className="w-1/3 rounded-[20px] shadow-card card  p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-muted card  p-6 flex flex-col gap-5">
                     <div className="flex justify-between  ">
-                      <p className="text-2xl ">Organization ID</p>{" "}
+                      <p className="text-xl font-medium ">Organization ID</p>{" "}
                       <button onClick={() => handleCopy()}>
-                        <IoCopyOutline className=" w-7 h-7" />
+                        <IoCopyOutline className=" w-4 h-4" />
                       </button>
                     </div>
                     <div>
@@ -199,9 +199,9 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  project id*/}
-                  <div className="w-1/3 rounded-[20px] shadow-card card  p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-muted card  p-6 flex flex-col gap-5">
                     <div className="flex justify-between">
-                      <p className="text-2xl">Organization Name</p>{" "}
+                      <p className="text-xl font-medium">Organization Name</p>{" "}
                       <button
                         onClick={() => {
                           setIspop(true);
@@ -209,7 +209,7 @@ function page() {
                         }}
                       >
                         {" "}
-                        <FaRegEdit className=" w-7 h-7" />
+                        <FaRegEdit className=" w-4 h-4" />
                       </button>
                     </div>
                     <div>
@@ -217,9 +217,9 @@ function page() {
                     </div>
                   </div>{" "}
                   {/*  project name*/}
-                  <div className="w-1/3 rounded-[20px] shadow-card card   p-6 flex flex-col gap-5">
+                  <div className="w-1/3 rounded-[20px] shadow-muted card   p-6 flex flex-col gap-5">
                     <div className="">
-                      <p className="text-2xl">Created On</p>
+                      <p className="text-xl font-medium">Created On</p>
                     </div>
                     <div>
                       <p>
@@ -244,9 +244,9 @@ function page() {
                   </div>
                 </div> */}
                 {/*  delete org */}
-                <div className="w-full rounded-[20px]  shadow-card card h-[8rem] p-6 flex flex-col gap-5">
+                <div className="w-full rounded-[20px]  shadow-muted card h-[8rem] p-6 flex flex-col gap-5">
                   <div className="flex justify-between">
-                    <p className="text-2xl ">Delete Organization</p>{" "}
+                    <p className="text-xl font-medium ">Delete Organization</p>{" "}
                     <div>
                       <button
                         onClick={() => {
@@ -276,7 +276,7 @@ function page() {
                   </div>
                 </div>
               </div>
-              <div className="w-full mt-5 rounded-[20px] shadow-card card h-[8rem] p-6 flex items-center justify-between bg-white">
+              <div className="w-full mt-5 rounded-[20px] shadow-muted card h-[8rem] p-6 flex items-center justify-between bg-white">
                 {/* Left side: Icon + Theme Name */}
                 <div className="flex items-center gap-4">
                   {/* Top view open box icon (SVG or Font Awesome fallback) */}
@@ -286,7 +286,7 @@ function page() {
                   </div>
 
                   {/* Theme name + color */}
-                  <div>
+                  <div className="shadow-muted">
                     <div className="text-sm text-gray-500">Selected Theme</div>
                     <div className="flex items-center gap-2">
                       <span className="text-lg font-semibold text-gray-800">

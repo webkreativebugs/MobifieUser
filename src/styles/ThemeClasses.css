@@ -80,7 +80,7 @@
 /* Containers */
 .custom-container {
   background-color: var(--background-color);
-  color: var(--primary-inverse-color);
+  color: var(--opposite-color);
   /* border: 1px solid var(--muted-color); */
 }
 
@@ -92,8 +92,9 @@
 
 /* Cards */
 .card {
-  background-color: var(--secondary-color) !important;
-  color: var(--secondary-inverse-color) !important;
+  /* background-color: var(--secondary-color) !important; */
+  color: var(--opposite-color) !important;
+  /* border:1px solid var(--secondary-color) !important; */
   /* border: 1px solid var(--muted-color); */
 }
 
@@ -160,7 +161,7 @@
 
 /* Shadow using muted color (for subtle depth) */
 .shadow-muted {
-  box-shadow: 0 2px 6px var(--muted-color);
+  box-shadow: 0px 1px 2px var(--opposite-color) ;
 }
 
 /* Inverse shadow (useful for dark theme glow) */
@@ -171,6 +172,9 @@
 /* Soft shadow using secondary color */
 .shadow-secondary {
   box-shadow: 0 1px 5px var(--secondary-color);
+}
+.shadow-theme {
+  box-shadow: 0 1px 5px var(--theme-color);
 }
 
 /* Elevated card-style shadow */

@@ -69,21 +69,20 @@ const handleInputChange = (
       <div className=" w-full ">
         <Navbar />
      <div className="p-5 w-full max-h-[90vh] overflow-auto ">
-  <div>
-    <div className="mt-2">
+  <div className="flex justify-between mt-2">
+    <div className="">
       <h1 className="table-heading pl-2">Activity Feed</h1>
     </div>
-  </div>
-  <div className="w-3/5 flex justify-between items-center mt-4 gap-4">
+      <div className=" ">
     {/* Search Input */}
-    <div className="relative w-3/4 text-black">
+    <div className="relative  text-black">
       <input
         type="text"
         placeholder="Search..."
         value={inputQuary?.search?.toString() ?? ""}
         name="search"
         onChange={handleInputChange}
-        className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
+        className=" pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
       />
       {/* Search Icon */}
       <svg
@@ -102,10 +101,12 @@ const handleInputChange = (
       </svg>
     </div>
   </div>
+  </div>
+
   {
     apiResponse &&
     <>
-      <div className="mt-10">
+      <div className="">
         <DynamicTable data={apiResponse.data.activities} columns={columns} globalSearch={false} emptyMessage="No Alert" page={"activity"} />
       </div>
       <Pagination 
