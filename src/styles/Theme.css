@@ -142,11 +142,11 @@
 }
 .royalindigo-light {
   --background-color: white;  
-  --primary-color: #E8EAF6;
+  --primary-color: #FAF9F6;
   --primary-inverse-color: #1A237E;
   --theme-color: #3F51B5;
   --theme-inverse-color: #FFFFFF;
-  --secondary-color: #D1C4E9;            /* Lilac */
+  --secondary-color: #f1eff5;            /* Lilac */
   --secondary-inverse-color: #4A148C;
   --error-color: #D32F2F;
   --success-color: #388E3C;
