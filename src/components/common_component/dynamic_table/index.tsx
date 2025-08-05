@@ -115,8 +115,14 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             data.map((row, rowIndex) => (
               <tr key={row.id || rowIndex} className={`${openIndexes.includes(rowIndex)?"":"bg-primary"}`} onClick={()=>handleChange(rowIndex)} >
                 {columns.map((col) => (
-                  <td key={col.key} style={col.style} >
-                    {renderCellByKey(col.key, row[col.key], row, page, col.style)}
+                  <td key={col.key} style={col.style}>
+                    {renderCellByKey(
+                      col.key,
+                      row[col.key],
+                      row,
+                      page,
+                      col.style
+                    )}
                     {/* <div>{JSON.stringify(row)}</div> */}
                   </td>
                 ))}

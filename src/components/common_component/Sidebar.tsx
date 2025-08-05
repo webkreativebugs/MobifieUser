@@ -3,26 +3,34 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
 import { AdminDashboardLinks } from '../../data/SidebarLinks';
 import { useNavigate } from 'react-router-dom';
+import { useauth } from '../../context/auth_context/AuthContext';
 const logo ="../../../../public/assets/MobifieLogo.svg"
-
+import LogOut from '../../utils/api/LogOut';
 
 interface SidebarProps {
   active: string;
 }
 
 const Sidebar = ({ active }: SidebarProps) => {
-  const navigate = useNavigate()
-  const [activeLinkName, setActiveLinkName] = useState(active);
+    const navigate = useNavigate()
+    const {onRoleChange} = useauth()
+    const [activeLinkName, setActiveLinkName] = useState(active);
   // const [show,setShow] = useState(true)
-
+ function handleClick()
+ {
+    LogOut()
+    navigate("/login-with-password",{replace:true});
+    onRoleChange("")
+               
+ }
   // const normalLink = 'flex items-center gap-3 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 hover:bg-gray-100 m-2';
 
   return (
-    <>
+    <div className='hidden xl:flex justify-center items-center h-screen ml-6 align-middle  w-80'>
   
 
-      <div className=" hidden xl:block overflow-auto hide-scrollbar  pb-10 h-screen w-2/12 shadow-xl    ">
-        <div className="flex justify-between items-center  ">
+      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-3xl w-full  bg-primary pb-10 h-5/6 shadow-xl justify-center   ">
+        {/* <div className="flex justify-between items-center  ">
           <Link to="/" className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight">
             <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
             <span className="mt-4 text-xl">Mobifie</span>
@@ -34,9 +42,9 @@ const Sidebar = ({ active }: SidebarProps) => {
           >
             <MdOutlineCancel />
           </button>
-        </div>
+        </div> */}
 
-        <div className="p-5 ">
+        <div className="p-5 mt-5 w-full ">
           {AdminDashboardLinks.map((section) => (
             <div key={section.name}>
               {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
@@ -49,11 +57,14 @@ const Sidebar = ({ active }: SidebarProps) => {
                   className={` ${activeLinkName === section.name ? "active-link   " : "normal-link" }`}
                 >
                  <span   className={` ${activeLinkName === section.name ? "theme-inverse" : "theme-color" }`}> <section.icon /></span>
-                  <span className="capitalize text-xs ">{section.name}</span>
+                  <span className="capitalize text-sm ">{section.name}</span>
                 </NavLink>
             </div>
           ))}
+        
+       
         </div>
+          <button className='normal-link mt-6 ml-6 ' onClick={handleClick}>Logout</button>
       </div>
       { /**************************Mobile Section***************************** */}
       <div>
@@ -90,7 +101,8 @@ const Sidebar = ({ active }: SidebarProps) => {
         </div>
       </div>
       </div>
-    </>
+      
+    </div>
   );
 };
 

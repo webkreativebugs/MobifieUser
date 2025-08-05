@@ -1,13 +1,13 @@
-import {fetchFaqs} from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api"
-import {FAQResponse ,FAQCallback  } from "../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
+import {fetchProjects} from "../../../network/public/organization_api/project/Project.api"
+import {ProjectResponse ,ProjectCallback  } from "../../../network/public/organization_api/project/Project.interface";
 // import { Dispatch, SetStateAction } from "react";
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function fetchAllFaqs(setApiResponse:any,setApiError:any, setLoader:any ){
+function projects(setApiResponse:any,setApiError:any, setLoader:any ){
     
-const handleUserInfoResponse:FAQCallback= (  response: FAQResponse | null, error: Error | null | undefined) => {
+const handleUserInfoResponse:ProjectCallback= (  response: ProjectResponse | null, error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
-      setApiError(error)
+      setApiError(response);
     }
     
     if(response)
@@ -24,7 +24,7 @@ const sendOtp=async ()=>{
   
    
     try{
-        await fetchFaqs( handleUserInfoResponse);
+        await fetchProjects( handleUserInfoResponse);
         // sessionStorage.clear();  
         
 
@@ -34,4 +34,4 @@ const sendOtp=async ()=>{
 }
 sendOtp()
 }
-export default  fetchAllFaqs;
+export default  projects;

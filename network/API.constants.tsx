@@ -77,4 +77,5 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
     `${BASE_URL}/user/organization/org002/alerts?page=${page}&limit${limit}${modifiedUrl}`,
   ACTIVITY: (modifiedUrl, page, limit) =>
     `${BASE_URL}/user/organization/org002/activity?page=${page}&limit${limit}${modifiedUrl}`,
+  PROJECT: () => `${BASE_URL}/user/organization/org002/project/project001`,
 };

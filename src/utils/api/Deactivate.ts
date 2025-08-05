@@ -10,6 +10,7 @@ const handleUserInfoResponse: DeactivateCallback= (  response: DeactivateRespons
       setApiError(error)
     }
     console.log(response);
+   
     if(response)
     {
     //   customAuthorizationConfig.kb_authorization=response.data;

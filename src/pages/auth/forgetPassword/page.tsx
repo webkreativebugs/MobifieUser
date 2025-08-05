@@ -6,6 +6,7 @@ const logo = "../../../../public/assets/MobifieLogo.svg";
 // import OTPField from "../../../../components/module/project_component/OtpLoginComponents/OTPField";
 import ForgetPass from "../../../../src/utils/api/ForgetPassword";
 // import Toast from "../../../components/common_component/Toast";
+// import Toast from "../../../components/common_component/Toast";
 
 import { useloader } from "../../../context/loader_context/LoaderContext";
 import {  useState } from "react";
@@ -13,6 +14,7 @@ import {  useState } from "react";
 
 const ForgotPassword = () => {
   const { setLoader } = useloader();
+  // const nevigate = useNavigate();
   // const nevigate = useNavigate();
   // const [showToast, setShowToast] = useState(false);
 
@@ -22,6 +24,7 @@ const ForgotPassword = () => {
     email: "",
   });
   // const [submitting, setSubmitting] = useState(false);
+  // const [disable, setDisable] = useState(false);
   // const [disable, setDisable] = useState(false);
 
   const [touched, setTouched] = useState({
@@ -113,6 +116,7 @@ const ForgotPassword = () => {
     console.log(formData);
     if (validate()) {
       ForgetPass(formData, setApiResponse, setApiError, setLoader);
+      // setDisable(true);
       // setDisable(true);
     }
   };

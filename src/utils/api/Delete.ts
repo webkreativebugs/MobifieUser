@@ -10,6 +10,7 @@ const handleUserInfoResponse: ApiCallback= (  response: ApiResponse | null,error
       setApiError(error)
     }
     console.log(response);
+     
     if(response)
     {
     //   customAuthorizationConfig.kb_authorization=response.data;

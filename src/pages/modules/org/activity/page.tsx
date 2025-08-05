@@ -13,16 +13,15 @@ interface Quary {
   search?: string;
 }
 function page() {
-  
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
-  const [clicked, setClicked] = useState(1)
-  const [apiResponse, setApiResponse] = useState<ActivityResponse | undefined>();
+  const [clicked, setClicked] = useState(1);
+  const [apiResponse, setApiResponse] = useState<
+    ActivityResponse | undefined
+  >();
   const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
-  if(apiError)
-  {
+  if (apiError) {
     console.log(apiError);
-    
   }
   const columns: ColumnConfig[] = [
   { key: "activity_details", title: "Activity" },
@@ -32,36 +31,37 @@ function page() {
 ];
   // console.log(apiError);
 
-const handleInputChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-) => {
-  const { name, value } = e.target;
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
 
     setInputQuary((prev) => ({
       ...prev,
       [name]: value,
     }));
-};
+  };
 
- useEffect(() => {
-  // console.log(inputQuary.search); 
+  useEffect(() => {
+    // console.log(inputQuary.search);
     if (!inputQuary?.search?.trim()) return;
 
-    const searchParam = `&search=${encodeURIComponent(inputQuary.search.trim())}`;
-  
+    const searchParam = `&search=${encodeURIComponent(
+      inputQuary.search.trim()
+    )}`;
+
     ActivitymodifiedUrlConfig.search = `${searchParam}`;
 
-  fetchAllActivity(setApiResponse, setApiError , setLoader);
-}, [inputQuary]);
+    fetchAllActivity(setApiResponse, setApiError, setLoader);
+  }, [inputQuary]);
 
-
-  useEffect(()=>{
-    setLoader(true)
-  ActivitymodifiedUrlConfig.page="1";
-  ActivitymodifiedUrlConfig.limit="10"
-  ActivitymodifiedUrlConfig.search=""
-  fetchAllActivity(setApiResponse,setApiError,setLoader)
-   },[])
+  useEffect(() => {
+    setLoader(true);
+    ActivitymodifiedUrlConfig.page = "1";
+    ActivitymodifiedUrlConfig.limit = "10";
+    ActivitymodifiedUrlConfig.search = "";
+    fetchAllActivity(setApiResponse, setApiError, setLoader);
+  }, []);
 
   return (
     <div className="custom-container flex">
@@ -121,7 +121,6 @@ const handleInputChange = (
 </div>
 
       </div>
-     
     </div>
   );
 }

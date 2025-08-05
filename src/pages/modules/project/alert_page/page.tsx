@@ -64,19 +64,19 @@ function page() {
   }, []);
 
   return (
-    <div className="custom-container flex">
+    <div className=" flex">
       <Sidebar active={"Alerts"} />
-      <div className=" w-full ">
-        <Navbar />
-        <div className="p-5 w-full max-h-[90vh] overflow-auto ">
-          <div>
-            <div className="mt-2">
+      <div className="w-screen  flex items-center  h-screen">
+        {/* <Navbar /> */}
+        <div className=" p-6  h-5/6 w-full overflow-auto ">
+          
+       
+          <div className="  gap-4">
+            <div className="">
               <h1 className="table-heading pl-2">Alerts</h1>
             </div>
-          </div>
-          <div className="w-3/5 flex justify-between items-center mt-4 gap-4">
             {/* Search Input */}
-            <div className="relative w-3/4 text-black">
+            <div className="relative  text-black">
               <input
                 type="text"
                 placeholder="Search..."
@@ -101,8 +101,7 @@ function page() {
                 />
               </svg>
             </div>
-          </div>
-          {apiResponse && (
+           {apiResponse && (
             <>
               <div className="mt-10">
                 <DynamicTable
@@ -122,6 +121,9 @@ function page() {
               />
             </>
           )}
+
+          </div>
+         
         </div>
       </div>
     </div>
