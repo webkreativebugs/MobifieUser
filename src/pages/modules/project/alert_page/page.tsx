@@ -24,8 +24,10 @@ function page() {
     console.log(apiError);
   }
   const columns: ColumnConfig[] = [
-    { key: "message", title: "Alerts" },
-    // { key: "project_id", title: "Project ID" },
+    { key: "message", title: "Alerts", style:{padding:"20px"} },
+    { key: "created_at", title:"Created At",style:{padding:"20px"}},
+    { key: "type", title:"Type",style:{padding:"20px"}},
+    { key: "button", title: "", style:{padding:"20px"}},
   ];
   // console.log(apiError);
 
@@ -108,7 +110,7 @@ function page() {
                   columns={columns}
                   globalSearch={false}
                   emptyMessage="No Alert"
-                  page={"access-manager"}
+                  page={"alert"}
                 />
               </div>
               <Pagination

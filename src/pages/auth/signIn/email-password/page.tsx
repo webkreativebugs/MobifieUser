@@ -142,10 +142,10 @@ const EmailPasswordSignIn = () => {
   }, [timeLeft]);
 
   return (
-    <>
+    <div className="">
     {/* <Navbar theme={theme} onThemeChange={onThemeChange} /> */}
-      <div className="flex justify-center items-center min-h-screen custom-container ">
-        <div className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-card rounded-md overflow-hidden p-4 card`}>
+      <div className="flex justify-center items-center min-h-screen custom-container shadow-muted bg-image ">
+        <div className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-muted rounded-md overflow-hidden p-4 card`}>
           {/* Left side: Form */}
 
           <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
@@ -394,7 +394,7 @@ const EmailPasswordSignIn = () => {
           </div>
 
           {/* Right side: Image / color */}
-          <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
+          <div className="relative hidden md:w-1/2 card bg-primary md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
             
 
             {/* Main Content */}
@@ -412,7 +412,7 @@ const EmailPasswordSignIn = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

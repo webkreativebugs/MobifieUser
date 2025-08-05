@@ -107,7 +107,7 @@ const handleInputChange = (
     apiResponse &&
     <>
       <div className="">
-        <DynamicTable data={apiResponse.data.activities} columns={columns} globalSearch={false} emptyMessage="No Alert" page={"activity"} />
+        <DynamicTable  data={apiResponse.data.activities} columns={columns} globalSearch={false} emptyMessage="No Alert" page={"activity"} />
       </div>
       <Pagination 
       length={apiResponse.data.pagination.total_pages} 

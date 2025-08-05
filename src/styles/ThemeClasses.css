@@ -161,7 +161,7 @@
 
 /* Shadow using muted color (for subtle depth) */
 .shadow-muted {
-  box-shadow: 0px 1px 2px var(--opposite-color) ;
+  box-shadow: 0px 0px 5px 0px var(--opposite-color) ;
 }
 
 /* Inverse shadow (useful for dark theme glow) */

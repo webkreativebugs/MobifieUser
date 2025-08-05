@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { DynamicTableProps } from "./types";
 import "./styles.css";
 import EmptyState from "./EmptyState";
 import renderCellByKey from "./dynamic_table_cell/RenderCellByKey";
+// import { customStyle } from "../../../utils/CustomeStyling";
 
 const DynamicTable: React.FC<DynamicTableProps> = ({
   data,
@@ -12,6 +13,22 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
   page,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  useEffect(()=>{
+   console.log(openIndexes);
+   
+  },[openIndexes])
+  
+  function handleChange(rowIndex:any)
+  {
+    if(page=="alert")
+  setOpenIndexes((prev:any) =>
+                  prev.includes(rowIndex)
+                    ?  [...prev]
+                    : [...prev, rowIndex]
+                )
+  }
+
   // const [filters, setFilters] = useState<Record<string, string>>({});
 
   // const filteredData = useMemo(() => {
@@ -79,24 +96,24 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
         </div>
       )}
 
-      <table className="dt-table">
-        <thead  >
+      <table className="dt-table" >
+        <thead>
           <tr  >
             {columns.map((col) => (
-              <th key={col.key} className="primary-bg-color text-on-primary">{col.title}</th>
+              <th key={col.key} className=" text-on-primary">{col.title}</th>
             ))}
           </tr>
         </thead>
-        <tbody className="primary-inverse">
+        <tbody className="">
           {data.length === 0 ? (
-            <tr>
+            <tr className="bg-primary">
               <td colSpan={columns.length}>
                 <EmptyState message={emptyMessage} />
               </td>
             </tr>
           ) : (
             data.map((row, rowIndex) => (
-              <tr key={row.id || rowIndex}>
+              <tr key={row.id || rowIndex} className={`${openIndexes.includes(rowIndex)?"":"bg-primary"}`} onClick={()=>handleChange(rowIndex)} >
                 {columns.map((col) => (
                   <td key={col.key} style={col.style} >
                     {renderCellByKey(col.key, row[col.key], row, page, col.style)}

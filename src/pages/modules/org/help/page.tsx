@@ -102,7 +102,7 @@ const handleInputChange = (
             <div className="mt-2">
               <h1 className="table-heading pl-2">FAQs</h1>
             </div>
-            <div className="h-auto border-t-2 mt-4 flex flex-col items-center">
+            <div className="h-auto  mt-4 flex flex-col items-center">
               <div className="w-3/5 flex justify-between items-center mt-4 gap-4">
                 {/* Search Input */}
                 <div className="relative w-3/4">

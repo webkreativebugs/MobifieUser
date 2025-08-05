@@ -27,6 +27,7 @@ const BadgeCell: React.FC<BadgeCellProps> = ({ data, value }) => {
         padding: "4px 8px",
         borderRadius: "9999px",
         fontSize: 12,
+        minWidth:"20px"
       }}
       
     >

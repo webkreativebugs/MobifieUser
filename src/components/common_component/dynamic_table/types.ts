@@ -15,4 +15,5 @@ export interface DynamicTableProps {
   globalSearch?: boolean;
   emptyMessage?: string;
   page?: string;
+  RowStyle?:object;
 }

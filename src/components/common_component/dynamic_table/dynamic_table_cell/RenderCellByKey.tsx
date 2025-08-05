@@ -2,7 +2,6 @@ import BadgeCell from "./cell/BadgeCell";
 import DateCell from "./cell/DateCell";
 import ImageCell from "./cell/ImageCell";
 import TextCell from "./cell/TextCell";
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderCellByKey = (key: string, value: string, data: any, page?: string, style?: React.CSSProperties) => {
   if (key === "icon") {
@@ -27,7 +26,6 @@ const renderCellByKey = (key: string, value: string, data: any, page?: string, s
   // console.log(value);
   return  <TextCell data={data} value={readable}/>
   }
-
   return <TextCell data={data} value={value} />;
 };
 
