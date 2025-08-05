@@ -80,10 +80,12 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
       )}
 
       <table className="dt-table">
-        <thead  >
-          <tr  >
+        <thead>
+          <tr>
             {columns.map((col) => (
-              <th key={col.key} className="primary-bg-color text-on-primary">{col.title}</th>
+              <th key={col.key} className="primary-bg-color text-on-primary">
+                {col.title}
+              </th>
             ))}
           </tr>
         </thead>
@@ -98,8 +100,14 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             data?.map((row, rowIndex) => (
               <tr key={row.id || rowIndex}>
                 {columns.map((col) => (
-                  <td key={col.key} style={col.style} >
-                    {renderCellByKey(col.key, row[col.key], row, page, col.style)}
+                  <td key={col.key} style={col.style}>
+                    {renderCellByKey(
+                      col.key,
+                      row[col.key],
+                      row,
+                      page,
+                      col.style
+                    )}
                     {/* <div>{JSON.stringify(row)}</div> */}
                   </td>
                 ))}
