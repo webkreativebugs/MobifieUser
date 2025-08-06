@@ -10,12 +10,16 @@ import { ColumnConfig } from "../../../../components/common_component/dynamic_ta
 import Pagination from "../../../../components/common_component/Pagination";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
+import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
+import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 interface Quary {
   search?: string;
+  type?:string
 }
 function page() {
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
+  const [selectQuary, setSelectQuary] = useState<Quary>({ type: "All" });
   const [clicked, setClicked] = useState(1);
   const [apiResponse, setApiResponse] = useState<MemberResponse | undefined>();
   const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
@@ -25,20 +29,26 @@ function page() {
   const columns: ColumnConfig[] = [
     { key: "email", title: "Email" },
     { key: "role", title: "Organization Role" },
-    // { key: "project_id", title: "Project ID" },
   ];
-  // console.log(apiError);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
 
+ const handleInputChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+) => {
+  const { name, value } = e.target;
+
+  if (e.target.tagName === "INPUT") {
     setInputQuary((prev) => ({
       ...prev,
       [name]: value,
     }));
-  };
+  } else {
+    setSelectQuary((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+};
 
   useEffect(() => {
     // console.log(inputQuary.search);
@@ -53,6 +63,27 @@ function page() {
     getAccessManagerData(setApiResponse, setApiError, setLoader);
   }, [inputQuary]);
 
+     useEffect(() => {
+  if (!selectQuary) return;
+
+  setLoader(true);
+
+  const type = selectQuary?.type?.toString();
+
+  if (type === "All") {
+    CustomConfigPageLimits.search = "";
+  } else {
+    CustomConfigPageLimits.search = `&category=${encodeURIComponent(type || "")}`;
+    if (selectQuary.search) {
+      CustomConfigPageLimits.search += `&search=${encodeURIComponent(selectQuary.search)}`;
+    }
+  }
+  
+  getAccessManagerData(setApiResponse, setApiError,setLoader);
+  setClicked(1)
+  // setLoader(false);
+}, [selectQuary]);
+
   useEffect(() => {
     setLoader(true);
     CustomConfigPageLimits.page = "1";
@@ -62,43 +93,10 @@ function page() {
   }, []);
 
   return (
-          <DashboardMask name={"Access"}>
-          <HeadingMask name={"Access Manager"}>
-             <div className=" relative w-2/4 text-black">
-              <input
-                type="text"
-                placeholder="Search..."
-                value={inputQuary?.search?.toString() ?? ""}
-                name="search"
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
-              />
-              {/* Search Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute left-3 top-2.5 h-5 w-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
-                />
-              </svg>
-        </div>
-            <select
-           
-              name="type"
-              onChange={handleInputChange}
-              className="w-2/4  px-3 text-black rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
-            >
-              <option value="All">All</option>
-              <option value="Project">Project</option>
-              <option value="Organization">Organization</option>
-            </select>
+           <DashboardMask name={"Access Manager"}>
+           <HeadingMask name={"Access Manager"}>
+           <SearchMask handler={handleInputChange} value={inputQuary?.search?.toString() ?? ""}/>
+           <FilterMask handler={handleInputChange} optionsArray={["All","Project","Organization"]} value={selectQuary?.type?.toString()||" "} />
          </HeadingMask>
       
          

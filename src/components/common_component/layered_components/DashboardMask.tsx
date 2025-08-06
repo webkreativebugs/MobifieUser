@@ -12,7 +12,7 @@ const DashboardMask = ({name,children}:Name) => {
      <Sidebar active={name}/>
        <div className="w-screen  flex items-center  h-screen">
         <div className=" p-6  h-5/6 w-full overflow-auto ">
-          <div className="  gap-4">
+          <div className=" w-full gap-4">
             {children}
           </div>
         </div>
