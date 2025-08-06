@@ -144,7 +144,10 @@ const ForgotPassword = () => {
                     Enter your email to receive reset instructions
                   </p>
 
-                  <form className="space-y-5" onSubmit={handleSubmit}>
+                  <form
+                    className="space-y-5  w-[320px]"
+                    onSubmit={handleSubmit}
+                  >
                     <div className="error-wrapper">
                       {/* <label className="text-sm">Email</label> */}
                       <div className="flex items-center border-gray-300 border-2 rounded-md mt-1 bg-white">
