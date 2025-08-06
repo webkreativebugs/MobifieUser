@@ -1,4 +1,4 @@
-import "../../../App.css"
+import "../../../App.css";
 import { Link } from "react-router-dom";
 // import InputField from "../../../../components/module/project_component/OtpLoginComponents/InputField";
 const loginImg = "../../../../public/assets/login.png";
@@ -9,7 +9,7 @@ import ForgetPass from "../../../../src/utils/api/ForgetPassword";
 // import Toast from "../../../components/common_component/Toast";
 
 import { useloader } from "../../../context/loader_context/LoaderContext";
-import {  useState } from "react";
+import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
@@ -123,16 +123,20 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen ">
-        <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-lg rounded-md overflow-hidden p-4">
+      <div className="w-1/4">
+        {/* <Navbar theme={theme} onThemeChange={onThemeChange} /> */}
+        <div className="flex justify-center   min-h-screen    ">
+          {/* <div
+          className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-muted rounded-md overflow-hidden p-4 card`}
+        > */}
           {/* Left side: Form */}
 
-          <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
+          <div className="flex    justify-center    ">
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             {!apiResponse ? (
               <>
                 {" "}
-                <div className="w-full max-w-xs ">
+                <div className="w-full max-w-xs mt-[14rem] ">
                   <h1 className="text-center text-3xl font-bold  mb-2">
                     Forget Password
                   </h1>
@@ -237,13 +241,13 @@ const ForgotPassword = () => {
           </div>
 
           {/* Right side: Image / color */}
-          <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
-            {/* Background Shapes */}
+          {/* <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
+           
             <div className="absolute -top-75 -left-100 w-60 h-60 bg-green-200 rounded-full opacity-30 blur-2xl animate-pulse"></div>
             <div className="absolute bottom-0 right-0 w-40 h-40 bg-lime-400 rounded-full opacity-20 blur-xl rotate-45"></div>
             <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-[#79B93C] rounded-full opacity-10 blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
 
-            {/* Main Content */}
+          
             <div className="w-full relative z-10">
               <h1 className="text-white text-3xl mb-2">
                 Effortlessly manage your team and operations
@@ -255,7 +259,7 @@ const ForgotPassword = () => {
                 <img src={loginImg} className="object-cover" />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

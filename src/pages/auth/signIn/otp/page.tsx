@@ -11,14 +11,18 @@ const OtpSignin = () => {
   const [apiRequestData, setApiRequestData] = useState({});
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen custom-container ">
-        <div className="flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 card shadow-card rounded-md overflow-hidden p-4">
+      <div className="w-1/4">
+        {/* <Navbar theme={theme} onThemeChange={onThemeChange} /> */}
+        <div className="flex justify-center   min-h-screen custom-container   ">
+          {/* <div
+          className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-muted rounded-md overflow-hidden p-4 card`}
+        > */}
           {/* Left side: Form */}
 
-          <div className="flex flex-col  items-center justify-center  md:w-1/2  relative  ">
+          <div className="flex    justify-center    ">
             <img src={logo} className="absolute top-0 left-0 w-[80px]" />
             <div className="w-full max-w-xs ">
-              <h1 className="text-center text-3xl font-bold  mb-2">
+              <h1 className="text-center text-3xl font-bold mt-[14rem] mb-2">
                 Log in to continue
               </h1>
               <p className="text-center text-sm mb-6 text-gray-500">
@@ -38,10 +42,10 @@ const OtpSignin = () => {
           </div>
 
           {/* Right side: Image / color */}
-          <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
+          {/* <div className="relative hidden md:w-1/2 card md:flex justify-center items-center p-6 border-2 overflow-hidden rounded-md">
            
 
-            {/* Main Content */}
+          
             <div className="w-full relative z-10">
               <h1 className=" text-3xl mb-2">
                 Effortlessly manage your team and operations
@@ -53,7 +57,7 @@ const OtpSignin = () => {
                 <img src={loginImg} className="object-cover" />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
