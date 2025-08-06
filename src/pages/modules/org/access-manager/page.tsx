@@ -14,7 +14,7 @@ import SearchMask from "../../../../components/common_component/layered_componen
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 interface Quary {
   search?: string;
-  type?:string
+  type?: string;
 }
 function page() {
   const { setLoader } = useloader();
@@ -31,24 +31,23 @@ function page() {
     { key: "role", title: "Organization Role" },
   ];
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
 
- const handleInputChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-) => {
-  const { name, value } = e.target;
-
-  if (e.target.tagName === "INPUT") {
-    setInputQuary((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  } else {
-    setSelectQuary((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-};
+    if (e.target.tagName === "INPUT") {
+      setInputQuary((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    } else {
+      setSelectQuary((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
 
   useEffect(() => {
     // console.log(inputQuary.search);
@@ -63,26 +62,30 @@ function page() {
     getAccessManagerData(setApiResponse, setApiError, setLoader);
   }, [inputQuary]);
 
-     useEffect(() => {
-  if (!selectQuary) return;
+  useEffect(() => {
+    if (!selectQuary) return;
 
-  setLoader(true);
+    setLoader(true);
 
-  const type = selectQuary?.type?.toString();
+    const type = selectQuary?.type?.toString();
 
-  if (type === "All") {
-    CustomConfigPageLimits.search = "";
-  } else {
-    CustomConfigPageLimits.search = `&category=${encodeURIComponent(type || "")}`;
-    if (selectQuary.search) {
-      CustomConfigPageLimits.search += `&search=${encodeURIComponent(selectQuary.search)}`;
+    if (type === "All") {
+      CustomConfigPageLimits.search = "";
+    } else {
+      CustomConfigPageLimits.search = `&category=${encodeURIComponent(
+        type || ""
+      )}`;
+      if (selectQuary.search) {
+        CustomConfigPageLimits.search += `&search=${encodeURIComponent(
+          selectQuary.search
+        )}`;
+      }
     }
-  }
-  
-  getAccessManagerData(setApiResponse, setApiError,setLoader);
-  setClicked(1)
-  // setLoader(false);
-}, [selectQuary]);
+
+    getAccessManagerData(setApiResponse, setApiError, setLoader);
+    setClicked(1);
+    // setLoader(false);
+  }, [selectQuary]);
 
   useEffect(() => {
     setLoader(true);
@@ -93,34 +96,40 @@ function page() {
   }, []);
 
   return (
-           <DashboardMask name={"Access Manager"}>
-           <HeadingMask name={"Access Manager"}>
-           <SearchMask handler={handleInputChange} value={inputQuary?.search?.toString() ?? ""}/>
-           <FilterMask handler={handleInputChange} optionsArray={["All","Project","Organization"]} value={selectQuary?.type?.toString()||" "} />
-         </HeadingMask>
-      
-         
-          {apiResponse && (
-            <>
-              <div className="mt-10">
-                <DynamicTable
-                  data={apiResponse.data.members}
-                  columns={columns}
-                  globalSearch={false}
-                  emptyMessage="No Alert"
-                  page={"access-manager"}
-                />
-              </div>
-              <Pagination
-                length={apiResponse.data.pagination.total_pages}
-                setApiResponse={setApiResponse}
-                type={"access"}
-                clicked={clicked}
-                setClicked={setClicked}
-              />
-            </>
-          )}
-     </DashboardMask>
+    <DashboardMask name={"Access Manager"}>
+      <HeadingMask name={"Access Manager"}>
+        <SearchMask
+          handler={handleInputChange}
+          value={inputQuary?.search?.toString() ?? ""}
+        />
+        <FilterMask
+          handler={handleInputChange}
+          optionsArray={["All", "Project", "Organization"]}
+          value={selectQuary?.type?.toString() || " "}
+        />
+      </HeadingMask>
+
+      {apiResponse && (
+        <>
+          <div className="mt-10">
+            <DynamicTable
+              data={apiResponse.data.members}
+              columns={columns}
+              globalSearch={false}
+              emptyMessage="No Alert"
+              page={"access-manager"}
+            />
+          </div>
+          <Pagination
+            length={apiResponse.data.pagination.total_pages}
+            setApiResponse={setApiResponse}
+            type={"access"}
+            clicked={clicked}
+            setClicked={setClicked}
+          />
+        </>
+      )}
+    </DashboardMask>
   );
 }
 

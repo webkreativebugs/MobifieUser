@@ -35,5 +35,12 @@ export const themes = [
     themeColor: "#3F51B5",
  
   },
+    {
+    light: "white-light",
+    dark: "royalindigo-dark",
+    name: "white ",
+    themeColor: "#ffffff",
+ 
+  },
 
 ];

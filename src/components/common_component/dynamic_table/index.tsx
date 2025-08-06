@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { DynamicTableProps } from "./types";
 import "./styles.css";
 import EmptyState from "./EmptyState";
@@ -14,19 +14,15 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
-  useEffect(()=>{
-   console.log(openIndexes);
-   
-  },[openIndexes])
-  
-  function handleChange(rowIndex:any)
-  {
-    if(page=="alert")
-  setOpenIndexes((prev:any) =>
-                  prev.includes(rowIndex)
-                    ?  [...prev]
-                    : [...prev, rowIndex]
-                )
+  useEffect(() => {
+    console.log(openIndexes);
+  }, [openIndexes]);
+
+  function handleChange(rowIndex: any) {
+    if (page == "alert")
+      setOpenIndexes((prev: any) =>
+        prev.includes(rowIndex) ? [...prev] : [...prev, rowIndex]
+      );
   }
 
   // const [filters, setFilters] = useState<Record<string, string>>({});
@@ -96,11 +92,13 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
         </div>
       )}
 
-      <table className="dt-table" >
+      <table className="dt-table">
         <thead>
-          <tr  >
+          <tr>
             {columns.map((col) => (
-              <th key={col.key} className=" text-on-primary">{col.title}</th>
+              <th key={col.key} className=" text-on-primary text-xl">
+                {col.title}
+              </th>
             ))}
           </tr>
         </thead>
@@ -113,9 +111,17 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             </tr>
           ) : (
             data.map((row, rowIndex) => (
-              <tr key={row.id || rowIndex} className={`${openIndexes.includes(rowIndex)?"":"bg-primary"}`} onClick={()=>handleChange(rowIndex)} >
+              <tr
+                key={row.id || rowIndex}
+                className={`${openIndexes.includes(rowIndex) ? "" : ""}`}
+                onClick={() => handleChange(rowIndex)}
+              >
                 {columns.map((col) => (
-                  <td key={col.key} style={col.style}>
+                  <td
+                    key={col.key}
+                    style={col.style}
+                    className="text-lg text-gray-500"
+                  >
                     {renderCellByKey(
                       col.key,
                       row[col.key],

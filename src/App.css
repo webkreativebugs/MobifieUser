@@ -188,9 +188,9 @@ body {
 
 .table-heading{
     font-weight: 700;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     margin-bottom:20px;
-    color:var(--theme-color)
+    color:rgba(0,0,0,0.8)
 }
 
 .pagination{

@@ -62,12 +62,12 @@ function page() {
     <>
       <DashboardMask name={"Settings"}>
         <div className="">
-          <h1 className="table-heading text-4xl pl-2 mx-[3rem]">Settings</h1>
+          <h1 className="table-heading text-3xl pl-2 ">Settings</h1>
         </div>
-        <div className="h-auto border-t-2 mt-4 mx-[3rem] ">
+        <div className="h-auto border-t-2 mt-4  ">
           {" "}
           {/* //component */}
-          <div className=" mt-4 flex gap-6  mb-5  ">
+          <div className=" mt-4 flex gap-6  mb-5   ">
             <div className="w-2/5 rounded-[20px] mt-4 card-bg card  px-6 py-4 flex flex-col gap-2">
               <div className="flex justify-between  ">
                 <p className="text-xl font-medium ">Organization ID</p>{" "}
@@ -109,7 +109,7 @@ function page() {
             </div>
           </div>
           {/*  delete org */}
-          <div className="w-full rounded-[20px] card-bg  cardh-[7rem] p-5 px-6 flex flex-col gap-4">
+          <div className="w-full rounded-[20px] card-bg  card h-[7rem] p-5 px-6 flex flex-col gap-4">
             <div className="flex justify-between">
               <p className="text-xl font-medium ">Delete Organization</p>{" "}
               <div>
@@ -141,7 +141,7 @@ function page() {
             </div>
           </div>
         </div>
-        <div className=" mt-5 rounded-[20px] card-bg card h-[7rem] p-5 px-6 flex items-center justify-between mx-[3rem]">
+        <div className=" mt-5 rounded-[20px] card-bg card h-[7rem] p-5 px-6 flex items-center justify-between ">
           {/* Left side: Icon + Theme Name */}
           <div className="flex items-center gap-4">
             {/* Top view open box icon (SVG or Font Awesome fallback) */}
