@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useauth } from '../../context/auth_context/AuthContext';
 const logo ="../../../../public/assets/MobifieLogo.svg"
 import LogOut from '../../utils/api/LogOut';
+import { FiLogOut } from "react-icons/fi"
 
 interface SidebarProps {
   active: string;
@@ -26,10 +27,10 @@ const Sidebar = ({ active }: SidebarProps) => {
   // const normalLink = 'flex items-center gap-3 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 hover:bg-gray-100 m-2';
 
   return (
-    <div className='hidden xl:flex justify-center items-center h-screen ml-6 align-middle  w-80'>
+    <div className='hidden xl:flex justify-center items-center h-screen ml-6  w-80'>
   
 
-      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-3xl w-full  bg-primary pb-10 h-5/6 shadow-xl justify-center   ">
+      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-3xl w-full  bg-primary pb-10 h-[90vh] shadow-xl justify-center   ">
         {/* <div className="flex justify-between items-center  ">
           <Link to="/" className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight">
             <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
@@ -57,14 +58,14 @@ const Sidebar = ({ active }: SidebarProps) => {
                   className={` ${activeLinkName === section.name ? "active-link   " : "normal-link" }`}
                 >
                  <span   className={` ${activeLinkName === section.name ? "theme-inverse" : "theme-color" }`}> <section.icon /></span>
-                  <span className="capitalize text-sm ">{section.name}</span>
+                  <span className="capitalize text-lg ">{section.name}</span>
                 </NavLink>
             </div>
           ))}
         
        
         </div>
-          <button className='normal-link mt-6 ml-6 ' onClick={handleClick}>Logout</button>
+          <button className='normal-link mt-6 ml-6 ' onClick={handleClick}><FiLogOut/>Logout</button>
       </div>
       { /**************************Mobile Section***************************** */}
       <div>

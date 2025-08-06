@@ -9,6 +9,7 @@ const logo = "../../../../public/assets/MobifieLogo.svg";
 import PasswordLogin from "../../../../utils/api/PasswordLogin";
 import { useauth } from "../../../../context/auth_context/AuthContext";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
+import { url } from "inspector";
 
 // import { useTheme } from "../../../../context/AppContext";
 
@@ -144,7 +145,7 @@ const EmailPasswordSignIn = () => {
   return (
     <div className="">
     {/* <Navbar theme={theme} onThemeChange={onThemeChange} /> */}
-      <div className="flex justify-center items-center min-h-screen custom-container shadow-muted bg-image ">
+      <div className="flex justify-center items-center min-h-screen custom-container shadow-muted    " >
         <div className={`flex flex-col md:flex-row lg:h-[650px] w-11/12 md:w-7/12 lg:w-7/12 shadow-muted rounded-md overflow-hidden p-4 card`}>
           {/* Left side: Form */}
 
