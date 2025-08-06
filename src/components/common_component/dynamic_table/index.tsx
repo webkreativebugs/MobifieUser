@@ -100,7 +100,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
         <thead>
           <tr  >
             {columns.map((col) => (
-              <th key={col.key} className=" text-on-primary">{col.title}</th>
+              <th key={col.key} className=" text-on-primary text-xl">{col.title}</th>
             ))}
           </tr>
         </thead>
@@ -113,9 +113,9 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
             </tr>
           ) : (
             data.map((row, rowIndex) => (
-              <tr key={row.id || rowIndex} className={`${openIndexes.includes(rowIndex)?"":"bg-primary"}`} onClick={()=>handleChange(rowIndex)} >
+              <tr key={row.id || rowIndex} className={`${openIndexes.includes(rowIndex)?"":""}`} onClick={()=>handleChange(rowIndex)} >
                 {columns.map((col) => (
-                  <td key={col.key} style={col.style}>
+                  <td key={col.key} style={col.style} className="text-lg" >
                     {renderCellByKey(
                       col.key,
                       row[col.key],

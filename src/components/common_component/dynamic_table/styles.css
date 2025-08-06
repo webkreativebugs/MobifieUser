@@ -14,7 +14,7 @@
 .dt-search-bar input {
   padding: 8px;
   width: 300px;
-  font-size: 14px;
+  /* font-size: 14px; */
   /* border: 1px solid var(--theme-color); */
   border-radius: 4px;
 }
@@ -29,24 +29,26 @@
 .dt-table th,
 .dt-table td {
   padding: 12px 16px;
-  /* border-bottom: 1px solid var(--theme-color); */
-  font-size: 14px;
+  border-bottom: 2px solid var(--primary-color);
+  /* font-size: 14px; */
   /* background-color: var(--primary-color); */
-  color:var(--primary-inverse-color);
+  /* color:var(--primary-inverse-color); */
+  color:black
 }
 
 .dt-table th {
-  background-color: var(--secondary-color);
-  color: var( --secondary-inverse-color);
+  /* background-color: var(--secondary-color); */
+  color: var(--theme-color);
   text-align: left;
   font-weight: 600;
+  /* background: #000; */
 }
 
 .dt-filter-input {
   margin-top: 4px;
   width: 100%;
   padding: 6px;
-  font-size: 13px;
+  /* font-size: 13px; */
   border: 1px solid #d1d5db;
   border-radius: 4px;
 }
