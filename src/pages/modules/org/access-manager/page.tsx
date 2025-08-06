@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../../../components/common_component/Navbar";
-import Sidebar from "../../../../components/common_component/Sidebar";
+// import Navbar from "../../../../components/common_component/Navbar";
+// import Sidebar from "../../../../components/common_component/Sidebar";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 import { MemberResponse } from "../../../../../network/public/accessManager_api/Access.Manager.interface";
 import { CustomConfigPageLimits } from "../../../../../network/public/accessManager_api/Access.Manager.api";
@@ -8,6 +8,8 @@ import getAccessManagerData from "../../../../utils/api/AccessManager";
 import DynamicTable from "../../../../components/common_component/dynamic_table";
 import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
 import Pagination from "../../../../components/common_component/Pagination";
+import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 interface Quary {
   search?: string;
 }
@@ -60,19 +62,9 @@ function page() {
   }, []);
 
   return (
-    <div className="custom-container flex">
-      <Sidebar active={"Access Manager"} />
-      <div className=" w-full ">
-        <Navbar />
-        <div className="p-5 w-full max-h-[90vh] overflow-auto ">
-          <div>
-            <div className="mt-2">
-              <h1 className="table-heading pl-2">Access Manager</h1>
-            </div>
-          </div>
-          <div className="w-3/5 flex justify-between items-center mt-4 gap-4">
-            {/* Search Input */}
-            <div className="relative w-3/4 text-black">
+          <DashboardMask name={"Access"}>
+          <HeadingMask name={"Access Manager"}>
+             <div className=" relative w-2/4 text-black">
               <input
                 type="text"
                 placeholder="Search..."
@@ -96,18 +88,20 @@ function page() {
                   d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
                 />
               </svg>
-            </div>
+        </div>
             <select
-              // value={selectQuary?.type?.toString()} // fallback to empty string to avoid uncontrolled warning
+           
               name="type"
               onChange={handleInputChange}
-              className="w-1/4 py-2 px-3 text-black rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
+              className="w-2/4  px-3 text-black rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm cursor-pointer bg-white"
             >
               <option value="All">All</option>
               <option value="Project">Project</option>
               <option value="Organization">Organization</option>
             </select>
-          </div>
+         </HeadingMask>
+      
+         
           {apiResponse && (
             <>
               <div className="mt-10">
@@ -128,9 +122,7 @@ function page() {
               />
             </>
           )}
-        </div>
-      </div>
-    </div>
+     </DashboardMask>
   );
 }
 

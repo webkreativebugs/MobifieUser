@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../../../components/common_component/Navbar";
-import Sidebar from "../../../../components/common_component/Sidebar";
+// import Navbar from "../../../../components/common_component/Navbar";
+// import Sidebar from "../../../../components/common_component/Sidebar";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 import { ActivityResponse } from "../../../../../network/public/organization_api/activity/Activity.interface";
 // import { CustomConfigPageLimits } from "../../../../../network/public/accessManager_api/AccessManager.api";
@@ -9,6 +9,8 @@ import DynamicTable from "../../../../components/common_component/dynamic_table"
 import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
 import { ActivitymodifiedUrlConfig } from "../../../../../network/public/organization_api/activity/Activity.api";
 import Pagination from "../../../../components/common_component/Pagination";
+import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 interface Quary {
   search?: string;
 }
@@ -64,49 +66,39 @@ function page() {
   }, []);
 
   return (
-    <div className="custom-container flex">
-      <Sidebar active={"Activity"} />
-      <div className=" w-full ">
-        <Navbar />
-     <div className="p-5 w-full max-h-[90vh] overflow-auto ">
-  <div className="flex justify-between mt-2">
-    <div className="">
-      <h1 className="table-heading pl-2">Activity Feed</h1>
-    </div>
-      <div className=" ">
-    {/* Search Input */}
-    <div className="relative  text-black">
-      <input
-        type="text"
-        placeholder="Search..."
-        value={inputQuary?.search?.toString() ?? ""}
-        name="search"
-        onChange={handleInputChange}
-        className=" pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
-      />
-      {/* Search Icon */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute left-3 top-2.5 h-5 w-5 text-gray-400"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
-        />
-      </svg>
-    </div>
-  </div>
-  </div>
-
-  {
-    apiResponse &&
-    <>
-      <div className="">
+         <DashboardMask name={"Activity"}>
+           <HeadingMask name={"Activity Feed"}>
+              <div className=" relative w-3/4 text-black">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={inputQuary?.search?.toString() ?? ""}
+                name="search"
+                onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
+              />
+              {/* Search Icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute left-3 top-2.5 h-5 w-5 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                />
+              </svg>
+              </div>
+           </HeadingMask>
+  
+         {
+         apiResponse &&
+       <>
+      <div className="mt-10">
         <DynamicTable  data={apiResponse.data.activities} columns={columns} globalSearch={false} emptyMessage="No Alert" page={"activity"} />
       </div>
       <Pagination 
@@ -116,12 +108,11 @@ function page() {
       clicked={clicked}
       setClicked={setClicked}
       />
-    </>
-  }
-</div>
+      </>
+     }
 
-      </div>
-    </div>
+</DashboardMask>
+       
   );
 }
 

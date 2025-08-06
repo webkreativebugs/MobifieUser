@@ -227,3 +227,9 @@ body {
         background-position: center;
         background-color: #7ed957;
     }
+
+
+    .card-bg {
+        /* background-color: var( --primary-color) !important; */
+        background-color: rgba(248, 247, 250, 0.5);
+    }

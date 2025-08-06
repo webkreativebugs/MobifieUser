@@ -1,5 +1,5 @@
 import  { useEffect, useState } from "react";
-import Navbar from "../../../../components/common_component/Navbar";
+// import Navbar from "../../../../components/common_component/Navbar";
 // import { useTheme } from "../../../../context/AppContext";
 import Sidebar from "../../../../components/common_component/Sidebar";
 import Faq from "../../../../components/common_component/Faq";
@@ -95,14 +95,13 @@ const handleInputChange = (
   return (
     <div className="custom-container flex">
       <Sidebar active={"Help"} />
-      <div className=" w-full ">
-        <Navbar/>
-        <div className="p-5 w-full h-fit hide-scrollbar overflow-scroll max-h-[90vh] ">
-          <div>
-            <div className="mt-2">
+     <div className="w-screen  flex items-center  h-screen">
+       <div className=" p-6  h-5/6 w-full overflow-auto ">
+       <div className="  gap-4">
+           <div className="">
               <h1 className="table-heading pl-2">FAQs</h1>
             </div>
-            <div className="h-auto  mt-4 flex flex-col items-center">
+            <div className="h-auto  mt-4 flex flex-col">
               <div className="w-3/5 flex justify-between items-center mt-4 gap-4">
                 {/* Search Input */}
                 <div className="relative w-3/4">

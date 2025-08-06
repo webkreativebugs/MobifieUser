@@ -23,9 +23,9 @@ export default function App() {
   //  isLoggedIn
   return (
     <>
-      <section className={`${theme} ${secondaryColor} flex`}>
+      <section className={`${theme} ${secondaryColor} ${ decoder(role)!==AccessType.ADMIN?"flex":""}`}>
         {processLoggedInUser(role)}
-        <AuthRight />
+       {  decoder(role)!==AccessType.ADMIN&&<AuthRight />}
       </section>
     </>
   );

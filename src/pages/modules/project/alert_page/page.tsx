@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../../../components/common_component/Navbar";
-import Sidebar from "../../../../components/common_component/Sidebar";
+// import Navbar from "../../../../components/common_component/Navbar";
+// import Sidebar from "../../../../components/common_component/Sidebar";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 // import { MemberResponse } from "../../../../../network/public/accessManager_api/AccessManager.interface";
 import { AlertResponse } from "../../../../../network/public/organization_api/alerts/Alerts.interface";
 // import { CustomConfigPageLimits } from "../../../../../network/public/accessManager_api/AccessManager.api";
 import { AlertmodifiedUrlConfig } from "../../../../../network/public/organization_api/alerts/Alerts.api";
-// import getAccessManagerData from "../../../../utils/api/AccessManager";
+import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import getAlerts from "../../../../utils/api/Alert";
 import DynamicTable from "../../../../components/common_component/dynamic_table";
 import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
 import Pagination from "../../../../components/common_component/Pagination";
+import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask"
 interface Quary {
   search?: string;
 }
@@ -24,10 +25,10 @@ function page() {
     console.log(apiError);
   }
   const columns: ColumnConfig[] = [
-    { key: "message", title: "Alerts", style:{padding:"20px"} },
-    { key: "created_at", title:"Created At",style:{padding:"20px"}},
-    { key: "type", title:"Type",style:{padding:"20px"}},
-    { key: "button", title: "", style:{padding:"20px"}},
+    { key: "message", title: "Alerts", },
+    { key: "created_at", title:"Created At",},
+    { key: "type", title:"Type",},
+    { key: "button", title: "", },
   ];
   // console.log(apiError);
 
@@ -64,19 +65,9 @@ function page() {
   }, []);
 
   return (
-    <div className=" flex">
-      <Sidebar active={"Alerts"} />
-      <div className="w-screen  flex items-center  h-screen">
-        {/* <Navbar /> */}
-        <div className=" p-6  h-5/6 w-full overflow-auto ">
-          
-       
-          <div className="  gap-4">
-            <div className="">
-              <h1 className="table-heading pl-2">Alerts</h1>
-            </div>
-            {/* Search Input */}
-            <div className="relative  text-black">
+          <DashboardMask name={"Alerts"}>
+           <HeadingMask name={"Alerts"}>
+              <div className=" relative w-3/4 text-black">
               <input
                 type="text"
                 placeholder="Search..."
@@ -100,7 +91,11 @@ function page() {
                   d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
                 />
               </svg>
-            </div>
+              </div>
+           </HeadingMask>
+           
+            {/* Search Input */}
+           
            {apiResponse && (
             <>
               <div className="mt-10">
@@ -122,11 +117,7 @@ function page() {
             </>
           )}
 
-          </div>
-         
-        </div>
-      </div>
-    </div>
+          </DashboardMask>
   );
 }
 
