@@ -2,7 +2,7 @@
   width: 100%;
   overflow-x: auto;
   /* border: 1px solid var(--secondary-color); */
-  /* border-radius: 6px; */
+  border-radius: 6px;
   font-family: Arial, sans-serif;
 }
 
@@ -22,13 +22,14 @@
 .dt-table {
   width: 100%;
   border-collapse: collapse;
+  
   /* border-spacing: 0 10px; */
 }
 
 .dt-table th,
 .dt-table td {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--secondary-color);
+  padding: 12px 16px;
+  /* border-bottom: 1px solid var(--theme-color); */
   font-size: 14px;
   /* background-color: var(--primary-color); */
   color:var(--primary-inverse-color);

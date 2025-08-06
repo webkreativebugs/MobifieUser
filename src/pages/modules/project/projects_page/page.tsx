@@ -62,24 +62,29 @@ function page() {
   }, []);
 
   return (
-    <div className="custom-container flex">
+    <div className=" flex">
       <Sidebar active={"Projects"} />
-      <div className=" w-full h-screen">
+      <div className="w-screen  flex items-center  h-screen">
         {/* <Navbar /> */}
-        <div className="p-6 w-full max-h-[90vh] h-5/6 flex  align-middle items-center overflow-auto ">
-          <div>
+        <div className=" p-6  h-5/6 w-full overflow-auto ">
+          <div className="  gap-4">
             <div className="">
-              <h1 className="table-heading pl-2">Access Manager</h1>
+              <h1 className="table-heading pl-2">Project Overview</h1>
+            </div>
+            <div className="flex justify-between">
+              <div className="h-96 w-1/2  border-2">
+                <div className="bg-white m-2 p-2 h-1/2 w-full"></div>
+
+                <div className="flex w-full  h-1/2">
+                  <div className=" w-1/2 bg-white p-2 m-2"></div>
+                  <div className="w-1/2 bg-white p-2 m-2"></div>
+                </div>
+              </div>
+              {/* Right Side
+               */}
+              <div className="h-96 w-1/2 p-2 m-2 border-2"></div>
             </div>
           </div>
-
-          {apiResponse && (
-            <>
-              <div className="mt-10">
-                
-              </div>
-            </>
-          )}
         </div>
       </div>
     </div>

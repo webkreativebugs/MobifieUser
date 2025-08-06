@@ -7,6 +7,7 @@ import { decoder } from "./utils/JwtDecoder";
 import AuthMe from "./utils/api/AuthMe";
 import { useEffect } from "react";
 import { AccessType } from "../enum/AccessType.enum";
+import AuthRight from "./components/common_component/AuthRight";
 export default function App() {
   const body = document.querySelector("body");
   if (body) {
@@ -22,8 +23,9 @@ export default function App() {
   //  isLoggedIn
   return (
     <>
-      <section className={`${theme} ${secondaryColor}`}>
+      <section className={`${theme} ${secondaryColor} ${ decoder(role)!==AccessType.ADMIN?"flex":""}`}>
         {processLoggedInUser(role)}
+       {  decoder(role)!==AccessType.ADMIN&&<AuthRight />}
       </section>
     </>
   );

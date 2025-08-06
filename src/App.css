@@ -220,3 +220,10 @@ body {
   color:var(--theme-inverse-color) !important;
   /* border:none; */
     /* padding:6px 6px 6px 6px; */}
+
+    .bg-image{
+        background-image:url("../public/assets/bg2.png") ;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #7ed957;
+    }
