@@ -8,9 +8,9 @@ interface Name {
 }
 const HeadingMask = ({name,children}:Name) => {
   return (
-     <div className="flex justify-between">
+     <div className="flex justify-between w-full">
        <div><h1 className="table-heading pl-2">{name}</h1></div>
-        <div className=" flex justify-between gap-2  ">
+        <div className=" flex  gap-2  ">
          {children}
         </div>
     </div>

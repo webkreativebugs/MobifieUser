@@ -7,7 +7,7 @@ export default function Faq({ data }: FaqProps) {
   const [openIndexes, setOpenIndexes] = useState<number[]>([0]);
 
   return (
-    <div className="w-11/12 mt-10  space-y-4">
+    <div className="w-full mt-10  space-y-4">
       {data?.faqs?.map((item, index) => {
         const isOpen = openIndexes.includes(index);
         return (

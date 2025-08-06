@@ -69,13 +69,13 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
   ORG_UPDATE: () => `${BASE_URL}/user/organization/org002`,
   ORG_DELETE: () => `${BASE_URL}/user/organization/org002/delete`,
   ORG_DEACTIVATE: () => `${BASE_URL}/user/organization/org002/deactivate`,
-  ALL_FAQS: (modifiedUrl, page, limit) =>
-    `${BASE_URL}/user/organization/org002/faqs?page=${page}&limit${limit}${modifiedUrl}`,
+  ALL_FAQS: (search, page, limit) =>
+    `${BASE_URL}/user/organization/org002/faqs?page=${page}&limit${limit}${search}`,
   ACCESS_Manager: (page, limit, search) =>
     `${BASE_URL}/user/organization/org002/members?page=${page}&limit=${limit}${search}`,
-  ALERTS: (modifiedUrl, page, limit) =>
-    `${BASE_URL}/user/organization/org002/alerts?page=${page}&limit${limit}${modifiedUrl}`,
-  ACTIVITY: (modifiedUrl, page, limit) =>
-    `${BASE_URL}/user/organization/org002/activity?page=${page}&limit${limit}${modifiedUrl}`,
+  ALERTS: (search, page, limit) =>
+    `${BASE_URL}/user/organization/org002/alerts?page=${page}&limit${limit}${search}`,
+  ACTIVITY: (search, page, limit) =>
+    `${BASE_URL}/user/organization/org002/activity?page=${page}&limit${limit}${search}`,
   PROJECT: () => `${BASE_URL}/user/organization/org002/project/project001`,
 };
