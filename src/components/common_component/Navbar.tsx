@@ -15,7 +15,7 @@ const Navbar = () => {
   // console.log(selectedValue);
 
   return (
-    <nav className="w-full bg-primary shadow-md  p-4 flex items-center justify-end">
+    <nav className="w-full bg-primary shadow-md  p-6 flex items-center justify-end">
       <div className="text-xl primary-inverse font-semibold pl-2 ">
         {orgDetails?.data.name}
       </div>

@@ -12,7 +12,7 @@ const SearchMask = ({value,handler}:PROPS) => {
                 value={value}
                 name="search"
                 onChange={handler}
-                className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
+                className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition duration-300 shadow-sm"
               />
               {/* Search Icon */}
               <svg
