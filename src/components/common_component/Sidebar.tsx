@@ -62,7 +62,7 @@ const Sidebar = ({ active }: SidebarProps) => {
                 <span
                   className={` ${
                     activeLinkName === section.name
-                      ? "theme-inverse"
+                      ? "theme-color"
                       : "theme-color"
                   }`}
                 >

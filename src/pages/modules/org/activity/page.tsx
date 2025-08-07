@@ -100,7 +100,7 @@ function page() {
 
   return (
   <DashboardMask name={"Activity"}>
-           <HeadingMask name={"Activity"}>
+           <HeadingMask name={"Activity Feed"}>
            <SearchMask handler={handleInputChange} value={inputQuary?.search?.toString() ?? ""} />
            <FilterMask handler={handleInputChange} value={selectQuary?.type?.toString()||" "} optionsArray={["All","Project","Organization"]} />
            </HeadingMask>

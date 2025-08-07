@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
-// import Navbar from "../../../../components/common_component/Navbar";
-import Sidebar from "../../../../components/common_component/Sidebar";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
-// import { MemberResponse } from "../../../../../network/public/accessManager_api/AccessManager.interface";
 import { ProjectResponse } from "../../../../../network/public/organization_api/project/Project.interface";
-// import { CustomConfigPageLimits } from "../../../../../network/public/accessManager_api/AccessManager.api";
 import { AlertmodifiedUrlConfig } from "../../../../../network/public/organization_api/alerts/Alerts.api";
-// import getAccessManagerData from "../../../../utils/api/AccessManager";
 import projects from "../../../../utils/api/Project";
-// import DynamicTable from "../../../../components/common_component/dynamic_table";
-// import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
-// import Pagination from "../../../../components/common_component/Pagination";
-// interface Quary {
-//   search?: string;
-// }
+import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 function page() {
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
@@ -62,32 +53,14 @@ function page() {
   }, []);
 
   return (
-    <div className=" flex">
-      <Sidebar active={"Projects"} />
-      <div className="w-screen  flex items-center  h-screen">
-        {/* <Navbar /> */}
-        <div className=" p-6  h-5/6 w-full overflow-auto ">
-          <div className="  gap-4">
-            <div className="">
-              <h1 className="table-heading pl-2">Project Overview</h1>
-            </div>
-            <div className="flex justify-between">
-              <div className="h-96 w-1/2  border-2">
-                <div className="bg-white m-2 p-2 h-1/2 w-full"></div>
+   <DashboardMask name={"Projects"} >
+    <HeadingMask name={"Projects"}>
+      <div>
 
-                <div className="flex w-full  h-1/2">
-                  <div className=" w-1/2 bg-white p-2 m-2"></div>
-                  <div className="w-1/2 bg-white p-2 m-2"></div>
-                </div>
-              </div>
-              {/* Right Side
-               */}
-              <div className="h-96 w-1/2 p-2 m-2 border-2"></div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </HeadingMask>
+
+   </DashboardMask>
   );
 }
 

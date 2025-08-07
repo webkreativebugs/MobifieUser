@@ -6,7 +6,9 @@ import {
 } from "react";
 // import { useNavigate } from "react-router-dom";
 const loaderAnimation ="/assets/animation/LoaderAnimation.gif"
+import { useauth } from "../auth_context/AuthContext";
 import { Dispatch, SetStateAction } from "react";
+import { decoder } from "../../utils/JwtDecoder";
 // import AuthMe from "../../utils/api/AuthMe";
 // import { decoder } from "../../utils/JwtDecoder";
 // import { useNavigate } from "react-router-dom";
@@ -23,7 +25,7 @@ type Props = {
 const LoaderContext = createContext({} as USERROLE);
 export const LoaderProvider = ({ children }: Props) => {
   const [loader, setLoader] = useState<boolean>(false);
-
+  const {role} = useauth();
   return (
     <LoaderContext.Provider
       value={{
@@ -32,7 +34,7 @@ export const LoaderProvider = ({ children }: Props) => {
       }}
     >
       {children}
-       {loader && (
+       {loader &&  (
         <div
           className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50"
         >

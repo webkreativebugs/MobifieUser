@@ -7,9 +7,9 @@ import { useloader } from "../../../../context/loader_context/LoaderContext";
 import Toast from "../../../common_component/Toast";
 import { useNavigate } from "react-router-dom";
 // import { customAuthorizationConfig } from "../../../../../network/FetchRequest";
-const OTPField = ({apiRequestData}:any) => {
-  const navigate = useNavigate()
-  const {setLoader} = useloader()
+const OTPField = ({ apiRequestData }: any) => {
+  const navigate = useNavigate();
+  const { setLoader } = useloader();
   const length = 6;
   // Initial OTP state with empty strings (length of OTP)
   const [otp, setOtp] = useState(Array(6).fill(""));
@@ -19,7 +19,7 @@ const OTPField = ({apiRequestData}:any) => {
   const [Resntdisable, setResentDisable] = useState(true);
   const [error, setError] = useState("");
   const [apiResponse, setApiResponse] = useState("");
-  const [apiError,setApiError] = useState("")
+  const [apiError, setApiError] = useState("");
   const { onRoleChange } = useauth();
 
   // Handle input change for each individual OTP block
@@ -69,7 +69,7 @@ const OTPField = ({apiRequestData}:any) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-   
+
     if (otpData.length !== length) {
       setError("Please enter the complete OTP.");
 
@@ -79,13 +79,13 @@ const OTPField = ({apiRequestData}:any) => {
     }
 
     try {
-      setLoader(true)
-       ValidateOtp({ otp: otpData }, setApiResponse,setLoader ,setApiError);
-       
+      setLoader(true);
+      ValidateOtp({ otp: otpData }, setApiResponse, setLoader, setApiError);
+
       // await getOtpToken({ 'otp': otpData }, handleOtpValidationResponse);
     } catch (error) {
       // setSubmitting(false);
-      setLoader(false)
+      setLoader(false);
       setError("Error in submitting OTP.");
     }
   };
@@ -104,7 +104,7 @@ const OTPField = ({apiRequestData}:any) => {
     if (apiResponse) {
       console.log(apiResponse);
       onRoleChange(apiResponse);
-      navigate("/projects" , {replace:true})
+      navigate("/projects", { replace: true });
     }
   }, [apiResponse]);
 
@@ -136,22 +136,21 @@ const OTPField = ({apiRequestData}:any) => {
           )}
 
           <button
-         
             type="submit"
-           className="w-full mt-1  p-2 theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
+            className="w-full button  p-2   rounded-md  transition"
+            //  className="w-full mt-1  p-2 theme-button  rounded-md  transition disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed"
             style={{ background: "var(--MONGO_COLOR)", border: "none" }}
           >
-            { "Submit OTP"}
+            {"Submit OTP"}
           </button>
-        { apiError&&
-                   <div className="flex justify-center items-center text-red-600 text-sm h-0 mt-4  ">
-                    {apiError}
-                   </div>
-                }
+          {apiError && (
+            <div className="flex justify-center items-center text-red-600 text-sm h-0 mt-4  ">
+              {apiError}
+            </div>
+          )}
         </form>
-         
+
         <div className="mt-4">
-         
           <div className="text-xs text-gray-500 text-center">
             {Resntdisable ? (
               <div className="flex justify-center items-center gap-1">
@@ -160,20 +159,22 @@ const OTPField = ({apiRequestData}:any) => {
               </div>
             ) : (
               <button
-               
                 type="button"
-                
                 className=" underline transition-all "
-                onClick={() =>{ ResendOtp(apiRequestData , setShowToast); setTimeLeft(30);setResentDisable(true)}}
-                style={{ fontWeight: 400,color:"blue" }}
+                onClick={() => {
+                  ResendOtp(apiRequestData, setShowToast);
+                  setTimeLeft(30);
+                  setResentDisable(true);
+                }}
+                style={{ fontWeight: 400, color: "blue" }}
               >
                 Resend OTP
               </button>
             )}
             <Toast
-            msg={"OTP sent sucessfully"}
-            show ={showToast}
-            onClose={()=>setShowToast(false)}
+              msg={"OTP sent sucessfully"}
+              show={showToast}
+              onClose={() => setShowToast(false)}
             />
           </div>
         </div>

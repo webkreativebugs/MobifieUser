@@ -10,13 +10,13 @@ const TextCell: React.FC<TextCellProps> = ({ data, value }) => {
   console.log(data);
   
   return (
-    <span
+    <span className=""
       onClick={() => {
         alert(value);
       }}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer"  }}
     >
-      {value}
+     <p className="" > {value}</p>
     </span>
   );
 };
