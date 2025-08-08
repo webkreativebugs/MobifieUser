@@ -98,10 +98,10 @@ function page() {
               label: "Created At",
               value: formatDateWithTime(apiResponse?.data.createdAt || ""),
             },
-            {
-              label: "Updated At",
-              value: formatDateWithTime(apiResponse?.data.updatedAt || ""),
-            },
+            // {
+            //   label: "Updated At",
+            //   value: formatDateWithTime(apiResponse?.data.updatedAt || ""),
+            // },
             {
               label: "Website",
               value: (
@@ -133,29 +133,32 @@ function page() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 p-8  card-bg mt-4 rounded-xl ">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-8 py-6 card-bg mt-4 rounded-xl  ">
           {/* Left side: Text + Button */}
-          <div className="md:w-1/2 flex flex-col  mt-[-2rem] justify-center">
-            <h1 className="text-3xl   ">Customize Your Project</h1>
-            <p className="text-gray-700 mt-14 text-base md:text-lg font-sm leading-relaxed">
+          <div className="md:w-1/2 flex flex-col mt-[-1rem]  justify-center">
+            <h1 className="text-3xl  font-semibold  ">
+              Customize Your Project
+            </h1>
+            <p className="text-gray-700 mt-12 text-base md:text-lg font-sm leading-relaxed">
               Hello! If you need any modifications or feature additions to
               better align this project with your specific requirements, feel
               free to reach out. I'm happy to customize the solution to best fit
               your goals. Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Ipsam fugiat nihil, deserunt aliquid quasi aut!
             </p>
-            <button className="mt-20 w-1/3 bg-black text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200">
+            <button className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200">
               Customize
             </button>
           </div>
 
           {/* Right side: Image */}
-          <div className="md:w-1/2 flex gap-3 justify-center ">
+          <div className="md:w-1/2 flex gap-3 justify-center  ">
             <img
-              src="https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iOS/ios16-iphone13-pro-widgets-home-screen.png" // replace with your image path
+              src="https://cdn.dribbble.com/users/5663361/screenshots/20523766/post_template.png"
               alt="Project Preview"
-              className="rounded-lg w-1/4 max-w-sm shadow-md h-1/6 "
+              className="rounded-lg   h-auto md:h-[400px] w-[600px] shadow-md"
             />
+
             {/* <Carousel /> */}
 
             {/* <img
