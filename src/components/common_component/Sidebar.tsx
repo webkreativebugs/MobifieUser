@@ -7,13 +7,17 @@ import { useauth } from "../../context/auth_context/AuthContext";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import LogOut from "../../utils/api/LogOut";
 import { FiLogOut } from "react-icons/fi";
+import { Dispatch,SetStateAction } from "react"
+import { GoSidebarCollapse } from "react-icons/go";
+import { GoSidebarExpand } from "react-icons/go";
 
 interface SidebarProps {
   active: string;
-  location:string
+  show:boolean;
+  setShow: Dispatch<SetStateAction<boolean>>
 }
 
-const Sidebar = ({ active,location }: SidebarProps) => {
+const Sidebar = ({setShow, active,show }: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
   const [activeLinkName, setActiveLinkName] = useState(active);
@@ -27,28 +31,25 @@ const Sidebar = ({ active,location }: SidebarProps) => {
 
   return (
    <>
-    {location=="organization"&&
 
-    <div className={`hidden xl:flex h-screen   w-1/6`}>
-     
+    <div className={`hidden xl:flex h-screen  ${show?"w-1/6":""}`}>
+
       <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
-        <div className=" ml-5 border-b-2 flex justify-between items-center  ">
+            
+        <div className=" pl-5 border-b-2 flex justify-between items-center   ">
+        
           <Link
             to="/"
             className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight"
           >
             <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
-            <span className="mt-4 text-xl">Mobifie</span>
+          {show&&  <span className="mt-4 text-xl">Mobifie</span>}
           </Link>
-          <button
-            type="button"
-            className="text-xl rounded-full p-3 hover:bg-gray-100 mt-4 block md:hidden"
-          >
-            <MdOutlineCancel />
-          </button>
+          
         </div>
-
-        <div className="p-5 pt-0 w-full ">
+       
+        <div className="p-5 pt-0 w-full relative ">
+           <button  className="ml-4 self-start" onClick={()=>setShow(!show)} ><GoSidebarExpand style={{ fontSize: '20px' }}  /></button>
           {AdminDashboardLinks.map((section) => (
             <div key={section.name}>
               {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
@@ -73,73 +74,18 @@ const Sidebar = ({ active,location }: SidebarProps) => {
                   {" "}
                   <section.icon />
                 </span>
-                <span className="capitalize text-lg ">{section.name}</span>
+              {show&&  <span className="capitalize text-lg ">{section.name}</span>}
               </NavLink>
             </div>
           ))}
         </div>
         <button className="normal-link mt-6 ml-6 " onClick={handleClick}>
           <FiLogOut />
-          Logout
+          {show&&"Logout"}
         </button>
       </div>
       </div>
-}
-      {/**************************Project Section***************************** */}
-    {location==="project"&&
-      <div className={`hidden xl:flex h-screen   `}>
-       <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
-          <div className="flex justify-between items-center">
-            <Link
-              to="/"
-              className="mt-4 flex ml-2 text-xl text-[#7ed957] font-extrabold tracking-tight"
-            >
-              <img src={logo} alt="Mobifie Logo" className="w-[80px] " />
-            
-            </Link>
-            <button
-              type="button"
-              onClick={() => console.log("Menu toggle")} // replace with real toggle if needed
-              className="text-xl rounded-full p-3 hover:bg-gray-100 mt-4 block md:hidden"
-            >
-              <MdOutlineCancel />
-            </button>
-          </div>
-
-                <div className="p-5 pt-0 w-full ">
-          {AdminDashboardLinks.map((section) => (
-            <div key={section.name}>
-              {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
-
-              <NavLink
-                to={section.link}
-                key={section.name}
-                onClick={() => setActiveLinkName(section.name)}
-                className={` ${
-                  activeLinkName === section.name
-                    ? "active-link   "
-                    : "normal-link"
-                }`}
-              >
-                <span
-                  className={` ${
-                    activeLinkName === section.name
-                      ? "theme-color"
-                      : "theme-color"
-                  }`}
-                >
-                  {" "}
-                  <section.icon />
-                </span>
-                
-              </NavLink>
-            </div>
-          ))}
-        </div>
-      
-        </div>
-          </div>
-}
+    
   
     </>
           

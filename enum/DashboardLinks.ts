@@ -1,5 +1,4 @@
 enum DashboardTypeEnums {
-     ORG="organization",
      PROJECT ="Project",
      ALERTS ="Alerts",
      ACTIVITY="Activity",
