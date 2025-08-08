@@ -32,7 +32,7 @@ function page() {
     { key: "message", title: "Alerts", },
     { key: "created_at", title:"Created At",},
     { key: "type", title:"Type",},
-    { key: "button", title: "", },
+    // { key: "button", title: "", },
   ];
   // console.log(apiError);
  

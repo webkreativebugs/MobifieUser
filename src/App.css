@@ -106,10 +106,11 @@ body {
   padding-top: 0.75rem;
   padding-bottom: 0.625rem;
   border-radius: 0.5rem;
-  color:var(--theme-inverse-color) !important;
-  background-color: var(--theme-color);
-  font-size: 1rem;
+  /* color:var(--theme-inverse-color) !important; */
+  /* background-color: var(--theme-color); */
+  font-size: 1.5rem;
   margin: 0.5rem;
+  font-weight: 700;
   text-decoration: none; 
 }
 /* 

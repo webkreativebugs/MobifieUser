@@ -1,7 +1,7 @@
 import "../../../App.css";
 import { Link } from "react-router-dom";
 // import InputField from "../../../../components/module/project_component/OtpLoginComponents/InputField";
-const loginImg = "../../../../public/assets/login.png";
+// const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 // import OTPField from "../../../../components/module/project_component/OtpLoginComponents/OTPField";
 import ForgetPass from "../../../../src/utils/api/ForgetPassword";
@@ -37,6 +37,20 @@ const ForgotPassword = () => {
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "email": {
+        // if (!value.trim()) return "Email is required";
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)&&value.trim()) {
+          return "Invalid email address";
+        }
+        return "";
+      }
+
+      default:
+        return "";
+    }
+  };
+  const SubmitvalidateField = (name: string, value: string) => {
+    switch (name) {
+      case "email": {
         if (!value.trim()) return "Email is required";
         if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
           return "Invalid email address";
@@ -48,7 +62,6 @@ const ForgotPassword = () => {
         return "";
     }
   };
-
   // useEffect(() => {
   //   if (apiResponse) {
   //     setShowToast(true);
@@ -66,7 +79,7 @@ const ForgotPassword = () => {
     Object.keys(formData).forEach((key) => {
       if (key in errors) {
         const value = formData[key as keyof typeof formData];
-        const err = validateField(key, value);
+        const err = SubmitvalidateField(key, value);
         newErrors[key] = err;
 
         // If the field is non-empty and has no error → set valid to true
@@ -110,11 +123,12 @@ const ForgotPassword = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    setLoader(true);
+    // 
     e.preventDefault();
 
     console.log(formData);
     if (validate()) {
+      setLoader(true);
       ForgetPass(formData, setApiResponse, setApiError, setLoader);
       // setDisable(true);
       // setDisable(true);

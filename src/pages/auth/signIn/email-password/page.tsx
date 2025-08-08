@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../../App.css";
 import "../../../../styles/ThemeClasses.css";
-const loginImg = "../../../../public/assets/login.png";
+// const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import PasswordLogin from "../../../../utils/api/PasswordLogin";
 import { useauth } from "../../../../context/auth_context/AuthContext";
@@ -44,6 +44,25 @@ const EmailPasswordSignIn = () => {
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "email": {
+        // if (!value.trim()) return "Email is required";
+        if ((!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value))&&value.trim()) {
+          return "Invalid email address";
+        }
+        return "";
+      }
+
+      case "password": {
+        // if (!value.trim()) return "Password is required";
+        return "";
+      }
+
+      default:
+        return "";
+    }
+  };
+  const SubmitvalidateField = (name: string, value: string) => {
+    switch (name) {
+      case "email": {
         if (!value.trim()) return "Email is required";
         if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
           return "Invalid email address";
@@ -53,17 +72,6 @@ const EmailPasswordSignIn = () => {
 
       case "password": {
         if (!value.trim()) return "Password is required";
-        // if (value.length < 8)
-        //   return "Password must be at least 8 characters long";
-        // if (!/[A-Z]/.test(value))
-        //   return "Password must include at least one uppercase letter";
-        // if (!/[a-z]/.test(value))
-        //   return "Password must include at least one lowercase letter";
-        // if (!/[0-9]/.test(value))
-        //   return "Password must include at least one number";
-        // if (!/[!@#$%^&*]/.test(value))
-        //   return "Password must include at least one special character (!@#$%^&*)";
-        // if (!/^[^\s]+$/.test(value)) return "There will be no gap in password";
         return "";
       }
 
@@ -77,7 +85,7 @@ const EmailPasswordSignIn = () => {
     const newErrors: { [key: string]: string } = {};
     Object.keys(formData).forEach((key) => {
       if (key in errors) {
-        const err = validateField(key, formData[key as keyof typeof formData]);
+        const err = SubmitvalidateField(key, formData[key as keyof typeof formData]);
         newErrors[key] = err;
         if (err) valid = false;
       }
@@ -322,6 +330,7 @@ const EmailPasswordSignIn = () => {
           </div>
 
           {/* Submit */}
+          
           <button
             type="submit"
             className="w-full bg-black text-white py-2 rounded-md transition hover:opacity-90"

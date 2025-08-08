@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
-// import Navbar from "../../../../components/common_component/Navbar";
-import Sidebar from "../../../../components/common_component/Sidebar";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
-// import { MemberResponse } from "../../../../../network/public/accessManager_api/AccessManager.interface";
 import { ProjectResponse } from "../../../../../network/public/organization_api/project/Project.interface";
-// import { CustomConfigPageLimits } from "../../../../../network/public/accessManager_api/AccessManager.api";
 import { AlertmodifiedUrlConfig } from "../../../../../network/public/organization_api/alerts/Alerts.api";
-// import getAccessManagerData from "../../../../utils/api/AccessManager";
 import projects from "../../../../utils/api/Project";
-// import DynamicTable from "../../../../components/common_component/dynamic_table";
-// import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
-// import Pagination from "../../../../components/common_component/Pagination";
-// interface Quary {
-//   search?: string;
-// }
+import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 function page() {
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
@@ -61,33 +52,88 @@ function page() {
     console.log(apiResponse);
   }, []);
 
-  return (
-    <div className=" flex">
-      <Sidebar active={"Projects"} />
-      <div className="w-screen  flex items-center  h-screen">
-        {/* <Navbar /> */}
-        <div className=" p-6  h-5/6 w-full overflow-auto ">
-          <div className="  gap-4">
-            <div className="">
-              <h1 className="table-heading pl-2">Project Overview</h1>
-            </div>
-            <div className="flex justify-between">
-              <div className="h-96 w-1/2  border-2">
-                <div className="bg-white m-2 p-2 h-1/2 w-full"></div>
+  function formatDateWithTime(isoString: string): string {
+    if (!isoString) return "Invalid Date";
 
-                <div className="flex w-full  h-1/2">
-                  <div className=" w-1/2 bg-white p-2 m-2"></div>
-                  <div className="w-1/2 bg-white p-2 m-2"></div>
-                </div>
-              </div>
-              {/* Right Side
-               */}
-              <div className="h-96 w-1/2 p-2 m-2 border-2"></div>
+    const date = new Date(isoString);
+    return date.toLocaleString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+  }
+
+  return (
+    <DashboardMask name={"Projects"}>
+      <HeadingMask name={"Projects"}>
+        <div></div>
+      </HeadingMask>
+      <div className="mt-10 relative  ">
+        {/* Header */}
+        <div className="absolute top-[-6rem] right-2 flex justify-between items-center  mb-6">
+          <span
+            className={`inline-block px-4 py-1 text-lg font-semibold rounded-full capitalize ${
+              apiResponse?.data.status === "active"
+                ? "bg-emerald-100 text-emerald-700"
+                : "bg-gray-200 text-gray-600"
+            }`}
+          >
+            {apiResponse?.data.status}
+          </span>
+        </div>
+
+        {/* Info Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {[
+            { label: "Project Name", value: apiResponse?.data.name },
+            { label: "Project ID", value: apiResponse?.data._id },
+            { label: "Plan Name", value: apiResponse?.data.plan_name },
+            { label: "Created By", value: apiResponse?.data.createBy },
+            {
+              label: "Created At",
+              value: formatDateWithTime(apiResponse?.data.createdAt || ""),
+            },
+            {
+              label: "Updated At",
+              value: formatDateWithTime(apiResponse?.data.updatedAt || ""),
+            },
+            {
+              label: "Website",
+              value: (
+                <a
+                  href={apiResponse?.data.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline break-all"
+                >
+                  {apiResponse?.data.website}
+                </a>
+              ),
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="w-full p-5 card-bg rounded-xl shadow-sm"
+            >
+              <label className="block text-xl font-medium mb-1">
+                {item.label}
+              </label>
+              <p className="text-gray-900 text-base">
+                {/* {typeof item.value === "string" ||
+                typeof item.value === "number"
+                  ? item.value
+                  : item.value} */}
+                {item.value}
+              </p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
+    </DashboardMask>
   );
 }
 

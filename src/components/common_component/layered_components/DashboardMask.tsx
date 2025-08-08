@@ -12,7 +12,7 @@ const DashboardMask = ({ name, children }: Name) => {
     <div className=" flex">
       <Sidebar active={name} />
 
-      <div className="w-screen   h-screen">
+      <div className="w-screen   max-h-[90vh]">
         <Navbar />
         <div className=" p-6  h-full w-full overflow-auto ">
           <div className=" w-full gap-4">{children}</div>

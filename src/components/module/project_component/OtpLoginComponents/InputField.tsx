@@ -34,6 +34,39 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "email": {
+        // if (!value.trim()) return "Email is required";
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)&&value.trim()) {
+          return "Invalid email address";
+        }
+        return "";
+      }
+      case "mobile": {
+        const trimmed = value.trim();
+
+        // if (!trimmed) return "Mobile number is required";
+        if (/\s/.test(trimmed)&&value.trim()) return "Mobile number cannot contain spaces";
+        if (!/^[0-9]+$/.test(trimmed)&&value.trim())
+          return "Mobile number must contain only digits";
+         if (/^0/.test(trimmed)&&value.trim()) 
+          return "Mobile number must not start with 0";
+
+        if (trimmed.length !== 10&&value.trim())
+          return "Mobile number must be exactly 10 digits";
+        if (/^([0-9])\1{9}$/.test(trimmed)&&value.trim())
+          return "Mobile number cannot be all the same digit";
+     
+
+        return "";
+      }
+
+      default:
+        return "";
+    }
+  };
+
+    const SubmitvalidateField = (name: string, value: string) => {
+    switch (name) {
+      case "email": {
         if (!value.trim()) return "Email is required";
         if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
           return "Invalid email address";
@@ -71,7 +104,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
     Object.keys(formData).forEach((key) => {
       if (key in errors) {
         const value = formData[key as keyof typeof formData];
-        const err = validateField(key, value);
+        const err = SubmitvalidateField(key, value);
         newErrors[key] = err;
 
         // If the field is non-empty and has no error → set valid to true
