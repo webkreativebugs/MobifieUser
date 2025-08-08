@@ -120,7 +120,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({
                   <td
                     key={col.key}
                     style={col.style}
-                    className="text-lg text-gray-500"
+                    className="text-lg text-gray-500 max-w-[500px] "
                   >
                     {renderCellByKey(
                       col.key,
