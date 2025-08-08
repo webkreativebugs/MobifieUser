@@ -194,7 +194,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
       {showNum ? (
         <div className="error-wrapper">
           {/* <label className="text-sm">Email</label> */}
-          <div className="flex items-center border-gray-300 border-2  mt-1 bg-white">
+          <div className="flex items-center border-gray-300 border-2 rounded-md  mt-1 bg-white">
             <ManualDropdown formData={formData} setFormData={setFormData} />
             {/* <span className="px-2 text-gray-500">
             <svg
@@ -219,7 +219,7 @@ const InputField = ({ setShowOtp, setApiRequestData }: InputFieldProps) => {
               onChange={handleChange}
               value={formData.mobile}
               onBlur={handleBlur}
-              className="w-full p-2  outline-none text-black"
+              className="w-full p-2 rounded-md outline-none text-black"
               maxLength={10}
               onKeyDown={(e) => {
                 const allowedControlKeys = [

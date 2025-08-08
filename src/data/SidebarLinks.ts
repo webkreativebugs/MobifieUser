@@ -14,18 +14,19 @@ import { FiSettings } from "react-icons/fi"
 import { MdSupportAgent } from "react-icons/md"
 import { FaMoneyBillWave } from "react-icons/fa"
 import { FiHelpCircle } from "react-icons/fi"
+import {DashboardTypeEnums} from "../../enum/DashboardLinks"
 
 import type { SidebarLink } from '../data/Types/LInkType.interface';
 
 export const AdminDashboardLinks: SidebarLink[] = [
-  { name: 'Projects', icon: FaFolderOpen ,link:'/projects'},
-  { name: 'Alerts', icon: MdNotificationsActive,link:"/alerts" },
-  { name: 'Activity', icon: FiActivity,link:"/activity" },
-  { name: 'Access Manager', icon: HiOutlineKey,link:"/access-manager" },
-  { name: 'Billing', icon: FaMoneyBillWave,link:"/billings" },
-  { name: 'Support', icon: MdSupportAgent ,link:"/support"},
-  { name: 'Settings', icon: FiSettings,link:"/settings" },
-  { name: 'Help', icon: FiHelpCircle,link:"/help" },
+  { name: DashboardTypeEnums.PROJECT, icon: FaFolderOpen ,link:'/projects'},
+  { name: DashboardTypeEnums.ALERTS, icon: MdNotificationsActive,link:"/alerts" },
+  { name: DashboardTypeEnums.ACTIVITY, icon: FiActivity,link:"/activity" },
+  { name: DashboardTypeEnums.ACCESS, icon: HiOutlineKey,link:"/access-manager" },
+  { name: DashboardTypeEnums.BILLING, icon: FaMoneyBillWave,link:"/billings" },
+  { name: DashboardTypeEnums.SUPPORT, icon: MdSupportAgent ,link:"/support"},
+  { name: DashboardTypeEnums.SETTINGS, icon: FiSettings,link:"/settings" },
+  { name: DashboardTypeEnums.HELP, icon: FiHelpCircle,link:"/help" },
 
   
   
