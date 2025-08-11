@@ -6,6 +6,7 @@ import Help from "../../pages/modules/org/help/page"
 import AccessManager from "../../pages/modules/org/access-manager/page"
 import Activity from "../../pages/modules/org/activity/page"
 import AppConfig from '../../pages/customize_pages/app-config/page'
+import UiConfig from '../../pages/customize_pages/ui-config/page'
 export const admin =[
     {
         route:"/",
@@ -45,6 +46,11 @@ export const admin =[
      {
         route:"/app-config",
         component: AppConfig,
+        additional:""
+    },
+     {
+        route:"/ui-config",
+        component: UiConfig,
         additional:""
     },
     

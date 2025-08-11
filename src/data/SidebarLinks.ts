@@ -27,6 +27,6 @@ export const AdminDashboardLinks: SidebarLink[] = [
 
 export const ConfigDashboardLinks :SidebarLink[] =[
   { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/app-config" },
-  { name: CustomizeDashboardTypeEnums.SCREEN, icon: MdOutlineDesignServices, link: "/ui-config" },
-  { name: CustomizeDashboardTypeEnums.UI, icon: MdScreenShare, link: "/screen-config" },
+  { name: CustomizeDashboardTypeEnums.UI, icon: MdOutlineDesignServices, link: "/ui-config" },
+  { name: CustomizeDashboardTypeEnums.SCREEN, icon: MdScreenShare, link: "/screen-config" },
 ]
