@@ -15,7 +15,7 @@ const CustomizeMask = ({name,children}:PROPS) => {
   return (
     <div>
       <DashboardMask name={DashboardTypeEnums.PROJECT}>
-          <div className=" flex">
+          <div className=" flex w-[90%] border-2">
      <CustomizeSidebar  active={name} />
       <div className="w-screen   max-h-[90vh]">
        

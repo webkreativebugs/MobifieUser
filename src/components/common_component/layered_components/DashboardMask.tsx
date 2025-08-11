@@ -14,7 +14,7 @@ const {show , setShow} = useloader()
     <Sidebar setShow={setShow} show={show} active={name} />
       <div className="w-screen   max-h-[90vh]">
         <Navbar/>
-        <div className=" p-6  h-full w-full overflow-auto ">
+        <div className=" p-6 mt-20  h-full w-full overflow-auto ">
           <div className=" w-full gap-4">{children}</div>
         </div>
       </div>
