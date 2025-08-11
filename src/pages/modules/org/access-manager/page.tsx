@@ -12,6 +12,7 @@ import DashboardMask from "../../../../components/common_component/layered_compo
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
+import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 interface Quary {
   search?: string;
   type?: string;
@@ -96,7 +97,7 @@ function page() {
   }, []);
 
   return (
-    <DashboardMask name={"Access Manager"}>
+    <DashboardMask name={DashboardTypeEnums.ACCESS}>
       <HeadingMask name={"Access Manager"}>
         <SearchMask
           handler={handleInputChange}

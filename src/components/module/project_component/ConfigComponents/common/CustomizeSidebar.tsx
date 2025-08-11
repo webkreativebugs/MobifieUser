@@ -20,7 +20,7 @@ const CustomizeSidebar = ({ active, }: SidebarProps) => {
   return (
    <>
 
-    <div className={`hidden xl:flex h-[80vh] w-1/5`}>
+    <div className={`hidden xl:flex h-full w-60`}>
 
       <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-md  w-full  bg-primary pb-10 h-full shadow-xl    ">
        

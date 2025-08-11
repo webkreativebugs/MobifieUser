@@ -8,6 +8,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { IoCopyOutline } from "react-icons/io5";
 import Toast from "../../../../components/common_component/Toast";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 
 function page() {
   const { orgDetails } = useorg();
@@ -60,7 +61,7 @@ function page() {
 
   return (
     <>
-      <DashboardMask name={"Settings"}>
+      <DashboardMask name={DashboardTypeEnums.SETTINGS}>
         <div className="">
           <h1 className="table-heading text-3xl pl-2 ">Settings</h1>
         </div>

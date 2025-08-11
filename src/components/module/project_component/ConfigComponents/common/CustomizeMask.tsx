@@ -15,11 +15,11 @@ const CustomizeMask = ({name,children}:PROPS) => {
   return (
     <div>
       <DashboardMask name={DashboardTypeEnums.PROJECT}>
-          <div className=" flex w-[90%] border-2">
+          <div className=" flex h-[84vh] ">
      <CustomizeSidebar  active={name} />
-      <div className="w-screen   max-h-[90vh]">
+      <div className="w-full ">
        
-        <div className=" p-6  h-full w-full overflow-auto ">
+        <div className=" p-6  h-full w-full overflow-auto hide-scrollbar">
           <div className=" w-full gap-4">{children}</div>
         </div>
       </div>
