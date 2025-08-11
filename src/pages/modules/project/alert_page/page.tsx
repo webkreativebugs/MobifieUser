@@ -8,12 +8,13 @@ import { AlertResponse } from "../../../../../network/public/organization_api/al
 import { AlertmodifiedUrlConfig } from "../../../../../network/public/organization_api/alerts/Alerts.api";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import getAlerts from "../../../../utils/api/Alert";
-import DynamicTable from "../../../../components/common_component/dynamic_table";
-import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
+// import DynamicTable from "../../../../components/common_component/dynamic_table";
+// import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
 import Pagination from "../../../../components/common_component/Pagination";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask"
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
+import AlertCards from "../../../../components/module/project_component/AlertCards";
 interface Quary {
   search?: string;
     type?: string;
@@ -28,12 +29,12 @@ function page() {
   if (apiError) {
     console.log(apiError);
   }
-  const columns: ColumnConfig[] = [
-    { key: "message", title: "Alerts", },
-    { key: "created_at", title:"Created At",},
-    { key: "type", title:"Type",},
-    // { key: "button", title: "", },
-  ];
+  // const columns: ColumnConfig[] = [
+  //   { key: "message", title: "Alerts", },
+  //   { key: "created_at", title:"Created At",},
+  //   { key: "type", title:"Type",},
+   
+  // ];
   // console.log(apiError);
  
 const handleInputChange = (
@@ -109,13 +110,14 @@ const handleInputChange = (
            {apiResponse && (
             <>
               <div className="mt-10">
-                <DynamicTable
+                {/* <DynamicTable
                   data={apiResponse.data.alerts}
                   columns={columns}
                   globalSearch={false}
                   emptyMessage="No Alert"
                   page={"alert"}
-                />
+                /> */}
+                <AlertCards data={apiResponse.data.alerts} />
               </div>
               <Pagination
                 length={apiResponse.data.pagination.total_pages}

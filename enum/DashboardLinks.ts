@@ -7,8 +7,11 @@ enum DashboardTypeEnums {
      SUPPORT="Support",
      SETTINGS="Settings",
      HELP="Help"
-
-
 }
 
-export {DashboardTypeEnums}
+enum CustomizeDashboardTypeEnums {
+  APP = "app",
+  UI = "ui",
+  SCREEN = "screen"
+}
+export {DashboardTypeEnums,CustomizeDashboardTypeEnums}

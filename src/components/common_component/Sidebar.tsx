@@ -32,7 +32,7 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
   return (
    <>
 
-    <div className={`hidden xl:flex h-screen  ${show?"w-1/6":""}`}>
+    <div className={`hidden xl:flex h-screen   ${show?"w-1/6":""}`}>
 
       <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
             
@@ -43,13 +43,14 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
             className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight"
           >
             <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
-          {show&&  <span className="mt-4 text-xl">Mobifie</span>}
+          {show&&  <span className="mt-4 text-xl ">Mobifie</span>}
+          
           </Link>
           
         </div>
        
         <div className="p-5 pt-0 w-full relative ">
-           <button  className="ml-4 self-start" onClick={()=>setShow(!show)} ><GoSidebarExpand style={{ fontSize: '20px' }}  /></button>
+          
           {AdminDashboardLinks.map((section) => (
             <div key={section.name}>
               {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
@@ -74,7 +75,7 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
                   {" "}
                   <section.icon />
                 </span>
-              {show&&  <span className="capitalize text-lg ">{section.name}</span>}
+              {show? <span className="capitalize text-lg ">{section.name}</span>:<span className="capitalize text-lg "></span>}
               </NavLink>
             </div>
           ))}
@@ -83,6 +84,7 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
           <FiLogOut />
           {show&&"Logout"}
         </button>
+         <button className="normal-link mt-6 ml-6 " onClick={()=>setShow(!show)} ><GoSidebarExpand style={{ fontSize: '20px' }}  /></button>
       </div>
       </div>
     
