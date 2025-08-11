@@ -20,11 +20,11 @@ const CustomizeSidebar = ({ active, }: SidebarProps) => {
   return (
    <>
 
-    <div className={`hidden xl:flex h-full w-1/6`}>
+    <div className={`hidden xl:flex h-[80vh] w-1/5`}>
 
-      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
+      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-md  w-full  bg-primary pb-10 h-full shadow-xl    ">
        
-        <div className="p-5 pt-0 w-full relative ">
+        <div className="p-5 pt-0 w-full relative mt-5 ">
           
           {ConfigDashboardLinks.map((section) => (
             <div key={section.name}>

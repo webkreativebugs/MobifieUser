@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { MdOutlineCancel } from "react-icons/md";
+// import { MdOutlineCancel } from "react-icons/md";
 import { AdminDashboardLinks } from "../../data/SidebarLinks";
 import { useNavigate } from "react-router-dom";
 import { useauth } from "../../context/auth_context/AuthContext";
@@ -8,7 +8,7 @@ const logo = "../../../../public/assets/MobifieLogo.svg";
 import LogOut from "../../utils/api/LogOut";
 import { FiLogOut } from "react-icons/fi";
 import { Dispatch,SetStateAction } from "react"
-import { GoSidebarCollapse } from "react-icons/go";
+// import { GoSidebarCollapse } from "react-icons/go";
 import { GoSidebarExpand } from "react-icons/go";
 
 interface SidebarProps {
@@ -32,7 +32,7 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
   return (
    <>
 
-    <div className={`hidden xl:flex h-screen   ${show?"w-1/6":""}`}>
+    <div className={`hidden xl:flex h-screen z-50   ${show?"w-1/6":""}`}>
 
       <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
             
