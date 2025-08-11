@@ -1,6 +1,6 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask"
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
-const AppConfig = () => {
+const page = () => {
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.APP}>
         <>
@@ -10,4 +10,4 @@ const AppConfig = () => {
   )
 }
 
-export default AppConfig
+export default page

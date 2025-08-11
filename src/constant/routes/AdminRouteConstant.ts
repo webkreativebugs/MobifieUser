@@ -5,7 +5,7 @@ import Settings from "../../pages/modules/org/setting/page"
 import Help from "../../pages/modules/org/help/page"
 import AccessManager from "../../pages/modules/org/access-manager/page"
 import Activity from "../../pages/modules/org/activity/page"
-import AppConfig from '../../pages/customize_pages/app-config/AppConfig'
+import AppConfig from '../../pages/customize_pages/app-config/page'
 export const admin =[
     {
         route:"/",
