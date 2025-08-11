@@ -5,45 +5,15 @@ import { AlertmodifiedUrlConfig } from "../../../../../network/public/organizati
 import projects from "../../../../utils/api/Project";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
-import Carousel from "../../../../components/module/project_component/Carousel"; // Adjust the path if needed
+import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks"; 
+import { Link } from "react-router-dom";
 function page() {
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
-  // const [clicked, setClicked] = useState(1);
   const [apiResponse, setApiResponse] = useState<ProjectResponse | undefined>();
-  // const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
   if (apiError) {
     console.log(apiError);
   }
-  // const columns: ColumnConfig[] = [
-  //   { key: "name", title: "Name" },
-  // ];
-  // console.log(apiError);
-
-  // const handleInputChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  // ) => {
-  //   const { name, value } = e.target;
-
-  //   setInputQuary((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // useEffect(() => {
-  //   // console.log(inputQuary.search);
-  //   if (!inputQuary?.search?.trim()) return;
-
-  //   const searchParam = `&search=${encodeURIComponent(
-  //     inputQuary.search.trim()
-  //   )}`;
-
-  //   AlertmodifiedUrlConfig.search = `${searchParam}`;
-
-  //   projects(setApiResponse, setApiError, setLoader);
-  // }, [inputQuary]);
-
   useEffect(() => {
     setLoader(true);
     AlertmodifiedUrlConfig.page = "1";
@@ -69,7 +39,7 @@ function page() {
   }
 
   return (
-    <DashboardMask name={"Projects"}>
+    <DashboardMask name={DashboardTypeEnums.PROJECT}>
       <HeadingMask name={"Projects"}>
         <div></div>
       </HeadingMask>
@@ -146,9 +116,9 @@ function page() {
               your goals. Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Ipsam fugiat nihil, deserunt aliquid quasi aut!
             </p>
-            <button className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200">
+            <Link to="/app-config" className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200">
               Customize
-            </button>
+            </Link>
           </div>
 
           {/* Right side: Image */}

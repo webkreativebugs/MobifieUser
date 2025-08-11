@@ -6,9 +6,9 @@ import {
 } from "react";
 // import { useNavigate } from "react-router-dom";
 const loaderAnimation ="/assets/animation/LoaderAnimation.gif"
-import { useauth } from "../auth_context/AuthContext";
+// import { useauth } from "../auth_context/AuthContext";
 import { Dispatch, SetStateAction } from "react";
-import { decoder } from "../../utils/JwtDecoder";
+// import { decoder } from "../../utils/JwtDecoder";
 // import AuthMe from "../../utils/api/AuthMe";
 // import { decoder } from "../../utils/JwtDecoder";
 // import { useNavigate } from "react-router-dom";
@@ -16,6 +16,8 @@ import { decoder } from "../../utils/JwtDecoder";
 interface USERROLE {
   loader: boolean;
   setLoader: Dispatch<SetStateAction<boolean>>;
+  show :boolean;
+  setShow: Dispatch<SetStateAction<boolean>>;
 }
 
 type Props = {
@@ -25,12 +27,15 @@ type Props = {
 const LoaderContext = createContext({} as USERROLE);
 export const LoaderProvider = ({ children }: Props) => {
   const [loader, setLoader] = useState<boolean>(false);
-  const {role} = useauth();
+  const [show,setShow] =useState(true)
+  // const {role} = useauth();
   return (
     <LoaderContext.Provider
       value={{
         loader,
         setLoader,
+        show,
+        setShow
       }}
     >
       {children}

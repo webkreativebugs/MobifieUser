@@ -7,12 +7,17 @@ import { useauth } from "../../context/auth_context/AuthContext";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import LogOut from "../../utils/api/LogOut";
 import { FiLogOut } from "react-icons/fi";
+import { Dispatch,SetStateAction } from "react"
+import { GoSidebarCollapse } from "react-icons/go";
+import { GoSidebarExpand } from "react-icons/go";
 
 interface SidebarProps {
   active: string;
+  show:boolean;
+  setShow: Dispatch<SetStateAction<boolean>>
 }
 
-const Sidebar = ({ active }: SidebarProps) => {
+const Sidebar = ({setShow, active,show }: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
   const [activeLinkName, setActiveLinkName] = useState(active);
@@ -25,26 +30,27 @@ const Sidebar = ({ active }: SidebarProps) => {
   // const normalLink = 'flex items-center gap-3 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 hover:bg-gray-100 m-2';
 
   return (
-    <div className="hidden xl:flex h-screen   w-1/6">
+   <>
+
+    <div className={`hidden xl:flex h-screen   ${show?"w-1/6":""}`}>
+
       <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
-        <div className=" ml-5 border-b-2 flex justify-between items-center  ">
+            
+        <div className=" pl-5 border-b-2 flex justify-between items-center   ">
+        
           <Link
             to="/"
             className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight"
           >
             <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
-            <span className="mt-4 text-xl">Mobifie</span>
+          {show&&  <span className="mt-4 text-xl ">Mobifie</span>}
+          
           </Link>
-          <button
-            type="button"
-            onClick={() => console.log("Menu toggle")} // replace with real toggle if needed
-            className="text-xl rounded-full p-3 hover:bg-gray-100 mt-4 block md:hidden"
-          >
-            <MdOutlineCancel />
-          </button>
+          
         </div>
-
-        <div className="p-5 pt-0 w-full ">
+       
+        <div className="p-5 pt-0 w-full relative ">
+          
           {AdminDashboardLinks.map((section) => (
             <div key={section.name}>
               {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
@@ -69,62 +75,22 @@ const Sidebar = ({ active }: SidebarProps) => {
                   {" "}
                   <section.icon />
                 </span>
-                <span className="capitalize text-lg ">{section.name}</span>
+              {show? <span className="capitalize text-lg ">{section.name}</span>:<span className="capitalize text-lg "></span>}
               </NavLink>
             </div>
           ))}
         </div>
         <button className="normal-link mt-6 ml-6 " onClick={handleClick}>
           <FiLogOut />
-          Logout
+          {show&&"Logout"}
         </button>
+         <button className="normal-link mt-6 ml-6 " onClick={()=>setShow(!show)} ><GoSidebarExpand style={{ fontSize: '20px' }}  /></button>
       </div>
-      {/**************************Mobile Section***************************** */}
-      <div>
-        <div className="h-screen hidden overflow-auto hide-scrollbar  border-r-2 pb-10 w-2/12 shadow-md ">
-          <div className="flex justify-between items-center">
-            <Link
-              to="/"
-              className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight"
-            >
-              <img src={logo} alt="Mobifie Logo" className="w-[80px] " />
-              <span className="mt-4 text-2xl">Mobifie</span>
-            </Link>
-            <button
-              type="button"
-              onClick={() => console.log("Menu toggle")} // replace with real toggle if needed
-              className="text-xl rounded-full p-3 hover:bg-gray-100 mt-4 block md:hidden"
-            >
-              <MdOutlineCancel />
-            </button>
-          </div>
-
-          <div className="p-5 ">
-            {AdminDashboardLinks.map((section) => (
-              <div key={section.name}>
-                {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
-
-                <a
-                  // to={`/${section.link}`}
-                  key={section.name}
-                  onClick={() => {
-                    setActiveLinkName(section.name);
-                    navigate(`/${section.link}`, { replace: true });
-                  }}
-                  className={`   ${
-                    activeLinkName === section.name
-                      ? "active-link "
-                      : "normal-link"
-                  }`}
-                >
-                  <section.icon />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
-    </div>
+    
+  
+    </>
+          
   );
 };
 

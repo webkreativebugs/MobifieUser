@@ -7,17 +7,17 @@ interface TextCellProps {
 }
 
 const TextCell: React.FC<TextCellProps> = ({ data, value }) => {
-  console.log(data);
+  // console.log(data);
   
   return (
-    <span className=""
+    <p className="max-w-[800px] "
       onClick={() => {
         alert(value);
       }}
       style={{ cursor: "pointer"  }}
     >
-     <p className="" > {value}</p>
-    </span>
+    {value}
+    </p>
   );
 };
 

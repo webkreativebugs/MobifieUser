@@ -32,9 +32,9 @@ const ManualDropdown = ({ formData, setFormData }: any) => {
   }, []);
 
   return (
-    <div className="relative w-1/3" ref={dropdownRef}>
+    <div className="relative w-1/3  " ref={dropdownRef}>
       <div
-        className={`w-full px-1 py-2  border-r-2 bg-white flex justify-center items-center cursor-pointer ${"border-gray-300"}`}
+        className={`w-full px-1 py-2 rounded-l-md border-r-2 bg-white flex justify-center items-center cursor-pointer ${"border-gray-300"}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="text-gray-800">{formData.country_code || "+91"}</span>
