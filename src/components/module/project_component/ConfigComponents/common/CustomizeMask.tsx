@@ -1,17 +1,17 @@
-import DashboardMask from "../../../../common_component/layered_components/DashboardMask"
-import { useloader } from "../../../../../context/loader_context/LoaderContext"
-import { DashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
-import { ReactNode } from "react"
-import CustomizeSidebar from "./CustomizeSidebar"
+import DashboardMask from "../../../../common_component/layered_components/DashboardMask";
+import { useloader } from "../../../../../context/loader_context/LoaderContext";
+import { DashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
+import { ReactNode } from "react";
+import CustomizeSidebar from "./CustomizeSidebar";
 
 interface PROPS {
-      name: string;
-      children: ReactNode;
+  name: string;
+  children: ReactNode;
 }
 
-const CustomizeMask = ({name,children}:PROPS) => {
-    const{setShow} = useloader()
-    setShow(false)
+const CustomizeMask = ({ name, children }: PROPS) => {
+  const { setShow } = useloader();
+  setShow(false);
   return (
     <div>
       <DashboardMask name={DashboardTypeEnums.PROJECT}>
@@ -26,7 +26,7 @@ const CustomizeMask = ({name,children}:PROPS) => {
     </div>
       </DashboardMask>
     </div>
-  )
-}
+  );
+};
 
-export default CustomizeMask
+export default CustomizeMask;
