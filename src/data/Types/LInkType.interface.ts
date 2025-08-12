@@ -4,5 +4,6 @@ export interface SidebarLink {
   name: string;
   icon: IconType;
   link:string;
+  dropdown:boolean
 }
 

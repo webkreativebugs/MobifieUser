@@ -15,18 +15,18 @@ import { CustomizeDashboardTypeEnums } from "../../enum/DashboardLinks"
 import type { SidebarLink } from '../data/Types/LInkType.interface';
 
 export const AdminDashboardLinks: SidebarLink[] = [
-  { name: DashboardTypeEnums.PROJECT, icon: FaFolderOpen ,link:'/projects'},
-  { name: DashboardTypeEnums.ALERTS, icon: MdNotificationsActive,link:"/alerts" },
-  { name: DashboardTypeEnums.ACTIVITY, icon: FiActivity,link:"/activity" },
-  { name: DashboardTypeEnums.ACCESS, icon: HiOutlineKey,link:"/access-manager" },
-  { name: DashboardTypeEnums.BILLING, icon: FaMoneyBillWave,link:"/billings" },
-  { name: DashboardTypeEnums.SUPPORT, icon: MdSupportAgent ,link:"/support"},
-  { name: DashboardTypeEnums.SETTINGS, icon: FiSettings,link:"/settings" },
-  { name: DashboardTypeEnums.HELP, icon: FiHelpCircle,link:"/help" },
+  { name: DashboardTypeEnums.PROJECT, icon: FaFolderOpen ,link:'/projects',dropdown:false},
+  { name: DashboardTypeEnums.ALERTS, icon: MdNotificationsActive,link:"/alerts",dropdown:false },
+  { name: DashboardTypeEnums.ACTIVITY, icon: FiActivity,link:"/activity",dropdown:false },
+  { name: DashboardTypeEnums.ACCESS, icon: HiOutlineKey,link:"/access-manager",dropdown:false },
+  { name: DashboardTypeEnums.BILLING, icon: FaMoneyBillWave,link:"/billings",dropdown:false },
+  { name: DashboardTypeEnums.SUPPORT, icon: MdSupportAgent ,link:"/support",dropdown:false},
+  { name: DashboardTypeEnums.SETTINGS, icon: FiSettings,link:"/settings",dropdown:false },
+  { name: DashboardTypeEnums.HELP, icon: FiHelpCircle,link:"/help" ,dropdown:false},
 ];
 
 export const ConfigDashboardLinks :SidebarLink[] =[
-  { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/app-config" },
-  { name: CustomizeDashboardTypeEnums.UI, icon: MdOutlineDesignServices, link: "/ui-config" },
-  { name: CustomizeDashboardTypeEnums.SCREEN, icon: MdScreenShare, link: "/screen-config" },
+  { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/app-config",dropdown:false },
+  { name: CustomizeDashboardTypeEnums.UI, icon: MdOutlineDesignServices, link: "/ui-config",dropdown:true },
+  { name: CustomizeDashboardTypeEnums.SCREEN, icon: MdScreenShare, link: "/screen-config",dropdown:false },
 ]

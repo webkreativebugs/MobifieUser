@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Header / AppBar",
+    "description": "Top navigation bar containing app title, back button, or menu icon. Often sticky at the top."
+  },
+  {
+    "name": "Bottom Navigation Bar",
+    "description": "Navigation at the bottom with 3–5 main app sections for quick access."
+  },
+  {
+    "name": "Card Component",
+    "description": "A container to display grouped content like product details, user info, or articles."
+  },
+  {
+    "name": "Search Bar",
+    "description": "Input field for searching products, users, or content. Often includes a filter button."
+  },
+  {
+    "name": "Product / Shopping Card",
+    "description": "Specialized card with product image, name, price, and an 'Add to Cart' button."
+  },
+  {
+    "name": "List Item",
+    "description": "A compact row with icon, text, and an optional action button. Used in lists, settings, chats."
+  },
+  {
+    "name": "Modal / Bottom Sheet",
+    "description": "Overlay that shows additional details or actions without leaving the current screen."
+  },
+  {
+    "name": "Loading Indicator",
+    "description": "Spinner or skeleton loader to indicate that data is being fetched."
+  },
+  {
+    "name": "Order Summary Card",
+    "description": "Displays cart items with quantity, price breakdown, and total amount."
+  },
+  {
+    "name": "Button (Primary & Secondary)",
+    "description": "Call-to-action buttons like 'Buy Now', 'Confirm Order', styled consistently."
+  }
+]
