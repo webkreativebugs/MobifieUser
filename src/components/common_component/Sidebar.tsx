@@ -11,8 +11,8 @@ import { Dispatch, SetStateAction } from "react";
 // import { GoSidebarCollapse } from "react-icons/go";
 import { GoSidebarExpand } from "react-icons/go";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
-import dropdownData from "../../data/CustomizeData/UiDropdown.json";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import dropdownData from "../../data/CustomizeData/UiDropdown.json";
 interface SidebarProps {
   active: string;
   show: boolean;
@@ -23,7 +23,7 @@ interface SidebarProps {
 const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
-  const[showDropdown,setShowDropdown]=useState(false)
+  const[showDropdown , setShowDropdown] = useState(false)
   const [activeLinkName, setActiveLinkName] = useState(active);
   // const [show,setShow] = useState(true)
   function handleClick() {
@@ -52,52 +52,89 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
               {links.map((section) => (
                 <div key={section.name}>
                   {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
-
-                  <NavLink
-                    to={section.link}
-                    key={section.name}
-                    onClick={() => setActiveLinkName(section.name)}
-                    className={` ${
-                      activeLinkName === section.name
-                        ? "active-link   "
-                        : "normal-link"
-                    }  ${section.dropdown&&"items-start"} w-full` }
-                  >
-                    <span
+                  {!section.dropdown ? (
+                    <NavLink
+                      to={section.link}
+                      key={section.name}
+                      onClick={() => setActiveLinkName(section.name)}
                       className={` ${
                         activeLinkName === section.name
-                          ? "theme-color text-3xl"
-                          : "theme-color text-2xl font-light"
-                      } `}
+                          ? "active-link   "
+                          : "normal-link"
+                      }`}
                     >
-                      {" "}
-                      <section.icon />
-                    </span>
-                    {show ? (
-                      <div className="w-full">
-                        <div className="capitalize text-lg flex items-center justify-between  ">
+                      <span
+                        className={` ${
+                          activeLinkName === section.name
+                            ? "theme-color"
+                            : "theme-color"
+                        }`}
+                      >
+                        {" "}
+                        <section.icon />
+                      </span>
+                      {show ? (
+                        <span className="capitalize text-lg">
                           {section.name}
-                          {section.dropdown &&<button className="text-2xl" onClick={()=>setShowDropdown(!showDropdown)} ><RiArrowDropDownLine/></button>}
-                        </div>
-                        {section.dropdown&&showDropdown && (
-                          <div className="relative mt-1 ">
-                            <ul className="">
+                        </span>
+                      ) : (
+                        <span className="capitalize text-lg"></span>
+                      )}
+                    </NavLink>
+                  ) : (
+                    <>
+                    <button
+                      onClick={() => setShowDropdown(!showDropdown)}
+                      className="flex w-full justify-between items-center"
+                    >
+                    <div className={` ${
+                        activeLinkName === section.name
+                          ? "active-link   "
+                          : "normal-link"
+                      } w-full `}>
+                      <span
+                        className={` ${
+                          activeLinkName === section.name
+                            ? "theme-color"
+                            : "theme-color"
+                        }`}
+                      >
+                        {" "}
+                        <section.icon />
+                      </span>
+                      {show ? (
+                        
+                        <span className="capitalize text-lg">
+                          {section.name}
+                        </span>
+                       
+
+                      ) : (
+                        <span className="capitalize text-lg"></span>
+                      )}
+                      </div>
+                      <span className="text-2xl">
+                      < RiArrowDropDownLine/> 
+                      </span>
+                    </button>
+                      {section.dropdown && showDropdown && (
+                          <div className="relative ml-7 w-full ">
+                            <ul
+                              className={` overflow-hidden transition-all duration-500 ease-in-out `}
+                            >
                               {dropdownData.map((item, index) => (
                                 <li
                                   key={index}
-                                  className=" py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer transition-colors"
+                                 className="  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer transition-colors"
                                 >
-                                  {item.name}
+                                <Link to={section.link} >  {item.name}</Link>
                                 </li>
                               ))}
                             </ul>
-                          </div>
-                        )}
                       </div>
-                    ) : (
-                      <span className="capitalize text-lg"></span>
-                    )}
-                  </NavLink>
+                        )}
+                    </>
+                  )}
                 </div>
               ))}
             </div>
