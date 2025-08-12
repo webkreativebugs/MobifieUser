@@ -1,27 +1,43 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
+import UiCOmponent from "../../../data/CustomizeData/UiDropdown.json";
 const page = () => {
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.UI}>
       <div className="  flex">
         <div className=" w-2/3 ">
-          <HeadingMask name={"Select Screen"}>
+          <HeadingMask name={"Select Component"}>
             <></>
           </HeadingMask>
           {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
-          <div className="flex flex-wrap gap-8 mt-8 ml-3">
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
-            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+
+          {/* Example: Display the 'name' property of the first UI component */}
+          <div className="flex flex-wrap  w-full border gap-3">
+            {" "}
+            {UiCOmponent[0]?.designs &&
+              UiCOmponent[0].designs.map((item, idx) => (
+                // <div
+                //   className=""
+                //   key={idx}
+                //   dangerouslySetInnerHTML={{ __html: item.html }}
+                // />
+                <img src={item.image} alt="" />
+              ))}
           </div>
+
+          {/* <div className="flex flex-wrap gap-8 mt-8 ml-3">
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+            <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
+          </div> */}
         </div>
         <div className="w-1/3  flex justify-center items-center">
           {/* <img
