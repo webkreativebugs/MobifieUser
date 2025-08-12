@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { MdOutlineCancel } from "react-icons/md";
-import { AdminDashboardLinks } from "../../data/SidebarLinks";
+// import { AdminDashboardLinks } from "../../data/SidebarLinks";
 import { useNavigate } from "react-router-dom";
 import { useauth } from "../../context/auth_context/AuthContext";
 const logo = "../../../../public/assets/MobifieLogo.svg";
@@ -10,14 +10,15 @@ import { FiLogOut } from "react-icons/fi";
 import { Dispatch,SetStateAction } from "react"
 // import { GoSidebarCollapse } from "react-icons/go";
 import { GoSidebarExpand } from "react-icons/go";
-
+import { SidebarLink } from "../../data/Types/LInkType.interface";
 interface SidebarProps {
   active: string;
   show:boolean;
   setShow: Dispatch<SetStateAction<boolean>>
+  links:SidebarLink[]
 }
 
-const Sidebar = ({setShow, active,show }: SidebarProps) => {
+const Sidebar = ({setShow, active,show ,links}: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
   const [activeLinkName, setActiveLinkName] = useState(active);
@@ -34,8 +35,8 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
 
     <div className={`hidden xl:flex h-screen z-50   ${show?"w-1/6":""}`}>
 
-      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full  bg-primary pb-10 h-full shadow-xl    ">
-            
+      <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full justify-between  bg-primary pb-10 h-full shadow-xl    ">
+        <div className="  xl:flex xl:flex-col   ">
         <div className=" pl-5 border-b-2 flex justify-between items-center   ">
         
           <Link
@@ -51,7 +52,7 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
        
         <div className="p-5 pt-0 w-full relative ">
           
-          {AdminDashboardLinks.map((section) => (
+          {links.map((section) => (
             <div key={section.name}>
               {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
 
@@ -80,12 +81,16 @@ const Sidebar = ({setShow, active,show }: SidebarProps) => {
             </div>
           ))}
         </div>
+        </div>
+       <div>
         <button className="normal-link mt-6 ml-6 " onClick={handleClick}>
           <FiLogOut />
           {show&&"Logout"}
         </button>
          <button className="normal-link mt-6 ml-6 " onClick={()=>setShow(!show)} ><GoSidebarExpand style={{ fontSize: '20px' }}  /></button>
+         </div>
       </div>
+       
       </div>
     
   

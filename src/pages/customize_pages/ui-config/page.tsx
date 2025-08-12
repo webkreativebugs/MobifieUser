@@ -1,12 +1,14 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
+import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 const page = () => {
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.UI}>
       <div className="  flex">
         <div className=" w-2/3 ">
-          <h1 className="text-2xl font-semibold mb-8">Select Screen</h1>
-          <div className="flex flex-wrap gap-8 ml-3">
+        <HeadingMask name={"Select Screen"}><></></HeadingMask>
+          {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
+          <div className="flex flex-wrap gap-8 mt-8 ml-3">
             <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
             <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
             <div className="h-[16rem] w-[9rem] border rounded-md">1</div>
