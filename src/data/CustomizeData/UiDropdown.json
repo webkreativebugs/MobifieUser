@@ -1,7 +1,51 @@
 [
   {
     "name": "Header / AppBar",
-    "description": "Top navigation bar containing app title, back button, or menu icon. Often sticky at the top."
+    "description": "Top navigation bar containing app title, back button, or menu icon. Often sticky at the top.",
+    "designs": [
+      {
+        "image": "../../../public/assets/headerComponent/h1.png",
+        "title": "Simple Centered Header",
+        "type": "header",
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
+      },
+      {
+        "image": "../../../public/assets/headerComponent/h2.png",
+        "title": "Header with Back Button",
+        "type": "header",
+        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
+      },
+      {
+        "image": "../../../public/assets/headerComponent/h3.png",
+        "title": "Header with Menu Icon",
+        "type": "header",
+        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
+      },
+      {
+        "image": "../../../public/assets/headerComponent/h4.png",
+        "title": "Header with Search",
+        "type": "header",
+        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
+      },
+      {
+        "image": "../../../public/assets/headerComponent/h5.png",
+        "title": "Sticky Header",
+        "type": "header",
+        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+      },
+      {
+        "image": "../../../public/assets/headerComponent/h6.png",
+        "title": "Sticky Header",
+        "type": "header",
+        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+      },
+      {
+        "image": "../../../public/assets/headerComponent/h7.png",
+        "title": "Sticky Header",
+        "type": "header",
+        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+      }
+    ]
   },
   {
     "name": "Bottom Navigation Bar",
