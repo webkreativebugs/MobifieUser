@@ -5,8 +5,10 @@ import Settings from "../../pages/modules/org/setting/page"
 import Help from "../../pages/modules/org/help/page"
 import AccessManager from "../../pages/modules/org/access-manager/page"
 import Activity from "../../pages/modules/org/activity/page"
-import AppConfig from '../../pages/customize_pages/app-config/page'
 import UiConfig from '../../pages/customize_pages/ui-config/page'
+import ApiConfig from "../../pages/customize_pages/api-config/page"
+import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
+import DefaultConfig from "../../pages/customize_pages/default-config/page"
 export const admin =[
     {
         route:"/",
@@ -14,7 +16,7 @@ export const admin =[
         additional:""
     },
      {
-        route:"/projects",
+        route:"/project",
         component: Projects,
         additional:""
     },
@@ -44,16 +46,25 @@ export const admin =[
         additional:""
     },
      {
-        route:"/app-config",
-        component: AppConfig,
-        additional:""
-    },
-     {
-        route:"/ui-config",
+        route:"/project/ui-config",
         component: UiConfig,
         additional:""
     },
-    
+    {
+        route:"/project/api-config",
+        component:ApiConfig,
+        additional:""
+    },
+     {
+        route:"/project/weburl-config",
+        component:WebUrlConfig,
+        additional:""
+    },
+     {
+        route:"/project/default-config",
+        component:DefaultConfig,
+        additional:""
+    }
     
 
 ]

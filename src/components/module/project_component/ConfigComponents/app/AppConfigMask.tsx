@@ -1,10 +1,11 @@
-import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask"
-import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
-import HeadingMask from "../../../components/common_component/layered_components/HeadingMask"
-import { useorg } from "../../../context/org_context/OrganizationContext";
-import { tablinks } from "../../../data/TabLinks";
+import CustomizeMask from "../common/CustomizeMask"
+import HeadingMask from "../../../../common_component/layered_components/HeadingMask"
+import { useorg } from "../../../../../context/org_context/OrganizationContext";
+import { tablinks } from "../../../../../data/TabLinks";
 import { Link } from "react-router-dom";
-const page = () => {
+import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
+import { ReactNode } from "react";
+const AppConfigMask = ({ children }: { children: ReactNode }) => {
   const { orgDetails } = useorg();
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.APP}>
@@ -34,10 +35,9 @@ const page = () => {
       })}
     </div>
      </div>
-
-      
+     {children}
     </CustomizeMask>
   )
 }
 
-export default page
+export default AppConfigMask

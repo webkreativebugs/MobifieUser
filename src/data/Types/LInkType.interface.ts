@@ -7,3 +7,8 @@ export interface SidebarLink {
   dropdown:boolean
 }
 
+export interface TabLinks{
+  name:string;
+  link:string
+
+}
