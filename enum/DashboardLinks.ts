@@ -14,4 +14,11 @@ enum CustomizeDashboardTypeEnums {
   UI = "ui",
   SCREEN = "screen"
 }
-export {DashboardTypeEnums,CustomizeDashboardTypeEnums}
+
+enum ConfigTypeEnums{
+  API="Api Config",
+  WEB="Web Url Config ",
+  DEFAULT="Default Config"
+}
+export {DashboardTypeEnums,CustomizeDashboardTypeEnums,ConfigTypeEnums}
+
