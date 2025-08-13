@@ -5,11 +5,11 @@ import { tablinks } from "../../../../../data/TabLinks";
 import { Link } from "react-router-dom";
 import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { ReactNode } from "react";
-const AppConfigMask = ({ children }: { children: ReactNode }) => {
+const AppConfigMask = ({ children,displayName }: { children: ReactNode ,displayName:string}) => {
   const { orgDetails } = useorg();
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.APP}>
-     <HeadingMask name={"App config"} >
+     <HeadingMask name={displayName} >
       <></>
      </HeadingMask>
      <div className="bg-primary  p-5 pb-0 mb-0 ">
@@ -35,7 +35,10 @@ const AppConfigMask = ({ children }: { children: ReactNode }) => {
       })}
     </div>
      </div>
-     {children}
+     <div className="h-72 w-full bg-primary mt-5">
+         {children}
+     </div>
+    
     </CustomizeMask>
   )
 }
