@@ -39,12 +39,6 @@
         "title": "Sticky Header",
         "type": "header",
         "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h7.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       }
     ]
   },
