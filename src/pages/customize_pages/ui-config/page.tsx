@@ -7,19 +7,18 @@ import CustomizeSidebar from "../../../components/module/project_component/Confi
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 const page = () => {
   const [first, setfirst] = useState("");
+  const [element, setElement] = useState(UiCOmponent[0].name);
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.UI}>
-      <div className="  flex">
-        <UiConfigSidebar />
+      <div className=" flex">
+        <UiConfigSidebar element={element} setElement={setElement} />
         {/* <CustomizeSidebar active="xfbhfh" /> */}
         <div className=" w-2/3 ">
-          <HeadingMask name={"Select Component"}>
-            <></>
-          </HeadingMask>
+          <h1 className="text-3xl font-semibold ml-12 mb-6">{element}</h1>
           {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
 
           {/* Example: Display the 'name' property of the first UI component */}
-          <div className="flex flex-wrap justify-evenly   w-full  gap-x-1 gap-y-4 ">
+          <div className="flex flex-wrap justify-around ml-4 px-8 w-full  gap-x-1 gap-y-4 ">
             {" "}
             {UiCOmponent[0]?.designs &&
               UiCOmponent[0].designs.map((item, idx) => (
@@ -28,7 +27,7 @@ const page = () => {
                 //   key={idx}
                 //   dangerouslySetInnerHTML={{ __html: item.html }}
                 // />
-                <div className="w-2/5 border p-5 rounded-lg">
+                <div className="w-[24rem] border p-5 rounded-lg">
                   <button onClick={() => setfirst(item.image)}>
                     <img src={item.image} alt="" />
                   </button>
