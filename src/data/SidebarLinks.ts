@@ -15,7 +15,7 @@ import { CustomizeDashboardTypeEnums } from "../../enum/DashboardLinks"
 import type { SidebarLink } from '../data/Types/LInkType.interface';
 
 export const AdminDashboardLinks: SidebarLink[] = [
-  { name: DashboardTypeEnums.PROJECT, icon: FaFolderOpen ,link:'/projects',dropdown:false},
+  { name: DashboardTypeEnums.PROJECT, icon: FaFolderOpen ,link:'/project',dropdown:false},
   { name: DashboardTypeEnums.ALERTS, icon: MdNotificationsActive,link:"/alerts",dropdown:false },
   { name: DashboardTypeEnums.ACTIVITY, icon: FiActivity,link:"/activity",dropdown:false },
   { name: DashboardTypeEnums.ACCESS, icon: HiOutlineKey,link:"/access-manager",dropdown:false },
@@ -26,7 +26,7 @@ export const AdminDashboardLinks: SidebarLink[] = [
 ];
 
 export const ConfigDashboardLinks :SidebarLink[] =[
-  { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/app-config",dropdown:false },
-  { name: CustomizeDashboardTypeEnums.UI, icon: MdOutlineDesignServices, link: "/ui-config",dropdown:true },
-  { name: CustomizeDashboardTypeEnums.SCREEN, icon: MdScreenShare, link: "/screen-config",dropdown:false },
+  { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/project/api-config",dropdown:false },
+  { name: CustomizeDashboardTypeEnums.UI, icon: MdOutlineDesignServices, link: "/project/ui-config",dropdown:true },
+  { name: CustomizeDashboardTypeEnums.SCREEN, icon: MdScreenShare, link: "/project/screen-config",dropdown:false },
 ]

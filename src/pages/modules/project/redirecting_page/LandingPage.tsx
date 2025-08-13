@@ -9,7 +9,7 @@ export default function LandingPage () {
   useEffect(() => {
     const currentRole = decoder(role);
     if (currentRole === "admin") {
-      navigate("/projects", { replace: true });
+      navigate("/project", { replace: true });
     } else {
       navigate("/login-with-password", { replace: true });
     }

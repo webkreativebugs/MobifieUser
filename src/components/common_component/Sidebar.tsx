@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { MdOutlineCancel } from "react-icons/md";
 // import { AdminDashboardLinks } from "../../data/SidebarLinks";
@@ -11,8 +11,7 @@ import { Dispatch, SetStateAction } from "react";
 // import { GoSidebarCollapse } from "react-icons/go";
 import { GoSidebarExpand } from "react-icons/go";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import dropdownData from "../../data/CustomizeData/UiDropdown.json";
+import { useSearchParams } from "react-router-dom";
 interface SidebarProps {
   active: string;
   show: boolean;
@@ -23,8 +22,12 @@ interface SidebarProps {
 const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
-  const[showDropdown , setShowDropdown] = useState(false)
+   const [searchParams] = useSearchParams();
+  //  console.log(DropName);
+   
+  // const [showDropdown , setShowDropdown] = useState<boolean|null>(false)
   const [activeLinkName, setActiveLinkName] = useState(active);
+  // const [dropActiveLinkName,setDropActiveLinkName]=useState<string|null>("")
   // const [show,setShow] = useState(true)
   function handleClick() {
     LogOut();
@@ -52,7 +55,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
               {links.map((section) => (
                 <div key={section.name}>
                   {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
-                  {!section.dropdown ? (
+                 
                     <NavLink
                       to={section.link}
                       key={section.name}
@@ -81,60 +84,8 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                         <span className="capitalize text-lg"></span>
                       )}
                     </NavLink>
-                  ) : (
-                    <>
-                    <button
-                      onClick={() => setShowDropdown(!showDropdown)}
-                      className="flex w-full justify-between items-center"
-                    >
-                    <div className={` ${
-                        activeLinkName === section.name
-                          ? "active-link   "
-                          : "normal-link"
-                      } w-full `}>
-                      <span
-                        className={` ${
-                          activeLinkName === section.name
-                            ? "theme-color"
-                            : "theme-color"
-                        }`}
-                      >
-                        {" "}
-                        <section.icon />
-                      </span>
-                      {show ? (
-                        
-                        <span className="capitalize text-lg">
-                          {section.name}
-                        </span>
-                       
-
-                      ) : (
-                        <span className="capitalize text-lg"></span>
-                      )}
-                      </div>
-                      <span className="text-2xl">
-                      < RiArrowDropDownLine/> 
-                      </span>
-                    </button>
-                      {section.dropdown && showDropdown && (
-                          <div className="relative ml-7 w-full ">
-                            <ul
-                              className={` overflow-hidden transition-all duration-500 ease-in-out `}
-                            >
-                              {dropdownData.map((item, index) => (
-                                <li
-                                  key={index}
-                                 className="  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer transition-colors"
-                                >
-                                <Link to={section.link} >  {item.name}</Link>
-                                </li>
-                              ))}
-                            </ul>
-                      </div>
-                        )}
-                    </>
-                  )}
+               
+                   
                 </div>
               ))}
             </div>

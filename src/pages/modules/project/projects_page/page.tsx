@@ -116,7 +116,7 @@ function page() {
               your goals. Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Ipsam fugiat nihil, deserunt aliquid quasi aut!
             </p>
-            <Link to="/app-config" className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200">
+            <Link to="/project/api-config" className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200">
               Customize
             </Link>
           </div>
