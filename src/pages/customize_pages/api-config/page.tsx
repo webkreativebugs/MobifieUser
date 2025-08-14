@@ -29,6 +29,8 @@ interface ApiConfigData {
     timeout: "",
   });
 
+  // const [numOfForms , setNumOfForms]=useState([0]);
+
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setApiConfig((prev) => ({
@@ -36,10 +38,18 @@ interface ApiConfigData {
       [name]: value
     }));
   };
+  
+  // const addForm = () => {
+  //   setNumOfForms((prev) => [...prev, prev.length]); // add next index
+  // };
+  // const deleteForm=(id:number)=>{
+  //   setNumOfForms((prev) => prev.filter((formId) => formId !== id));
+  // }
   return (
     <AppConfigMask displayName={ConfigTypeEnums.API}>
-    
-        <form className="w-full grid grid-cols-2 gap-5 border-2 p-5 bg-white rounded-md  ">
+   
+   
+        <form className="w-full grid grid-cols-2 gap-5  mb-2  rounded-md  " >
                 {(ApiConfig).map((item) => (
                   
                   <ApiConfigInputField
@@ -54,6 +64,7 @@ interface ApiConfigData {
                   />
                   
                 ))}
+               
               </form>
     </AppConfigMask>
   )
