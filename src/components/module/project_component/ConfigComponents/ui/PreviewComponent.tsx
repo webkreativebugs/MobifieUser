@@ -22,15 +22,19 @@ function PreviewComponent(props: LayoutData) {
             <div className="flex-shrink-2">
               <img
                 src={props?.header.url}
-                className="w-full"
+                className="w-full mt-10"
                 onClick={() => alert("want to delete")}
               />
             </div>
 
             {/* Scrollable main */}
-            <div className="flex-1 overflow-y-auto hide-scrollbar border">
+            <div className="flex-1 overflow-y-auto hide-scrollbar mt-2">
               {props.main.map((item, idx) => (
-                <img key={idx} src={item.url} alt="" className="w-full" />
+                <div key={idx} className="flex">
+                  {" "}
+                  <img src={item.url} alt="" className="w-1/2 p-2" />
+                  <img src={item.url} alt="" className="w-1/2 p-2" />
+                </div>
               ))}
             </div>
 
