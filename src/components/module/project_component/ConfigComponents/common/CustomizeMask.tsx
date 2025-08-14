@@ -13,7 +13,7 @@ const CustomizeMask = ({ name, children }: PROPS) => {
   const { show,setShow } = useloader();
 //   setShow(false);
   return (
-    <div className=" flex">
+    <div className="h-full flex">
     <Sidebar setShow={setShow} show={show} active={name} links={ConfigDashboardLinks} />
       <div className="w-screen   max-h-[90vh]">
         <Navbar/>
