@@ -23,7 +23,7 @@ const AppConfigMask = ({ children,displayName }: { children: ReactNode ,displayN
           <Link
             to={item.link}
             key={key}
-            className={`mr-5 py-2 text-sm font-medium transition-colors ${
+            className={`mr-5 py-2 text-md font-medium transition-colors ${
               isActive
                 ? "border-b-2 border-gray-900 text-black-900"
                 : "text-gray-600 hover:text-gray-900"
