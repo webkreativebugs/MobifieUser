@@ -30,7 +30,7 @@ const page = () => {
     });
   return (
     <AppConfigMask displayName={ConfigTypeEnums.DEFAULT}>
-        <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] p-8 rounded-md" >
+        <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md" >
         <CurrencySelector
         selected={selected}
         setSelected={setSelected}
