@@ -35,7 +35,7 @@ const AppConfigMask = ({ children,displayName }: { children: ReactNode ,displayN
       })}
     </div>
      </div>
-     <div className="h-72 w-full bg-primary mt-5">
+     <div className=" w-full bg-primary mt-5 p-8">
          {children}
      </div>
     
