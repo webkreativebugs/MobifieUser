@@ -42,7 +42,7 @@
     "description": "Navigation at the bottom with 3–5 main app sections for quick access.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": "../../../public/assets/footernavigation/footer1.png",
         "title": "Simple Centered Header",
         "type": "footer",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
