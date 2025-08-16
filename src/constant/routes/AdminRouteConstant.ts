@@ -9,6 +9,7 @@ import UiConfig from '../../pages/customize_pages/ui-config/page'
 import ApiConfig from "../../pages/customize_pages/api-config/page"
 import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
 import DefaultConfig from "../../pages/customize_pages/default-config/page"
+import ScreenConfig from "../../pages/customize_pages/screen-config/page"
 export const admin =[
     {
         route:"/",
@@ -64,7 +65,11 @@ export const admin =[
         route:"/project/default-config",
         component:DefaultConfig,
         additional:""
-    }
-    
+    },
+     {
+        route:"/project/screen-config",
+        component: ScreenConfig,
+        additional:""
+    },
 
 ]
