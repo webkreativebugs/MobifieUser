@@ -16,7 +16,7 @@ function PreviewComponent(props: LayoutData) {
           {/* Screen */}
           <div className="flex flex-col w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
             {/* Dynamic Island */}
-            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full z-10" />
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
 
             {/* Header */}
             <div className="flex-shrink-2">
@@ -28,7 +28,7 @@ function PreviewComponent(props: LayoutData) {
             </div>
 
             {/* Scrollable main */}
-            <div className="flex-1 overflow-y-auto hide-scrollbar mt-2">
+            <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
               {props.main.map((item, idx) => (
                 <div key={idx} className="flex">
                   {" "}
@@ -39,7 +39,7 @@ function PreviewComponent(props: LayoutData) {
             </div>
 
             {/* Footer */}
-            <div className="flex-shrink-0">
+            <div className="mb-[-1.2rem]">
               <img src={props?.footer.url} className="w-full" />
             </div>
           </div>
