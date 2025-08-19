@@ -1,5 +1,5 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
-import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
+import { ConfigTypeEnums,CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import CurrencySelector from "../../../components/module/project_component/ConfigComponents/app/CurrencySelector"
 import { useState } from "react"
 import ReactCountryFlag from "react-country-flag";
@@ -29,12 +29,12 @@ const page = () => {
                 
     });
   return (
-    <AppConfigMask displayName={ConfigTypeEnums.DEFAULT}>
+    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.DEFAULT}>
         <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md" >
         <CurrencySelector
         selected={selected}
         setSelected={setSelected}
-        />
+        /> 
         </div>
       
     </AppConfigMask>

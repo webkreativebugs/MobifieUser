@@ -3,7 +3,7 @@ import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 import UiCOmponent from "../../../data/CustomizeData/UiDropdown.json";
 import { useEffect, useState } from "react";
-import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
+// import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
 

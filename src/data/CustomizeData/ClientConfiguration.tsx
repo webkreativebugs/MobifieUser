@@ -213,3 +213,53 @@ export const currencies = [
   { code: "NAD", name: "Namibian Dollar", symbol: "$" },
 ]
  
+
+
+export const ScreenDesignConfiguration = {
+  SignIn: {
+    SignInAuthenticationType: "SignInAuthenticationType.EmailPassword",
+  },
+  // Collections: {
+  //   CardDesign: KBCollectionCard.KBCollectionCardSliderBannerCard,
+  // },
+  Wishlist: {
+    CardDesign:" KBProductCardEnum.KBProductCardOneByOne0",
+    FlatListNumColumns: 1,
+  },
+  RecentlyViewed: {
+    CardDesign: "KBProductCardEnum.KBProductCardOneByOne0",
+    FlatListNumColumns: 1,
+  },
+  ProductByCollection: {
+    CardDesign:" KBProductCardEnum.KBProductCardOneByTwo1",
+    FlatListNumColumns: 2,
+  },
+  Home: {
+    CircularProductCard:" KBHomeCollectionCardEnum.KBHomeCollectionCard2",
+    HeaderCollectionDesign:
+     " KBHomeCollectionHeaderCardEnum.KBHomeCollectionHeaderCard3",
+    FlatListNumColumns: 1,
+    ProductCardDesign:" KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard2",
+    ProductGridCardDesign:" KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard3",
+    ProductSingleCardDesign: "KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard4",
+    SliderCardDesign:"KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard0",
+  },
+  Shop: {
+    CardDesign:" KBShopCollectionCardEnum.KBShopCollectionCard1",
+    FlatListNumColumns: 1,
+  },
+  SearchProductAndCollection: {
+    SearchProductCard:" KBSearchProductCardEnum.KBSearchProductCardOneByOne0",
+    SearchCollectionCard:
+     " KBSearchCollectionCardEnum.KBSearchCollectionTitleCard",
+    SegmentedControl:" SearchTypeConstant.all",
+    ShowSegmentedControl: true,
+  },
+  YouTab: {
+    ListCardDesign:" KBYouListCardEnum.KBYouListCard0",
+    ProfileCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
+    LoginCardDesign:" KBYouLoginCardEnum.KBYouLoginCard0",
+    LogoutCardDesign:" KBYouProfileCardEnum.KBYouProfileCard0",
+    InviteCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
+  },
+};

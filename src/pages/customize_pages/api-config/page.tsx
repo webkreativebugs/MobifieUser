@@ -3,6 +3,7 @@ import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
 // import ApiRequestForms from "../../../components/module/project_component/ConfigComponents/app/ApiRequestForm"
 import { ApiConfig } from "../../../data/CustomizeData/ClientConfiguration"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField"
+import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import { useState } from "react"
 const page = () => {
    
@@ -46,7 +47,7 @@ interface ApiConfigData {
   //   setNumOfForms((prev) => prev.filter((formId) => formId !== id));
   // }
   return (
-    <AppConfigMask displayName={ConfigTypeEnums.API}>
+    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API}>
    
    
         <form className="w-full grid grid-cols-2 gap-5  mb-2  rounded-md  " >
