@@ -1,5 +1,5 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
-import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
+import { ConfigTypeEnums,CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField" 
 import { WebViewNavigationURL } from "../../../data/CustomizeData/ClientConfiguration"
 import { useState } from "react"
@@ -28,7 +28,7 @@ const page = () => {
     }));
   };
   return (
-    <AppConfigMask displayName={ConfigTypeEnums.WEB}>
+    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.WEB}>
       <>
         <form className="w-full grid grid-cols-2 gap-5 pb-[10rem]  rounded-md">
           {(WebViewNavigationURL as WebViewNavigationItem[]).map((item) => (
