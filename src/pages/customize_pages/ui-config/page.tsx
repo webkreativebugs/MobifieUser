@@ -66,33 +66,31 @@ const page = () => {
       <div className=" flex  h-[85vh]">
         <UiConfigSidebar element={element} setElement={setElement} />
         {/* <CustomizeSidebar active="xfbhfh" /> */}
-        <div className=" w-2/3 ">
-          <h1 className="text-3xl font-semibold ml-12 mb-6">{element}</h1>
+        <div className=" w-2/3  relative  overflow-y-auto hide-scrollbar overflow-x-hidden mb-2   flex  flex-col items-center ">
+          <h1 className="text-3xl font-semibold absolute left-8">{element}</h1>
           {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
 
           {/* Example: Display the 'name' property of the first UI component */}
-          <div className="flex flex-wrap justify-around ml-4 px-8 w-full  gap-x-1 gap-y-4 ">
-            {" "}
-            {UiCOmponent[0]?.designs &&
-              (
-                UiCOmponent.find((item) => item.key === element)?.designs || []
-              ).map((item, idx) => (
-                // <div
-                //   className=""
-                //   key={idx}
-                //   dangerouslySetInnerHTML={{ __html: item.html }}
-                // />
-                <div key={idx} className="w-[24rem] border p-5 rounded-lg">
+          <div className="columns-2 gap-6  px-8 mt-16 ">
+            {UiCOmponent.find((item) => item.key === element)?.designs?.map(
+              (item, idx) => (
+                <div
+                  key={idx}
+                  className="mb-4 break-inside-avoid border p-2 w-[24rem] rounded-lg bg-white shadow"
+                >
                   <button
-                    //  onClick={() => setfirst(item.image)}
                     onClick={() => handleUI(item)}
+                    className="w-full block"
                   >
-                    <img src={item.image} alt="" />
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="w-full h-auto object-contain"
+                    />
                   </button>
-
-                  {/* <p>{item.title}</p> */}
                 </div>
-              ))}
+              )
+            )}
           </div>
         </div>
         {/* Remove 'main' prop if PreviewComponent does not accept it */}

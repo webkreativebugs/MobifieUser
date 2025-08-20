@@ -5,7 +5,7 @@ function PreviewComponent(props: LayoutData) {
   // const { header, footer, main } = props;
   return (
     <div
-      className="border-l-2 flex flex-col justify-center ml-10 pl-10 w-[25vw] "
+      className="border-l-2 flex flex-col justify-center  pl-10 w-[25vw] "
       style={{ height: "100%" }}
     >
       <h1 className="text-3xl mx-6 font-bold mb-0">Preview</h1>
@@ -32,8 +32,8 @@ function PreviewComponent(props: LayoutData) {
               {props.main.map((item, idx) => (
                 <div key={idx} className="flex">
                   {" "}
-                  <img src={item.url} alt="" className="w-1/2 p-2" />
-                  <img src={item.url} alt="" className="w-1/2 p-2" />
+                  <img src={item.url} alt="" className="w-full p-0" />
+                  {/* <img src={item.url} alt="" className="w-1/2 p-2" /> */}
                 </div>
               ))}
             </div>
