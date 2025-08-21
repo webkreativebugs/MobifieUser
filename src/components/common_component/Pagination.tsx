@@ -38,9 +38,9 @@ const Pagination = ({
   if (apiError) {
     console.log(apiError);
   }
-  function handleClick(i: number) {
-    setClicked(i + 1);
-  }
+  // function handleClick(i: number) {
+  //   setClicked(i + 1);
+  // }
 
   useEffect(() => {
     if (type === "access") {
@@ -72,43 +72,81 @@ const Pagination = ({
     }
   }, [clicked]);
 
+  const getPages = () => {
+    let pages = [];
+
+    if (length <= 5) {
+      // Show all pages if less than or equal to 5
+      for (let i = 0; i < length; i++) {
+        pages.push(i + 1);
+      }
+    } else {
+      // Always show first 3
+      if (clicked <= 3) {
+        pages = [1, 2, 3, "...", length - 1, length];
+      }
+      // Middle range
+      else if (clicked > 3 && clicked < length - 2) {
+        pages = [
+          1,
+          "...",
+          clicked - 1,
+          clicked,
+          clicked + 1,
+          "...",
+          length
+        ];
+      }
+      // Near the end
+      else {
+        pages = [1, 2, "...", length - 2, length - 1, length];
+      }
+    }
+
+    return pages;
+  };
+
   return (
-    <div className="pagination-container container mt-10 mb-10  gap-2">
+     <div className="pagination-container container mt-10 mb-10 flex items-center gap-2">
+      {/* Prev button */}
       <button
-        className={`px-2 pagination ${clicked !== 1 ? "" : "hidden"} `}
+        className={`px-2 pagination ${clicked !== 1 ? "" : "hidden"}`}
         style={{ width: "40px" }}
-        onClick={() => {
-          if (clicked > 1) setClicked(clicked - 1);
-        }}
+        onClick={() => clicked > 1 && setClicked(clicked - 1)}
       >
         <IoIosArrowBack />
-        {/* <img className="" src={`${clicked !== 1 ? backward : ""}`} /> */}
       </button>
-      {Array.from({ length }).map((_, i) => (
-        <button
-          key={i}
-          className={`text-center pagination p-0 ${
-            clicked == i + 1 && "active"
-          }`}
-          onClick={() => handleClick(i)}
-        >
-          <p className="   fs-6" style={{ height: "auto" }}>
-            {" "}
-            {i + 1}
-          </p>
-        </button>
-      ))}
+
+      {/* Page numbers */}
+      {getPages().map((page, idx) =>
+        page === "..." ? (
+          <span key={idx} className="px-2 text-gray-500">
+            ...
+          </span>
+        ) : (
+          <button
+            key={idx}
+            className={`text-center pagination p-0 ${
+              clicked === page ? "active" : ""
+            }`}
+            onClick={() => {
+              if (typeof page === "number") setClicked(page);
+            }}
+          >
+            <p className="fs-6">{page}</p>
+          </button>
+        )
+      )}
+
+      {/* Next button */}
       <button
         className={`pagination px-2 ${
           clicked !== Math.floor(length) ? "" : "hidden"
-        }  `}
+        }`}
         style={{ width: "40px" }}
-        onClick={() => {
-          if (clicked < length) setClicked(clicked + 1);
-        }}
+        onClick={() => clicked < length && setClicked(clicked + 1)}
       >
         <IoIosArrowForward />
-        {/* {clicked !== Math.floor(length) ? <img src={forward} style={{ width: "24px", height: "24px" }} /> : ''} */}
       </button>
     </div>
   );

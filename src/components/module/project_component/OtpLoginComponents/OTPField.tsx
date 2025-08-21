@@ -104,7 +104,7 @@ const OTPField = ({ apiRequestData }: any) => {
     if (apiResponse) {
       console.log(apiResponse);
       onRoleChange(apiResponse);
-      navigate("/projects", { replace: true });
+      navigate("/project", { replace: true });
     }
   }, [apiResponse]);
 
