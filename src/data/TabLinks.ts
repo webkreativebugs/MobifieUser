@@ -5,3 +5,7 @@ export const tablinks:TabLinks[] = [
   { name: "Web view url config", link: "/project/weburl-config" },
   { name: "Default config" , link: "/project/default-config" },
 ]
+
+// export const ScreenTabLinks:TabLinks[]=[
+//   {name:"",links}
+// ]
