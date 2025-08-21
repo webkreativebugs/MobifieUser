@@ -95,7 +95,7 @@ function PreviewComponent(props: LayoutData) {
           onClick={() => setAndroid((prev) => !prev)}
           className="text-sm px-4 py-3 rounded-md bg-black text-white font-semibold transition"
         >
-          {android ? "Switch to Android" : "Switch to iPhone"}
+          {!android ? "Switch to Android" : "Switch to iPhone"}
         </button>
       </div>
     </div>

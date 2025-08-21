@@ -1,12 +1,11 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
-import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
+// import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 import UiCOmponent from "../../../data/CustomizeData/UiDropdown.json";
 import { useEffect, useState } from "react";
-import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
+// import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
-import home from "../../../data/CustomizeData/UiDropdown.json";
 
 interface Section {
   type: string;
@@ -72,12 +71,12 @@ const page = () => {
           {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
 
           {/* Example: Display the 'name' property of the first UI component */}
-          <div className="columns-2 gap-6  px-8 mt-16 ">
+          <div className="columns-3 gap-6  px-8 mt-16 ">
             {UiCOmponent.find((item) => item.key === element)?.designs?.map(
               (item, idx) => (
                 <div
                   key={idx}
-                  className="mb-4 break-inside-avoid border p-2 w-[24rem] rounded-lg bg-white shadow"
+                  className="mb-4 break-inside-avoid border p-2 pb-4 w-[15rem] max-h-[27rem] overflow-hidden rounded-lg bg-white shadow"
                 >
                   <button
                     onClick={() => handleUI(item)}
