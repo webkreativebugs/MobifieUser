@@ -1,78 +1,86 @@
 [
   {
-    "name": "Header / AppBar",
-    "key": "header",
+    "name": "Home",
+    "key": "Home",
     "description": "Top navigation bar containing app title, back button, or menu icon. Often sticky at the top.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h5.png",
+        "image": [
+          "../../../public/assets/home/h1.png",
+          "../../../public/assets/home/h1.png"
+        ],
         "title": "Sticky Header",
-        "type": "header",
+        "type": "main",
         "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h1.png",
-        "title": "Simple Centered Header",
-        "type": "header",
-        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h2.png",
-        "title": "Header with Back Button",
-        "type": "header",
-        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h3.png",
-        "title": "Header with Menu Icon",
-        "type": "header",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
       }
     ]
   },
   {
-    "name": "Bottom Navigation Bar",
+    "name": "Product List",
+    "key": "product",
+    "description": "Top navigation bar containing app title, back button, or menu icon. Often sticky at the top.",
+    "designs": [
+      {
+        "image": [
+          "../../../public/assets/product/p1.png",
+          "../../../public/assets/product/p2.png",
+          "../../../public/assets/product/p3.png"
+        ],
+        "title": "Sticky Header",
+        "type": "main",
+        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+      }
+    ]
+  },
+  {
+    "name": "Category ",
     "key": "BottomNavigation",
     "description": "Navigation at the bottom with 3–5 main app sections for quick access.",
     "designs": [
       {
-        "image": "../../../public/assets/footernavigation/footer1.png",
+        "image": [
+          "../../../public/assets/footernavigation/footer1.png"
+        ],
         "title": "Simple Centered Header",
         "type": "footer",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h2.png",
+        "image": [
+          "../../../public/assets/headerComponent/h2.png"
+        ],
         "title": "Header with Back Button",
         "type": "footer",
         "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h3.png",
+        "image": [
+          "../../../public/assets/headerComponent/h3.png"
+        ],
         "title": "Header with Menu Icon",
         "type": "footer",
         "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h4.png",
+        "image": [
+          "../../../public/assets/headerComponent/h4.png"
+        ],
         "title": "Header with Search",
         "type": "footer",
         "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h5.png",
+        "image": [
+          "../../../public/assets/headerComponent/h5.png"
+        ],
         "title": "Sticky Header",
         "type": "footer",
         "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h6.png",
+        "image": [
+          "../../../public/assets/headerComponent/h6.png"
+        ],
         "title": "Sticky Header",
         "type": "footer",
         "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
@@ -80,183 +88,188 @@
     ]
   },
   {
-    "name": "Card Component",
+    "name": "Login",
     "key": "CardComp",
     "description": "A container to display grouped content like product details, user info, or articles.",
     "designs": [
       {
-        "image": "../../../public/assets/mainComponent/product1.png",
+        "image": [
+          "../../../public/assets/loginScreen/s1.png"
+        ],
         "title": "Simple Centered Header",
         "type": "main",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/mainComponent/product2.png",
-        "title": "Header with Back Button",
+        "image": [
+          "../../../public/assets/loginScreen/s2.png"
+        ],
+        "title": "Simple Centered Header",
         "type": "main",
-        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/mainComponent/product3.png",
-        "title": "Header with Menu Icon",
+        "image": [
+          "../../../public/assets/loginScreen/s3.png"
+        ],
+        "title": "Simple Centered Header",
         "type": "main",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/mainComponent/product4.png",
-        "title": "Header with Search",
+        "image": [
+          "../../../public/assets/loginScreen/s4.png"
+        ],
+        "title": "Simple Centered Header",
         "type": "main",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/mainComponent/product5.png",
-        "title": "Sticky Header",
+        "image": [
+          "../../../public/assets/loginScreen/s5.png"
+        ],
+        "title": "Simple Centered Header",
         "type": "main",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/mainComponent/product6.png",
-        "title": "Sticky Header",
+        "image": [
+          "../../../public/assets/loginScreen/s6.png"
+        ],
+        "title": "Simple Centered Header",
         "type": "main",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/mainComponent/product7.png",
-        "title": "Sticky Header",
-        "type": "main",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/mainComponent/product8.png",
-        "title": "Sticky Header",
-        "type": "main",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       }
     ]
   },
   {
-    "name": "Search Bar",
+    "name": "Search",
     "key": "SearchBar",
     "description": "Input field for searching products, users, or content. Often includes a filter button.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": [
+          "../../../public/assets/searchScreen/s1.png",
+          "../../../public/assets/searchScreen/s2.png"
+        ],
         "title": "Simple Centered Header",
-        "type": "header",
+        "type": "main",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h2.png",
+        "image": [
+          "../../../public/assets/searchScreen/s3.png"
+        ],
         "title": "Header with Back Button",
-        "type": "header",
+        "type": "main",
         "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h3.png",
+        "image": [
+          "../../../public/assets/searchScreen/s4.png"
+        ],
         "title": "Header with Menu Icon",
-        "type": "header",
+        "type": "main",
         "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h5.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h6.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       }
     ]
   },
   {
-    "name": "Product / Shopping Card",
+    "name": "Checkout",
     "key": "ProductCard",
     "description": "Specialized card with product image, name, price, and an 'Add to Cart' button.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": [
+          "../../../public/assets/checkout/c1.png"
+        ],
         "title": "Simple Centered Header",
-        "type": "header",
+        "type": "main",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h2.png",
-        "title": "Header with Back Button",
-        "type": "header",
-        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
+        "image": [
+          "../../../public/assets/checkout/c2.png"
+        ],
+        "title": "Simple Centered Header",
+        "type": "main",
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h3.png",
-        "title": "Header with Menu Icon",
-        "type": "header",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
+        "image": [
+          "../../../public/assets/checkout/c3.png"
+        ],
+        "title": "Simple Centered Header",
+        "type": "main",
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
+        "image": [
+          "../../../public/assets/checkout/c4.png"
+        ],
+        "title": "Simple Centered Header",
+        "type": "main",
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h5.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h6.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
+        "image": [
+          "../../../public/assets/checkout/c5.png"
+        ],
+        "title": "Simple Centered Header",
+        "type": "main",
+        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       }
     ]
   },
   {
-    "name": "List Item",
+    "name": "Settings",
     "key": "ListItem",
     "description": "A compact row with icon, text, and an optional action button. Used in lists, settings, chats.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": [
+          "../../../public/assets/headerComponent/h1.png"
+        ],
         "title": "Simple Centered Header",
         "type": "header",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h2.png",
+        "image": [
+          "../../../public/assets/headerComponent/h2.png"
+        ],
         "title": "Header with Back Button",
         "type": "header",
         "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h3.png",
+        "image": [
+          "../../../public/assets/headerComponent/h3.png"
+        ],
         "title": "Header with Menu Icon",
         "type": "header",
         "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h4.png",
+        "image": [
+          "../../../public/assets/headerComponent/h4.png"
+        ],
         "title": "Header with Search",
         "type": "header",
         "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h5.png",
+        "image": [
+          "../../../public/assets/headerComponent/h5.png"
+        ],
         "title": "Sticky Header",
         "type": "header",
         "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h6.png",
+        "image": [
+          "../../../public/assets/headerComponent/h6.png"
+        ],
         "title": "Sticky Header",
         "type": "header",
         "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
@@ -264,174 +277,57 @@
     ]
   },
   {
-    "name": "Modal / Bottom Sheet",
+    "name": "Profile",
     "key": "Modal",
     "description": "Overlay that shows additional details or actions without leaving the current screen.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": [
+          "../../../public/assets/profile/p1.png",
+          "../../../public/assets/profile/p2.png"
+        ],
         "title": "Simple Centered Header",
-        "type": "header",
+        "type": "main",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h2.png",
-        "title": "Header with Back Button",
-        "type": "header",
-        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h3.png",
-        "title": "Header with Menu Icon",
-        "type": "header",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h5.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h6.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       }
     ]
   },
   {
-    "name": "Loading Indicator",
+    "name": "Flash",
     "key": "LoadingIndicator",
     "description": "Spinner or skeleton loader to indicate that data is being fetched.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": [
+          "../../../public/assets/Flash/f1.png",
+          "../../../public/assets/Flash/f2.png"
+        ],
         "title": "Simple Centered Header",
-        "type": "header",
+        "type": "main",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h2.png",
-        "title": "Header with Back Button",
-        "type": "header",
-        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h3.png",
-        "title": "Header with Menu Icon",
-        "type": "header",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h5.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h6.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       }
     ]
   },
   {
-    "name": "Order Summary Card",
+    "name": "Wishlist",
     "key": "OrderSummary",
     "description": "Displays cart items with quantity, price breakdown, and total amount.",
     "designs": [
       {
-        "image": "../../../public/assets/headerComponent/h1.png",
+        "image": [
+          "../../../public/assets/wishlist/w1.png"
+        ],
         "title": "Simple Centered Header",
-        "type": "header",
+        "type": "main",
         "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
       },
       {
-        "image": "../../../public/assets/headerComponent/h2.png",
+        "image": [
+          "../../../public/assets/wishlist/w2.png"
+        ],
         "title": "Header with Back Button",
-        "type": "header",
+        "type": "main",
         "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h3.png",
-        "title": "Header with Menu Icon",
-        "type": "header",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h5.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h6.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      }
-    ]
-  },
-  {
-    "name": "Button (Primary & Secondary)",
-    "key": "Button",
-    "description": "Call-to-action buttons like 'Buy Now', 'Confirm Order', styled consistently.",
-    "designs": [
-      {
-        "image": "../../../public/assets/headerComponent/h1.png",
-        "title": "Simple Centered Header",
-        "type": "header",
-        "html": "<div class='w-full bg-blue-500 text-white  py-3 text-center text-lg font-bold'>App Title</div>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h2.png",
-        "title": "Header with Back Button",
-        "type": "header",
-        "html": "<header class='flex items-center bg-blue-500 text-white px-4 py-3'><button class='mr-3'>⬅</button><h1 class='text-lg font-bold'>Page Title</h1></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h3.png",
-        "title": "Header with Menu Icon",
-        "type": "header",
-        "html": "<header class='flex justify-between items-center bg-blue-500 text-white px-4 py-3'><button>☰</button><h1 class='text-lg font-bold'>Home</h1><div></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h4.png",
-        "title": "Header with Search",
-        "type": "header",
-        "html": "<header class='p-3 bg-blue-500 text-white'><div class='flex items-center'><input type='text' placeholder='Search...' class='flex-1 p-2 rounded text-black text-sm'/></div></header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h5.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
-      },
-      {
-        "image": "../../../public/assets/headerComponent/h6.png",
-        "title": "Sticky Header",
-        "type": "header",
-        "html": "<header class='fixed top-0 w-full bg-blue-500 text-white py-3 text-center text-lg font-bold shadow-md'>Sticky Header</header>"
       }
     ]
   }
