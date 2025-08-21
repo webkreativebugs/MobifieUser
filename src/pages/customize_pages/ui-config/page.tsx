@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 // import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
+import home from "../../../data/CustomizeData/UiDropdown.json";
 
 interface Section {
   type: string;
@@ -15,7 +16,7 @@ interface Section {
 export interface LayoutData {
   header: Section;
   footer: Section;
-  main: Section[];
+  main: string[];
 }
 
 const page = () => {
@@ -56,7 +57,7 @@ const page = () => {
     if (item.type === "main") {
       setLayout((prev) => ({
         ...prev,
-        main: [...prev.main, { type: "main", url: item.image }],
+        main: [...item.image],
       }));
     }
   };
@@ -83,7 +84,7 @@ const page = () => {
                     className="w-full block"
                   >
                     <img
-                      src={item.image}
+                      src={item.image[0]}
                       alt=""
                       className="w-full h-auto object-contain"
                     />

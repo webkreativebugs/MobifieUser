@@ -3,6 +3,7 @@ import { LayoutData } from "../../../../../pages/customize_pages/ui-config/page"
 
 function PreviewComponent(props: LayoutData) {
   const [android, setAndroid] = useState(false);
+  console.log(props.main);
 
   return (
     <div
@@ -34,9 +35,13 @@ function PreviewComponent(props: LayoutData) {
 
               {/* Scrollable Main */}
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {props.main.map((item, idx) => (
+                {props.main.map((url, idx) => (
                   <div key={idx} className="flex">
-                    <img src={item.url} alt="" className="w-full p-0" />
+                    <img
+                      src={url}
+                      alt={`image-${idx}`}
+                      className="w-full p-0"
+                    />
                   </div>
                 ))}
               </div>
@@ -65,9 +70,13 @@ function PreviewComponent(props: LayoutData) {
 
               {/* Scrollable Main */}
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {props.main.map((item, idx) => (
+                {props.main.map((url, idx) => (
                   <div key={idx} className="flex">
-                    <img src={item.url} alt="" className="w-full p-0" />
+                    <img
+                      src={url}
+                      alt={`image-${idx}`}
+                      className="w-full p-0"
+                    />
                   </div>
                 ))}
               </div>
@@ -80,13 +89,13 @@ function PreviewComponent(props: LayoutData) {
           </div>
         )}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-4">
         {" "}
         <button
           onClick={() => setAndroid((prev) => !prev)}
-          className="text-sm px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 transition"
+          className="text-sm px-4 py-3 rounded-md bg-black text-white font-semibold transition"
         >
-          {android ? "Switch to iPhone" : "Switch to Android"}
+          {android ? "Switch to Android" : "Switch to iPhone"}
         </button>
       </div>
     </div>
