@@ -9,11 +9,9 @@ type UiConfigSidebarProps = {
 function UiConfigSidebar({ element, setElement }: UiConfigSidebarProps) {
   return (
     <>
-      <div className={`hidden xl:flex h-95vh w-70`}>
-        <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-md    bg-primary pb-10 h-full shadow-xl    ">
-          <h1 className="text-xl font-semibold m-4 mb-6 px-1">
-            Select Component
-          </h1>
+      <div className={`hidden xl:flex h-95vh w-72 `}>
+        <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar rounded-md  w-full   bg-primary pb-10 h-full shadow-xl    ">
+          <h1 className="text-xl font-semibold m-4 mb-6 px-1">Select Screen</h1>
           <div className="p-5 pt-0 w-full relative mt-5 ">
             {UiCOmponent.map((item, index) => (
               <p
