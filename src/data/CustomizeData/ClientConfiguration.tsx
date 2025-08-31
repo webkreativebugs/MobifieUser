@@ -1,4 +1,31 @@
+import { MdEdit, MdLocalShipping } from "react-icons/md";
+import { FaAddressBook } from "react-icons/fa"; // Font Awesome
+
+import { AiFillSetting } from "react-icons/ai";
+
 export const WebViewNavigationURL = [
+  
+     {
+    key: "edit_profile",
+    title: "Edit Profile",
+    url:"Update your profile ",
+    // navigateTo: NavigationConstant.UPDATE_USER_PROFILE,
+    navigationData: {},
+  },
+ {
+    key: "orders",
+    title: "Orders",
+    url:"Update your order list",
+    // navigateTo: NavigationConstant.ORDER_LIST,
+    navigationData: {},
+  },
+  {
+    key: "address",
+    title: "Address",
+    url:"Update your address",
+    // navigateTo: NavigationConstant.ADDRESS_LIST,
+    navigationData: {},
+  },
   {
     key: 'about_us',
     title: 'About Us',
@@ -261,5 +288,84 @@ export const ScreenDesignConfiguration = {
     LoginCardDesign:" KBYouLoginCardEnum.KBYouLoginCard0",
     LogoutCardDesign:" KBYouProfileCardEnum.KBYouProfileCard0",
     InviteCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
+  },
+};
+
+export const ShopifyConfig = [
+  {
+    key: "API_URL",
+    label: "Storefront API URL",
+    value: "https://kushalsonline-com.myshopify.com/api/2024-07/graphql.json",
+  },
+  {
+    key: "X_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+    label: "Storefront Access Token",
+    value: "828edc91e7586ae2dea7ed3c23f73268",
+  },
+  {
+    key: "API_URL_ADMIN",
+    label: "Admin API URL",
+    value: "https://kushalsonline-com.myshopify.com/admin/api/2024-07/graphql.json",
+  },
+  {
+    key: "X_SHOPIFY_ACCESS_TOKEN",
+    label: "Admin Access Token",
+    value: "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",
+  },
+]
+
+export const YouClientConfiguration = [
+  {
+    key: 'edit_profile',
+    icon:MdEdit,
+    navigationData: "{}",
+    rightIcon:" KBIconName.ArrowForward",
+    leftIcon:" KBIconName.Edit",
+    rightIconSet:" KBIconSet.MaterialIcons",
+    leftIconSet:" KBIconSet.MaterialIcons",
+    title: 'Edit Profile',
+    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+  {
+    key: 'orders',
+    icon:MdLocalShipping ,
+    navigateTo: "NavigationConstant.ORDER_LIST",
+    navigationData: {},
+    rightIcon: "KBIconName.ArrowForward",
+    leftIcon: "KBIconName.LocalShipping",
+    rightIconSet:" KBIconSet.MaterialIcons",
+    leftIconSet: 'KBIconSet.MaterialIcons',
+    title: 'Orders',
+    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+  {
+    key: 'address',
+    icon:FaAddressBook ,
+    navigateTo:" NavigationConstant.ADDRESS_LIST",
+    navigationData: {},
+    rightIcon:" KBIconName.ArrowForward",
+    leftIcon: "KBIconName.Address",
+    rightIconSet: "KBIconSet.MaterialIcons",
+    leftIconSet: "KBIconSet.Entypo",
+    title: 'Address',
+    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+  {
+    key: 'settings',
+    icon:AiFillSetting ,
+    navigateTo:" NavigationConstant.SETTINGS",
+    navigationData: {},
+    rightIcon: "KBIconName.ArrowForward",
+    leftIcon: "KBIconName.Setting",
+    rightIconSet:" KBIconSet.MaterialIcons",
+    leftIconSet: "KBIconSet.AntDesign",
+    title: 'Settings',
+    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+];
+
+export const Configuration = {
+  Cart: {
+    maximumPurchaseQuantity: 10,
   },
 };

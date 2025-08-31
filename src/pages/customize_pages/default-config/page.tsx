@@ -12,6 +12,7 @@ import ReactCountryFlag from "react-country-flag";
         symbol:string
 }
 const page = () => {
+   const [maxCartQuantity,setMaxCartQuantity]=useState(""); 
    const [selected, setSelected] = useState<SELECT>({
       code: "USD",
       name: "United States Dollar",
@@ -28,13 +29,27 @@ const page = () => {
                      
                 
     });
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>)
+    {
+      setMaxCartQuantity(e.target.value)
+    }
   return (
-    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.DEFAULT}>
+    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.BOTTOM}>
         <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md" >
         <CurrencySelector
         selected={selected}
         setSelected={setSelected}
         /> 
+        <div>
+          <label className="flex text-md font-bold mb-2 text-gray-700 items-center space-x-1 text-lg cursor-pointer">Cart Quanity</label>
+          <input 
+           type="number"
+           placeholder="Enter maximum cart quantity"
+           value={maxCartQuantity}
+           name="Cart"
+           onChange={handleChange}
+           className="w-full border-b p-[10px] outline-none text-sm rounded-md shadow-md " />
+        </div>
         </div>
       
     </AppConfigMask>

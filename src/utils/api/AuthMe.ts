@@ -4,12 +4,14 @@ import {  VerifyTokenResponse,
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
 // import { decoder } from "../JwtDecoder";
 // import { useNavigate } from "react-router-dom";
-function AuthMe(onRoleChange:any,){
+function AuthMe(onRoleChange:any,setAuthError:any){
     // const navigate = useNavigate()
 const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyTokenResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
       // navigate("/login-with-password",{replace:true})
+      setAuthError(true)
+      
       onRoleChange("")
 
     }
@@ -18,7 +20,6 @@ const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyToken
     {
       customAuthorizationConfig.kb_authorization=response.data.token;
       onRoleChange(response.data.token)
-      
     }
    
   };
