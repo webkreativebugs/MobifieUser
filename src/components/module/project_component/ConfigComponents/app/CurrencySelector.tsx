@@ -35,7 +35,7 @@ export default function CurrencySelector({selected,setSelected}:PROPS) {
 
   return (
     <div className="w-full font-sans relative">
-      <p  className="mb-4 text-md font-medium text-gray-700">
+      <p  className=" text-md  font-bold mb-2 text-lg  text-gray-700">
         Select a Currency
       </p>
 
@@ -44,7 +44,7 @@ export default function CurrencySelector({selected,setSelected}:PROPS) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between border rounded-lg px-3 py-2 bg-white shadow-sm hover:border-gray-400"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center  gap-2">
           {selected.icon}
           <span className="font-medium">{selected.code}</span> - {selected.name} {`(${selected.symbol})`}
         </div>

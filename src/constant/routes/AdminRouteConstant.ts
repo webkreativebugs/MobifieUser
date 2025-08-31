@@ -10,6 +10,8 @@ import ApiConfig from "../../pages/customize_pages/api-config/page"
 import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
 import DefaultConfig from "../../pages/customize_pages/default-config/page"
 import ScreenConfig from "../../pages/customize_pages/screen-config/page"
+import ClientConfig from "../../pages/customize_pages/client-config/page"
+import YouConfig from "../../pages/customize_pages/you-config/page"
 export const admin =[
     {
         route:"/",
@@ -71,5 +73,17 @@ export const admin =[
         component: ScreenConfig,
         additional:""
     },
+     {
+        route:"/project/you-config",
+        component: YouConfig,
+        additional:""
+    },
+     {
+        route:"/project/client-config",
+        component: ClientConfig,
+        additional:""
+    },
+
+
 
 ]

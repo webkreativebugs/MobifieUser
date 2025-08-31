@@ -8,7 +8,7 @@ const TabLinks = () => {
       <p className="text-xl font-semibold mb-2 " >{orgDetails?.data.name}</p>
       <p className="text-sm text-gray-500 mb-5">{"Saved at: 12 Aug 25, 04:31 pm"}</p>
       <hr/>
-      <div className="mt-5 mb-0 flex border-b border-gray-200">
+      <div className="mt-5 mb-0 flex border-b justify-between w-96 border-gray-200">
       {tablinks.map((item, key) => {
         const isActive = location.pathname === item.link;
         return (

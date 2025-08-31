@@ -1,11 +1,9 @@
 import { TabLinks } from "./Types/LInkType.interface"
 
 export const tablinks:TabLinks[] = [
-  { name: "Api config", link: "/project/api-config" },
-  { name: "Web view url config", link: "/project/weburl-config" },
-  { name: "Default config" , link: "/project/default-config" },
+  { name: "Client", link: "/project/client-config" },
+  { name: "Api", link: "/project/api-config" },
+  { name: "You", link: "/project/you-config" },
+  { name: "Web", link: "/project/weburl-config" },
+  { name: "Bottom tab " , link: "/project/default-config" },
 ]
-
-// export const ScreenTabLinks:TabLinks[]=[
-//   {name:"",links}
-// ]
