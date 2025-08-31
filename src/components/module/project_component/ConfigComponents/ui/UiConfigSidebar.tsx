@@ -16,10 +16,10 @@ function UiConfigSidebar({ element, setElement }: UiConfigSidebarProps) {
             {UiCOmponent.map((item, index) => (
               <p
                 className={`text-lg  mb-4 cursor-pointer ${
-                  item.key == element && "font-semibold"
+                  item.name == element && "font-semibold"
                 }`}
                 key={index}
-                onClick={() => setElement(item.key)}
+                onClick={() => setElement(item.name)}
               >
                 {item.name}
               </p>
