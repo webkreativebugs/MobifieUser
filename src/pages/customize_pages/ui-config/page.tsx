@@ -1,12 +1,12 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
-import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
+// import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 import UiCOmponent from "../../../data/CustomizeData/UiDropdown.json";
 import { useEffect, useState } from "react";
 // import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
-import home from "../../../data/CustomizeData/UiDropdown.json";
+import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
 
 interface Section {
   type: string;
@@ -18,46 +18,89 @@ export interface LayoutData {
   footer: Section;
   main: string[];
 }
+interface ScreenData {
+  name: string;
+  // type: string;
+  header: string;
+  footer: string;
+  url: string;
+}
 
 const page = () => {
   // const [first, setfirst] = useState(UiCOmponent[0].designs[0].image);
-  const [element, setElement] = useState(UiCOmponent[0].key);
+  const [element, setElement] = useState(UiCOmponent[0].name);
   const [first, setfirst] = useState(
-    UiCOmponent.find((item) => item.key === element)?.designs[0].image
+    UiCOmponent.find((item) => item.name === element)?.designs[0]
   );
-  const [header, setHeader] = useState(UiCOmponent[0].key);
-  const [footer, setFooter] = useState(UiCOmponent[0].key);
-  const [layout, setLayout] = useState<LayoutData>({
-    header: { type: "header", url: "" },
-    footer: { type: "footer", url: "" },
-    main: [],
+  const [header, setHeader] = useState(UiCOmponent[0].name);
+  const [tab, setTab] = useState("screen");
+  // const [screen, setScreen] = useState<ScreenData[]>([
+  //   {
+  //     name: "",
+  //     type: "",
+  //     header: { type: "header", url: "" },
+  //     footer: { type: "footer", url: "" },
+  //     main: [],
+  //   },
+  // ]);
+
+  const [layout, setLayout] = useState<ScreenData>({
+    name: "",
+    // type: "",
+    header: "",
+    footer: "",
+    url: "",
   });
 
-  const handleUI = (item: any) => {
-    if (item.type === "header") {
-      setLayout((prev) => ({
-        ...prev,
-        header: {
-          ...prev.header,
-          url: item.image,
-        },
-      }));
+  useEffect(() => {
+    const currentScreen = UiCOmponent.find((item) => item.name === element);
+
+    const footer = UiCOmponent.find((item) => item.name === "Bottom Tab");
+    const header = UiCOmponent.find((item) => item.name === "Header");
+    const home = UiCOmponent.find((item) => item.name === "Home");
+
+    if (localStorage.getItem(element)) {
+      try {
+        setLayout({ ...JSON.parse(localStorage.getItem(element) as string) });
+      } catch (e) {
+        console.error("Failed to parse layout from localStorage", e);
+      }
     }
 
-    if (item.type === "footer") {
+    if (currentScreen) {
+      let newUrl = currentScreen.designs[0];
+
+      if (element === "Header" || element === "Bottom Tab") {
+        newUrl = home?.designs[0] || "";
+      }
+
       setLayout((prev) => ({
         ...prev,
-        footer: {
-          ...prev.footer,
-          url: item.image,
-        },
+        name: currentScreen.name,
+        header: header?.designs[0] || "",
+        footer: footer?.designs[0] || "",
+        url: newUrl,
       }));
     }
+  }, [element]);
 
-    if (item.type === "main") {
+  console.log(layout);
+  const handleUI = (item: any, screenName: string) => {
+    console.log(item + "  " + "karta hai ");
+    if (screenName === "Header") {
       setLayout((prev) => ({
         ...prev,
-        main: [...item.image],
+        header: item,
+      }));
+    } else if (screenName === "Bottom Tab") {
+      setLayout((prev) => ({
+        ...prev,
+        footer: item,
+      }));
+    } else {
+      setLayout((prev) => ({
+        ...prev,
+        url: item,
       }));
     }
   };
@@ -67,35 +110,10 @@ const page = () => {
       <div className=" flex  h-[85vh]">
         <UiConfigSidebar element={element} setElement={setElement} />
         {/* <CustomizeSidebar active="xfbhfh" /> */}
-        <div className=" w-2/3  relative  overflow-y-auto hide-scrollbar overflow-x-hidden mb-2   flex  flex-col items-center ">
-          <h1 className="text-3xl font-semibold absolute left-8">{element}</h1>
-          {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
+        <Ui element={element} setElement={setElement} handleUI={handleUI} />
 
-          {/* Example: Display the 'name' property of the first UI component */}
-          <div className="columns-2 gap-6  px-8 mt-16 ">
-            {UiCOmponent.find((item) => item.key === element)?.designs?.map(
-              (item, idx) => (
-                <div
-                  key={idx}
-                  className="mb-4 break-inside-avoid border p-2 w-[24rem] rounded-lg bg-white shadow"
-                >
-                  <button
-                    onClick={() => handleUI(item)}
-                    className="w-full block"
-                  >
-                    <img
-                      src={item.image[0]}
-                      alt=""
-                      className="w-full h-auto object-contain"
-                    />
-                  </button>
-                </div>
-              )
-            )}
-          </div>
-        </div>
         {/* Remove 'main' prop if PreviewComponent does not accept it */}
-        <PreviewComponent {...layout} />
+        <PreviewComponent layout={layout} />
       </div>
     </CustomizeMask>
   );
