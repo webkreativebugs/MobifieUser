@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { LayoutData } from "../../../../../pages/customize_pages/ui-config/page";
+// import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
+interface ScreenData {
+  name: string;
+  // type: string;
+  header: string;
+  footer: string;
+  url: string;
+}
 
-function PreviewComponent(props: LayoutData) {
+function PreviewComponent({ layout }: { layout: ScreenData }) {
   const [android, setAndroid] = useState(false);
-  console.log(props.main);
+  console.log(layout);
 
   return (
     <div
@@ -13,6 +20,12 @@ function PreviewComponent(props: LayoutData) {
       {/* Title + Toggle */}
       <div className="flex items-center justify-between mx-6 mb-2">
         <h1 className="text-3xl font-bold">Preview</h1>
+        <button
+          className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
+             hover:bg-gray-100 active:scale-95 active:bg-gray-200"
+        >
+          Save Changes
+        </button>
       </div>
 
       {/* Phone Preview */}
@@ -27,7 +40,7 @@ function PreviewComponent(props: LayoutData) {
               {/* Header */}
               <div className="flex-shrink-2">
                 <img
-                  src={props?.header.url}
+                  src={layout.header}
                   className="w-full mt-6"
                   onClick={() => alert("want to delete")}
                 />
@@ -35,20 +48,20 @@ function PreviewComponent(props: LayoutData) {
 
               {/* Scrollable Main */}
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {props.main.map((url, idx) => (
-                  <div key={idx} className="flex">
-                    <img
-                      src={url}
-                      alt={`image-${idx}`}
-                      className="w-full p-0"
-                    />
-                  </div>
-                ))}
+                {/* {props.main.map((url, idx) => ( */}
+                <div className="flex">
+                  <img
+                    src={layout.url}
+                    alt={layout.name}
+                    className="w-full p-0"
+                  />
+                </div>
+                {/* ))} */}
               </div>
 
               {/* Footer */}
               <div className="mb-[-1rem]">
-                <img src={props?.footer.url} className="w-full" />
+                <img src={layout.footer} className="w-full" />
               </div>
             </div>
           </div>
@@ -62,28 +75,28 @@ function PreviewComponent(props: LayoutData) {
               {/* Header */}
               <div className="flex-shrink-2">
                 <img
-                  src={props?.header.url}
-                  className="w-full mt-10"
+                  src={layout.header}
+                  className="w-full mt-6"
                   onClick={() => alert("want to delete")}
                 />
               </div>
 
               {/* Scrollable Main */}
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {props.main.map((url, idx) => (
-                  <div key={idx} className="flex">
-                    <img
-                      src={url}
-                      alt={`image-${idx}`}
-                      className="w-full p-0"
-                    />
-                  </div>
-                ))}
+                {/* {props.main.map((url, idx) => ( */}
+                <div className="flex">
+                  <img
+                    src={layout.url}
+                    alt={layout.name}
+                    className="w-full p-0"
+                  />
+                </div>
+                {/* ))} */}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1.2rem]">
-                <img src={props?.footer.url} className="w-full" />
+              <div className="mb-[-1rem]">
+                <img src={layout.footer} className="w-full" />
               </div>
             </div>
           </div>

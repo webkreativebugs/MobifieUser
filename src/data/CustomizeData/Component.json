@@ -1,0 +1,6 @@
+[
+    {
+        "id": 1,
+        "value": "<div class=\"w-full max-w-md mx-auto bg-white shadow-md rounded-2xl p-3\">\n  <div class=\"flex items-center justify-between\">\n    <div class=\"flex items-center gap-2\">\n      <i class=\"fa fa-bars text-gray-700 text-lg\"></i>\n      <span class=\"text-xl font-bold text-red-600\">Kushal's</span>\n    </div>\n    <div class=\"flex items-center gap-3\">\n      <i class=\"fa fa-heart text-gray-700 text-lg\"></i>\n      <i class=\"fa fa-user text-gray-700 text-lg\"></i>\n      <i class=\"fa fa-bag-shopping text-gray-700 text-lg\"></i>\n    </div>\n  </div>\n  <div class=\"mt-3 flex items-center border rounded-full px-3 py-2\">\n    <input type=\"text\" placeholder=\"Search for\" class=\"flex-1 outline-none text-sm\"/>\n    <i class=\"fa fa-search text-gray-500 text-base\"></i>\n  </div>\n</div>"
+    }
+]
