@@ -127,7 +127,7 @@ const Page = () => {
             icon: item.icon,
             navigationData: "{}",
             title: item.title,
-            componentName: item.componentName,
+            // componentName: item.componentName,
             ...(leftChecked[item.key] && {
               leftIcon: "KBIconName.Edit",
               leftIconSet: "KBIconSet.MaterialIcons",
@@ -157,7 +157,7 @@ const Page = () => {
             icon: item.icon,
             navigationData: "{}",
             title: item.title,
-            componentName: item.componentName,
+            // componentName: item.componentName,
             ...(leftChecked[item.key] && {
               leftIcon: "KBIconName.Edit",
               leftIconSet: "KBIconSet.MaterialIcons",
