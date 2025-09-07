@@ -4,21 +4,19 @@ import { useorg } from "../../../../../context/org_context/OrganizationContext";
 const TabLinks = () => {
     const {orgDetails}=useorg();
   return (
-    <div className="bg-primary  p-5 pb-0 mb-0 ">
-      <p className="text-xl font-semibold mb-2 " >{orgDetails?.data.name}</p>
-      <p className="text-sm text-gray-500 mb-5">{"Saved at: 12 Aug 25, 04:31 pm"}</p>
-      <hr/>
-      <div className="mt-5 mb-0 flex border-b justify-between w-96 border-gray-200">
+    <div className=" flex justify-between items-center  p-5 pt-2 pb-2 mb-0 ">
+      <p className="text-xl font-semibold " >{orgDetails?.data.name}</p>
+      <div className="mb-0 flex bg-primary  rounded-md p-2 pr-5 pl-5 justify-between w-96 border-gray-200">
       {tablinks.map((item, key) => {
         const isActive = location.pathname === item.link;
         return (
           <Link
             to={item.link}
             key={key}
-            className={`mr-5 py-2 text-md font-medium transition-colors ${
+            className={` py-2 text-md font-medium ${
               isActive
-                ? "border-b-2 border-gray-900 text-black-900"
-                : "text-gray-600 hover:text-gray-900"
+                ? "active-tab-link-api rounded-md"
+                : "text-gray-600 hover:text-gray-900 not-active"
             }`}
           >
             {item.name}
@@ -31,3 +29,4 @@ const TabLinks = () => {
 }
 
 export default TabLinks
+ 

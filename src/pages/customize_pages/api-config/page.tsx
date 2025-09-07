@@ -5,6 +5,8 @@ import { ApiConfig } from "../../../data/CustomizeData/ClientConfiguration"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField"
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import { useState } from "react"
+
+
 const page = () => {
    
 interface ApiConfigData {
@@ -47,10 +49,10 @@ interface ApiConfigData {
   //   setNumOfForms((prev) => prev.filter((formId) => formId !== id));
   // }
   return (
-    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API}>
+    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
    
    
-        <form className="w-full grid grid-cols-2 gap-5  mb-2  rounded-md  " >
+        <form className="w-full grid grid-cols-2 gap-5  mb-2 bg-white p-9 shadow-md  rounded-md  " >
                 {(ApiConfig).map((item) => (
                   
                   <ApiConfigInputField
@@ -65,8 +67,8 @@ interface ApiConfigData {
                   />
                   
                 ))}
-               
               </form>
+             
     </AppConfigMask>
   )
 }

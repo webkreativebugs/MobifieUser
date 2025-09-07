@@ -7,7 +7,8 @@ interface PROPS {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   options?: string[];
-  disabled?:boolean
+  disabled?:boolean;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const ApiConfigInputField = ({
@@ -19,7 +20,8 @@ const ApiConfigInputField = ({
   onChange,
   required = false,
   options,
-  disabled=false
+  disabled=false,
+  onBlur
 }: PROPS) => {
   return (
     <div className="flex flex-col w-full mb-4">
@@ -41,6 +43,7 @@ const ApiConfigInputField = ({
         onChange={onChange}
         required={required}
         disabled={disabled}
+        onBlur={onBlur}
         className="border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition"
       />
       </>
