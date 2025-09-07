@@ -4,7 +4,7 @@ import HeadingMask from "../../../../common_component/layered_components/Heading
 import TabLinks from "../common/TabLinks";
 // import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { ReactNode } from "react";
-const AppConfigMask = ({ children,displayName ,name}: { children: ReactNode ,displayName:string,name:string}) => {
+const AppConfigMask = ({ children,displayName ,name,display}: { children: ReactNode ,displayName:string,name:string,display:string}) => {
   // const { orgDetails } = useorg();
   return (
     <CustomizeMask name={name}>
@@ -12,7 +12,7 @@ const AppConfigMask = ({ children,displayName ,name}: { children: ReactNode ,dis
       <></>
      </HeadingMask>
     <TabLinks/>
-     <div className=" w-full bg-primary mt-5 p-8">
+     <div className="bg-primary   justify-between shadow-md mt-5 p-10  "  style={{display:`${display}`}}>
          {children}
      </div>
     

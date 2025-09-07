@@ -1,31 +1,13 @@
 import { MdEdit, MdLocalShipping } from "react-icons/md";
 import { FaAddressBook } from "react-icons/fa"; // Font Awesome
-
+import { YouConfigType } from "../../../enum/YouConfig.enum";
 import { AiFillSetting } from "react-icons/ai";
 
 export const WebViewNavigationURL = [
   
-     {
-    key: "edit_profile",
-    title: "Edit Profile",
-    url:"Update your profile ",
-    // navigateTo: NavigationConstant.UPDATE_USER_PROFILE,
-    navigationData: {},
-  },
- {
-    key: "orders",
-    title: "Orders",
-    url:"Update your order list",
-    // navigateTo: NavigationConstant.ORDER_LIST,
-    navigationData: {},
-  },
-  {
-    key: "address",
-    title: "Address",
-    url:"Update your address",
-    // navigateTo: NavigationConstant.ADDRESS_LIST,
-    navigationData: {},
-  },
+   
+
+
   {
     key: 'about_us',
     title: 'About Us',
@@ -296,27 +278,31 @@ export const ShopifyConfig = [
     key: "API_URL",
     label: "Storefront API URL",
     value: "https://kushalsonline-com.myshopify.com/api/2024-07/graphql.json",
+    name: "url"
   },
   {
     key: "X_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
     label: "Storefront Access Token",
     value: "828edc91e7586ae2dea7ed3c23f73268",
+    name:"token"
   },
   {
     key: "API_URL_ADMIN",
     label: "Admin API URL",
     value: "https://kushalsonline-com.myshopify.com/admin/api/2024-07/graphql.json",
+    name: "url"
   },
   {
     key: "X_SHOPIFY_ACCESS_TOKEN",
     label: "Admin Access Token",
     value: "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",
+    name:"token"
   },
 ]
 
 export const YouClientConfiguration = [
   {
-    key: 'edit_profile',
+    key: YouConfigType.PROFILE,
     icon:MdEdit,
     navigationData: "{}",
     rightIcon:" KBIconName.ArrowForward",
@@ -327,7 +313,7 @@ export const YouClientConfiguration = [
     componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
-    key: 'orders',
+    key: YouConfigType.ORDER,
     icon:MdLocalShipping ,
     navigateTo: "NavigationConstant.ORDER_LIST",
     navigationData: {},
@@ -339,7 +325,7 @@ export const YouClientConfiguration = [
     componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
-    key: 'address',
+    key: YouConfigType.ADDRESS,
     icon:FaAddressBook ,
     navigateTo:" NavigationConstant.ADDRESS_LIST",
     navigationData: {},
@@ -351,7 +337,7 @@ export const YouClientConfiguration = [
     componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
-    key: 'settings',
+    key: YouConfigType.SETTING,
     icon:AiFillSetting ,
     navigateTo:" NavigationConstant.SETTINGS",
     navigationData: {},
@@ -369,3 +355,4 @@ export const Configuration = {
     maximumPurchaseQuantity: 10,
   },
 };
+

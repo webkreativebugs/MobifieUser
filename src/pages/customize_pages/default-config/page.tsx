@@ -34,13 +34,13 @@ const page = () => {
       setMaxCartQuantity(e.target.value)
     }
   return (
-    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.BOTTOM}>
-        <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md" >
+    <AppConfigMask display="" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.BOTTOM}>
+        <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-white p-6 shadow-md" >
         <CurrencySelector
         selected={selected}
         setSelected={setSelected}
         /> 
-        <div>
+        <div >
           <label className="flex text-md font-bold mb-2 text-gray-700 items-center space-x-1 text-lg cursor-pointer">Cart Quanity</label>
           <input 
            type="number"
@@ -48,7 +48,7 @@ const page = () => {
            value={maxCartQuantity}
            name="Cart"
            onChange={handleChange}
-           className="w-full border-b p-[10px] outline-none text-sm rounded-md shadow-md " />
+            className="w-full flex items-center justify-between border rounded-lg px-3 py-2 bg-white shadow-sm hover:border-gray-400" />
         </div>
         </div>
       
