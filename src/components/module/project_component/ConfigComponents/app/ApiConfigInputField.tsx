@@ -9,6 +9,7 @@ interface PROPS {
   options?: string[];
   disabled?:boolean;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  rounded?:boolean
 }
 
 const ApiConfigInputField = ({
@@ -21,10 +22,11 @@ const ApiConfigInputField = ({
   required = false,
   options,
   disabled=false,
-  onBlur
+  onBlur,
+
 }: PROPS) => {
   return (
-    <div className="flex flex-col w-full mb-4">
+    <div className={`flex flex-col w-full mb-4 `}>
       {
         type!=="select"?
       <>
@@ -53,7 +55,7 @@ const ApiConfigInputField = ({
         htmlFor={name}
         className="mb-2 text-md font-medium text-gray-700"
       >{title} {required && <span className="text-red-500">*</span>}</label>
-      <select name={name}  className="border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition">
+      <select name={name}  className="border border-gray-300 rounded-lg px-3 py-3  text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition">
         {
           (options ?? []).map((item) => (
             <option key={item} value={item} className="rounded-md" >

@@ -122,13 +122,15 @@ const Page = () => {
   }
 
   return (
+    <>
     <AppConfigMask
       name={CustomizeDashboardTypeEnums.APP}
       displayName={ConfigTypeEnums.CLIENT}
-      display=""
+      display="flex"
+      direction="column"
     >
       <form
-        className="w-full bg-white p-6 shadow-md grid gap-5 mb-5 pt-9 pb-9 rounded-md"
+        className="w-7/12 bg-primary  p-10 shadow-md grid gap-5 mb-5 pt-9 pb-9  rounded-md"
         onSubmit={handleSubmit}
       >
         {ShopifyConfig.map((data, index) => (
@@ -172,6 +174,7 @@ const Page = () => {
         </pre>
       </div>
     </AppConfigMask>
+    </>
   )
 }
 

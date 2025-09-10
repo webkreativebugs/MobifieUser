@@ -10,5 +10,6 @@ export interface SidebarLink {
 export interface TabLinks{
   name:string;
   link:string
+  Icon:IconType
 
 }
