@@ -11,8 +11,8 @@ const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyToken
       console.error("Error while fetching user info:", error);
       // navigate("/login-with-password",{replace:true})
       setAuthError(true)
-      
-      onRoleChange("")
+      // window.location.replace("/")
+      // onRoleChange("")
 
     }
     console.log(response);

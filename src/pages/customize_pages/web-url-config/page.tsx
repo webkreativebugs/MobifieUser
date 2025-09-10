@@ -106,9 +106,9 @@ const Page = () => {
   };
 
   return (
-    <AppConfigMask display="" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.WEB}>
+    <AppConfigMask display="flex" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.WEB} >
       <form
-        className="w-full grid grid-cols-2 gap-5 pb-9 rounded-md bg-white p-6 pt-9 shadow-md"
+        className="w-7/12 grid grid-cols-2 gap-5 pb-9 rounded-md bg-primary shadow-md p-6 pt-9"
         onSubmit={handleSubmit}
       >
         {(WebViewNavigationURL as WebViewNavigationItem[]).map((item) => (

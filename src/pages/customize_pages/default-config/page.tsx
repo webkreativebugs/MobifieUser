@@ -34,8 +34,8 @@ const page = () => {
       setMaxCartQuantity(e.target.value)
     }
   return (
-    <AppConfigMask display="" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.BOTTOM}>
-        <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-white p-6 shadow-md" >
+    <AppConfigMask display="flex" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.BOTTOM}>
+        <div className="w-7/12 grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-primary p-6 shadow-md" >
         <CurrencySelector
         selected={selected}
         setSelected={setSelected}

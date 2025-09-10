@@ -381,7 +381,7 @@ body {
   background-color: black;
   color:white;
   padding:20px;
-  width:4.5rem;
+  width:10rem;
   display:flex;
   justify-content: center;
  font-weight:normal  !important;
@@ -395,6 +395,8 @@ transform: translateY(-2px);
 .not-active{
     position: relative;
      z-index: 1;
+     display: flex;
+     justify-content: center;
 }
 
 .api-img{

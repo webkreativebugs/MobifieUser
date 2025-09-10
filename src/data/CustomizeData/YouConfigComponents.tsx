@@ -1,12 +1,12 @@
-import { YouConfigType,LeftSelectedComponents ,RightSelectedComponents} from "../../../enum/YouConfig.enum"
+import { YouConfigType} from "../../../enum/YouConfig.enum"
 import { FaRegUser } from "react-icons/fa";
 import { FiBox } from "react-icons/fi";
 import { BsTruck } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
-import { MdKeyboardArrowRight, MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
-import { CiCircleChevRight, CiCircleChevUp, CiCircleChevDown } from "react-icons/ci";
-import { CiSquareChevRight,  CiSquareChevUp, CiSquareChevDown } from "react-icons/ci";
-import { FaCaretRight, FaCaretUp, FaCaretDown } from "react-icons/fa";
+// import { MdKeyboardArrowRight, MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+// import { CiCircleChevRight, CiCircleChevUp, CiCircleChevDown } from "react-icons/ci";
+// import { CiSquareChevRight,  CiSquareChevUp, CiSquareChevDown } from "react-icons/ci";
+// import { FaCaretRight, FaCaretUp, FaCaretDown } from "react-icons/fa";
 
 
 export const YouConfigDefaultValue = {
@@ -38,23 +38,4 @@ export const YouConfigDefaultValue = {
 
 };
 
-export const CheckboxesData={
-  Right:[
-      RightSelectedComponents.RIGHT,RightSelectedComponents.UP,RightSelectedComponents.DOWN
-  ],
-  Left:[
-  LeftSelectedComponents.ICON,LeftSelectedComponents.TEXT,LeftSelectedComponents.SUBTEXT
-  ]
-}
 
-export const Arrows={
-  [RightSelectedComponents.RIGHT]:[
-    MdKeyboardArrowRight,CiCircleChevRight,CiSquareChevRight,FaCaretRight
-  ],
-  [RightSelectedComponents.UP]:[
-    MdKeyboardArrowUp, CiCircleChevUp, CiSquareChevUp,FaCaretUp
-  ],
-  [RightSelectedComponents.DOWN]:[
-    MdKeyboardArrowDown,CiCircleChevDown,CiSquareChevDown,FaCaretDown
-  ]
-}
