@@ -29,11 +29,11 @@ interface ScreenData {
 const page = () => {
   // const [first, setfirst] = useState(UiCOmponent[0].designs[0].image);
   const [element, setElement] = useState(UiCOmponent[0].name);
-  const [first, setfirst] = useState(
-    UiCOmponent.find((item) => item.name === element)?.designs[0]
-  );
-  const [header, setHeader] = useState(UiCOmponent[0].name);
-  const [tab, setTab] = useState("screen");
+  // const [first, setfirst] = useState(
+  //   UiCOmponent.find((item) => item.name === element)?.designs[0]
+  // );
+  // const [header, setHeader] = useState(UiCOmponent[0].name);
+  // const [tab, setTab] = useState("screen");
   // const [screen, setScreen] = useState<ScreenData[]>([
   //   {
   //     name: "",

@@ -9,9 +9,9 @@ import { useEffect } from "react";
 import { AccessType } from "../enum/AccessType.enum";
 import AuthRight from "./components/common_component/AuthRight";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 export default function App() {
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
   const body = document.querySelector("body");
   if (body) {
     body.style.overflow = "hidden";

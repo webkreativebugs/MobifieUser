@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
-import COmponent from "../../../../../data/CustomizeData/Component.json";
+// import React, { useState } from "react";
+// import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
+// import COmponent from "../../../../../data/CustomizeData/Component.json";
 import type { UiConfigSidebarProps } from "./Ui";
 
-interface Section {
-  type: string;
-  url: string;
-}
+// interface Section {
+//   type: string;
+//   url: string;
+// }
 
-interface ScreenData {
-  name: string;
-  type: string;
-  header: Section;
-  footer: Section;
-  main: string[];
-}
+// interface ScreenData {
+//   name: string;
+//   type: string;
+//   header: Section;
+//   footer: Section;
+//   main: string[];
+// }
 
 function Screens({ data, handleUI }: UiConfigSidebarProps | any) {
   return (
