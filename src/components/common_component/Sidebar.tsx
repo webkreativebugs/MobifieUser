@@ -1,4 +1,4 @@
-import { useState,useEffect} from "react";
+import { useState} from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { MdOutlineCancel } from "react-icons/md";
 // import { AdminDashboardLinks } from "../../data/SidebarLinks";
@@ -11,7 +11,7 @@ import { Dispatch, SetStateAction } from "react";
 // import { GoSidebarCollapse } from "react-icons/go";
 import { GoSidebarExpand } from "react-icons/go";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
-import { useSearchParams } from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 interface SidebarProps {
   active: string;
   show: boolean;
@@ -22,7 +22,7 @@ interface SidebarProps {
 const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
-   const [searchParams] = useSearchParams();
+  //  const [searchParams] = useSearchParams();
   //  console.log(DropName);
    
   // const [showDropdown , setShowDropdown] = useState<boolean|null>(false)

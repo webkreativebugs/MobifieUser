@@ -1,6 +1,6 @@
 import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
 import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
-import { LayoutData } from "../../../../../pages/customize_pages/ui-config/page";
+// import { LayoutData } from "../../../../../pages/customize_pages/ui-config/page";
 import Screens from "./Screens";
 import HeaderScreen from "./HeaderScreen";
 import BottomTab from "./BottomTab";
@@ -23,7 +23,7 @@ export type UiConfigSidebarProps = {
 //   main: string;
 // }
 
-function Ui({ element, setElement, handleUI }: UiConfigSidebarProps) {
+function Ui({ element, handleUI }: UiConfigSidebarProps) {
   const [tab, setTab] = useState("screen");
   const [view, setView] = useState<React.ReactNode>("screen");
 
