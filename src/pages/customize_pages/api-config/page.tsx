@@ -1,10 +1,11 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
 import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
 // import ApiRequestForms from "../../../components/module/project_component/ConfigComponents/app/ApiRequestForm"
-import { ApiConfig } from "../../../data/CustomizeData/ClientConfiguration"
+import { ApiConfigAuth,ApiConfigRequest } from "../../../data/CustomizeData/ClientConfiguration"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField"
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import { useState } from "react"
+// import { MdAccessTime } from "react-icons/md";
 
 
 const page = () => {
@@ -52,8 +53,14 @@ interface ApiConfigData {
     <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
    
    
-        <form className="w-full grid grid-cols-2 gap-5  mb-2 bg-white p-9 shadow-md  rounded-md  " >
-                {(ApiConfig).map((item) => (
+        <form className="w-7/12 grid grid-cols-2 gap-5" >
+        
+        <div>
+          <h1 className="text-xl font-semibold mb-4">
+            Authentication
+          </h1>
+          <div className="bg-primary shadow-md p-5 rounded-lg">
+                {(ApiConfigAuth).map((item) => (
                   
                   <ApiConfigInputField
                     title={item.title}
@@ -67,6 +74,30 @@ interface ApiConfigData {
                   />
                   
                 ))}
+                </div>
+                </div>
+                  <div className="">
+          <h1 className="text-xl font-semibold mb-4">
+            Request
+          </h1>
+          <div className="bg-primary shadow-md p-5 rounded-lg">
+                {(ApiConfigRequest).map((item) => (
+                  
+                  <ApiConfigInputField
+                    title={item.title}
+                    placeholder={item.placeholder as string}
+                    name={item.key}
+                    value={apiConfig[item.key]}
+                    onChange={handleChange}
+                    required={false}
+                    type={item.type}
+                   
+                    // options={item.options}
+                  />
+                  
+                ))}
+                </div>
+                </div>
               </form>
              
     </AppConfigMask>

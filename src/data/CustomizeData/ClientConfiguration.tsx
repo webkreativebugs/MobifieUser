@@ -57,7 +57,7 @@ export const defaultConfiguration = {
   symbol: '₹',
 };
 
-export const ApiConfig = [
+export const ApiConfigAuth = [
   {
     key: "api_key",
     title: "API Key",
@@ -86,7 +86,12 @@ export const ApiConfig = [
     options: ["GET", "POST", "PUT", "DELETE"],
     required: true,
   },
-  {
+
+ 
+];
+
+export const ApiConfigRequest=[
+    {
     key: "headers",
     title: "Headers",
     type: "textarea",
@@ -100,22 +105,22 @@ export const ApiConfig = [
     placeholder: `{"param1": "value1", "param2": "value2"}`,
     required: false,
   },
-  {
+   {
+    key: "timeout",
+    title: "Timeout (ms)",
+    type: "number",
+    placeholder: "5000",
+    required: false,
+  },
+   {
     key: "body",
     title: "Request Body",
     type: "textarea",
     placeholder: `{"key": "value"}`,
     required: false,
   },
-  {
-    key: "timeout",
-    title: "Timeout (ms)",
-    type: "number",
-    placeholder: "5000",
-    required: false,
-  }
-];
-
+ 
+]
 
 export const currencies = [
   { code: "INR", name: "Indian Rupee", symbol: "₹" },
@@ -224,78 +229,29 @@ export const currencies = [
  
 
 
-export const ScreenDesignConfiguration = {
-  SignIn: {
-    SignInAuthenticationType: "SignInAuthenticationType.EmailPassword",
-  },
-  // Collections: {
-  //   CardDesign: KBCollectionCard.KBCollectionCardSliderBannerCard,
-  // },
-  Wishlist: {
-    CardDesign:" KBProductCardEnum.KBProductCardOneByOne0",
-    FlatListNumColumns: 1,
-  },
-  RecentlyViewed: {
-    CardDesign: "KBProductCardEnum.KBProductCardOneByOne0",
-    FlatListNumColumns: 1,
-  },
-  ProductByCollection: {
-    CardDesign:" KBProductCardEnum.KBProductCardOneByTwo1",
-    FlatListNumColumns: 2,
-  },
-  Home: {
-    CircularProductCard:" KBHomeCollectionCardEnum.KBHomeCollectionCard2",
-    HeaderCollectionDesign:
-     " KBHomeCollectionHeaderCardEnum.KBHomeCollectionHeaderCard3",
-    FlatListNumColumns: 1,
-    ProductCardDesign:" KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard2",
-    ProductGridCardDesign:" KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard3",
-    ProductSingleCardDesign: "KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard4",
-    SliderCardDesign:"KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard0",
-  },
-  Shop: {
-    CardDesign:" KBShopCollectionCardEnum.KBShopCollectionCard1",
-    FlatListNumColumns: 1,
-  },
-  SearchProductAndCollection: {
-    SearchProductCard:" KBSearchProductCardEnum.KBSearchProductCardOneByOne0",
-    SearchCollectionCard:
-     " KBSearchCollectionCardEnum.KBSearchCollectionTitleCard",
-    SegmentedControl:" SearchTypeConstant.all",
-    ShowSegmentedControl: true,
-  },
-  YouTab: {
-    ListCardDesign:" KBYouListCardEnum.KBYouListCard0",
-    ProfileCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
-    LoginCardDesign:" KBYouLoginCardEnum.KBYouLoginCard0",
-    LogoutCardDesign:" KBYouProfileCardEnum.KBYouProfileCard0",
-    InviteCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
-  },
-};
-
 export const ShopifyConfig = [
   {
     key: "API_URL",
     label: "Storefront API URL",
-    value: "https://kushalsonline-com.myshopify.com/api/2024-07/graphql.json",
+    value: "url",
     name: "url"
   },
   {
-    key: "X_SHOPIFY_STOREFRONT_ACCESS_TOKEN",
+    key: "Token",
     label: "Storefront Access Token",
-    value: "828edc91e7586ae2dea7ed3c23f73268",
+    value: "Dummy",
     name:"token"
   },
   {
     key: "API_URL_ADMIN",
     label: "Admin API URL",
-    value: "https://kushalsonline-com.myshopify.com/admin/api/2024-07/graphql.json",
+    value: "Admin",
     name: "url"
   },
   {
     key: "X_SHOPIFY_ACCESS_TOKEN",
     label: "Admin Access Token",
-    value: "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",
+    value: "tken",
     name:"token"
   },
 ]
@@ -310,7 +266,7 @@ export const YouClientConfiguration = [
     rightIconSet:" KBIconSet.MaterialIcons",
     leftIconSet:" KBIconSet.MaterialIcons",
     title: 'Edit Profile',
-    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
     key: YouConfigType.ORDER,
@@ -322,7 +278,7 @@ export const YouClientConfiguration = [
     rightIconSet:" KBIconSet.MaterialIcons",
     leftIconSet: 'KBIconSet.MaterialIcons',
     title: 'Orders',
-    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
     key: YouConfigType.ADDRESS,
@@ -334,7 +290,7 @@ export const YouClientConfiguration = [
     rightIconSet: "KBIconSet.MaterialIcons",
     leftIconSet: "KBIconSet.Entypo",
     title: 'Address',
-    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
     key: YouConfigType.SETTING,
@@ -346,7 +302,7 @@ export const YouClientConfiguration = [
     rightIconSet:" KBIconSet.MaterialIcons",
     leftIconSet: "KBIconSet.AntDesign",
     title: 'Settings',
-    componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
 ];
 

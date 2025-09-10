@@ -4,22 +4,25 @@ import { useState } from "react";
 import { YouClientConfiguration } from "../../../data/CustomizeData/ClientConfiguration";
 import CustomComponents from "../../../components/module/project_component/ConfigComponents/app/CustomComponents";
 import CustomizedPopup from "../../../components/module/project_component/ConfigComponents/app/CustomizedPopup";
-import { RightSelectedComponents ,LeftSelectedComponents} from "../../../../enum/YouConfig.enum";
-import { Arrows } from "../../../data/CustomizeData/YouConfigComponents";
-import { IconType } from "react-icons";
+import { YouConfigType } from "../../../../enum/YouConfig.enum";
+import menuConfig from "../../../data/CustomizeData/YouCards.json"
+import { FaEdit } from "react-icons/fa";
+// import { IconType } from "react-icons";
 // import { useEffect } from "react";
 // import {YouConfigType} from "../../../../enum/YouConfig.enum"
-
+// type YouConfigKeys = keyof typeof YouClientConfiguration;
 const Page = () => {
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const [leftChecked, setLeftChecked] = useState<Record<string, boolean>>({});
   const [rightChecked, setRightChecked] = useState<Record<string, boolean>>({});
-  // const [leftCheckbox,setLeftCheckbox]=useState({icon:true,text:true,arrow:false})
-  // const [rightCheckbox,setRightCheckbox]=useState({icon:false,arrow:true,text:false})
   const [popped,setPopped]=useState<boolean>(false)
-  const [rightSelected, setRightSelected] = useState(RightSelectedComponents.RIGHT);
-  const [leftSelected,setLeftSelected ]=useState<Set<LeftSelectedComponents>>(new Set(Object.values(LeftSelectedComponents)));   
-  const [selectedArrow,setSelectedArrow]=useState<IconType>(Arrows[RightSelectedComponents.RIGHT][0])
+  const [popData,setPopData]=useState<YouConfigType>(YouConfigType.PROFILE);
+  const [customData,setCustomData]=useState({
+    [YouConfigType.PROFILE]:menuConfig[YouConfigType.PROFILE].default.html,
+    [YouConfigType.ORDER]:menuConfig[YouConfigType.ORDER].default.html,
+    [YouConfigType.ADDRESS]:menuConfig[YouConfigType.ADDRESS].default.html,
+    [YouConfigType.SETTING]:menuConfig[YouConfigType.SETTING].default.html,
+    })
   const toggleSelection = (key: string) => {
     const updated = new Set(selectedKeys);
     if (updated.has(key)) {
@@ -51,9 +54,10 @@ const Page = () => {
     <AppConfigMask
   name={CustomizeDashboardTypeEnums.APP}
   displayName={ConfigTypeEnums.YOU}
-  display=""
+  display="flex"
+  direction="column"
 >
-  <div className="flex flex-col gap-6 bg-white p-6 pt-8 ">
+  <div className="flex flex-col gap-6 bg-primary w-7/12  shadow-md p-10  ">
     {YouClientConfiguration.map((item) => {
       const isSelected = selectedKeys.has(item.key);
 
@@ -63,9 +67,9 @@ const Page = () => {
           className="border-b border-slate-200 pb-4 last:border-none"
         >
           {/* Row */}
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex gap-6">
             {/* Checkbox + Label */}
-            <label className="flex items-center gap-3 cursor-pointer w-1/5 font-semibold text-gray-700">
+            <label className="flex items-center gap-3 cursor-pointer w-1/4 font-semibold text-gray-700">
               <input
                 type="checkbox"
                 checked={isSelected}
@@ -79,30 +83,20 @@ const Page = () => {
             {/* Config Panel */}
             {isSelected && (
               <>
-              <div className="flex w-2/3 justify-between rounded-md h-20 items-center p-4 pt-1 pb-1 ">
-                <CustomComponents 
-                name={item.key}
-                leftSelected={leftSelected}
-                rightSelected={rightSelected}
-                selectedArrow={selectedArrow}
-
-                />
-                <button className="px-4 py-2 ml-2 shadow-md  text-white text-sm rounded-md self-center  button transition"
-               onClick={()=> setPopped(true)}
+              <div className="flex w-full justify-end   rounded-md  p-4 pt-1 pb-1 ">
+                <CustomComponents data={customData[item.key]} />
+                <button className="px-4  py-2 ml-5 flex text-xl  w-fit   transition"
+               onClick={()=> {setPopped(true) ; setPopData(item.key)}}
                 >
-                  Customize
+                 <FaEdit/>
                 </button>
               </div>
                 <CustomizedPopup 
                 popped={popped} 
                 onClose={onClose}
-                name={item.key}
-                leftSelected={leftSelected}
-                rightSelected={rightSelected}
-                setLeftSelected={setLeftSelected}
-                setRightSelected={setRightSelected}
-                selectedArrow={selectedArrow}
-                setSelectedArrow={setSelectedArrow}
+                name={popData}
+                setCustomData={setCustomData}
+              
                   />
               </>
             )}
@@ -113,7 +107,6 @@ const Page = () => {
     })}
   </div>
 
-  {/* ✅ Debug Output Section */}
   <section className="mt-8">
     <div className="flex justify-between items-center mb-2">
       <h3 className="font-bold text-gray-800">Debug State</h3>
@@ -127,7 +120,7 @@ const Page = () => {
             icon: item.icon,
             navigationData: "{}",
             title: item.title,
-            componentName: item.componentName,
+          
             ...(leftChecked[item.key] && {
               leftIcon: "KBIconName.Edit",
               leftIconSet: "KBIconSet.MaterialIcons",
@@ -157,7 +150,7 @@ const Page = () => {
             icon: item.icon,
             navigationData: "{}",
             title: item.title,
-            componentName: item.componentName,
+            
             ...(leftChecked[item.key] && {
               leftIcon: "KBIconName.Edit",
               leftIconSet: "KBIconSet.MaterialIcons",
@@ -174,6 +167,8 @@ const Page = () => {
     </div>
   </section>
 </AppConfigMask>
+  {/* ✅ Debug Output Section */}
+
 </>
 
   );

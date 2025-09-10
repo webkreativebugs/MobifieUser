@@ -29,13 +29,12 @@ export default function App() {
   useEffect(()=>{
     if(authError)
     {
-       navigate("/", { replace: true });
+       window.location.replace("/")
        console.log("auth error");
        
     }
   },[authError])
 
-  console.log("This is auth error",authError);
   
   //  isLoggedIn
   return (
