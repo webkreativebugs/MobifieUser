@@ -1,9 +1,7 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
-// import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 import UiCOmponent from "../../../data/CustomizeData/UiDropdown.json";
 import { useEffect, useState } from "react";
-// import CustomizeSidebar from "../../../components/module/project_component/ConfigComponents/common/CustomizeSidebar";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
 import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
@@ -27,22 +25,7 @@ interface ScreenData {
 }
 
 const page = () => {
-  // const [first, setfirst] = useState(UiCOmponent[0].designs[0].image);
   const [element, setElement] = useState(UiCOmponent[0].name);
-  const [first, setfirst] = useState(
-    UiCOmponent.find((item) => item.name === element)?.designs[0]
-  );
-  const [header, setHeader] = useState(UiCOmponent[0].name);
-  const [tab, setTab] = useState("screen");
-  // const [screen, setScreen] = useState<ScreenData[]>([
-  //   {
-  //     name: "",
-  //     type: "",
-  //     header: { type: "header", url: "" },
-  //     footer: { type: "footer", url: "" },
-  //     main: [],
-  //   },
-  // ]);
 
   const [layout, setLayout] = useState<ScreenData>({
     name: "",
@@ -113,7 +96,7 @@ const page = () => {
         <Ui element={element} setElement={setElement} handleUI={handleUI} />
 
         {/* Remove 'main' prop if PreviewComponent does not accept it */}
-        <PreviewComponent layout={layout} />
+        <PreviewComponent element={element} />
       </div>
     </CustomizeMask>
   );
