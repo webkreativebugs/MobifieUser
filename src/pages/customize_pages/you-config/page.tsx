@@ -22,6 +22,7 @@ const Page = () => {
     [YouConfigType.ORDER]:menuConfig[YouConfigType.ORDER].default.html,
     [YouConfigType.ADDRESS]:menuConfig[YouConfigType.ADDRESS].default.html,
     [YouConfigType.SETTING]:menuConfig[YouConfigType.SETTING].default.html,
+    variant:"default"
     })
   const toggleSelection = (key: string) => {
     const updated = new Set(selectedKeys);
@@ -57,7 +58,7 @@ const Page = () => {
   display="flex"
   direction="column"
 >
-  <div className="flex flex-col gap-6 bg-primary w-7/12  shadow-md p-10  ">
+  <div className="flex flex-col gap-6 bg-primary  shadow-md p-10  ">
     {YouClientConfiguration.map((item) => {
       const isSelected = selectedKeys.has(item.key);
 
@@ -83,7 +84,7 @@ const Page = () => {
             {/* Config Panel */}
             {isSelected && (
               <>
-              <div className="flex w-full justify-end   rounded-md  p-4 pt-1 pb-1 ">
+              <div className={`flex w-full justify-end   rounded-md  p-4 pt-1 pb-1 `}>
                 <CustomComponents data={customData[item.key]} />
                 <button className="px-4  py-2 ml-5 flex text-xl  w-fit   transition"
                onClick={()=> {setPopped(true) ; setPopData(item.key)}}
@@ -96,7 +97,7 @@ const Page = () => {
                 onClose={onClose}
                 name={popData}
                 setCustomData={setCustomData}
-              
+                customData={customData}
                   />
               </>
             )}
