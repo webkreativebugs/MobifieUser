@@ -91,7 +91,7 @@ function HeaderScreen({ element }: { element: string }) {
           <label key={idx} className="flex items-center space-x-2">
             <input
               type="checkbox"
-              checked={!!icon.svg} // ✅ checkbox state depends on svg presencedsdssdsdsd
+              checked={!!icon.svg} // ✅ checkbox state depends on svg swfdefaesfsfsdfsdfdfsfsdfsdfdsf
               onChange={() => handleToggle("leftIcons", idx, icon.name)}
               className="h-4 w-4"
             />
