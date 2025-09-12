@@ -35,7 +35,7 @@ const page = () => {
     }
   return (
     <AppConfigMask display="flex" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.BOTTOM}>
-        <div className="w-7/12 grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-primary p-6 shadow-md" >
+        <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-primary p-6 shadow-md" >
         <CurrencySelector
         selected={selected}
         setSelected={setSelected}

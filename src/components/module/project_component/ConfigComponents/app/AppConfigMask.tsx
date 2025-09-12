@@ -12,9 +12,9 @@ const AppConfigMask = ({ children,name,display,direction="row" }: { children: Re
      {/* <HeadingMask name={displayName} >
       <></>
      </HeadingMask> */}
-     <div className="flex justify-center"><TabLinks/></div>
+     <TabLinks/>
     
-     <div className="items-center  justify-center mt-5 p-10  "  style={{display:`${display}`,flexDirection:`${direction}`}}>
+     <div className="mt-5  "  style={{display:`${display}`,flexDirection:`${direction}`}}>
          {children}
      </div>
     

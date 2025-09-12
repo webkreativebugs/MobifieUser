@@ -108,7 +108,7 @@ const Page = () => {
   return (
     <AppConfigMask display="flex" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.WEB} >
       <form
-        className="w-7/12 grid grid-cols-2 gap-5 pb-9 rounded-md bg-primary shadow-md p-6 pt-9"
+        className="w-full gap-5 pb-9 rounded-md bg-primary shadow-md p-6 pt-9"
         onSubmit={handleSubmit}
       >
         {(WebViewNavigationURL as WebViewNavigationItem[]).map((item) => (
@@ -125,7 +125,7 @@ const Page = () => {
                     [item.key]: !prev[item.key],
                   }))
                 }
-                className="w-4 mr-5 mt-2 flex justify-center items-center"
+                className="w-4 mr-7 flex h-12 justify-center items-center"
               />
               <ApiConfigInputField
                 disabled={!checkboxForm[item.key]}

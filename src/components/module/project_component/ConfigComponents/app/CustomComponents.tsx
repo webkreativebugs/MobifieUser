@@ -17,10 +17,17 @@ const CustomComponents = ({data}:PROPS) => {
 // const ArrowIcon = selectedArrow; 
   return (
      <div
-      className="w-9/12"
+      className="w-9/12 "
       dangerouslySetInnerHTML={{ __html:data }}
     />
   );
 };
 
 export default CustomComponents;
+
+
+
+
+
+
+

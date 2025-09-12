@@ -130,7 +130,7 @@ const Page = () => {
       direction="column"
     >
       <form
-        className="w-7/12 bg-primary  p-10 shadow-md grid gap-5 mb-5 pt-9 pb-9  rounded-md"
+        className=" bg-primary  p-10 shadow-md grid gap-5 mb-5 pt-9 pb-9  rounded-md"
         onSubmit={handleSubmit}
       >
         {ShopifyConfig.map((data, index) => (

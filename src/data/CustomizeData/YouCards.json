@@ -7,19 +7,19 @@
       "html": "<button type='button' style=\"display:flex;align-items:center;justify-content:space-between ;width:100%;padding:1rem 1.25rem;border-radius:12px;background:white;border:1px solid #e5e7eb;box-shadow:0 2px 6px rgba(0,0,0,0.05);cursor:pointer;transition:all 0.2s ease-in-out;\"> <div style=\"display:flex;align-items:center;gap:0.85rem;\"> <div style=\"width:1.8rem;height:1.8rem;color:black;flex-shrink:0;\"> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z'/></svg> </div> <div style=\"display:flex;flex-direction:column;align-items:flex-start;\"> <p style=\"font-size:1.05rem;font-weight:600;color:#111827;margin:0;\">Profile</p> <span style=\"font-size:0.9rem;color:#6b7280;\">Add your personal details</span> </div> </div> <div style=\"width:1.5rem;height:1.5rem;color:#9ca3af;\"> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z'/></svg> </div> </button>"
     },
     "default-W-subtext": {
-      "id": "profile-default",
+      "id": "profile-default-W-subtext",
       "type": "button",
       "key": "profile_default",
       "html": "<button type='button' style=\"display:flex;align-items:center;justify-content:space-between ;width:100%;padding:1rem 1.25rem;border-radius:12px;background:white;border:1px solid #e5e7eb;box-shadow:0 2px 6px rgba(0,0,0,0.05);cursor:pointer;transition:all 0.2s ease-in-out;\"> <div style=\"display:flex;align-items:center;gap:0.85rem;\"> <div style=\"width:1.8rem;height:1.8rem;color:black;flex-shrink:0;\"> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z'/></svg> </div> <div style=\"display:flex;flex-direction:column;align-items:flex-start;\"> <p style=\"font-size:1.05rem;font-weight:600;color:#111827;margin:0;\">Profile</p> </div> </div> <div style=\"width:1.5rem;height:1.5rem;color:#9ca3af;\"> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z'/></svg> </div> </button>"
     },
     "default-W-logo": {
-      "id": "profile-default",
+      "id": "profile-default-W-logo",
       "type": "button",
       "key": "profile_default",
       "html": "<button type='button' style=\"display:flex;align-items:center;justify-content:space-between ;width:100%;padding:1rem 1.25rem;border-radius:12px;background:white;border:1px solid #e5e7eb;box-shadow:0 2px 6px rgba(0,0,0,0.05);cursor:pointer;transition:all 0.2s ease-in-out;\"> <div style=\"display:flex;align-items:center;gap:0.85rem;\">  <div style=\"display:flex;flex-direction:column;align-items:flex-start;\"> <p style=\"font-size:1.05rem;font-weight:600;color:#111827;margin:0;\">Profile</p> <span style=\"font-size:0.9rem;color:#6b7280;\">Add your personal details</span> </div> </div> <div style=\"width:1.5rem;height:1.5rem;color:#9ca3af;\"> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z'/></svg> </div> </button>"
     },
      "default-W-arrow": {
-      "id": "profile-default",
+      "id": "profile-default-W-arrow",
       "type": "button",
       "key": "profile_default",
       "html": "<button type='button' style=\"display:flex;align-items:center;justify-content:space-between ;width:100%;padding:1rem 1.25rem;border-radius:12px;background:white;border:1px solid #e5e7eb;box-shadow:0 2px 6px rgba(0,0,0,0.05);cursor:pointer;transition:all 0.2s ease-in-out;\"> <div style=\"display:flex;align-items:center;gap:0.85rem;\"> <div style=\"width:1.8rem;height:1.8rem;color:black;flex-shrink:0;\"> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z'/></svg> </div> <div style=\"display:flex;flex-direction:column;align-items:flex-start;\"> <p style=\"font-size:1.05rem;font-weight:600;color:#111827;margin:0;\">Profile</p> <span style=\"font-size:0.9rem;color:#6b7280;\">Add your personal details</span> </div> </div> <div style=\"width:1.5rem;height:1.5rem;color:#9ca3af;\"> </div> </button>"

@@ -53,13 +53,13 @@ interface ApiConfigData {
     <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
    
    
-        <form className="w-7/12 grid grid-cols-2 gap-5" >
+        <form className="grid grid-cols-1 w-full  gap-5" >
         
-        <div>
-          <h1 className="text-xl font-semibold mb-4">
+        <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
+          <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
             Authentication
           </h1>
-          <div className="bg-primary shadow-md p-5 rounded-lg">
+          <div className=" p-5 rounded-lg">
                 {(ApiConfigAuth).map((item) => (
                   
                   <ApiConfigInputField
@@ -76,11 +76,11 @@ interface ApiConfigData {
                 ))}
                 </div>
                 </div>
-                  <div className="">
-          <h1 className="text-xl font-semibold mb-4">
+                  <div className="bg-primary p-5 rounded-lg shadow-md  ">
+          <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
             Request
           </h1>
-          <div className="bg-primary shadow-md p-5 rounded-lg">
+          <div className=" p-5 rounded-lg">
                 {(ApiConfigRequest).map((item) => (
                   
                   <ApiConfigInputField
