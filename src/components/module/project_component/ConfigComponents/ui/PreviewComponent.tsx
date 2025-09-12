@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useUi } from "../../../../../../src/context/ui_context/UiContext";
+import Header1 from "./customComponent/header/Header1";
+import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
+import { componentsMap } from "../../../../../components/uiComponents/mapComponents";
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
 interface ScreenData {
   name: string;
@@ -8,9 +12,16 @@ interface ScreenData {
   url: string;
 }
 
-function PreviewComponent({ layout }: { layout: ScreenData }) {
+function PreviewComponent({ element }: { element: string }) {
   const [android, setAndroid] = useState(false);
-  console.log(layout);
+  // console.log(layout);
+
+  const { uiConfig } = useUi();
+  console.log(uiConfig[element]);
+  const headerData = uiConfig[element]["Header"];
+  const mainData = uiConfig[element]["Main"];
+  const bottomTabData = uiConfig[element]["BottomTab"];
+  console.log(mainData);
 
   return (
     <div
@@ -38,31 +49,60 @@ function PreviewComponent({ layout }: { layout: ScreenData }) {
               <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10 shadow-inner" />
 
               {/* Header */}
-              <div className="flex-shrink-2">
+              {/* <div className="flex-shrink-2 mt-6">
+                <Header1 />
+
                 <img
                   src={layout.header}
                   className="w-full mt-6"
                   onClick={() => alert("want to delete")}
                 />
-              </div>
+              </div> */}
+
+              <>
+                {(() => {
+                  const Component = componentsMap[headerData.component];
+                  if (!Component) {
+                    return <h1 className="bg-black">No </h1>;
+                  }
+
+                  return (
+                    <button className="mt-6">
+                      <Component {...headerData?.props} />
+                    </button>
+                  );
+                })()}
+              </>
 
               {/* Scrollable Main */}
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {/* {props.main.map((url, idx) => ( */}
-                <div className="flex">
-                  <img
-                    src={layout.url}
-                    alt={layout.name}
-                    className="w-full p-0"
-                  />
-                </div>
-                {/* ))} */}
+                {mainData[0].designs.map((url, idx) => (
+                  <div className="flex">
+                    <img
+                      key={idx}
+                      src={url}
+                      alt={mainData[0].name}
+                      className="w-full p-0"
+                    />
+                  </div>
+                ))}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
-              </div>
+              <>
+                {(() => {
+                  const Component = componentsMap[bottomTabData.component];
+                  if (!Component) {
+                    return <h1 className="bg-black">No </h1>;
+                  }
+
+                  return (
+                    <button className="">
+                      <Component {...bottomTabData?.props} />
+                    </button>
+                  );
+                })()}
+              </>
             </div>
           </div>
         ) : (
@@ -73,31 +113,51 @@ function PreviewComponent({ layout }: { layout: ScreenData }) {
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
 
               {/* Header */}
-              <div className="flex-shrink-2">
-                <img
-                  src={layout.header}
-                  className="w-full mt-6"
-                  onClick={() => alert("want to delete")}
-                />
-              </div>
+              <>
+                {(() => {
+                  const Component = componentsMap[headerData.component];
+                  if (!Component) {
+                    return <h1 className="bg-black">No </h1>;
+                  }
+
+                  return (
+                    <button className="mt-8">
+                      <Component {...headerData?.props} />
+                    </button>
+                  );
+                })()}
+              </>
 
               {/* Scrollable Main */}
+
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {/* {props.main.map((url, idx) => ( */}
-                <div className="flex">
-                  <img
-                    src={layout.url}
-                    alt={layout.name}
-                    className="w-full p-0"
-                  />
-                </div>
-                {/* ))} */}
+                {mainData[0].designs.map((url, idx) => (
+                  <div className="flex">
+                    <img
+                      key={idx}
+                      src={url}
+                      alt={mainData[0].name}
+                      className="w-full p-0"
+                    />
+                  </div>
+                ))}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
-              </div>
+              <>
+                {(() => {
+                  const Component = componentsMap[bottomTabData.component];
+                  if (!Component) {
+                    return <h1 className="bg-black">No </h1>;
+                  }
+
+                  return (
+                    <button className="">
+                      <Component {...bottomTabData?.props} />
+                    </button>
+                  );
+                })()}
+              </>
             </div>
           </div>
         )}
