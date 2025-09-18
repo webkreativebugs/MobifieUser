@@ -60,7 +60,7 @@ const page = () => {
             setPOpUp(false);
             // setOrgName((prev) => ({
             //   ...prev,
-            //   name: orgDetails?.data.name || "",
+            //   name: orgDetails?.data.namsddse || "",
             // }));
             // setOrgName(orgDetails?.data.name);
           }}
