@@ -1,39 +1,32 @@
 import React from "react";
-import { FaHome, FaHeart, FaUser, FaShoppingBag, FaBars } from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
 
-export default function BottomTab1() {
+interface Tab {
+  label: string;
+  icon: string; // e.g. "FaHome", "FaHeart"
+}
+
+export default function BottomTab1({ tabs = [] }: { tabs: Tab[] }) {
   return (
-    <nav className=" w-full bg-white border-t shadow-md">
-      <div className="flex justify-around items-center py-2">
-        {/* Home */}
-        <button className="flex flex-col items-center text-gray-600 hover:text-red-600">
-          <FaHome size={20} />
-          <span className="text-xs">Home</span>
-        </button>
+    <nav className="w-full bg-white border-t shadow-md">
+      <div className="flex items-center">
+        {tabs.map((tab, idx) => {
+          const IconComponent = (FaIcons as Record<string, React.ElementType>)[
+            tab.icon
+          ];
 
-        {/* Wishlist */}
-        <button className="flex flex-col items-center text-gray-600 hover:text-red-600">
-          <FaHeart size={20} />
-          <span className="text-xs">Wishlist</span>
-        </button>
-
-        {/* Categories (Menu) */}
-        <button className="flex flex-col items-center text-gray-600 hover:text-red-600">
-          <FaBars size={20} />
-          <span className="text-xs">Menu</span>
-        </button>
-
-        {/* Account */}
-        <button className="flex flex-col items-center text-gray-600 hover:text-red-600">
-          <FaUser size={20} />
-          <span className="text-xs">Account</span>
-        </button>
-
-        {/* Cart */}
-        <button className="flex flex-col items-center text-gray-600 hover:text-red-600">
-          <FaShoppingBag size={20} />
-          <span className="text-xs">Cart</span>
-        </button>
+          return (
+            IconComponent && (
+              <button
+                key={idx}
+                className="flex-1 flex flex-col items-center py-2 text-gray-600 hover:text-red-600"
+              >
+                <IconComponent size={20} />
+                <span className="text-xs">{tab.label}</span>
+              </button>
+            )
+          );
+        })}
       </div>
     </nav>
   );
