@@ -10,15 +10,19 @@ import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 
 const page = () => {
-  const [element, setElement] = useState(UiCOmponent[0].name);
+  const [element, setElement] = useState(ScreenConfigdata[0].key);
+  console.log(ScreenConfigdata[0].key);
+  const [popUp, setPOpUp] = useState(false);
+  const [ispopUpdata, setIsPOpUpdata] = useState(false);
 
-  const [layout, setLayout] = useState<ScreenData>({
-    name: "",
-    // type: "",
-    header: "",
-    footer: "",
-    url: "",
-  });
+  // const changes = false;
+  const { isActive, setIsActive } = useSaveChanges();
+
+  const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
+    ScreenConfigdata.find(
+      (item) => item.key === element
+    ) as ScreenConfigInterface
+  );
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
@@ -48,7 +52,7 @@ const page = () => {
         <Ui screenConfig={screenConfig} setscreenConfig={setscreenConfig} />
 
         {/* Remove 'main' prop if PreviewComponent does not accept it */}
-        <PreviewComponent element={element} />
+        <PreviewComponent screenConfig={screenConfig} />
       </div>
       {popUp && isActive && (
         <div

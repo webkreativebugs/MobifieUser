@@ -4,7 +4,7 @@ import { ScreenConfigInterface } from "../../../../../data/interface/data.interf
 import Screens from "./Screens";
 import AdditionalConfig from "./AdditionalConfig";
 
-type UiConfigSidebarProps = {
+export type UiConfigSidebarProps = {
   screenConfig: ScreenConfigInterface;
   setscreenConfig: Dispatch<SetStateAction<ScreenConfigInterface>>;
 };
