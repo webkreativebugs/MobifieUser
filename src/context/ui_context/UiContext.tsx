@@ -37,7 +37,7 @@ interface Main {
   designs: string[];
 }
 
-interface PageConfig {
+export interface PageConfig {
   [key: string]: {
     Header: ComponentConfig;
     BottomTab: ComponentConfig;
@@ -45,14 +45,36 @@ interface PageConfig {
   };
 }
 
+//interface for screen config
+
+export interface UIConfig {
+  Header: ComponentConfig;
+  BottomTab: ComponentConfig;
+  Main: Main[];
+}
+
 interface UiContextType {
   uiConfig: PageConfig;
   setUiConfig: React.Dispatch<React.SetStateAction<PageConfig>>;
 }
 
+interface ScreenContextType {
+  screenConfig: UIConfig;
+  setScreenConfig: React.Dispatch<React.SetStateAction<UIConfig>>;
+}
+
 const UiContext = createContext<UiContextType>({
   uiConfig: {},
   setUiConfig: () => {},
+});
+
+const ScreenUiContext = createContext<ScreenContextType>({
+  screenConfig: {
+    Header: { component: "", type: "" },
+    BottomTab: { component: "", type: "" },
+    Main: [],
+  },
+  setScreenConfig: () => {},
 });
 
 export const UiContextProvider = ({ children }: { children: ReactNode }) => {
@@ -88,3 +110,23 @@ export const UiContextProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useUi = () => useContext(UiContext);
+
+export const ScreenUiContextProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  const [screenConfig, setScreenConfig] = useState<UIConfig>({
+    Header: { component: "", type: "" },
+    BottomTab: { component: "", type: "" },
+    Main: [],
+  });
+
+  return (
+    <ScreenUiContext.Provider value={{ screenConfig, setScreenConfig }}>
+      {children}
+    </ScreenUiContext.Provider>
+  );
+};
+
+export const ScreenUi = () => useContext(ScreenUiContext);

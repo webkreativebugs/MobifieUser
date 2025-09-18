@@ -1,0 +1,572 @@
+[
+    {
+        "key": "home",
+        "title": "Home",
+        "current_confi": {
+            "screen": {
+                "title": "Home",
+                "image": "/assets/home/h1.png",
+                "component": "Home"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/headerComponent/h1.png",
+                "component": "Header",
+                "lefticons": [
+                    {
+                        "name": "List Icon",
+                        "url": "https://up.yimg.com/ib/th/id/OIP.UVCWaE9HTt67mOeETHKlPgHaHa?pid=Api&rs=1&c=1&qlt=95&w=123&h=123",
+                        "isActive": true
+                    }
+                ],
+                "righticons": [
+                    {
+                        "name": "Cart",
+                        "url": "https://up.yimg.com/ib/th/id/OIP.07DUnE60ZtI7251ulRVYpQHaHU?pid=Api&rs=1&c=1&qlt=95&w=123&h=121",
+                        "isActive": true
+                    },
+                    {
+                        "name": "alerts",
+                        "url": "https://up.yimg.com/ib/th/id/OIP.Od5BN0ez2WapogRBlqjJ-wHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121",
+                        "isActive": true
+                    }
+                ],
+                "text": "xyz"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/footernavigation/footer1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Home",
+                "image": "/assets/home/h1.png",
+                "component": "Home"
+            },
+            {
+                "title": "Home",
+                "image": "/assets/home/h2.png",
+                "component": "Home"
+            },
+            {
+                "title": "Home",
+                "image": "/assets/home/h2.png",
+                "component": "Home"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/headerComponent/h1.png",
+                    "component": "Header",
+                    "lefticons": [
+                        {
+                            "name": "abc",
+                            "url": "efgdfvfv",
+                            "isActive": true
+                        }
+                    ],
+                    "righticons": [
+                        {
+                            "name": "abc",
+                            "url": "efgdfvfv",
+                            "isActive": true
+                        }
+                    ],
+                    "text": "xyz"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "product_list",
+        "title": "Product List",
+        "current_confi": {
+            "screen": {
+                "title": "Product List",
+                "image": "/assets/product/p1.png",
+                "component": "ProductList"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/headerComponent/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/footernavigation/footer1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Product List",
+                "image": "/assets/product/p1.png",
+                "component": "ProductList"
+            },
+            {
+                "title": "Product List",
+                "image": "/assets/product/p2.png",
+                "component": "ProductList"
+            },
+            {
+                "title": "Product List",
+                "image": "/assets/product/p3.png",
+                "component": "ProductList"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "Category",
+        "title": "Category",
+        "current_confi": {
+            "screen": {},
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "login",
+        "title": "Login",
+        "current_confi": {
+            "screen": {
+                "title": "Login",
+                "image": "/assets/loginScreen/s1.png",
+                "component": "Login"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s1.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s2.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s3.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s4.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s5.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s6.png",
+                "component": "Login"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "search",
+        "title": "Search",
+        "current_confi": {
+            "screen": {
+                "title": "Search",
+                "image": "/assets/searchScreen/s1.png",
+                "component": "Search"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Search",
+                "image": "/assets/searchScreen/s1.png",
+                "component": "Search"
+            },
+            {
+                "title": "Search",
+                "image": "/assets/searchScreen/s3.png",
+                "component": "Search"
+            },
+            {
+                "title": "Search",
+                "image": "/assets/searchScreen/s4.png",
+                "component": "Search"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "checkout",
+        "title": "Checkout",
+        "current_confi": {
+            "screen": {
+                "title": "Checkout",
+                "image": "/assets/checkout/c1.png",
+                "component": "Checkout"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Checkout",
+                "image": "/assets/checkout/c1.png",
+                "component": "Checkout"
+            },
+            {
+                "title": "Checkout",
+                "image": "/assets/checkout/c2.png",
+                "component": "Checkout"
+            },
+            {
+                "title": "Checkout",
+                "image": "/assets/checkout/c3.png",
+                "component": "Checkout"
+            },
+            {
+                "title": "Checkout",
+                "image": "/assets/checkout/c4.png",
+                "component": "Checkout"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "setting",
+        "title": "Setting",
+        "current_confi": {
+            "screen": {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h2.png",
+                "component": "Settings"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h2.png",
+                "component": "Settings"
+            },
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h3.png",
+                "component": "Settings"
+            },
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h4.png",
+                "component": "Settings"
+            },
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h5.png",
+                "component": "Settings"
+            },
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h6.png",
+                "component": "Settings"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "profile",
+        "title": "Profile",
+        "current_confi": {
+            "screen": {
+                "title": "Profile",
+                "image": "/assets/profile/p1.png",
+                "component": "Profile"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Profile",
+                "image": "/assets/profile/p1.png",
+                "component": "Profile"
+            },
+            {
+                "title": "Profile",
+                "image": "/assets/profile/p2.png",
+                "component": "Profile"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "flash",
+        "title": "Flash",
+        "current_confi": {
+            "screen": {
+                "title": "Flash",
+                "image": "/assets/Flash/f1.png",
+                "component": "Flash"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Flash",
+                "image": "/assets/Flash/f1.png",
+                "component": "Flash"
+            },
+            {
+                "title": "Flash",
+                "image": "/assets/Flash/f2.png",
+                "component": "Flash"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    },
+    {
+        "key": "wishlist",
+        "title": "Wishlist",
+        "current_confi": {
+            "screen": {
+                "title": "Wishlist",
+                "image": "/assets/wishlist/w1.png",
+                "component": "Wishlist"
+            },
+            "header": {
+                "title": "Header",
+                "image": "/assets/home/h1.png",
+                "component": "Header"
+            },
+            "bottomtab": {
+                "title": "Bottom Tab",
+                "image": "/assets/home/h1.png",
+                "isActive": true
+            }
+        },
+        "Screen": [
+            {
+                "title": "Wishlist",
+                "image": "/assets/wishlist/w1.png",
+                "component": "Wishlist"
+            },
+            {
+                "title": "Wishlist",
+                "image": "/assets/wishlist/w2.png",
+                "component": "Wishlist"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
+            "bottomtab": [
+                {
+                    "title": "Bottom Tab",
+                    "image": "/assets/home/h1.png",
+                    "isActive": true
+                }
+            ]
+        }
+    }
+]
