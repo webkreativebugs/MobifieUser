@@ -19,7 +19,6 @@ export default function App() {
   const { theme, secondaryColor } = useTheme();
   const { role, onRoleChange } = useauth();
   const [authError,setAuthError]=useState(false);
-  const [authError,setAuthError]=useState(false);
   useEffect(() => {
     if (role) {
       AuthMe(onRoleChange,setAuthError);

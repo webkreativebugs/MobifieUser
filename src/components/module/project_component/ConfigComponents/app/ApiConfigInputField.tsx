@@ -10,9 +10,6 @@ interface PROPS {
   disabled?:boolean;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   rounded?:boolean
-  disabled?:boolean;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  rounded?:boolean
 }
 
 const ApiConfigInputField = ({
@@ -27,9 +24,6 @@ const ApiConfigInputField = ({
   disabled=false,
   onBlur,
 
-  options,
-  disabled=false,
-  onBlur,
 
 }: PROPS) => {
   return (

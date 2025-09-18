@@ -1,8 +1,8 @@
 import { tablinks } from "../../../../../data/TabLinks";
 import { Link } from "react-router-dom";
-// import { useorg } from "../../../../../context/org_context/OrganizationContext";
+import { useorg } from "../../../../../context/org_context/OrganizationContext";
 const TabLinks = () => {
-    // const {orgDetails}=useorg();
+    const {orgDetails}=useorg();
   return (
     <div className="bg-primary p-5 pb-0 mb-0 rounded-lg ">
       <p className="text-2xl font-semibold mb-2 " >{orgDetails?.data.name}</p>

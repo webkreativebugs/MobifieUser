@@ -6,8 +6,7 @@ import TabLinks from "../common/TabLinks";
 // import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { ReactNode } from "react";
 type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
-const AppConfigMask = ({ children,name,display,direction="row" }: { children: ReactNode ,displayName:string,name:string,display:string,direction?: FlexDirection }) => {
-type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
+
 const AppConfigMask = ({ children,name,display,direction="row" }: { children: ReactNode ,displayName:string,name:string,display:string,direction?: FlexDirection }) => {
   // const { orgDetails } = useorg();
   return (
