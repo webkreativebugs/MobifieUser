@@ -1,73 +1,33 @@
 import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
-import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
-import { LayoutData } from "../../../../../pages/customize_pages/ui-config/page";
+import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
+
 import Screens from "./Screens";
-import HeaderScreen from "./HeaderScreen";
-import BottomTab from "./BottomTab";
-export type UiConfigSidebarProps = {
-  element: string;
-  setElement: Dispatch<SetStateAction<string>>;
-  handleUI: (item: any, data: string) => void;
+import AdditionalConfig from "./AdditionalConfig";
+
+type UiConfigSidebarProps = {
+  screenConfig: ScreenConfigInterface;
+  setscreenConfig: Dispatch<SetStateAction<ScreenConfigInterface>>;
 };
 
-// interface Section {
-//   type: string;
-//   url: string;
-// }
-
-// interface ScreenData {
-//   name: string;
-//   type: string;
-//   header: string;
-//   footer: string;
-//   main: string;
-// }
-
-function Ui({ element, setElement, handleUI }: UiConfigSidebarProps) {
+function Ui({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
   const [tab, setTab] = useState("screen");
-  const [view, setView] = useState<React.ReactNode>("screen");
 
-  //   const [layout, setLayout] = useState<ScreenData>({
-  //     name: "",
-  //     type: "",
-  //     header: "",
-  //     footer: "",
-  //     main: "",
-  //   });
+  console.log(setscreenConfig, screenConfig);
+  console.log(tab);
 
-  console.log(element + " " + " ui");
-
-  useEffect(() => {
-    switch (tab) {
-      case "header":
-        setView(<HeaderScreen element={element} />);
-        break;
-
-      case "bottom":
-        setView(<BottomTab />);
-        break;
-
-      default:
-        setView(
-          <Screens
-            data={UiCOmponent.find((item) => item.name === element)}
-            handleUI={handleUI}
-          />
-        );
-    }
-  }, [tab, element]);
+  // useEffect(() => {
+  //   setTab("screen");
+  // }, [element]);
 
   return (
     <>
       <div className=" w-2/3  relative  overflow-y-auto hide-scrollbar overflow-x-hidden mb-2   flex  flex-col items-center ">
-        <h1 className="text-3xl font-semibold absolute left-8">{element}</h1>
+        <h1 className="text-3xl font-semibold absolute left-8">
+          {screenConfig.title}
+        </h1>
         {/* <h1 className="text-2xl font-semibold mb-8">Select Screen</h1> */}
-        <div className="px-20 border-b-2 w-full h-10">
-          <div
-            className={`${
-              (element == "Bottom Tab" || element == "Header") && "hidden"
-            }  w-full mt-2 pb-2  flex justify-end gap-6 `}
-          >
+        <div className="px-20 border-b-2 w-full h-10 ">
+          <div className=" w-full mt-2 pb-2  flex justify-end gap-6">
             <button
               onClick={() => setTab("screen")}
               className={`text-xl ${tab === "screen" && "font-bold"}`}
@@ -75,20 +35,26 @@ function Ui({ element, setElement, handleUI }: UiConfigSidebarProps) {
               Screen
             </button>
             <button
-              onClick={() => setTab("header")}
-              className={`text-xl ${tab === "header" && "font-bold"}`}
+              onClick={() => setTab("AdditionalConfig")}
+              className={`text-xl ${tab == "AdditionalConfig" && "font-bold"}`}
             >
-              Header
-            </button>
-            <button
-              onClick={() => setTab("bottom")}
-              className={`text-xl ${tab === "bottom" && "font-bold"}`}
-            >
-              Bottom Tab
+              Additional Config
             </button>
           </div>
         </div>
-        <>{view}</>
+        <>
+          {tab === "screen" ? (
+            <Screens
+              screenConfig={screenConfig}
+              setscreenConfig={setscreenConfig}
+            />
+          ) : (
+            <AdditionalConfig
+              screenConfig={screenConfig}
+              setscreenConfig={setscreenConfig}
+            />
+          )}
+        </>
         {/* Example: Display the 'name' property of the first UI component */}
       </div>
     </>
