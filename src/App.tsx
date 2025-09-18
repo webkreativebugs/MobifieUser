@@ -19,8 +19,10 @@ export default function App() {
   const { theme, secondaryColor } = useTheme();
   const { role, onRoleChange } = useauth();
   const [authError,setAuthError]=useState(false);
+  const [authError,setAuthError]=useState(false);
   useEffect(() => {
     if (role) {
+      AuthMe(onRoleChange,setAuthError);
       AuthMe(onRoleChange,setAuthError);
     }
   
@@ -63,7 +65,9 @@ function processLoggedInUser(role: string) {
     }
   } else {
     // console.log(sessionStorage, role);
+    // console.log(sessionStorage, role);
 
+    return <AuthRoutes/>;
     return <AuthRoutes/>;
   }
 }

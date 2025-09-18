@@ -24,6 +24,7 @@ const AuthContext = createContext({} as USERROLE);
 const STORE_CONSTANT: string = "token";
 export const AuthProvider = ({ children }: Props) => {
   
+  
   // const navigate = useNavigate()
   const [role, setRole] = useState<string>("");
   // const [authResponse, setAuthResponse] = useState<LoginResponse>();
