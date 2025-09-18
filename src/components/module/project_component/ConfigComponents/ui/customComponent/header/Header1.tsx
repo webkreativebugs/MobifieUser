@@ -3,7 +3,7 @@ import { ScreenConfigInterface } from "../../../../../../../data/interface/data.
 
 function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
   return (
-    <header className="bg-white shadow p-2 mt-4 px-3 py-4 h-12">
+    <header className="bg-white shadow p-2 mt-4 px-3 py-4 h-12 overflow-hidden">
       <div className="flex items-center justify-between">
         {/* Left Side */}
         <div className="flex items-center gap-3">
