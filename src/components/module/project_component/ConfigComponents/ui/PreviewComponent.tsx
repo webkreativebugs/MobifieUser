@@ -1,11 +1,8 @@
 import { useState } from "react";
-<<<<<<< HEAD
-=======
-import { useUi } from "../../../../../../src/context/ui_context/UiContext";
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
+import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
+
 import Header1 from "./customComponent/header/Header1";
-import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
-import { componentsMap } from "../../../../../components/uiComponents/mapComponents";
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
 interface ScreenData {
   name: string;
@@ -15,22 +12,15 @@ interface ScreenData {
   url: string;
 }
 
-<<<<<<< HEAD
-function PreviewComponent({ layout }: { layout: ScreenData }) {
+function PreviewComponent({
+  screenConfig,
+}: {
+  screenConfig: ScreenConfigInterface;
+}) {
   const [android, setAndroid] = useState(false);
-  console.log(layout);
-=======
-function PreviewComponent({ element }: { element: string }) {
-  const [android, setAndroid] = useState(false);
-  // console.log(layout);
-
-  const { uiConfig } = useUi();
-  console.log(uiConfig[element]);
-  const headerData = uiConfig[element]["Header"];
-  const mainData = uiConfig[element]["Main"];
-  const bottomTabData = uiConfig[element]["BottomTab"];
-  console.log(mainData);
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
+  console.log(screenConfig.current_confi.bottomtab.isActive);
+  const { isActive, setIsActive } = useSaveChanges();
+  console.log(isActive);
 
   return (
     <div
@@ -41,6 +31,7 @@ function PreviewComponent({ element }: { element: string }) {
       <div className="flex items-center justify-between mx-6 mb-2">
         <h1 className="text-3xl font-bold">Preview</h1>
         <button
+          onClick={() => setIsActive(false)}
           className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
              hover:bg-gray-100 active:scale-95 active:bg-gray-200"
         >
@@ -58,78 +49,34 @@ function PreviewComponent({ element }: { element: string }) {
               <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10 shadow-inner" />
 
               {/* Header */}
-              {/* <div className="flex-shrink-2 mt-6">
-                <Header1 />
-
-                <img
-                  src={layout.header}
-                  className="w-full mt-6"
-                  onClick={() => alert("want to delete")}
-                />
-              </div> */}
-
-              <>
-                {(() => {
-                  const Component = componentsMap[headerData.component];
-                  if (!Component) {
-                    return <h1 className="bg-black">No </h1>;
-                  }
-
-                  return (
-                    <button className="mt-6">
-                      <Component {...headerData?.props} />
-                    </button>
-                  );
-                })()}
-              </>
+              <Header1 screenConfig={screenConfig} />
 
               {/* Scrollable Main */}
+
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-<<<<<<< HEAD
-                {/* {props.main.map((url, idx) => ( */}
                 <div className="flex">
+                  {/* {!currentscreenConfig.screen.isActive && ( */}
                   <img
-                    src={layout.url}
-                    alt={layout.name}
+                    src={screenConfig.current_confi.screen.image}
+                    alt="home"
                     className="w-full p-0"
                   />
+                  {/* )} */}
                 </div>
-                {/* ))} */}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
-              </div>
-=======
-                {mainData[0].designs.map((url, idx) => (
-                  <div className="flex">
+              <div className="mb-[-1.5rem]">
+                <div className="flex">
+                  {screenConfig.current_confi.bottomtab.isActive && (
                     <img
-                      key={idx}
-                      src={url}
-                      alt={mainData[0].name}
+                      src={screenConfig.current_confi.bottomtab.image}
+                      alt="home"
                       className="w-full p-0"
                     />
-                  </div>
-                ))}
+                  )}
+                </div>
               </div>
-
-              {/* Footer */}
-              <>
-                {(() => {
-                  const Component = componentsMap[bottomTabData.component];
-                  if (!Component) {
-                    return <h1 className="bg-black">No </h1>;
-                  }
-
-                  return (
-                    <button className="">
-                      <Component {...bottomTabData?.props} />
-                    </button>
-                  );
-                })()}
-              </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
             </div>
           </div>
         ) : (
@@ -140,79 +87,34 @@ function PreviewComponent({ element }: { element: string }) {
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
 
               {/* Header */}
-<<<<<<< HEAD
-              <div className="flex-shrink-2">
-                <img
-                  src={layout.header}
-                  className="w-full mt-6"
-                  onClick={() => alert("want to delete")}
-                />
-              </div>
-=======
-              <>
-                {(() => {
-                  const Component = componentsMap[headerData.component];
-                  if (!Component) {
-                    return <h1 className="bg-black">No </h1>;
-                  }
-
-                  return (
-                    <button className="mt-8">
-                      <Component {...headerData?.props} />
-                    </button>
-                  );
-                })()}
-              </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
+              <Header1 screenConfig={screenConfig} />
 
               {/* Scrollable Main */}
 
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-<<<<<<< HEAD
-                {/* {props.main.map((url, idx) => ( */}
                 <div className="flex">
+                  {/* {!currentscreenConfig.screen.isActive && ( */}
                   <img
-                    src={layout.url}
-                    alt={layout.name}
+                    src={screenConfig.current_confi.screen.image}
+                    alt="home"
                     className="w-full p-0"
                   />
+                  {/* )} */}
                 </div>
-                {/* ))} */}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
-              </div>
-=======
-                {mainData[0].designs.map((url, idx) => (
-                  <div className="flex">
+              <div className="mb-[-1.5rem]">
+                <div className="flex">
+                  {screenConfig.current_confi.bottomtab.isActive && (
                     <img
-                      key={idx}
-                      src={url}
-                      alt={mainData[0].name}
+                      src={screenConfig.current_confi.bottomtab.image}
+                      alt="home"
                       className="w-full p-0"
                     />
-                  </div>
-                ))}
+                  )}
+                </div>
               </div>
-
-              {/* Footer */}
-              <>
-                {(() => {
-                  const Component = componentsMap[bottomTabData.component];
-                  if (!Component) {
-                    return <h1 className="bg-black">No </h1>;
-                  }
-
-                  return (
-                    <button className="">
-                      <Component {...bottomTabData?.props} />
-                    </button>
-                  );
-                })()}
-              </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
             </div>
           </div>
         )}
