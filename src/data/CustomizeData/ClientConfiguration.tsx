@@ -1,3 +1,5 @@
+
+
 import { MdEdit, MdLocalShipping } from "react-icons/md";
 import { FaAddressBook } from "react-icons/fa"; // Font Awesome
 import { YouConfigType } from "../../../enum/YouConfig.enum";
@@ -5,6 +7,10 @@ import { AiFillSetting } from "react-icons/ai";
 
 export const WebViewNavigationURL = [
   
+
+  
+   
+
 
   {
     key: 'about_us',
@@ -88,6 +94,8 @@ export const ApiConfigAuth = [
  
 ];
 
+
+
 export const ApiConfigRequest=[
     {
     key: "headers",
@@ -110,15 +118,10 @@ export const ApiConfigRequest=[
     placeholder: "5000",
     required: false,
   },
-   {
-    key: "body",
-    title: "Request Body",
-    type: "textarea",
-    placeholder: `{"key": "value"}`,
-    required: false,
-  },
  
 ]
+ 
+
 
 export const currencies = [
   { code: "INR", name: "Indian Rupee", symbol: "₹" },
@@ -304,9 +307,12 @@ export const YouClientConfiguration = [
   },
 ];
 
+
 export const Configuration = {
   Cart: {
     maximumPurchaseQuantity: 10,
   },
 };
+
+
 
