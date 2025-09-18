@@ -14,6 +14,9 @@ const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyToken
       setAuthError(true)
       // window.location.replace("/")
       // onRoleChange("")
+      setAuthError(true)
+      // window.location.replace("/")
+      // onRoleChange("")
 
     }
     console.log(response);
