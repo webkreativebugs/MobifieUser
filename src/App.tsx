@@ -23,9 +23,14 @@ export default function App() {
     if (role) {
       AuthMe(onRoleChange,setAuthError);
     }
-    
+  
   }, [role]);
-
+ 
+  // useEffect(()=>{
+  //     if(role!==AccessType.ADMIN)
+  //     window.location.replace("/")
+    
+  // },[])
   useEffect(()=>{
     if(authError)
     {

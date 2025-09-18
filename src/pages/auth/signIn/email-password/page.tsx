@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../../App.css";
+import { LoginResponse } from "../../../../../network/public/project_api/email_password_login/EmailPasswordLogin.interface";
 import "../../../../styles/ThemeClasses.css";
 // const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
@@ -21,7 +22,7 @@ const EmailPasswordSignIn = () => {
   // const [showOtp, setShowOtp] = useState(false);
   // const [disable, setDisable] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
-  const [apiResponse, setApiResponse] = useState("");
+  const [apiResponse, setApiResponse] = useState<LoginResponse>();
 
   const togglePassword = () => setShowPassword((prev) => !prev);
   const [formData, setFormData] = useState({
@@ -133,8 +134,9 @@ const EmailPasswordSignIn = () => {
   };
   useEffect(() => {
     if (apiResponse) {
-      console.log(apiResponse);
-      onRoleChange(apiResponse);
+      // console.log(apiResponse);?
+      // setAuthResponse(apiResponse)
+      onRoleChange(apiResponse.token);
       navigate("/project", { replace: true });
     }
   }, [apiResponse]);

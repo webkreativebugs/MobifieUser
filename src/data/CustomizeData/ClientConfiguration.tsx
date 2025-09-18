@@ -231,7 +231,7 @@ export const currencies = [
 
 export const ShopifyConfig = [
   {
-    key: "",
+    key: "Api_url",
     label: "Storefront API URL",
     value: "url",
     name: "url"
@@ -246,13 +246,13 @@ export const ShopifyConfig = [
     key: "API_URL_ADMIN",
     label: "Admin API URL",
     value: "Admin",
-    name: "url"
+    name: "Adminurl"
   },
   {
-    key: "",
+    key: "Access_token",
     label: "Admin Access Token",
     value: "tken",
-    name:"token"
+    name:"admin"
   },
 ]
 

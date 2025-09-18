@@ -40,11 +40,7 @@ function Ui({ element, handleUI }: UiConfigSidebarProps) {
   useEffect(() => {
     switch (tab) {
       case "header":
-<<<<<<< HEAD
-        setView(<HeaderScreen />);
-=======
         setView(<HeaderScreen element={element} />);
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
         break;
 
       case "bottom":

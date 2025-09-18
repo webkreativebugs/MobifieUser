@@ -2,13 +2,15 @@ import { API_ENDPOINTS } from "../../../API.constants";
 import {  OrganizationResponse,OrganizationCallback } from "./OrganizationalDetails.interface";
 import {  fetchRequest } from "../../../FetchRequest";
 
-
+export const OrganizationDetailsConfig = {
+  orgName:""
+};
 
 export async function org_details(
   
   callback: OrganizationCallback
 ): Promise<OrganizationResponse | Error> {
-  const url = API_ENDPOINTS.ORG_DETAILS();
+  const url = API_ENDPOINTS.ORG_DETAILS(OrganizationDetailsConfig.orgName);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

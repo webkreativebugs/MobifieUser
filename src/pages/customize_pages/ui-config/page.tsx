@@ -25,26 +25,7 @@ interface ScreenData {
 }
 
 const page = () => {
-<<<<<<< HEAD
-  // const [first, setfirst] = useState(UiCOmponent[0].designs[0].image);
   const [element, setElement] = useState(UiCOmponent[0].name);
-  // const [first, setfirst] = useState(
-  //   UiCOmponent.find((item) => item.name === element)?.designs[0]
-  // );
-  // const [header, setHeader] = useState(UiCOmponent[0].name);
-  // const [tab, setTab] = useState("screen");
-  // const [screen, setScreen] = useState<ScreenData[]>([
-  //   {
-  //     name: "",
-  //     type: "",
-  //     header: { type: "header", url: "" },
-  //     footer: { type: "footer", url: "" },
-  //     main: [],
-  //   },
-  // ]);
-=======
-  const [element, setElement] = useState(UiCOmponent[0].name);
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
 
   const [layout, setLayout] = useState<ScreenData>({
     name: "",
@@ -115,11 +96,7 @@ const page = () => {
         <Ui element={element} setElement={setElement} handleUI={handleUI} />
 
         {/* Remove 'main' prop if PreviewComponent does not accept it */}
-<<<<<<< HEAD
-        <PreviewComponent layout={layout} />
-=======
         <PreviewComponent element={element} />
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
       </div>
     </CustomizeMask>
   );

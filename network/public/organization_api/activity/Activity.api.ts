@@ -1,7 +1,7 @@
 import { API_ENDPOINTS } from "../../../API.constants";
 // import {  FAQResponse } from "./AllFaqs.interface";
 import {  fetchRequest } from "../../../FetchRequest";
-
+import { OrganizationDetailsConfig } from "../organization_detail/OrganizationalDetails.api";
 import {ActivityResponse,ActivityCallback } from "./Activity.interface"
 export const ActivitymodifiedUrlConfig = {
   search: "",
@@ -12,7 +12,7 @@ export async function fetchActivity(
   //  quary:string|null,
   callback: ActivityCallback
 ): Promise<ActivityResponse | Error> {
-  const url = API_ENDPOINTS.ACTIVITY(ActivitymodifiedUrlConfig.search,ActivitymodifiedUrlConfig.page,ActivitymodifiedUrlConfig.limit);
+  const url = API_ENDPOINTS.ACTIVITY(ActivitymodifiedUrlConfig.search,ActivitymodifiedUrlConfig.page,ActivitymodifiedUrlConfig.limit,OrganizationDetailsConfig.orgName);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
