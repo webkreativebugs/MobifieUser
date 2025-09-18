@@ -42,7 +42,7 @@ function PreviewComponent({
       {/* Phone Preview */}
       <div className="flex justify-center p-4">
         {android ? (
-          /* ANDROID */
+          /* ANDROIDsdsds */
           <div className="relative w-full max-w-[393px] h-[48rem]  aspect-[393/820] bg-black rounded-[2rem] shadow-2xl p-[10px]">
             <div className="flex flex-col w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
               {/* Punch-hole camera */}
