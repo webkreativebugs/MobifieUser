@@ -2,14 +2,14 @@ import { API_ENDPOINTS } from "../../../API.constants";
 import {   ApiResponse,
   ApiCallback } from "./delete_organization.interface";
 import {  fetchRequest } from "../../../FetchRequest";
-
+import { OrganizationDetailsConfig } from "../organization_detail/OrganizationalDetails.api";
 
 
 export async function deleteOrg(
   
   callback: ApiCallback
 ): Promise<ApiResponse | Error> {
-  const url = API_ENDPOINTS.ORG_DELETE();
+  const url = API_ENDPOINTS.ORG_DELETE(OrganizationDetailsConfig.orgName);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

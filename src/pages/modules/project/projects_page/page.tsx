@@ -6,7 +6,10 @@ import projects from "../../../../utils/api/Project";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks"; 
+// import { ProjectmodifiedUrlConfig } from "../../../../../network/public/organization_api/project/Project.api";
+// import { useorg } from "../../../../context/org_context/OrganizationContext";
 import { Link } from "react-router-dom";
+import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 function page() {
   const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
@@ -14,14 +17,17 @@ function page() {
   if (apiError) {
     console.log(apiError);
   }
+  // const{orgDetails}=useorg()
   useEffect(() => {
     setLoader(true);
     AlertmodifiedUrlConfig.page = "1";
     AlertmodifiedUrlConfig.limit = "10";
     AlertmodifiedUrlConfig.search = "";
+ 
+    if(OrganizationDetailsConfig.orgName!=="")
     projects(setApiResponse, setApiError, setLoader);
     console.log(apiResponse);
-  }, []);
+  }, [OrganizationDetailsConfig.orgName]);
 
   function formatDateWithTime(isoString: string): string {
     if (!isoString) return "Invalid Date";

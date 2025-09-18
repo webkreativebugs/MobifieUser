@@ -1,11 +1,8 @@
 import { useState } from "react";
-<<<<<<< HEAD
-=======
 import { useUi } from "../../../../../../src/context/ui_context/UiContext";
 import Header1 from "./customComponent/header/Header1";
 import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
 import { componentsMap } from "../../../../../components/uiComponents/mapComponents";
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
 interface ScreenData {
   name: string;
@@ -15,11 +12,6 @@ interface ScreenData {
   url: string;
 }
 
-<<<<<<< HEAD
-function PreviewComponent({ layout }: { layout: ScreenData }) {
-  const [android, setAndroid] = useState(false);
-  console.log(layout);
-=======
 function PreviewComponent({ element }: { element: string }) {
   const [android, setAndroid] = useState(false);
   // console.log(layout);
@@ -30,7 +22,6 @@ function PreviewComponent({ element }: { element: string }) {
   const mainData = uiConfig[element]["Main"];
   const bottomTabData = uiConfig[element]["BottomTab"];
   console.log(mainData);
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
 
   return (
     <div
@@ -85,23 +76,6 @@ function PreviewComponent({ element }: { element: string }) {
 
               {/* Scrollable Main */}
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-<<<<<<< HEAD
-                {/* {props.main.map((url, idx) => ( */}
-                <div className="flex">
-                  <img
-                    src={layout.url}
-                    alt={layout.name}
-                    className="w-full p-0"
-                  />
-                </div>
-                {/* ))} */}
-              </div>
-
-              {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
-              </div>
-=======
                 {mainData[0].designs.map((url, idx) => (
                   <div className="flex">
                     <img
@@ -129,7 +103,6 @@ function PreviewComponent({ element }: { element: string }) {
                   );
                 })()}
               </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
             </div>
           </div>
         ) : (
@@ -140,15 +113,6 @@ function PreviewComponent({ element }: { element: string }) {
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
 
               {/* Header */}
-<<<<<<< HEAD
-              <div className="flex-shrink-2">
-                <img
-                  src={layout.header}
-                  className="w-full mt-6"
-                  onClick={() => alert("want to delete")}
-                />
-              </div>
-=======
               <>
                 {(() => {
                   const Component = componentsMap[headerData.component];
@@ -163,28 +127,10 @@ function PreviewComponent({ element }: { element: string }) {
                   );
                 })()}
               </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
 
               {/* Scrollable Main */}
 
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-<<<<<<< HEAD
-                {/* {props.main.map((url, idx) => ( */}
-                <div className="flex">
-                  <img
-                    src={layout.url}
-                    alt={layout.name}
-                    className="w-full p-0"
-                  />
-                </div>
-                {/* ))} */}
-              </div>
-
-              {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
-              </div>
-=======
                 {mainData[0].designs.map((url, idx) => (
                   <div className="flex">
                     <img
@@ -212,7 +158,6 @@ function PreviewComponent({ element }: { element: string }) {
                   );
                 })()}
               </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
             </div>
           </div>
         )}

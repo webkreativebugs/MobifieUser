@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+// import { useNavigate } from "react-router-dom";
 // import {  useNavigate } from "react-router-dom";
 // import AuthMe from "../../utils/api/AuthMe";
 // import { decoder } from "../../utils/JwtDecoder";
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }: Props) => {
   
   // const navigate = useNavigate()
   const [role, setRole] = useState<string>("");
-  const [apiResponse, setApiResponse] = useState<string>("");
+  // const [authResponse, setAuthResponse] = useState<LoginResponse>();
   useEffect(() => {
     const savedTheme: string | null = sessionStorage.getItem(STORE_CONSTANT);
 
@@ -34,18 +35,25 @@ export const AuthProvider = ({ children }: Props) => {
     }
   }, []);
 
+// useEffect(()=>{
+//  if(role==="")
+//  {
+// navigate("/", { replace: true });
+//  }
+// },[role])
+  // useEffect(() => {
+  //   if (authResponse) {
+  //     handleChange(authResponse.token);
 
-  useEffect(() => {
-    if (apiResponse) {
-      handleChange(apiResponse);
-      setApiResponse("hello")
-    }
-  }, [apiResponse]);
+  //     console.log("This is auth api =" , authResponse);
+      
+  //   }
+  // }, [authResponse]);
 
   const handleChange = (selectedTheme: string) => {
     setRole(selectedTheme);
     sessionStorage.setItem(STORE_CONSTANT, selectedTheme);
-    // window.location.replace("/")
+     
   };
   return (
     <AuthContext.Provider

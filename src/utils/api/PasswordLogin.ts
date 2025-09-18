@@ -1,6 +1,7 @@
 import {emailpasswordlogin} from "../../../network/public/project_api/email_password_login/EmailPasswordLogin.api"
 import { LoginResponse,LoginCallback,LoginRequest } from "../../../network/public/project_api/email_password_login/EmailPasswordLogin.interface";
 // import { useloader } from "../../context/loader_context/LoaderContext";
+import { OrganizationDetailsConfig } from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 
 function passwordApi(setApiResponse:any,EmailPasswordformData:LoginRequest ,setApiError:any,setLoader:any){
 
@@ -15,8 +16,10 @@ const handleUserInfoResponse: LoginCallback= (  response: LoginResponse | null,e
     console.log(response);
     if(response)
     {
-     setApiResponse(response.token)
+     setApiResponse(response)
+     OrganizationDetailsConfig.orgName=response.user.organization
      setLoader(false)
+
     }
     if(response==null)
     {
