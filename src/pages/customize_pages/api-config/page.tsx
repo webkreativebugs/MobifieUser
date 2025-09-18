@@ -2,7 +2,6 @@ import AppConfigMask from "../../../components/module/project_component/ConfigCo
 import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
 // import ApiRequestForms from "../../../components/module/project_component/ConfigComponents/app/ApiRequestForm"
 import { ApiConfigAuth,ApiConfigRequest } from "../../../data/CustomizeData/ClientConfiguration"
-import { ApiConfigAuth,ApiConfigRequest } from "../../../data/CustomizeData/ClientConfiguration"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField"
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import { useState } from "react"
@@ -54,7 +53,7 @@ interface ApiConfigData {
   //   setNumOfForms((prev) => prev.filter((formId) => formId !== id));
   // }
   return (
-    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
+
     <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
    
    

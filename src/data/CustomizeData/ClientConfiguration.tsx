@@ -1,7 +1,4 @@
-import { MdEdit, MdLocalShipping } from "react-icons/md";
-import { FaAddressBook } from "react-icons/fa"; // Font Awesome
-import { YouConfigType } from "../../../enum/YouConfig.enum";
-import { AiFillSetting } from "react-icons/ai";
+
 
 import { MdEdit, MdLocalShipping } from "react-icons/md";
 import { FaAddressBook } from "react-icons/fa"; // Font Awesome
@@ -67,7 +64,6 @@ export const defaultConfiguration = {
 };
 
 export const ApiConfigAuth = [
-export const ApiConfigAuth = [
   {
     key: "api_key",
     title: "API Key",
@@ -100,11 +96,7 @@ export const ApiConfigAuth = [
  
 ];
 
-export const ApiConfigRequest=[
-    {
 
- 
-];
 
 export const ApiConfigRequest=[
     {
@@ -128,25 +120,10 @@ export const ApiConfigRequest=[
     placeholder: "5000",
     required: false,
   },
-   {
-   {
-    key: "timeout",
-    title: "Timeout (ms)",
-    type: "number",
-    placeholder: "5000",
-    required: false,
-  },
-   {
-    key: "body",
-    title: "Request Body",
-    type: "textarea",
-    placeholder: `{"key": "value"}`,
-    required: false,
-  },
  
 ]
  
-]
+
 
 export const currencies = [
   { code: "INR", name: "Indian Rupee", symbol: "₹" },
@@ -317,17 +294,6 @@ export const YouClientConfiguration = [
     leftIconSet: "KBIconSet.Entypo",
     title: 'Address',
     // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
-  {
-    key: YouConfigType.ADDRESS,
-    icon:FaAddressBook ,
-    navigateTo:" NavigationConstant.ADDRESS_LIST",
-    navigationData: {},
-    rightIcon:" KBIconName.ArrowForward",
-    leftIcon: "KBIconName.Address",
-    rightIconSet: "KBIconSet.MaterialIcons",
-    leftIconSet: "KBIconSet.Entypo",
-    title: 'Address',
-    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
   },
   {
     key: YouConfigType.SETTING,
@@ -343,22 +309,6 @@ export const YouClientConfiguration = [
   },
 ];
 
-export const Configuration = {
-  Cart: {
-    maximumPurchaseQuantity: 10,
-  {
-    key: YouConfigType.SETTING,
-    icon:AiFillSetting ,
-    navigateTo:" NavigationConstant.SETTINGS",
-    navigationData: {},
-    rightIcon: "KBIconName.ArrowForward",
-    leftIcon: "KBIconName.Setting",
-    rightIconSet:" KBIconSet.MaterialIcons",
-    leftIconSet: "KBIconSet.AntDesign",
-    title: 'Settings',
-    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
-  },
-];
 
 export const Configuration = {
   Cart: {
