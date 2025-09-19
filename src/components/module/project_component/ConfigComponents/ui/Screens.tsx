@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
+import  {  Dispatch, SetStateAction } from "react";
 import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 type UiConfigSidebarProps = {
