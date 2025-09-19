@@ -1,6 +1,6 @@
 import "../../../../App.css";
 import InputField from "../../../../components/module/project_component/OtpLoginComponents/InputField";
-const loginImg = "../../../../public/assets/login.png";
+// const loginImg = "../../../../public/assets/login.png";
 const logo = "../../../../public/assets/MobifieLogo.svg";
 import OTPField from "../../../../components/module/project_component/OtpLoginComponents/OTPField";
 import { useState } from "react";

@@ -1,10 +1,16 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
 import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
 // import ApiRequestForms from "../../../components/module/project_component/ConfigComponents/app/ApiRequestForm"
-import { ApiConfig } from "../../../data/CustomizeData/ClientConfiguration"
+import { ApiConfigAuth,ApiConfigRequest } from "../../../data/CustomizeData/ClientConfiguration"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField"
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import { useState } from "react"
+// import { MdAccessTime } from "react-icons/md";
+
+
+// import { MdAccessTime } from "react-icons/md";
+
+
 const page = () => {
    
 interface ApiConfigData {
@@ -47,11 +53,18 @@ interface ApiConfigData {
   //   setNumOfForms((prev) => prev.filter((formId) => formId !== id));
   // }
   return (
-    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API}>
+
+    <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
    
    
-        <form className="w-full grid grid-cols-2 gap-5  mb-2  rounded-md  " >
-                {(ApiConfig).map((item) => (
+        <form className="grid grid-cols-1 w-full  gap-5" >
+        
+        <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
+          <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
+            Authentication
+          </h1>
+          <div className=" p-5 rounded-lg">
+                {(ApiConfigAuth).map((item) => (
                   
                   <ApiConfigInputField
                     title={item.title}
@@ -65,8 +78,33 @@ interface ApiConfigData {
                   />
                   
                 ))}
-               
+                </div>
+                </div>
+                  <div className="bg-primary p-5 rounded-lg shadow-md  ">
+          <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
+            Request
+          </h1>
+          <div className=" p-5 rounded-lg">
+                {(ApiConfigRequest).map((item) => (
+                  
+                  <ApiConfigInputField
+                    title={item.title}
+                    placeholder={item.placeholder as string}
+                    name={item.key}
+                    value={apiConfig[item.key]}
+                    onChange={handleChange}
+                    required={false}
+                    type={item.type}
+                   
+                    // options={item.options}
+                  />
+                  
+                ))}
+                </div>
+                </div>
               </form>
+             
+             
     </AppConfigMask>
   )
 }

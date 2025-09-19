@@ -13,6 +13,7 @@ import DashboardMask from "../../../../components/common_component/layered_compo
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
+import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 interface Quary {
   search?: string;
   type?:string
@@ -96,7 +97,7 @@ function page() {
     ActivitymodifiedUrlConfig.limit = "10";
     ActivitymodifiedUrlConfig.search = "";
     fetchAllActivity(setApiResponse, setApiError, setLoader);
-  }, []);
+  }, [OrganizationDetailsConfig.orgName]);
 
   return (
   <DashboardMask name={"Activity"}>

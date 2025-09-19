@@ -7,6 +7,9 @@ interface PROPS {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   options?: string[];
+  disabled?:boolean;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  rounded?:boolean
 }
 
 const ApiConfigInputField = ({
@@ -17,16 +20,20 @@ const ApiConfigInputField = ({
   value,
   onChange,
   required = false,
-  options
+  options,
+  disabled=false,
+  onBlur,
+
+
 }: PROPS) => {
   return (
-    <div className="flex flex-col w-full mb-4">
+    <div className={`flex justify-between w-full mb-4 `}>
       {
         type!=="select"?
       <>
       <label
         htmlFor={name}
-        className="mb-2 text-md font-medium text-gray-700"
+        className="mb-2 pb-2 text-md flex items-center mt-2 font-medium text-lg text-gray-700"
       >
         {title} {required && <span className="text-red-500">*</span>}
       </label>
@@ -38,7 +45,10 @@ const ApiConfigInputField = ({
         value={value}
         onChange={onChange}
         required={required}
-        className="border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition"
+        disabled={disabled}
+        onBlur={onBlur}
+        className={`border-b w-2/3 text-md border-b-gray-300  px-3 py-3 placeholder:text-gray-500  focus:outline-none bg-transparent   focus:border-b-gray-700 transition
+                     ${disabled&&"placeholder:text-gray-400"}`}
       />
       </>
       :
@@ -47,7 +57,7 @@ const ApiConfigInputField = ({
         htmlFor={name}
         className="mb-2 text-md font-medium text-gray-700"
       >{title} {required && <span className="text-red-500">*</span>}</label>
-      <select name={name}  className="border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition">
+      <select name={name}  className="border-b border-b-gray-300  px-3 py-3 w-2/3  text-sm bg-transparent focus:outline-none  focus:border-gray-700 transition">
         {
           (options ?? []).map((item) => (
             <option key={item} value={item} className="rounded-md" >
