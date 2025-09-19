@@ -2,47 +2,55 @@ import React from "react";
 import { ScreenConfigInterface } from "../../../../../../../data/interface/data.interface";
 
 function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
+  const header = screenConfig.current_confi.header;
+
   return (
-    <header className="bg-white shadow p-2 mt-4 px-3 py-4 h-12 overflow-hidden">
-      <div className="flex items-center justify-between">
+    <header className="bg-white shadow p-2 mt-4 px-3 py-4 h-12">
+      <div className="flex items-center justify-between w-full">
         {/* Left Side */}
         <div className="flex items-center gap-3">
-          {screenConfig.current_confi.header.lefticons?.map((item, idx) => (
-            <>
+          {header?.lefticons?.icons?.map((item, idx) =>
+            item.isActive ? (
               <button key={idx}>
-                {item.isActive && (
-                  <img src={item.url} alt="" className="w-7 h-7" />
-                )}
+                <img src={item.url} alt={item.name} className="w-7 h-7" />
               </button>
-            </>
-          ))}
+            ) : null
+          )}
 
-          <span className="text-red-600 text-xl font-bold  flex items-center">
-            {screenConfig.current_confi.header.text}
-          </span>
+          {header?.lefticons?.text?.isActive && (
+            <div className="flex-1 text-center">
+              <span className="text-lg font-semibold">
+                {header.lefticons.text.value}
+              </span>
+            </div>
+          )}
         </div>
 
-        {/* Right Side */}
+        {/* Center Text */}
+        {header?.center?.text?.isActive && (
+          <div className="flex-1 text-center">
+            <span className="text-lg font-semibold">
+              {header.center.text.value}
+            </span>
+          </div>
+        )}
 
+        {/* Right Side */}
         <div className="flex items-center gap-5 text-gray-700">
-          {screenConfig.current_confi.header.righticons?.map((item, idx) => (
-            <>
+          {header?.righticons?.text?.isActive && (
+            <div className="flex-1 text-center">
+              <span className="text-lg font-semibold">
+                {header.righticons.text.value}
+              </span>
+            </div>
+          )}
+          {header?.righticons?.icons?.map((item, idx) =>
+            item.isActive ? (
               <button key={idx}>
-                {item.isActive && (
-                  <img src={item.url} alt="" className="w-7 h-7" />
-                )}
+                <img src={item.url} alt={item.name} className="w-7 h-7" />
               </button>
-            </>
-          ))}
-          {/* {rightIcons.map((icon, i) =>
-            icon.svg !== "" ? (
-              <button
-                key={i}
-                className="w-6 h-6 text-gray-700"
-                dangerouslySetInnerHTML={{ __html: icon.svg }}
-              />
             ) : null
-          )} */}
+          )}
         </div>
       </div>
     </header>

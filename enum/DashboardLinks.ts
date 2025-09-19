@@ -18,7 +18,11 @@ enum CustomizeDashboardTypeEnums {
 enum ConfigTypeEnums{
   API="Api Config",
   WEB="Web Url Config ",
-  DEFAULT="Default Config"
+  BOTTOM="Bottom tab Config",
+  CLIENT="Client Config",
+  YOU="You Config",
+
+
 }
 export {DashboardTypeEnums,CustomizeDashboardTypeEnums,ConfigTypeEnums}
 

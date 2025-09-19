@@ -1,7 +1,7 @@
 import { API_ENDPOINTS } from "../../API.constants";
 // import {  FAQResponse } from "./AllFaqs.interface";
 import {  fetchRequest } from "../../FetchRequest";
-
+import { OrganizationDetailsConfig } from "../organization_api/organization_detail/OrganizationalDetails.api";
 import {  MemberResponse,MemberCallback } from "./Access.Manager.interface"
 export const CustomConfigPageLimits = {
   page: "",
@@ -13,7 +13,7 @@ export async function accessManager(
   //  quary:string|null,
   callback: MemberCallback
 ): Promise<MemberResponse | Error> {
-  const url = API_ENDPOINTS.ACCESS_Manager(CustomConfigPageLimits.page,CustomConfigPageLimits.limit ,CustomConfigPageLimits.search);
+  const url = API_ENDPOINTS.ACCESS_Manager(CustomConfigPageLimits.page,CustomConfigPageLimits.limit ,CustomConfigPageLimits.search,OrganizationDetailsConfig.orgName);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

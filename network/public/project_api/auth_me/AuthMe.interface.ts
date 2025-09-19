@@ -12,6 +12,7 @@ interface User {
   password_hash: string;
   created_at: string;
   updated_at: string;
+  organization:string
 }
 
 interface VerifyTokenData {

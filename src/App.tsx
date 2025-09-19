@@ -8,18 +8,40 @@ import AuthMe from "./utils/api/AuthMe";
 import { useEffect } from "react";
 import { AccessType } from "../enum/AccessType.enum";
 import AuthRight from "./components/common_component/AuthRight";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 export default function App() {
+  // const navigate=useNavigate();
   const body = document.querySelector("body");
   if (body) {
     body.style.overflow = "hidden";
   }
   const { theme, secondaryColor } = useTheme();
   const { role, onRoleChange } = useauth();
+  const [authError,setAuthError]=useState(false);
   useEffect(() => {
     if (role) {
-      AuthMe(onRoleChange);
+      AuthMe(onRoleChange,setAuthError);
+      AuthMe(onRoleChange,setAuthError);
     }
+  
   }, [role]);
+ 
+  // useEffect(()=>{
+  //     if(role!==AccessType.ADMIN)
+  //     window.location.replace("/")
+    
+  // },[])
+  useEffect(()=>{
+    if(authError)
+    {
+       window.location.replace("/")
+       console.log("auth error");
+       
+    }
+  },[authError])
+
+  
   //  isLoggedIn
   return (
     <>
@@ -41,8 +63,10 @@ function processLoggedInUser(role: string) {
       return <AdminRoutes />;
     }
   } else {
-    console.log(sessionStorage, role);
+    // console.log(sessionStorage, role);
+    // console.log(sessionStorage, role);
 
-    return <AuthRoutes />;
+    return <AuthRoutes/>;
+    return <AuthRoutes/>;
   }
 }

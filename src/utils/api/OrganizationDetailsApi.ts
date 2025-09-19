@@ -7,11 +7,13 @@ function OrgDetails(setOrgDetails: Dispatch<SetStateAction<OrganizationResponse|
 const handleUserInfoResponse: OrganizationCallback= (  response: OrganizationResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
+      // setLoader(false)
     }
    
     if(response)
     {
      setOrgDetails(response)
+    //  setLoader(false)
     }
    
   };
@@ -19,7 +21,7 @@ const handleUserInfoResponse: OrganizationCallback= (  response: OrganizationRes
 const sendOtp=async ()=>{
 //   console.log(data);
   
-   
+    
     try{
         await org_details( handleUserInfoResponse);
         

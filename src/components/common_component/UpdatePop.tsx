@@ -51,8 +51,8 @@ const UpdatePop = ({
   const [orgName, setOrgName] = useState<UpdateOrganizationNameRequest>({
     name: orgDetails?.data.name,
     tag: {
-      key: "Tag 1",
-      value: "Tag 1",
+      key: "Tag 5",
+      value: "Tag 10",
     },
   });
 

@@ -11,7 +11,8 @@ import {
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
-
+// import { useorg } from "../../../../context/org_context/OrganizationContext";
+import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 interface Quary {
   type?: string;
   search?: string;
@@ -24,7 +25,7 @@ const [clicked, setClicked] = useState(1)
 const [selectQuary, setSelectQuary] = useState<Quary>({ type: "All" });
 const [inputQuary, setInputQuary] = useState<Quary>({ search: "" });
 const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
-
+// const {orgDetails}=useorg();
 if(apiError)
 {
   console.log(apiError);
@@ -65,11 +66,11 @@ const handleInputChange = (
       modifiedUrlConfig.search += `&search=${encodeURIComponent(selectQuary.search)}`;
     }
   }
-  
+
   fetchAllFaqs(setApiResponse, setApiError,setLoader);
   setClicked(1)
   // setLoader(false);
-}, [selectQuary]);
+}, [selectQuary,OrganizationDetailsConfig.orgName]);
 
 
  useEffect(() => {
@@ -84,10 +85,11 @@ const handleInputChange = (
   // setLoader(true);
   fetchAllFaqs(setApiResponse, setApiError , setLoader);
   // setLoader(false);
-}, [inputQuary]);
+}, [1,OrganizationDetailsConfig.orgName]);
 
 
  useEffect(() => {
+  // modifiedUrlConfig.orgName=orgDetails!==undefined?orgDetails.data._id:""
   setLoader(true);
   setSelectQuary({ type: "All" });
 }, []);
