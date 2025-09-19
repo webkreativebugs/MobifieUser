@@ -11,6 +11,7 @@ interface User {
   password_hash: string;
   created_at: string; // ISO date string
   updated_at: string; // ISO date string
+  organization:string
 }
 
 interface LoginResponse {

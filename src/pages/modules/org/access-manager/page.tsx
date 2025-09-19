@@ -13,6 +13,7 @@ import HeadingMask from "../../../../components/common_component/layered_compone
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
+import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 interface Quary {
   search?: string;
   type?: string;
@@ -94,7 +95,7 @@ function page() {
     CustomConfigPageLimits.limit = "10";
     CustomConfigPageLimits.search = "";
     getAccessManagerData(setApiResponse, setApiError, setLoader);
-  }, []);
+  }, [OrganizationDetailsConfig.orgName]);
 
   return (
     <DashboardMask name={DashboardTypeEnums.ACCESS}>

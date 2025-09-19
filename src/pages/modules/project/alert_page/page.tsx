@@ -15,6 +15,7 @@ import HeadingMask from "../../../../components/common_component/layered_compone
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 import AlertCards from "../../../../components/module/project_component/AlertCards";
+import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 interface Quary {
   search?: string;
     type?: string;
@@ -96,7 +97,7 @@ const handleInputChange = (
     AlertmodifiedUrlConfig.limit = "10";
     AlertmodifiedUrlConfig.search = "";
     getAlerts(setApiResponse, setApiError, setLoader);
-  }, []);
+  }, [OrganizationDetailsConfig.orgName]);
 
   return (
           <DashboardMask name={"Alerts"}>

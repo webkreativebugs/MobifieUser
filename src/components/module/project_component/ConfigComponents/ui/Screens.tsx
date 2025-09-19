@@ -1,40 +1,49 @@
-// import React, { useState } from "react";
-// import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
-// import COmponent from "../../../../../data/CustomizeData/Component.json";
-import type { UiConfigSidebarProps } from "./Ui";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
+type UiConfigSidebarProps = {
+  screenConfig: ScreenConfigInterface;
+  setscreenConfig: Dispatch<SetStateAction<ScreenConfigInterface>>;
+};
 
-// interface Section {
-//   type: string;
-//   url: string;
-// }
+function Screens({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
+  const { isActive, setIsActive } = useSaveChanges();
+  const addNewDesign = (newUrl: string) => {
+    setscreenConfig((prev) => ({
+      ...prev,
+      current_confi: {
+        ...prev.current_confi,
+        screen: {
+          ...prev.current_confi.screen,
+          image: newUrl,
+        },
+      },
+    }));
+    setIsActive(true);
+  };
 
-// interface ScreenData {
-//   name: string;
-//   type: string;
-//   header: Section;
-//   footer: Section;
-//   main: string[];
-// }
-
-function Screens({ data, handleUI }: UiConfigSidebarProps | any) {
   return (
-    <div className="columns-3 gap-6  px-8 mt-16 ">
-      {/* <h1 className="text-black">{element}</h1> */}
-      {data?.designs?.map((item: string, idx: number) => (
-        <div
-          key={idx}
-          className="mb-4 break-inside-avoid border p-2 pb-4 w-[15rem] max-h-[27rem] overflow-hidden rounded-lg bg-white shadow"
-        >
-          <button
-            onClick={() => handleUI(item, data.name)}
-            className="w-full block"
+    <>
+      <div className="columns-3 gap-4 px-2 mt-16">
+        {screenConfig.Screen.map((screenItem, idx) => (
+          <div
+            key={idx}
+            className="mb-4 break-inside-avoid border p-2 pb-4 w-[15rem] max-h-[27rem] overflow-hidden rounded-lg bg-white shadow"
           >
-            <img src={item} alt="" className="w-full h-auto object-contain" />
-          </button>
-        </div>
-      ))}
-      {/* <div dangerouslySetInnerHTML={{ __html: COmponent[0].value }} /> */}
-    </div>
+            <button
+              onClick={() => addNewDesign(screenItem.image)}
+              className="w-full block"
+            >
+              <img
+                src={screenItem.image}
+                alt=""
+                className="w-full h-auto object-contain"
+              />
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

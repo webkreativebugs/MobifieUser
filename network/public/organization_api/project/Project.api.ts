@@ -1,18 +1,14 @@
 import { API_ENDPOINTS } from "../../../API.constants";
 // import {  FAQResponse } from "./AllFaqs.interface";
 import {  fetchRequest } from "../../../FetchRequest";
-
+import { OrganizationDetailsConfig } from "../organization_detail/OrganizationalDetails.api";
 import {ProjectResponse ,ProjectCallback } from "./Project.interface"
-// export const ActivitymodifiedUrlConfig = {
-//   search: "",
-//    page:"1",
-//   limit:"10",
-// };
+
 export async function fetchProjects(
   //  quary:string|null,
   callback: ProjectCallback
 ): Promise<ProjectResponse | Error> {
-  const url = API_ENDPOINTS.PROJECT();
+  const url = API_ENDPOINTS.PROJECT(OrganizationDetailsConfig.orgName);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response

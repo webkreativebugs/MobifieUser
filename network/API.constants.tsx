@@ -65,17 +65,17 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
   AUTH_ME: () => `${BASE_URL}/user/auth/me`,
   FORGET_PASSWORD: () => `${BASE_URL}/user/auth/forgot-password`,
   LOGOUT: () => `${BASE_URL}/user/auth/logout`,
-  ORG_DETAILS: () => `${BASE_URL}/user/organization/org002`,
-  ORG_UPDATE: () => `${BASE_URL}/user/organization/org002`,
-  ORG_DELETE: () => `${BASE_URL}/user/organization/org002/delete`,
-  ORG_DEACTIVATE: () => `${BASE_URL}/user/organization/org002/deactivate`,
-  ALL_FAQS: (search, page, limit) =>
-    `${BASE_URL}/user/organization/org002/faqs?page=${page}&limit${limit}${search}`,
-  ACCESS_Manager: (page, limit, search) =>
-    `${BASE_URL}/user/organization/org002/members?page=${page}&limit=${limit}${search}`,
-  ALERTS: (search, page, limit) =>
-    `${BASE_URL}/user/organization/org002/alerts?page=${page}&limit${limit}${search}`,
-  ACTIVITY: (search, page, limit) =>
-    `${BASE_URL}/user/organization/org002/activity?page=${page}&limit${limit}${search}`,
-  PROJECT: () => `${BASE_URL}/user/organization/org002/project/project001`,
+  ORG_DETAILS: (orgName) => `${BASE_URL}/user/organization/${orgName}`,
+  ORG_UPDATE: (orgName) => `${BASE_URL}/user/organization/${orgName}`,
+  ORG_DELETE: (orgName) => `${BASE_URL}/user/organization/${orgName}/delete`,
+  ORG_DEACTIVATE: (orgName) => `${BASE_URL}/user/organization/${orgName}/deactivate`,
+  ALL_FAQS: (search, page, limit,orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/faqs?page=${page}&limit${limit}${search}`,
+  ACCESS_Manager: (page, limit, search,orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/members?page=${page}&limit=${limit}${search}`,
+  ALERTS: (search, page, limit,orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/alerts?page=${page}&limit${limit}${search}`,
+  ACTIVITY: (search, page, limit,orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/activity?page=${page}&limit${limit}${search}`,
+  PROJECT: (orgName) => `${BASE_URL}/user/organization/${orgName}/project/project001`,
 };

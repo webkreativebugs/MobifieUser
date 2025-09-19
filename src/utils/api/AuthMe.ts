@@ -2,14 +2,18 @@ import {authMe} from "../../../network/public/project_api/auth_me/AuthMe.api"
 import {  VerifyTokenResponse,
   FetchVerifyTokenCallback} from "../../../network/public/project_api/auth_me/AuthMe.interface";
 import { customAuthorizationConfig } from "../../../network/FetchRequest";
+import { OrganizationDetailsConfig } from "../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 // import { decoder } from "../JwtDecoder";
 // import { useNavigate } from "react-router-dom";
-function AuthMe(onRoleChange:any,setAuthError:any){
+function AuthMe(onRoleChange:any,setAuthError:any,){
     // const navigate = useNavigate()
 const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyTokenResponse | null,error: Error | null | undefined) => {
     if (error) {
       console.error("Error while fetching user info:", error);
       // navigate("/login-with-password",{replace:true})
+      setAuthError(true)
+      // window.location.replace("/")
+      // onRoleChange("")
       setAuthError(true)
       // window.location.replace("/")
       // onRoleChange("")
@@ -20,6 +24,7 @@ const handleUserInfoResponse: FetchVerifyTokenCallback= (  response: VerifyToken
     {
       customAuthorizationConfig.kb_authorization=response.data.token;
       onRoleChange(response.data.token)
+      OrganizationDetailsConfig.orgName=response.data.user.organization
     }
    
   };

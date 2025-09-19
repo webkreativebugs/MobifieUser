@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
+import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
+
+import Header1 from "./customComponent/header/Header1";
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
 interface ScreenData {
   name: string;
@@ -8,9 +12,15 @@ interface ScreenData {
   url: string;
 }
 
-function PreviewComponent({ layout }: { layout: ScreenData }) {
+function PreviewComponent({
+  screenConfig,
+}: {
+  screenConfig: ScreenConfigInterface;
+}) {
   const [android, setAndroid] = useState(false);
-  console.log(layout);
+  console.log(screenConfig.current_confi.bottomtab.isActive);
+  const { isActive, setIsActive } = useSaveChanges();
+  console.log(isActive);
 
   return (
     <div
@@ -21,6 +31,7 @@ function PreviewComponent({ layout }: { layout: ScreenData }) {
       <div className="flex items-center justify-between mx-6 mb-2">
         <h1 className="text-3xl font-bold">Preview</h1>
         <button
+          onClick={() => setIsActive(false)}
           className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
              hover:bg-gray-100 active:scale-95 active:bg-gray-200"
         >
@@ -31,37 +42,40 @@ function PreviewComponent({ layout }: { layout: ScreenData }) {
       {/* Phone Preview */}
       <div className="flex justify-center p-4">
         {android ? (
-          /* ANDROID */
+          /* ANDROIDsdsds */
           <div className="relative w-full max-w-[393px] h-[48rem]  aspect-[393/820] bg-black rounded-[2rem] shadow-2xl p-[10px]">
             <div className="flex flex-col w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
               {/* Punch-hole camera */}
               <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10 shadow-inner" />
 
               {/* Header */}
-              <div className="flex-shrink-2">
-                <img
-                  src={layout.header}
-                  className="w-full mt-6"
-                  onClick={() => alert("want to delete")}
-                />
-              </div>
+              <Header1 screenConfig={screenConfig} />
 
               {/* Scrollable Main */}
+
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {/* {props.main.map((url, idx) => ( */}
                 <div className="flex">
+                  {/* {!currentscreenConfig.screen.isActive && ( */}
                   <img
-                    src={layout.url}
-                    alt={layout.name}
+                    src={screenConfig.current_confi.screen.image}
+                    alt="home"
                     className="w-full p-0"
                   />
+                  {/* )} */}
                 </div>
-                {/* ))} */}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
+              <div className="mb-[-1.5rem]">
+                <div className="flex">
+                  {screenConfig.current_confi.bottomtab.isActive && (
+                    <img
+                      src={screenConfig.current_confi.bottomtab.image}
+                      alt="home"
+                      className="w-full p-0"
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -73,30 +87,33 @@ function PreviewComponent({ layout }: { layout: ScreenData }) {
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
 
               {/* Header */}
-              <div className="flex-shrink-2">
-                <img
-                  src={layout.header}
-                  className="w-full mt-6"
-                  onClick={() => alert("want to delete")}
-                />
-              </div>
+              <Header1 screenConfig={screenConfig} />
 
               {/* Scrollable Main */}
+
               <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                {/* {props.main.map((url, idx) => ( */}
                 <div className="flex">
+                  {/* {!currentscreenConfig.screen.isActive && ( */}
                   <img
-                    src={layout.url}
-                    alt={layout.name}
+                    src={screenConfig.current_confi.screen.image}
+                    alt="home"
                     className="w-full p-0"
                   />
+                  {/* )} */}
                 </div>
-                {/* ))} */}
               </div>
 
               {/* Footer */}
-              <div className="mb-[-1rem]">
-                <img src={layout.footer} className="w-full" />
+              <div className="mb-[-1.5rem]">
+                <div className="flex">
+                  {screenConfig.current_confi.bottomtab.isActive && (
+                    <img
+                      src={screenConfig.current_confi.bottomtab.image}
+                      alt="home"
+                      className="w-full p-0"
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>

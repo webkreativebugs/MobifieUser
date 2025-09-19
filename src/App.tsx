@@ -22,10 +22,16 @@ export default function App() {
   useEffect(() => {
     if (role) {
       AuthMe(onRoleChange,setAuthError);
+      AuthMe(onRoleChange,setAuthError);
     }
-    
+  
   }, [role]);
-
+ 
+  // useEffect(()=>{
+  //     if(role!==AccessType.ADMIN)
+  //     window.location.replace("/")
+    
+  // },[])
   useEffect(()=>{
     if(authError)
     {
@@ -58,7 +64,9 @@ function processLoggedInUser(role: string) {
     }
   } else {
     // console.log(sessionStorage, role);
+    // console.log(sessionStorage, role);
 
+    return <AuthRoutes/>;
     return <AuthRoutes/>;
   }
 }

@@ -2,14 +2,14 @@ import { API_ENDPOINTS } from "../../../API.constants";
 import {  DeactivateResponse,
   DeactivateCallback } from "./deactivate_organization.interface";
 import {  fetchRequest } from "../../../FetchRequest";
-
+import { OrganizationDetailsConfig } from "../organization_detail/OrganizationalDetails.api";
 
 
 export async function deactivateOrg(
   
   callback: DeactivateCallback
 ): Promise<DeactivateResponse | Error> {
-  const url = API_ENDPOINTS.ORG_DEACTIVATE();
+  const url = API_ENDPOINTS.ORG_DEACTIVATE(OrganizationDetailsConfig.orgName);
   try {
     // Add Validation for each field as required , email validation, mobile number validation
     // Assuming fetchRequest is a function that wraps fetch and returns a parsed JSON response
