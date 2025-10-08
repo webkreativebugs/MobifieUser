@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { MdOutlineCancel } from "react-icons/md";
 // import { AdminDashboardLinks } from "../../data/SidebarLinks";
@@ -24,7 +24,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   const { onRoleChange } = useauth();
   //  const [searchParams] = useSearchParams();
   //  console.log(DropName);
-   
+
   // const [showDropdown , setShowDropdown] = useState<boolean|null>(false)
   const [activeLinkName, setActiveLinkName] = useState(active);
   // const [dropActiveLinkName,setDropActiveLinkName]=useState<string|null>("")
@@ -55,37 +55,33 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
               {links.map((section) => (
                 <div key={section.name}>
                   {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
-                 
-                    <NavLink
-                      to={section.link}
-                      key={section.name}
-                      onClick={() => setActiveLinkName(section.name)}
+
+                  <NavLink
+                    to={section.link}
+                    key={section.name}
+                    onClick={() => setActiveLinkName(section.name)}
+                    className={` ${
+                      activeLinkName === section.name
+                        ? "active-link   "
+                        : "normal-link"
+                    }`}
+                  >
+                    <span
                       className={` ${
                         activeLinkName === section.name
-                          ? "active-link   "
-                          : "normal-link"
+                          ? "theme-color"
+                          : "theme-color"
                       }`}
                     >
-                      <span
-                        className={` ${
-                          activeLinkName === section.name
-                            ? "theme-color"
-                            : "theme-color"
-                        }`}
-                      >
-                        {" "}
-                        <section.icon />
-                      </span>
-                      {show ? (
-                        <span className="capitalize text-lg">
-                          {section.name}
-                        </span>
-                      ) : (
-                        <span className="capitalize text-lg"></span>
-                      )}
-                    </NavLink>
-               
-                   
+                      {" "}
+                      <section.icon />
+                    </span>
+                    {show ? (
+                      <span className="capitalize text-lg">{section.name}</span>
+                    ) : (
+                      <span className="capitalize text-lg"></span>
+                    )}
+                  </NavLink>
                 </div>
               ))}
             </div>
