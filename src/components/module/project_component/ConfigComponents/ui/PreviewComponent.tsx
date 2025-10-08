@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
+import { useTheme } from "../../../../../context/AppContext";
 
 import Header1 from "./customComponent/header/Header1";
+import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
 interface ScreenData {
   name: string;
@@ -20,6 +22,7 @@ function PreviewComponent({
   const [android, setAndroid] = useState(false);
   console.log(screenConfig.current_confi.bottomtab.isActive);
   const { isActive, setIsActive } = useSaveChanges();
+  const { theme, secondaryColor } = useTheme();
   console.log(isActive);
 
   return (
@@ -44,36 +47,32 @@ function PreviewComponent({
         {android ? (
           /* ANDROIDsdsds */
           <div className="relative w-full max-w-[393px] h-[48rem]  aspect-[393/820] bg-black rounded-[2rem] shadow-2xl p-[10px]">
-            <div className="flex flex-col w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
+            <div className="relative flex flex-col w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
               {/* Punch-hole camera */}
               <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10 shadow-inner" />
 
-              {/* Header */}
-              <Header1 screenConfig={screenConfig} />
+              <div className={`${theme} bg-secondary`}>
+                {/* Header */}
+                <Header1 screenConfig={screenConfig} />
 
-              {/* Scrollable Main */}
+                {/* Scrollable Main */}
 
-              <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                <div className="flex">
-                  {/* {!currentscreenConfig.screen.isActive && ( */}
-                  <img
-                    src={screenConfig.current_confi.screen.image}
-                    alt="home"
-                    className="w-full p-0"
-                  />
-                  {/* )} */}
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="mb-[-1.5rem]">
-                <div className="flex">
-                  {screenConfig.current_confi.bottomtab.isActive && (
+                <div className="flex-1 overflow-y-auto hide-scrollbar mt-0 mb-1">
+                  <div className="flex">
+                    {/* {!currentscreenConfig.screen.isActive && ( */}
                     <img
-                      src={screenConfig.current_confi.bottomtab.image}
+                      src={screenConfig.current_confi.screen.image}
                       alt="home"
                       className="w-full p-0"
                     />
+                    {/* )} */}
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className=" bg-secondary bottom-4">
+                  {screenConfig.current_confi.bottomtab.isActive && (
+                    <BottomTab1 />
                   )}
                 </div>
               </div>
@@ -82,36 +81,32 @@ function PreviewComponent({
         ) : (
           /* iPHONE */
           <div className="relative w-full max-w-[393px] h-[48rem]   aspect-[393/840] bg-black rounded-[3rem] shadow-2xl p-[10px]">
-            <div className="flex flex-col w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
+            <div className=" relative flex flex-col w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
               {/* Dynamic Island */}
               <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
 
-              {/* Header */}
-              <Header1 screenConfig={screenConfig} />
+              <div className={`${theme} bg-secondary`}>
+                {/* Header */}
+                <Header1 screenConfig={screenConfig} />
 
-              {/* Scrollable Main */}
+                {/* Scrollable Main */}
 
-              <div className="flex-1 overflow-y-auto hide-scrollbar mt-2 mb-1">
-                <div className="flex">
-                  {/* {!currentscreenConfig.screen.isActive && ( */}
-                  <img
-                    src={screenConfig.current_confi.screen.image}
-                    alt="home"
-                    className="w-full p-0"
-                  />
-                  {/* )} */}
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="mb-[-1.5rem]">
-                <div className="flex">
-                  {screenConfig.current_confi.bottomtab.isActive && (
+                <div className="flex-1 overflow-y-auto hide-scrollbar mt-0 mb-1">
+                  <div className="flex">
+                    {/* {!currentscreenConfig.screen.isActive && ( */}
                     <img
-                      src={screenConfig.current_confi.bottomtab.image}
+                      src={screenConfig.current_confi.screen.image}
                       alt="home"
                       className="w-full p-0"
                     />
+                    {/* )} */}
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className=" bg-secondary">
+                  {screenConfig.current_confi.bottomtab.isActive && (
+                    <BottomTab1 />
                   )}
                 </div>
               </div>

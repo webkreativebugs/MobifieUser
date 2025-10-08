@@ -5,6 +5,8 @@ import Settings from "../../pages/modules/org/setting/page"
 import Help from "../../pages/modules/org/help/page"
 import AccessManager from "../../pages/modules/org/access-manager/page"
 import Activity from "../../pages/modules/org/activity/page"
+import Billings from "../../pages/modules/org/billing_page/page"
+import Support from "../../pages/modules/org/support/page"
 import UiConfig from '../../pages/customize_pages/ui-config/page'
 import ApiConfig from "../../pages/customize_pages/api-config/page"
 import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
@@ -36,6 +38,16 @@ export const admin =[
      {
         route:"/settings",
         component: Settings,
+        additional:""
+    },
+    {
+        route:"/billings",
+        component: Billings,
+        additional:""
+    },
+    {
+        route:"/support",
+        component: Support,
         additional:""
     },
      {
@@ -83,6 +95,7 @@ export const admin =[
         component: ClientConfig,
         additional:""
     },
+    
 
 
 

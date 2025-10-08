@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
 
@@ -17,6 +17,17 @@ function AdditionalConfig({
   const [commonText, setCommonText] = useState(
     screenConfig.current_confi.header?.center?.text?.value || ""
   );
+
+  // ✅ Update when screenConfig changes
+  useEffect(() => {
+    const header = screenConfig.current_confi.header;
+    let activeText =
+      header?.lefticons?.text?.value ||
+      header?.center?.text?.value ||
+      header?.righticons?.text?.value ||
+      "";
+    setCommonText(activeText);
+  }, [screenConfig]);
 
   // toggle left icon
   const handleLeftIcon = (iconName: string) => {
@@ -92,17 +103,17 @@ function AdditionalConfig({
     setIsActive(true);
   };
 
-  // update text value for all three at once
+  // ✅ update all header texts at once
   const handleCommonTextChange = (value: string) => {
-    if (value.length > 15) return; // ✅ max length
+    if (value.length > 100) return; // max 15 chars
     setCommonText(value);
 
     setscreenConfig((prev) => {
       const newHeader = { ...prev.current_confi.header! };
 
       if (newHeader.lefticons?.text) newHeader.lefticons.text.value = value;
-      if (newHeader.righticons?.text) newHeader.righticons.text.value = value;
       if (newHeader.center?.text) newHeader.center.text.value = value;
+      if (newHeader.righticons?.text) newHeader.righticons.text.value = value;
 
       return {
         ...prev,
@@ -138,20 +149,6 @@ function AdditionalConfig({
         <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
           Header Tab Config
         </h1>
-
-        {/* 🔹 Common Input Field */}
-        {/* <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">
-            Common Header Text
-          </label>
-          <input
-            type="text"
-            value={commonText}
-            onChange={(e) => handleCommonTextChange(e.target.value)}
-            placeholder="Enter text (applies to left, center, right)"
-            className="rounded border px-2 py-1 w-full"
-          />
-        </div> */}
 
         <div className="flex justify-between gap-6">
           {/* LEFT ICONS */}
@@ -229,22 +226,23 @@ function AdditionalConfig({
           </div>
         </div>
       </div>
+
       {/* input text */}
       <div className="bg-primary rounded-lg w-full p-4">
         <div className="mb-4">
           <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
             Header title
           </h1>
-          <label className="block text-sm font-medium mb-1"></label>
           <input
             type="text"
             value={commonText}
             onChange={(e) => handleCommonTextChange(e.target.value)}
-            placeholder="Enter text (applies to left, center, right)"
+            placeholder="Enter text (max 15 chars)"
             className="rounded border px-2 py-1 w-full"
           />
         </div>
       </div>
+
       {/* BOTTOM TAB CONFIG */}
       <div className="bg-primary rounded-lg w-full p-4">
         <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
