@@ -4,12 +4,14 @@ enum DashboardTypeEnums {
      ACTIVITY="Activity",
      ACCESS="Access",
      BILLING="Billing",
+     BUILDS="Builds",
      SUPPORT="Support",
      SETTINGS="Settings",
      HELP="Help"
 }
 
 enum CustomizeDashboardTypeEnums {
+  DASHBOARD="dashboard",
   APP = "app",
   UI = "ui",
   SCREEN = "screen"
