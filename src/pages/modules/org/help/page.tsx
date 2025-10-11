@@ -86,14 +86,14 @@ function page() {
     // setLoader(true);
     fetchAllFaqs(setApiResponse, setApiError, setLoader);
     // setLoader(false);
-  }, [1, OrganizationDetailsConfig.orgName]);
+  }, [inputQuary, OrganizationDetailsConfig.orgName]);
 
   useEffect(() => {
     // modifiedUrlConfig.orgName=orgDetails!==undefined?orgDetails.data._id:""
     setLoader(true);
     setSelectQuary({ type: "All" });
   }, []);
-  console.log(apiResponse);
+  // console.log(apiResponse);
 
   return (
     <DashboardMask name="Help">

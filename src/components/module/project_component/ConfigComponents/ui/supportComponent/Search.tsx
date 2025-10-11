@@ -9,7 +9,7 @@ interface value {
 function Search({ searchValue, setSearchValue }: value) {
   console.log(searchValue);
   return (
-    <div className="w-2/3 flex items-center border h-14 shadow-md mx-4 px-3 rounded-lg">
+    <div className="w-full flex items-center border h-14 shadow-md  px-4 rounded-lg">
       {/* Icon */}
       <CiSearch className="text-gray-500 mr-2" />
 

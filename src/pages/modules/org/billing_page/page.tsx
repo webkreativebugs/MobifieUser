@@ -56,7 +56,7 @@ function page() {
         {/* Invoice List Container */}
         <div className="bg-white rounded-b-2xl shadow-md border border-gray-200 overflow-hidden">
           {/* Table Header */}
-          <div className="grid grid-cols-4 bg-gray-50 text-gray-700 font-semibold text-sm border-b border-gray-200">
+          <div className="grid grid-cols-4 bg-gray-50 text-gray-700 text-xl font-bold  border-b border-gray-200">
             {columns.map((col) => (
               <div
                 key={col.key}
@@ -65,7 +65,7 @@ function page() {
                 {col.title}
               </div>
             ))}
-            <div className="px-6 py-3 uppercase tracking-wide text-[13px]">
+            <div className="px-6 py-3 ml-1 uppercase tracking-wide text-[13px]">
               Action
             </div>
           </div>
@@ -86,7 +86,7 @@ function page() {
 
               <div className="px-6 py-4">
                 <span
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
                     invoice.status === "Paid"
                       ? "bg-emerald-100 text-emerald-700"
                       : invoice.status === "Pending"
@@ -98,12 +98,12 @@ function page() {
                 </span>
               </div>
 
-              <div className="px-6 py-4 flex items-center">
+              <div className="px-3 py-4 flex items-center">
                 <button
                   onClick={() => handleDownloadSinglePDF(invoice)}
-                  className="bg-black hover:bg-white hover:text-black text-white text-xs font-medium px-4 py-2 rounded-lg shadow-sm transition-all duration-200 active:scale-95"
+                  className="  text-blue-600 text-md  px-4 py-1 font-semibold underline underline-offset-1  rounded-lg "
                 >
-                  Download PDF
+                  Download
                 </button>
               </div>
             </div>
