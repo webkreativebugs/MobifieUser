@@ -44,7 +44,7 @@ function Screens({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
         ))}
       </div>
     </>
->>>>>>> 20116fd45904cfe4d9f61e041965fdcb2fe851c6
+
   );
 }
 
