@@ -1,3 +1,8 @@
+import { YouConfigType } from "../../../enum/YouConfig.enum";
+import { MdEdit, MdLocalShipping } from "react-icons/md";
+import { FaAddressBook } from "react-icons/fa";
+import { AiFillSetting } from "react-icons/ai";
+
 export const WebViewNavigationURL = [
   {
     key: 'about_us',
@@ -48,7 +53,35 @@ export const defaultConfiguration = {
   symbol: '₹',
 };
 
-export const ApiConfig = [
+
+
+export const ApiConfigRequest=[
+    {
+    key: "headers",
+    title: "Headers",
+    type: "textarea",
+    placeholder: {"Content-Type": "application/json"},
+    required: false,
+  },
+  {
+    key: "query_params",
+    title: "Query Parameters",
+    type: "textarea",
+    placeholder: {"param1": "value1", "param2": "value2"},
+    required: false,
+  },
+   {
+    key: "timeout",
+    title: "Timeout (ms)",
+    type: "number",
+    placeholder: "5000",
+    required: false,
+  },
+ 
+]
+ 
+
+export const ApiConfigAuth = [
   {
     key: "api_key",
     title: "API Key",
@@ -77,34 +110,8 @@ export const ApiConfig = [
     options: ["GET", "POST", "PUT", "DELETE"],
     required: true,
   },
-  {
-    key: "headers",
-    title: "Headers",
-    type: "textarea",
-    placeholder: `{"Content-Type": "application/json"}`,
-    required: false,
-  },
-  {
-    key: "query_params",
-    title: "Query Parameters",
-    type: "textarea",
-    placeholder: `{"param1": "value1", "param2": "value2"}`,
-    required: false,
-  },
-  {
-    key: "body",
-    title: "Request Body",
-    type: "textarea",
-    placeholder: `{"key": "value"}`,
-    required: false,
-  },
-  {
-    key: "timeout",
-    title: "Timeout (ms)",
-    type: "number",
-    placeholder: "5000",
-    required: false,
-  }
+
+ 
 ];
 
 
@@ -262,4 +269,89 @@ export const ScreenDesignConfiguration = {
     LogoutCardDesign:" KBYouProfileCardEnum.KBYouProfileCard0",
     InviteCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
   },
+};
+
+
+export const ShopifyConfig = [
+  {
+    key: "Api_url",
+    label: "Storefront API URL",
+    value: "url",
+    name: "url"
+  },
+  {
+    key: "Token",
+    label: "Storefront Access Token",
+    value: "Dummy",
+    name:"token"
+  },
+  {
+    key: "API_URL_ADMIN",
+    label: "Admin API URL",
+    value: "Admin",
+    name: "Adminurl"
+  },
+  {
+    key: "Access_token",
+    label: "Admin Access Token",
+    value: "tken",
+    name:"admin"
+  },
+]
+
+export const YouClientConfiguration = [
+  {
+    key: YouConfigType.PROFILE,
+    icon:MdEdit,
+    navigationData: "{}",
+    rightIcon:" KBIconName.ArrowForward",
+    leftIcon:" KBIconName.Edit",
+    rightIconSet:" KBIconSet.MaterialIcons",
+    leftIconSet:" KBIconSet.MaterialIcons",
+    title: 'Edit Profile',
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+  {
+    key: YouConfigType.ORDER,
+    icon:MdLocalShipping ,
+    navigateTo: "NavigationConstant.ORDER_LIST",
+    navigationData: {},
+    rightIcon: "KBIconName.ArrowForward",
+    leftIcon: "KBIconName.LocalShipping",
+    rightIconSet:" KBIconSet.MaterialIcons",
+    leftIconSet: 'KBIconSet.MaterialIcons',
+    title: 'Orders',
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+  {
+    key: YouConfigType.ADDRESS,
+    icon:FaAddressBook ,
+    navigateTo:" NavigationConstant.ADDRESS_LIST",
+    navigationData: {},
+    rightIcon:" KBIconName.ArrowForward",
+    leftIcon: "KBIconName.Address",
+    rightIconSet: "KBIconSet.MaterialIcons",
+    leftIconSet: "KBIconSet.Entypo",
+    title: 'Address',
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+  {
+    key: YouConfigType.SETTING,
+    icon:AiFillSetting ,
+    navigateTo:" NavigationConstant.SETTINGS",
+    navigationData: {},
+    rightIcon: "KBIconName.ArrowForward",
+    leftIcon: "KBIconName.Setting",
+    rightIconSet:" KBIconSet.MaterialIcons",
+    leftIconSet: "KBIconSet.AntDesign",
+    title: 'Settings',
+    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  },
+];
+
+
+export const Configuration = {
+  Cart: {
+    maximumPurchaseQuantity: 10,
+  },
 };

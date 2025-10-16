@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+// import UiCOmponent from "../../../../../data/CustomizeData/UiDropdown.json";
 import ScreenConfig from "../../../../../data/CustomizeData/ScreenConfig.json";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 
@@ -15,14 +15,12 @@ type UiConfigSidebarProps = {
 function UiConfigSidebar({
   element,
   setElement,
-  ispopUpdata,
-  setIsPOpUpdata,
   setPOpUp,
   popUp,
 }: UiConfigSidebarProps) {
   console.log(element);
   const [tempElement, setTepElement] = useState<string>("");
-  const { isActive, setIsActive } = useSaveChanges();
+  const { isActive } = useSaveChanges();
 
   const handleClick = (elem: string) => {
     setTepElement(elem);

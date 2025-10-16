@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
+import { useEffect, Dispatch, SetStateAction } from "react";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import {
   ScreenConfigInterface,
-  HeaderConfigItem,
 } from "../../../../../data/interface/data.interface";
 
 import type { AdditionalConfig } from "../../../../../data/interface/data.interface";
@@ -15,7 +14,7 @@ function AdditionalConfig({
   screenConfig,
   setscreenConfig,
 }: UiConfigSidebarProps) {
-  const { isActive, setIsActive } = useSaveChanges();
+  const { setIsActive } = useSaveChanges();
   console.log(screenConfig);
   useEffect(() => {
     console.log(screenConfig.current_confi.bottomtab.isActive);
