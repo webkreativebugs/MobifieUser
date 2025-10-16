@@ -22,9 +22,13 @@ export const SaveChangesProvider = ({ children }: { children: ReactNode }) => {
 export const useSaveChanges = (): SaveChangesContextType => {
   const context = useContext(SaveChangesContext);
   if (!context) {
+<<<<<<< HEAD
     throw new Error(
       "useSaveChanges dsakadkahdlkajlkjsl must be used inside SaveChangesProvider"
     );
+=======
+    throw new Error("useSaveChanges must be used inside SaveChangesProvider");
+>>>>>>> 70383c29845d114914038656b222b23dabe8bfb0
   }
   return context;
 };
