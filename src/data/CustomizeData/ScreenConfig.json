@@ -12,43 +12,26 @@
                 "title": "Header",
                 "image": "/assets/headerComponent/h1.png",
                 "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": [
-                        {
-                            "name": "List Icon",
-                            "url": "https://up.yimg.com/ib/th/id/OIP.UVCWaE9HTt67mOeETHKlPgHaHa?pid=Api&rs=1&c=1&qlt=95&w=123&h=123",
-                            "isActive": true
-                        }
-                    ]
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": [
-                        {
-                            "name": "Cart",
-                            "url": "https://up.yimg.com/ib/th/id/OIP.qpklrXXr1jSlYjBOrDNxLQHaGE?pid=Api&rs=1&c=1&qlt=95&w=142&h=116",
-                            "isActive": true
-                        },
-                        {
-                            "name": "Alerts",
-                            "url": "https://up.yimg.com/ib/th/id/OIP.Od5BN0ez2WapogRBlqjJ-wHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121",
-                            "isActive": true
-                        }
-                    ]
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
+                "lefticons": [
+                    {
+                        "name": "List Icon",
+                        "url": "https://up.yimg.com/ib/th/id/OIP.UVCWaE9HTt67mOeETHKlPgHaHa?pid=Api&rs=1&c=1&qlt=95&w=123&h=123",
                         "isActive": true
                     }
-                }
+                ],
+                "righticons": [
+                    {
+                        "name": "Cart",
+                        "url": "https://up.yimg.com/ib/th/id/OIP.07DUnE60ZtI7251ulRVYpQHaHU?pid=Api&rs=1&c=1&qlt=95&w=123&h=121",
+                        "isActive": true
+                    },
+                    {
+                        "name": "alerts",
+                        "url": "https://up.yimg.com/ib/th/id/OIP.Od5BN0ez2WapogRBlqjJ-wHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121",
+                        "isActive": true
+                    }
+                ],
+                "text": "xyz"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
@@ -66,34 +49,36 @@
                 "title": "Home",
                 "image": "/assets/home/h2.png",
                 "component": "Home"
+            },
+            {
+                "title": "Home",
+                "image": "/assets/home/h2.png",
+                "component": "Home"
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/headerComponent/h1.png",
+                    "component": "Header",
+                    "lefticons": [
+                        {
+                            "name": "abc",
+                            "url": "efgdfvfv",
+                            "isActive": true
+                        }
+                    ],
+                    "righticons": [
+                        {
+                            "name": "abc",
+                            "url": "efgdfvfv",
+                            "isActive": true
+                        }
+                    ],
+                    "text": "xyz"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -115,27 +100,7 @@
             "header": {
                 "title": "Header",
                 "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
@@ -161,31 +126,13 @@
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -196,72 +143,30 @@
         }
     },
     {
-        "key": "category",
+        "key": "Category",
         "title": "Category",
         "current_confi": {
-            "screen": {
-                "title": "Category",
-                "image": "/assets/category/c1.png",
-                "component": "Category"
-            },
+            "screen": {},
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
         "Screen": [],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -277,67 +182,60 @@
         "current_confi": {
             "screen": {
                 "title": "Login",
-                "image": "/assets/login/l1.png",
+                "image": "/assets/loginScreen/s1.png",
                 "component": "Login"
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
-        "Screen": [],
-        "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+        "Screen": [
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s1.png",
+                "component": "Login"
             },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s2.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s3.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s4.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s5.png",
+                "component": "Login"
+            },
+            {
+                "title": "Login",
+                "image": "/assets/loginScreen/s6.png",
+                "component": "Login"
+            }
+        ],
+        "additional_config": {
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
+                }
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -358,32 +256,12 @@
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
@@ -405,31 +283,13 @@
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -450,32 +310,12 @@
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
@@ -502,31 +342,13 @@
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -542,83 +364,55 @@
         "current_confi": {
             "screen": {
                 "title": "Settings",
-                "image": "/assets/setting/s1.png",
+                "image": "/assets/headerComponent/h2.png",
                 "component": "Settings"
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Settings",
-                "image": "/assets/setting/s1.png",
+                "image": "/assets/headerComponent/h2.png",
                 "component": "Settings"
             },
             {
                 "title": "Settings",
-                "image": "/assets/setting/s2.png",
+                "image": "/assets/headerComponent/h3.png",
                 "component": "Settings"
             },
             {
                 "title": "Settings",
-                "image": "/assets/setting/s3.png",
+                "image": "/assets/headerComponent/h4.png",
+                "component": "Settings"
+            },
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h5.png",
+                "component": "Settings"
+            },
+            {
+                "title": "Settings",
+                "image": "/assets/headerComponent/h6.png",
                 "component": "Settings"
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -639,32 +433,12 @@
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
@@ -678,39 +452,16 @@
                 "title": "Profile",
                 "image": "/assets/profile/p2.png",
                 "component": "Profile"
-            },
-            {
-                "title": "Profile",
-                "image": "/assets/profile/p3.png",
-                "component": "Profile"
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -726,83 +477,40 @@
         "current_confi": {
             "screen": {
                 "title": "Flash",
-                "image": "/assets/flash/f1.png",
+                "image": "/assets/Flash/f1.png",
                 "component": "Flash"
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Flash",
-                "image": "/assets/flash/f1.png",
+                "image": "/assets/Flash/f1.png",
                 "component": "Flash"
             },
             {
                 "title": "Flash",
-                "image": "/assets/flash/f2.png",
-                "component": "Flash"
-            },
-            {
-                "title": "Flash",
-                "image": "/assets/flash/f3.png",
+                "image": "/assets/Flash/f2.png",
                 "component": "Flash"
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
@@ -823,32 +531,12 @@
             },
             "header": {
                 "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
+                "image": "/assets/home/h1.png",
+                "component": "Header"
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/home/h1.png",
                 "isActive": true
             }
         },
@@ -862,39 +550,16 @@
                 "title": "Wishlist",
                 "image": "/assets/wishlist/w2.png",
                 "component": "Wishlist"
-            },
-            {
-                "title": "Wishlist",
-                "image": "/assets/wishlist/w3.png",
-                "component": "Wishlist"
             }
         ],
         "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
+            "header": [
+                {
+                    "title": "Header",
+                    "image": "/assets/home/h1.png",
+                    "component": "Header"
                 }
-            },
+            ],
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
