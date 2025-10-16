@@ -7,6 +7,7 @@ import { AppProvider } from "./context/AppContext.tsx";
 import { AuthProvider } from "./context/auth_context/AuthContext.tsx";
 import { OrganizationProvider } from "./context/org_context/OrganizationContext.tsx";
 import { LoaderProvider } from "./context/loader_context/LoaderContext.tsx";
+import { UiContextProvider } from "./context/ui_context/UiContext.tsx";
 import { SaveChangesProvider } from "./context/ui_context/SaveChanges.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -15,9 +16,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <OrganizationProvider>
           <AppProvider>
             <LoaderProvider>
-              <SaveChangesProvider>
-                <App />
-              </SaveChangesProvider>
+              <UiContextProvider>
+                <SaveChangesProvider>
+                  <App />
+                </SaveChangesProvider>
+              </UiContextProvider>
             </LoaderProvider>
           </AppProvider>
         </OrganizationProvider>

@@ -1,15 +1,4 @@
-import { MdEdit, MdLocalShipping } from "react-icons/md";
-import { FaAddressBook } from "react-icons/fa"; // Font Awesome
-import { YouConfigType } from "../../../enum/YouConfig.enum";
-import { AiFillSetting } from "react-icons/ai";
-
 export const WebViewNavigationURL = [
-  
-
-  
-   
-
-
   {
     key: 'about_us',
     title: 'About Us',
@@ -59,7 +48,7 @@ export const defaultConfiguration = {
   symbol: '₹',
 };
 
-export const ApiConfigAuth = [
+export const ApiConfig = [
   {
     key: "api_key",
     title: "API Key",
@@ -88,37 +77,35 @@ export const ApiConfigAuth = [
     options: ["GET", "POST", "PUT", "DELETE"],
     required: true,
   },
-
- 
-];
-
-
-
-export const ApiConfigRequest=[
-    {
+  {
     key: "headers",
     title: "Headers",
     type: "textarea",
-    placeholder: {"Content-Type": "application/json"},
+    placeholder: `{"Content-Type": "application/json"}`,
     required: false,
   },
   {
     key: "query_params",
     title: "Query Parameters",
     type: "textarea",
-    placeholder: {"param1": "value1", "param2": "value2"},
+    placeholder: `{"param1": "value1", "param2": "value2"}`,
     required: false,
   },
-   {
+  {
+    key: "body",
+    title: "Request Body",
+    type: "textarea",
+    placeholder: `{"key": "value"}`,
+    required: false,
+  },
+  {
     key: "timeout",
     title: "Timeout (ms)",
     type: "number",
     placeholder: "5000",
     required: false,
-  },
- 
-]
- 
+  }
+];
 
 
 export const currencies = [
@@ -228,86 +215,51 @@ export const currencies = [
  
 
 
-export const ShopifyConfig = [
-  {
-    key: "Api_url",
-    label: "Storefront API URL",
-    value: "url",
-    name: "url"
+export const ScreenDesignConfiguration = {
+  SignIn: {
+    SignInAuthenticationType: "SignInAuthenticationType.EmailPassword",
   },
-  {
-    key: "Token",
-    label: "Storefront Access Token",
-    value: "Dummy",
-    name:"token"
+  // Collections: {
+  //   CardDesign: KBCollectionCard.KBCollectionCardSliderBannerCard,
+  // },
+  Wishlist: {
+    CardDesign:" KBProductCardEnum.KBProductCardOneByOne0",
+    FlatListNumColumns: 1,
   },
-  {
-    key: "API_URL_ADMIN",
-    label: "Admin API URL",
-    value: "Admin",
-    name: "Adminurl"
+  RecentlyViewed: {
+    CardDesign: "KBProductCardEnum.KBProductCardOneByOne0",
+    FlatListNumColumns: 1,
   },
-  {
-    key: "Access_token",
-    label: "Admin Access Token",
-    value: "tken",
-    name:"admin"
+  ProductByCollection: {
+    CardDesign:" KBProductCardEnum.KBProductCardOneByTwo1",
+    FlatListNumColumns: 2,
   },
-]
-
-export const YouClientConfiguration = [
-  {
-    key: YouConfigType.PROFILE,
-    icon:MdEdit,
-    navigationData: "{}",
-    rightIcon:" KBIconName.ArrowForward",
-    leftIcon:" KBIconName.Edit",
-    rightIconSet:" KBIconSet.MaterialIcons",
-    leftIconSet:" KBIconSet.MaterialIcons",
-    title: 'Edit Profile',
-    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  Home: {
+    CircularProductCard:" KBHomeCollectionCardEnum.KBHomeCollectionCard2",
+    HeaderCollectionDesign:
+     " KBHomeCollectionHeaderCardEnum.KBHomeCollectionHeaderCard3",
+    FlatListNumColumns: 1,
+    ProductCardDesign:" KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard2",
+    ProductGridCardDesign:" KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard3",
+    ProductSingleCardDesign: "KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard4",
+    SliderCardDesign:"KBHomeProductCollectionCardEnum.KBHomeProductCollectionCard0",
   },
-  {
-    key: YouConfigType.ORDER,
-    icon:MdLocalShipping ,
-    navigateTo: "NavigationConstant.ORDER_LIST",
-    navigationData: {},
-    rightIcon: "KBIconName.ArrowForward",
-    leftIcon: "KBIconName.LocalShipping",
-    rightIconSet:" KBIconSet.MaterialIcons",
-    leftIconSet: 'KBIconSet.MaterialIcons',
-    title: 'Orders',
-    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  Shop: {
+    CardDesign:" KBShopCollectionCardEnum.KBShopCollectionCard1",
+    FlatListNumColumns: 1,
   },
-  {
-    key: YouConfigType.ADDRESS,
-    icon:FaAddressBook ,
-    navigateTo:" NavigationConstant.ADDRESS_LIST",
-    navigationData: {},
-    rightIcon:" KBIconName.ArrowForward",
-    leftIcon: "KBIconName.Address",
-    rightIconSet: "KBIconSet.MaterialIcons",
-    leftIconSet: "KBIconSet.Entypo",
-    title: 'Address',
-    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
+  SearchProductAndCollection: {
+    SearchProductCard:" KBSearchProductCardEnum.KBSearchProductCardOneByOne0",
+    SearchCollectionCard:
+     " KBSearchCollectionCardEnum.KBSearchCollectionTitleCard",
+    SegmentedControl:" SearchTypeConstant.all",
+    ShowSegmentedControl: true,
   },
-  {
-    key: YouConfigType.SETTING,
-    icon:AiFillSetting ,
-    navigateTo:" NavigationConstant.SETTINGS",
-    navigationData: {},
-    rightIcon: "KBIconName.ArrowForward",
-    leftIcon: "KBIconName.Setting",
-    rightIconSet:" KBIconSet.MaterialIcons",
-    leftIconSet: "KBIconSet.AntDesign",
-    title: 'Settings',
-    // componentName: ScreenDesignConfiguration.YouTab.ListCardDesign,
-  },
-];
-
-
-export const Configuration = {
-  Cart: {
-    maximumPurchaseQuantity: 10,
+  YouTab: {
+    ListCardDesign:" KBYouListCardEnum.KBYouListCard0",
+    ProfileCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
+    LoginCardDesign:" KBYouLoginCardEnum.KBYouLoginCard0",
+    LogoutCardDesign:" KBYouProfileCardEnum.KBYouProfileCard0",
+    InviteCardDesign: "KBYouProfileCardEnum.KBYouProfileCard0",
   },
 };
