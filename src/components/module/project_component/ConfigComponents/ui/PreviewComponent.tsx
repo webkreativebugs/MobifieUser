@@ -4,13 +4,13 @@ import { ScreenConfigInterface } from "../../../../../data/interface/data.interf
 
 import Header1 from "./customComponent/header/Header1";
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
-interface ScreenData {
-  name: string;
-  // type: string;
-  header: string;
-  footer: string;
-  url: string;
-}
+// interface ScreenData {
+//   name: string;
+//   // type: string;
+//   header: string;
+//   footer: string;
+//   url: string;
+// }
 
 function PreviewComponent({
   screenConfig,

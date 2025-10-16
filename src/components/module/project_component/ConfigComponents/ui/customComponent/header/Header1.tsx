@@ -1,4 +1,4 @@
-import React from "react";
+
 import { ScreenConfigInterface } from "../../../../../../../data/interface/data.interface";
 
 function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
