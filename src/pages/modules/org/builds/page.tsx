@@ -4,6 +4,7 @@ import HeadingMask from "../../../../components/common_component/layered_compone
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
+import { useNavigate } from "react-router-dom";
 
 interface ColumnConfig {
   key: string;
@@ -42,9 +43,11 @@ const builds = [
 ];
 
 function page() {
+  const navigate = useNavigate();
   const latestBuild = builds[0];
   const olderBuilds = builds.slice(1);
   const [isMore, setIsMore] = useState<boolean>(false);
+  const [opendV, setOpendV] = useState<string>("");
 
   const downloadBuild = (build: typeof latestBuild) => {
     const doc = new jsPDF();
@@ -67,7 +70,7 @@ function page() {
     { key: "history", title: "History" },
     { key: "status", title: "Status" },
     { key: "updatedBy", title: "Updated By" },
-    { key: "action", title: "Action" },
+    // { key: "action", title: "Action" },
   ];
   return (
     <DashboardMask name={DashboardTypeEnums.BUILDS}>
@@ -83,16 +86,19 @@ function page() {
             Latest Build
           </div>
           <div
-            onMouseOver={() => setIsMore(true)}
+            onMouseOver={() => {
+              setIsMore(true);
+              setOpendV(latestBuild.version);
+            }}
             onMouseOut={() => setIsMore(false)}
-            className="absolute top-0 right-0 px-3 py-1"
+            className="absolute top-0 right-0 px-3.5 py-1.5"
           >
             <div className="relative">
               <div className="flex justify-end">
                 <RiMoreLine className="text-black text-2xl cursor-pointer" />
               </div>
 
-              {isMore && (
+              {isMore && opendV === latestBuild.version && (
                 <div className="border rounded-md shadow-lg">
                   <div className=" mt-1 w-28   z-10">
                     <button
@@ -102,7 +108,7 @@ function page() {
                       Download
                     </button>
                     <button className="w-full  px-1 py-2 text-black text-sm font-semibold">
-                      click me
+                      See More
                     </button>
                   </div>
                 </div>
@@ -160,7 +166,7 @@ function page() {
         </div>
 
         {/* Older Builds Table */}
-        <div className="bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-md border border-gray-200 ">
           <div className="grid grid-cols-6 bg-gray-50 text-gray-700 text-xl font-bold border-b border-gray-200">
             {columns.map((col) => (
               <>
@@ -172,6 +178,7 @@ function page() {
                 </div>
               </>
             ))}
+            <div className="h-full text-right px-4 py-2">Action</div>
           </div>
 
           {olderBuilds.map((build, index) => (
@@ -198,13 +205,47 @@ function page() {
                 </span>
               </div>
               <div className="px-6 py-4 text-gray-600">{build.updatedBy}</div>
-              <div className="px-3 py-4 flex items-center">
+              {/* <div className="px-3 py-4 flex items-center">
                 <button
                   onClick={() => downloadBuild(build)}
                   className="  text-blue-600 text-md  px-4 py-1 font-semibold underline underline-offset-1  rounded-lg "
                 >
                   Download
                 </button>
+              </div> */}
+              <div className="flex justify-end items-center">
+                <div
+                  key={index}
+                  className="relative  mr-10" // relative parent
+                  onMouseEnter={() => {
+                    setIsMore(true);
+                    setOpendV(build.version);
+                  }}
+                  onMouseLeave={() => setIsMore(false)}
+                >
+                  {/* Icon */}
+                  <div className="flex justify-end pr-0">
+                    <RiMoreLine className="text-black text-2xl cursor-pointer" />
+                  </div>
+
+                  {/* Floating Dropdown */}
+                  {isMore && opendV === build.version && (
+                    <div className="absolute right-0 top-full mt-[-0px] z-20 border rounded-md shadow-lg bg-white w-28">
+                      <button
+                        onClick={() => downloadBuild(build)}
+                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                      >
+                        Download
+                      </button>
+                      <button
+                        onClick={() => navigate("/details")}
+                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                      >
+                        see More
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}

@@ -1,9 +1,11 @@
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import jsPDF from "jspdf";
+import { RiMoreLine } from "react-icons/ri";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
 import DynamicTable from "../../../../components/common_component/dynamic_table";
+import { useState } from "react";
 const invoices = [
   { invoicenumber: "INV001", date: "2025-10-07", status: "Paid" },
   { invoicenumber: "INV002", date: "2025-10-06", status: "Pending" },
@@ -13,6 +15,8 @@ const invoices = [
 ];
 
 function page() {
+  const [isMore, setIsMore] = useState<boolean>(false);
+  const [opendV, setOpendV] = useState<string>("");
   const columns: ColumnConfig[] = [
     { key: "invoicenumber", title: "Invoice Number" },
     { key: "date", title: "Date" },
@@ -54,7 +58,7 @@ function page() {
         </div>
 
         {/* Invoice List Container */}
-        <div className="bg-white rounded-b-2xl shadow-md border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-b-2xl shadow-md border border-gray-200 ">
           {/* Table Header */}
           <div className="grid grid-cols-4 bg-gray-50 text-gray-700 text-xl font-bold  border-b border-gray-200">
             {columns.map((col) => (
@@ -65,9 +69,7 @@ function page() {
                 {col.title}
               </div>
             ))}
-            <div className="px-6 py-3 ml-1 uppercase tracking-wide text-[13px]">
-              Action
-            </div>
+            <div className="h-full text-right px-4 py-2">Action</div>
           </div>
 
           {/* Table Rows */}
@@ -98,13 +100,48 @@ function page() {
                 </span>
               </div>
 
-              <div className="px-3 py-4 flex items-center">
+              {/* <div className="px-3 py-4 flex items-center">
                 <button
-                  onClick={() => handleDownloadSinglePDF(invoice)}
+                 
                   className="  text-blue-600 text-md  px-4 py-1 font-semibold underline underline-offset-1  rounded-lg "
                 >
                   Download
                 </button>
+              </div> */}
+
+              <div className="flex justify-end items-center">
+                <div
+                  key={index}
+                  className="relative  mr-10" // relative parent
+                  onMouseEnter={() => {
+                    setIsMore(true);
+                    setOpendV(invoice.invoicenumber);
+                  }}
+                  onMouseLeave={() => setIsMore(false)}
+                >
+                  {/* Icon */}
+                  <div className="flex justify-end pr-0">
+                    <RiMoreLine className="text-black text-2xl cursor-pointer" />
+                  </div>
+
+                  {/* Floating Dropdown */}
+                  {isMore && opendV === invoice.invoicenumber && (
+                    <div className="absolute right-0 top-full mt-[-0px] z-20 border rounded-md shadow-lg bg-white w-28">
+                      <button
+                        onClick={() => handleDownloadSinglePDF(invoice)}
+                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                      >
+                        Download
+                      </button>
+                      <button
+                        //  onClick={() => navigate("/details")}
+                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                      >
+                        see More
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}

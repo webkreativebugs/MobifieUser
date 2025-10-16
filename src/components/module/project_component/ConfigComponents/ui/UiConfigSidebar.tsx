@@ -13,6 +13,7 @@ type UiConfigSidebarProps = {
   setIsPOpUpdata: Dispatch<SetStateAction<boolean>>;
   setPOpUp: Dispatch<SetStateAction<boolean>>;
   popUp: boolean;
+  isEdit: boolean;
 };
 
 function UiConfigSidebar({
@@ -22,6 +23,7 @@ function UiConfigSidebar({
   setIsPOpUpdata,
   setPOpUp,
   popUp,
+  isEdit,
 }: UiConfigSidebarProps) {
   console.log(element);
   const [tempElement, setTepElement] = useState<string>("");
@@ -90,15 +92,19 @@ function UiConfigSidebar({
           </div>
 
           {/* Right side: Action button */}
-          <button
-            className="px-4 w-full py-2 rounded-lg text-sm font-medium button transition"
-            onClick={() => setThemePopup(true)}
-          >
-            Change Theme
-          </button>
+          {isEdit && (
+            <button
+              className="px-4 w-full py-2 rounded-lg text-sm font-medium button transition"
+              onClick={() => setThemePopup(true)}
+            >
+              Change Theme
+            </button>
+          )}
         </div>
       </div>
-      {themePopup && <ThemePicker onClose={() => setThemePopup(false)} />}
+      {themePopup && isEdit && (
+        <ThemePicker onClose={() => setThemePopup(false)} />
+      )}
     </>
   );
 }

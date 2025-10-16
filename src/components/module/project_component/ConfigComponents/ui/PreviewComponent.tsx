@@ -5,20 +5,15 @@ import { useTheme } from "../../../../../context/AppContext";
 
 import Header1 from "./customComponent/header/Header1";
 import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
+import { Link } from "react-router-dom";
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
-interface ScreenData {
-  name: string;
-  // type: string;
-  header: string;
-  footer: string;
-  url: string;
-}
-
-function PreviewComponent({
-  screenConfig,
-}: {
+type screenConfig = {
   screenConfig: ScreenConfigInterface;
-}) {
+  isEdit: boolean;
+  setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function PreviewComponent({ screenConfig, isEdit, setIsEdit }: screenConfig) {
   const [android, setAndroid] = useState(false);
   console.log(screenConfig.current_confi.bottomtab.isActive);
   const { isActive, setIsActive } = useSaveChanges();
@@ -33,13 +28,28 @@ function PreviewComponent({
       {/* Title + Toggle */}
       <div className="flex items-center justify-between mx-6 mb-2">
         <h1 className="text-3xl font-bold">Preview</h1>
-        <button
-          onClick={() => setIsActive(false)}
-          className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
+        {isEdit ? (
+          <button
+            onClick={() => {
+              setIsActive(false);
+              // setIsEdit(false);
+            }}
+            className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
              hover:bg-gray-100 active:scale-95 active:bg-gray-200"
-        >
-          Save Changes
-        </button>
+          >
+            Save Changes
+          </button>
+        ) : (
+          <button
+            onClick={() => setIsEdit(true)}
+            className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
+             hover:bg-gray-100 active:scale-95 active:bg-gray-200"
+          >
+            <Link to="/project/edit-screen-config" state={{ projectId: 42 }}>
+              Edit Screen
+            </Link>
+          </button>
+        )}
       </div>
 
       {/* Phone Preview */}

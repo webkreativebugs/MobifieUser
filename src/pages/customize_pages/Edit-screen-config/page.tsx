@@ -1,20 +1,19 @@
-import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
-import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
-
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
-import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
 import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
+import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
-import { ScreenConfigInterface } from "../../../data/interface/data.interface";
+// import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
+import { ScreenConfigInterface } from "../../../data/interface/data.interface";
+import Navbar from "../../../components/common_component/Navbar";
 
-const page = () => {
+function page() {
   const [element, setElement] = useState(ScreenConfigdata[0].key);
   console.log(ScreenConfigdata[0].key);
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(true);
 
   // const changes = false;
   const { isActive, setIsActive } = useSaveChanges();
@@ -37,10 +36,10 @@ const page = () => {
       setPOpUp(true);
     }
   }, [element]);
-
   return (
-    <CustomizeMask name={CustomizeDashboardTypeEnums.SCREEN}>
-      <div className=" flex  h-[85vh]">
+    <div className="w-full h-screen overflow-y-scroll hide-scrollbar px-5 ">
+      <Navbar />
+      <div className=" flex  h-[85vh] mt-24 ">
         <UiConfigSidebar
           element={element}
           setElement={setElement}
@@ -59,6 +58,7 @@ const page = () => {
         />
 
         {/* Remove 'main' prop if PreviewComponent does not accept it */}
+
         <PreviewComponent
           screenConfig={screenConfig}
           isEdit={isEdit}
@@ -113,8 +113,8 @@ const page = () => {
           </div>
         </div>
       )}
-    </CustomizeMask>
+    </div>
   );
-};
+}
 
 export default page;

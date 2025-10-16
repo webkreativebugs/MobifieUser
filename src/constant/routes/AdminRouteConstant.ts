@@ -10,12 +10,15 @@ import Builds from "../../pages/modules/org/builds/page"
 import Support from "../../pages/modules/org/support/page"
 import UiConfig from '../../pages/customize_pages/ui-config/page'
 import ApiConfig from "../../pages/customize_pages/api-config/page"
+import NewAppConfig from "../../pages/customize_pages/new-app-config/page"
+import NewScreenConfig from "../../pages/customize_pages/Edit-screen-config/page"
 import UiDashboard from "../../pages/customize_pages/ui-dashboard/page"
 import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
 import DefaultConfig from "../../pages/customize_pages/default-config/page"
 import ScreenConfig from "../../pages/customize_pages/screen-config/page"
 import ClientConfig from "../../pages/customize_pages/client-config/page"
 import YouConfig from "../../pages/customize_pages/you-config/page"
+import Details from '../../pages/modules/org/detail/page'
 export const admin =[
     {
         route:"/",
@@ -108,6 +111,27 @@ export const admin =[
         component: ClientConfig,
         additional:""
     },
+    {
+    
+         route:"/details",
+        component: Details,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/new-app-config",
+        component: NewAppConfig,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/edit-screen-config",
+        component: NewScreenConfig,
+        additional:""
+    
+}
     
 
 
