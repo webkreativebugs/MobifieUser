@@ -5,6 +5,7 @@ import { GoSidebarExpand } from "react-icons/go";
 import { useauth } from "../../context/auth_context/AuthContext";
 import LogOut from "../../utils/api/LogOut";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
+import { MdOutlineScreenShare } from "react-icons/md";
 
 interface SidebarProps {
   active: string;
@@ -30,7 +31,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
         show ? "w-1/6" : "w-[80px]"
       }`}
     >
-      <div className="flex flex-col justify-between w-full h-full shadow-xl">
+      <div className="flex flex-col justify-between w-full h-full ">
         {/* ------------------ TOP SECTION ------------------ */}
         <div>
           {/* ---------- Logo ---------- */}
@@ -74,17 +75,27 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
 
                 {/* ---------- Sublinks ---------- */}
                 {section.sublink && (
-                  <div className="flex flex-col pl-8 mt-2 space-y-1">
-                    <h1 className="text-[15px] font-semibold mb-1 tracking-wide">
-                      {section.sublink.title.toUpperCase()}
-                    </h1>
+                  <div className="flex flex-col pl-6 mt-2 space-y-1">
+                    <div className="flex items-center gap-3">
+                      <span className="theme-color text-lg min-w-[24px] flex justify-center">
+                        <MdOutlineScreenShare />
+                      </span>
+                      {show && (
+                        <span className="capitalize text-lg">
+                          {section.sublink.title}
+                        </span>
+                      )}
+                    </div>
+
                     {section.sublink.links.map((item) => (
                       <NavLink
                         to={item.link}
                         key={item.name}
                         onClick={() => setActiveLinkName(item.name)}
                         className={({ isActive }) =>
-                          `flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200 ${
+                          `flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200  ${
+                            !show && "ml-[-13px]"
+                          } ${
                             isActive || activeLinkName === item.name
                               ? "active-link"
                               : "normal-link hover:bg-[#ffffff22]"
@@ -109,7 +120,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
         </div>
 
         {/* ------------------ BOTTOM SECTION ------------------ */}
-        <div className="border-t  py-4">
+        <div className="  py-4">
           <button
             className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
             onClick={handleClick}

@@ -6,6 +6,7 @@ import { useTheme } from "../../../../../context/AppContext";
 import Header1 from "./customComponent/header/Header1";
 import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
 import { Link } from "react-router-dom";
+import { useDraftScreenChanges } from "../../../../../context/ui_context/DraftScreenContext";
 // import { ScreenData } from "../../../../../pages/customize_pages/ui-config/page";
 type screenConfig = {
   screenConfig: ScreenConfigInterface;
@@ -19,6 +20,7 @@ function PreviewComponent({ screenConfig, isEdit, setIsEdit }: screenConfig) {
   const { isActive, setIsActive } = useSaveChanges();
   const { theme, secondaryColor } = useTheme();
   console.log(isActive);
+  const { setIsDraft } = useDraftScreenChanges();
 
   return (
     <div
@@ -32,6 +34,7 @@ function PreviewComponent({ screenConfig, isEdit, setIsEdit }: screenConfig) {
           <button
             onClick={() => {
               setIsActive(false);
+              setIsDraft(false);
               // setIsEdit(false);
             }}
             className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
@@ -40,12 +43,14 @@ function PreviewComponent({ screenConfig, isEdit, setIsEdit }: screenConfig) {
             Save Changes
           </button>
         ) : (
-          <button
-            onClick={() => setIsEdit(true)}
-            className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition 
+          <button>
+            <Link
+              onClick={() => setIsEdit(true)}
+              className="text-sm px-4 py-2  rounded-md text-black bg-white border shadow-md font-semibold transition 
              hover:bg-gray-100 active:scale-95 active:bg-gray-200"
-          >
-            <Link to="/project/edit-screen-config" state={{ projectId: 42 }}>
+              to="/project/edit-screen-config"
+              state={{ projectId: 42 }}
+            >
               Edit Screen
             </Link>
           </button>

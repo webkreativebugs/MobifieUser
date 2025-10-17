@@ -6,6 +6,7 @@ import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
 import DynamicTable from "../../../../components/common_component/dynamic_table";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const invoices = [
   { invoicenumber: "INV001", date: "2025-10-07", status: "Paid" },
   { invoicenumber: "INV002", date: "2025-10-06", status: "Pending" },
@@ -15,6 +16,8 @@ const invoices = [
 ];
 
 function page() {
+  const navigate = useNavigate();
+
   const [isMore, setIsMore] = useState<boolean>(false);
   const [opendV, setOpendV] = useState<string>("");
   const columns: ColumnConfig[] = [
@@ -134,7 +137,7 @@ function page() {
                         Download
                       </button>
                       <button
-                        //  onClick={() => navigate("/details")}
+                        onClick={() => navigate("/billing/details")}
                         className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
                       >
                         see More

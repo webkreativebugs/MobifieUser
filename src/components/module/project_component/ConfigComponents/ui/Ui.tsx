@@ -72,11 +72,16 @@ function Ui({ screenConfig, setscreenConfig, isEdit }: UiConfigSidebarProps) {
               </div>
             </div>
             <>
-              <div className=" w-full p-16  rounded-lg   ">
-                {/* Center Text Section */}
-                <div className="card-bg p-4 rounded-md shadow-sm mb-6">
+              <div className="w-full px-20 pt-4 space-y-2">
+                {/* Header Text Section */}
+                <div className="card-bg shadow rounded-lg p-6">
+                  <h2 className="text-xl font-semibold mb-4 border-b pb-2 text-gray-800">
+                    Header Text
+                  </h2>
                   <div className="flex items-center gap-4">
-                    <span className="w-32 font-medium">Header Text</span>
+                    <label className="w-32 text-gray-600 font-medium">
+                      Center Text:
+                    </label>
                     <input
                       type="text"
                       value={
@@ -89,52 +94,92 @@ function Ui({ screenConfig, setscreenConfig, isEdit }: UiConfigSidebarProps) {
                   </div>
                 </div>
 
-                {/* Left Icons Section */}
-                <div className="card-bg p-4 rounded-md shadow-sm mb-6">
-                  <h2 className="text-lg font-medium">Left Icons</h2>
-                  {screenConfig.current_confi.header.lefticons.icons?.map(
-                    (icon, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center justify-between p-2 border rounded-md bg-white mb-2"
-                      >
-                        <span>{icon.name}</span>
-                        <span
-                          className={`px-2 py-0.5 rounded-full text-sm font-semibold ${
-                            icon.isActive
-                              ? "bg-blue-100 text-blue-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
-                        >
-                          {icon.isActive ? "Enabled" : "Disabled"}
-                        </span>
-                      </div>
-                    )
-                  )}
+                {/* Left Icons Table */}
+                <div className="card-bg shadow rounded-lg p-6">
+                  <h2 className="text-xl font-semibold mb-4 border-b pb-2 text-gray-800">
+                    Left Icons
+                  </h2>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full table-auto">
+                      <thead>
+                        <tr className="bg-gray-100 text-left">
+                          <th className="px-4 py-2">Icon Name</th>
+                          <th className="px-4 py-2">Preview</th>
+                          <th className="px-4 py-2">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {screenConfig.current_confi.header.lefticons.icons?.map(
+                          (icon, idx) => (
+                            <tr key={idx} className="border-b hover:bg-gray-50">
+                              <td className="px-4 py-2">{icon.name}</td>
+                              <td className="px-4 py-2">
+                                <div
+                                  className="w-6 h-6"
+                                  dangerouslySetInnerHTML={{ __html: icon.url }}
+                                />
+                              </td>
+                              <td className="px-4 py-2">
+                                <span
+                                  className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                    icon.isActive
+                                      ? "bg-green-100 text-green-700"
+                                      : "bg-red-100 text-red-700"
+                                  }`}
+                                >
+                                  {icon.isActive ? "Enabled" : "Disabled"}
+                                </span>
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
-                {/* Right Icons Section */}
-                <div className="card-bg p-4 rounded-md shadow-sm">
-                  <h2 className="text-lg font-medium">Right Icons</h2>
-                  {screenConfig.current_confi.header.righticons.icons?.map(
-                    (icon, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center justify-between p-2 border rounded-md bg-white mb-2"
-                      >
-                        <span>{icon.name}</span>
-                        <span
-                          className={`px-2 py-0.5 rounded-full text-sm font-semibold ${
-                            icon.isActive
-                              ? "bg-blue-100 text-blue-800"
-                              : "bg-red-100 text-red-800"
-                          }`}
-                        >
-                          {icon.isActive ? "Enabled" : "Disabled"}
-                        </span>
-                      </div>
-                    )
-                  )}
+                {/* Right Icons Table */}
+                <div className="card-bg shadow rounded-lg p-6">
+                  <h2 className="text-xl font-semibold mb-4 border-b pb-2 text-gray-800">
+                    Right Icons
+                  </h2>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full table-auto">
+                      <thead>
+                        <tr className="bg-gray-100 text-left">
+                          <th className="px-4 py-2">Icon Name</th>
+                          <th className="px-4 py-2">Preview</th>
+                          <th className="px-4 py-2">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {screenConfig.current_confi.header.righticons.icons?.map(
+                          (icon, idx) => (
+                            <tr key={idx} className="border-b hover:bg-gray-50">
+                              <td className="px-4 py-2">{icon.name}</td>
+                              <td className="px-4 py-2">
+                                <div
+                                  className="w-6 h-6"
+                                  dangerouslySetInnerHTML={{ __html: icon.url }}
+                                />
+                              </td>
+                              <td className="px-4 py-2">
+                                <span
+                                  className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                    icon.isActive
+                                      ? "bg-green-100 text-green-700"
+                                      : "bg-red-100 text-red-700"
+                                  }`}
+                                >
+                                  {icon.isActive ? "Enabled" : "Disabled"}
+                                </span>
+                              </td>
+                            </tr>
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </>
