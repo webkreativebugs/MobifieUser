@@ -7,7 +7,7 @@ type UiConfigSidebarProps = {
 };
 
 function Screens({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
-  const { isActive, setIsActive } = useSaveChanges();
+  const {  setIsActive } = useSaveChanges();
   const addNewDesign = (newUrl: string) => {
     setscreenConfig((prev) => ({
       ...prev,

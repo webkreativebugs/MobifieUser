@@ -10,13 +10,20 @@ interface PROPS {
 }
 
 const CustomizeMask = ({ name, children }: PROPS) => {
-  const { show,setShow } = useloader();
-//   setShow(false);
+  const { show, setShow } = useloader();
+  //   setShow(false);
   return (
     <div className="h-full flex hide-scrollbar">
-    <Sidebar setShow={setShow} show={show} active={name} links={ConfigDashboardLinks} />
-      <div className="w-screen   max-h-[90vh]">
-        <Navbar/>
+      {true && (
+        <Sidebar
+          setShow={setShow}
+          show={show}
+          active={name}
+          links={ConfigDashboardLinks}
+        />
+      )}
+      <div className="w-screen  max-h-[90vh]">
+        <Navbar />
         <div className=" p-6 mt-20  h-full w-full overflow-auto ">
           <div className=" w-full gap-4">{children}</div>
         </div>

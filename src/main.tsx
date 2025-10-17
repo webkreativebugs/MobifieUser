@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/auth_context/AuthContext.tsx";
 import { OrganizationProvider } from "./context/org_context/OrganizationContext.tsx";
 import { LoaderProvider } from "./context/loader_context/LoaderContext.tsx";
 import { SaveChangesProvider } from "./context/ui_context/SaveChanges.tsx";
+import { TabContextProvider } from "./context/org_context/TabContext.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <AppProvider>
             <LoaderProvider>
               <SaveChangesProvider>
-                <App />
+                <TabContextProvider>
+                  <App />
+                </TabContextProvider>
               </SaveChangesProvider>
             </LoaderProvider>
           </AppProvider>

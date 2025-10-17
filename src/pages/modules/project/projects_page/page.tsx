@@ -5,7 +5,7 @@ import { AlertmodifiedUrlConfig } from "../../../../../network/public/organizati
 import projects from "../../../../utils/api/Project";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
-import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks"; 
+import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 // import { ProjectmodifiedUrlConfig } from "../../../../../network/public/organization_api/project/Project.api";
 // import { useorg } from "../../../../context/org_context/OrganizationContext";
 import { Link } from "react-router-dom";
@@ -23,9 +23,9 @@ function page() {
     AlertmodifiedUrlConfig.page = "1";
     AlertmodifiedUrlConfig.limit = "10";
     AlertmodifiedUrlConfig.search = "";
- 
-    if(OrganizationDetailsConfig.orgName!=="")
-    projects(setApiResponse, setApiError, setLoader);
+
+    if (OrganizationDetailsConfig.orgName !== "")
+      projects(setApiResponse, setApiError, setLoader);
     console.log(apiResponse);
   }, [OrganizationDetailsConfig.orgName]);
 
@@ -122,7 +122,10 @@ function page() {
               your goals. Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Ipsam fugiat nihil, deserunt aliquid quasi aut!
             </p>
-            <Link to="/project/api-config" className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200">
+            <Link
+              to="/project/dashboard"
+              className="mt-28 w-2/5  bg-black text-white text-lg font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+            >
               Customize
             </Link>
           </div>
