@@ -1,4 +1,4 @@
-import { useEffect, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import {
   ScreenConfigInterface,
@@ -15,11 +15,24 @@ function AdditionalConfig({
   setscreenConfig,
 }: UiConfigSidebarProps) {
   const { setIsActive } = useSaveChanges();
-  console.log(screenConfig);
+
+  // local state for the common text input
+  const [commonText, setCommonText] = useState(
+    screenConfig.current_confi.header?.center?.text?.value || ""
+  );
+
+  // ✅ Update when screenConfig changes
   useEffect(() => {
-    console.log(screenConfig.current_confi.bottomtab.isActive);
+    const header = screenConfig.current_confi.header;
+    let activeText =
+      header?.lefticons?.text?.value ||
+      header?.center?.text?.value ||
+      header?.righticons?.text?.value ||
+      "";
+    setCommonText(activeText);
   }, [screenConfig]);
 
+  // toggle left icon
   const handleLeftIcon = (iconName: string) => {
     setscreenConfig((prev) => {
       if (!prev) return prev;
@@ -42,9 +55,17 @@ function AdditionalConfig({
     setIsActive(true);
   };
 
-  const handleRightIcon = (iconName: string) => {
+  // ✅ update all header texts at once
+  const handleCommonTextChange = (value: string) => {
+    if (value.length > 100) return; // max 15 chars
+    setCommonText(value);
+
     setscreenConfig((prev) => {
-      if (!prev) return prev;
+      const newHeader = { ...prev.current_confi.header! };
+
+      if (newHeader.lefticons?.text) newHeader.lefticons.text.value = value;
+      if (newHeader.center?.text) newHeader.center.text.value = value;
+      if (newHeader.righticons?.text) newHeader.righticons.text.value = value;
 
       return {
         ...prev,
@@ -65,17 +86,19 @@ function AdditionalConfig({
   };
 
   return (
-    <>
-      <div className="w-full p-20 space-y-6">
-        <div className="bg-primary rounded-lg w-full h-60 p-4">
-          <h1 className="text-xl font-semibold w-full border-b-2 mb-4 pb-1">
-            Header Tab Config
-          </h1>
+    <div className="w-full p-20 space-y-6">
+      {/* HEADER CONFIG */}
+      <div className="bg-primary rounded-lg w-full p-4">
+        <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
+          Header Tab Config
+        </h1>
 
-          <div className="flex justify-between">
-            <div>
-              <h1 className="text-xl  w-full  mb-4 pb-1">Left Icons</h1>{" "}
-              {screenConfig.current_confi.header.lefticons?.map((icon, idx) => (
+        <div className="flex justify-between gap-6">
+          {/* LEFT ICONS */}
+          <div>
+            <h2 className="text-lg mb-2">Left Icons</h2>
+            {screenConfig.current_confi.header?.lefticons?.icons?.map(
+              (icon, idx) => (
                 <label key={idx} className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -152,38 +175,42 @@ function AdditionalConfig({
               />
               <span>{icon.name}</span>
             </label>
-          ))}
-        </div> */}
-
-        {/* bottom tab  */}
-        <div className="bg-primary rounded-lg w-full h-60 p-4">
-          <h1 className="text-xl font-semibold w-full border-b-2 mb-4 pb-1">
-            Bottom Tab Config
-          </h1>
-
-          <label className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              checked={screenConfig.current_confi.bottomtab.isActive}
-              onChange={() =>
-                setscreenConfig((prev) => ({
-                  ...prev,
-                  current_confi: {
-                    ...prev.current_confi,
-                    bottomtab: {
-                      ...prev.current_confi.bottomtab,
-                      isActive: !prev.current_confi.bottomtab.isActive,
-                    },
-                  },
-                }))
-              }
-              className="h-4 w-4"
-            />
-            <span>{screenConfig.current_confi.bottomtab.title}</span>
-          </label>
+          </div>
         </div>
       </div>
-    </>
+
+      {/* input text */}
+      <div className="bg-primary rounded-lg w-full p-4">
+        <div className="mb-4">
+          <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
+            Header title
+          </h1>
+          <input
+            type="text"
+            value={commonText}
+            onChange={(e) => handleCommonTextChange(e.target.value)}
+            placeholder="Enter text (max 15 chars)"
+            className="rounded border px-2 py-1 w-full"
+          />
+        </div>
+      </div>
+
+      {/* BOTTOM TAB CONFIG */}
+      <div className="bg-primary rounded-lg w-full p-4">
+        <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
+          Bottom Tab Config
+        </h1>
+        <label className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            checked={screenConfig.current_confi.bottomtab?.isActive}
+            onChange={handleBottomTabToggle}
+            className="h-4 w-4"
+          />
+          <span>{screenConfig.current_confi.bottomtab?.title}</span>
+        </label>
+      </div>
+    </div>
   );
 }
 

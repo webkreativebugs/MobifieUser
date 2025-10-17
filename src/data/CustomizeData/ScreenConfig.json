@@ -5,7 +5,7 @@
         "current_confi": {
             "screen": {
                 "title": "Home",
-                "image": "/assets/home/h1.png",
+                "image": "/assets/screens/home1.png",
                 "component": "Home"
             },
             "header": {
@@ -35,14 +35,14 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Home",
-                "image": "/assets/home/h1.png",
+                "image": "/assets/screens/home1.png",
                 "component": "Home"
             },
             {
@@ -78,11 +78,12 @@
                     ],
                     "text": "xyz"
                 }
-            ],
+            ],  
+            
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -94,7 +95,7 @@
         "current_confi": {
             "screen": {
                 "title": "Product List",
-                "image": "/assets/product/p1.png",
+                "image": "/assets/screens/product_list1.png",
                 "component": "ProductList"
             },
             "header": {
@@ -104,24 +105,19 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Product List",
-                "image": "/assets/product/p1.png",
+                "image": "/assets/screens/product_list1.png",
                 "component": "ProductList"
             },
             {
                 "title": "Product List",
-                "image": "/assets/product/p2.png",
-                "component": "ProductList"
-            },
-            {
-                "title": "Product List",
-                "image": "/assets/product/p3.png",
+                "image": "/assets/screens/product_list2.png",
                 "component": "ProductList"
             }
         ],
@@ -136,7 +132,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -158,7 +154,18 @@
                 "isActive": true
             }
         },
-        "Screen": [],
+        "Screen": [
+            {
+                "title": "Category",
+                "image": "/assets/screens/category.png",
+                "component": "Category"
+            },
+            {
+                "title": "Category",
+                "image": "/assets/screens/category2.png",
+                "component": "Category"
+            }
+        ],
         "additional_config": {
             "header": [
                 {
@@ -170,7 +177,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -239,7 +246,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -251,7 +258,7 @@
         "current_confi": {
             "screen": {
                 "title": "Search",
-                "image": "/assets/searchScreen/s1.png",
+                "image": "/assets/screens/search.png",
                 "component": "Search"
             },
             "header": {
@@ -268,17 +275,12 @@
         "Screen": [
             {
                 "title": "Search",
-                "image": "/assets/searchScreen/s1.png",
+                "image": "/assets/screens/search.png",
                 "component": "Search"
             },
             {
                 "title": "Search",
-                "image": "/assets/searchScreen/s3.png",
-                "component": "Search"
-            },
-            {
-                "title": "Search",
-                "image": "/assets/searchScreen/s4.png",
+                "image": "/assets/screens/search2.png",
                 "component": "Search"
             }
         ],
@@ -293,7 +295,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -305,7 +307,7 @@
         "current_confi": {
             "screen": {
                 "title": "Checkout",
-                "image": "/assets/checkout/c1.png",
+                "image": "/assets/screens/checkout1.png",
                 "component": "Checkout"
             },
             "header": {
@@ -322,7 +324,7 @@
         "Screen": [
             {
                 "title": "Checkout",
-                "image": "/assets/checkout/c1.png",
+                "image": "/assets/screens/checkout1.png",
                 "component": "Checkout"
             },
             {
@@ -352,15 +354,15 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
         }
     },
     {
-        "key": "setting",
-        "title": "Setting",
+        "key": "cart",
+        "title": "Cart",
         "current_confi": {
             "screen": {
                 "title": "Settings",
@@ -416,7 +418,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -428,7 +430,7 @@
         "current_confi": {
             "screen": {
                 "title": "Profile",
-                "image": "/assets/profile/p1.png",
+                "image": "/assets/screens/profile.png",
                 "component": "Profile"
             },
             "header": {
@@ -445,12 +447,17 @@
         "Screen": [
             {
                 "title": "Profile",
-                "image": "/assets/profile/p1.png",
+                "image": "/assets/screens/profile.png",
                 "component": "Profile"
             },
             {
                 "title": "Profile",
-                "image": "/assets/profile/p2.png",
+                "image": "/assets/screens/profile2.png",
+                "component": "Profile"
+            },
+            {
+                "title": "Profile",
+                "image": "/assets/profile/p3.png",
                 "component": "Profile"
             }
         ],
@@ -514,7 +521,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -526,7 +533,7 @@
         "current_confi": {
             "screen": {
                 "title": "Wishlist",
-                "image": "/assets/wishlist/w1.png",
+                "image": "/assets/screens/wishlist.png",
                 "component": "Wishlist"
             },
             "header": {
@@ -543,12 +550,12 @@
         "Screen": [
             {
                 "title": "Wishlist",
-                "image": "/assets/wishlist/w1.png",
+                "image": "/assets/screens/wishlist.png",
                 "component": "Wishlist"
             },
             {
                 "title": "Wishlist",
-                "image": "/assets/wishlist/w2.png",
+                "image": "/assets/wishlist/w3.png",
                 "component": "Wishlist"
             }
         ],
@@ -563,7 +570,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]

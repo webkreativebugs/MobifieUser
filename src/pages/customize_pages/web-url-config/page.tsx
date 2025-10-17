@@ -1,7 +1,7 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
 import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField" 
-import { WebViewNavigationURL } from "../../../data/CustomizeData/ClientConfiguration"
+import { WebViewNavigationURL } from "../../../data/CustomizeData/ApiConfig"
 import { useState } from "react"
 
 type ConfigFormKeys =
