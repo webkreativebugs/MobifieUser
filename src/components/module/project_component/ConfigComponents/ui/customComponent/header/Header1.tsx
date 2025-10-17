@@ -2,6 +2,8 @@
 import { ScreenConfigInterface } from "../../../../../../../data/interface/data.interface";
 
 function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
+  const header = screenConfig.current_confi.header;
+
   return (
     <header className="shadow mt-8 h-12 w-full overflow-hidden">
       <div className="grid grid-cols-[auto_1fr_auto] items-center w-full max-w-full h-full px-3 py-4 overflow-hidden">
@@ -46,6 +48,15 @@ function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
             </span>
           )}
         </div>
+
+        {/* Center Text */}
+        {header?.center?.text?.isActive && (
+          <div className="flex-1 text-center">
+            <span className="text-lg font-semibold">
+              {header.center.text.value}
+            </span>
+          </div>
+        )}
 
         {/* Right Icons */}
         <div className="flex items-center gap-3 overflow-hidden flex-shrink-0">
