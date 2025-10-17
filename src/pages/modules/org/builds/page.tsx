@@ -238,7 +238,7 @@ function page() {
                         Download
                       </button>
                       <button
-                        onClick={() => navigate("/details")}
+                        onClick={() => navigate("/build/details")}
                         className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
                       >
                         see More

@@ -1,9 +1,297 @@
-import React from "react";
+import jsPDF from "jspdf";
+import Navbar from "../../../../components/common_component/Navbar";
 
-function page({ route }: { route: { params: any } }) {
-  // const {} = route.params;
-  // console.log(route.params);
-  return <div className="text-black">fghjtuiyuol</div>;
-}
+const page = () => {
+  // Dummy Data
+  const customer = {
+    name: "John Doe",
+    email: "johndoe@example.com",
+    phone: "+91 9876543210",
+    address: "123, Main Street, City, State, 123456",
+  };
+
+  const invoice = {
+    id: "INV-1001",
+    date: "2025-10-17",
+  };
+
+  const items = [
+    { name: "Product A", quantity: 2, price: 500 },
+    { name: "Product B", quantity: 1, price: 1200 },
+    { name: "Service C", quantity: 3, price: 300 },
+  ];
+
+  const subtotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  const taxRate = 0.18; // 18% GST
+  const tax = subtotal * taxRate;
+  const total = subtotal + tax;
+
+  // Function to format currency
+  const formatCurrency = (amount: any) => `₹${amount.toFixed(2)}`;
+
+  // Generate PDF - All logic restored and finalized
+  const handleDownloadPDF = () => {
+    // eslint-disable-next-line no-undef
+    const doc = new jsPDF();
+    let currentY = 20;
+
+    // --- Header ---
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(24);
+    doc.setTextColor(40, 40, 40);
+    doc.text("INVOICE", 14, currentY);
+    currentY += 10;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text(`Invoice ID: ${invoice.id}`, 14, currentY);
+    doc.text(`Date: ${invoice.date}`, 14, currentY + 5);
+    currentY += 15;
+
+    // --- Customer Details ---
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Billed To:", 14, currentY);
+    currentY += 5;
+
+    doc.setFontSize(10);
+    doc.setTextColor(50, 50, 50);
+    doc.text(`Name: ${customer.name}`, 14, currentY + 5);
+    doc.text(`Email: ${customer.email}`, 14, currentY + 10);
+    doc.text(`Phone: ${customer.phone}`, 14, currentY + 15);
+    doc.text(`Address: ${customer.address}`, 14, currentY + 20);
+    currentY += 30; // Move down after customer details
+
+    // --- Table of items (using autoTable) ---
+    const tableData = items.map((item) => [
+      item.name,
+      item.quantity.toString(),
+      formatCurrency(item.price),
+      formatCurrency(item.price * item.quantity),
+    ]);
+
+    // Apply autoTable
+    // eslint-disable-next-line no-undef
+    autoTable(doc, {
+      startY: currentY,
+      head: [["Item", "Quantity", "Price", "Total"]],
+      body: tableData,
+      theme: "grid",
+      styles: { fontSize: 10, cellPadding: 3 },
+      headStyles: {
+        fillColor: [30, 64, 175], // Blue header
+        textColor: 255,
+        fontStyle: "bold",
+      },
+    });
+
+    // Get the final Y position after the table
+    const finalY = doc.lastAutoTable.finalY;
+
+    // --- Summary ---
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+
+    const summaryX = 150; // Align summary to the right side of the page
+
+    // Subtotal
+    doc.text(`Subtotal:`, summaryX, finalY + 10, { align: "right" });
+    doc.text(formatCurrency(subtotal), summaryX + 40, finalY + 10, {
+      align: "right",
+    });
+
+    // Tax
+    doc.text(`Tax (${taxRate * 100}% GST):`, summaryX, finalY + 16, {
+      align: "right",
+    });
+    doc.text(formatCurrency(tax), summaryX + 40, finalY + 16, {
+      align: "right",
+    });
+
+    // Total (Bold and larger)
+    doc.setDrawColor(0);
+    doc.setLineWidth(0.5);
+    doc.line(summaryX - 50, finalY + 18, 195, finalY + 18); // Horizontal line separator
+
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Total Due:`, summaryX, finalY + 24, { align: "right" });
+    doc.text(formatCurrency(total), summaryX + 40, finalY + 24, {
+      align: "right",
+    });
+
+    doc.save(`Invoice-${invoice.id}.pdf`);
+  };
+
+  // Print functionality
+  const handlePrint = () => {
+    window.print();
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-screen  p-6 md:p-10 font-sans mt-14 mx-40">
+        {/* Action Buttons - HIDDEN ON PRINT */}
+
+        {/* Invoice Card */}
+        <div className="card-bg p-8 rounded-2xl shadow-2xl border border-gray-200">
+          {/* Page Header */}
+          <div className="flex justify-between items-center border-b pb-4 mb-6">
+            <div>
+              <h1 className="text-4xl font-extrabold text-blue-600">INVOICE</h1>
+              <p className="text-gray-500 mt-2 text-sm">
+                Invoice for services rendered.
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-sm font-semibold text-gray-700">
+                Invoice #<span className="text-blue-600">{invoice.id}</span>
+              </p>
+              <p className="text-sm text-gray-500">Date: {invoice.date}</p>
+            </div>
+          </div>
+
+          {/* Customer Info */}
+          <div className="mb-8">
+            <h2 className="text-lg font-bold text-gray-700 mb-3 border-b-2 border-indigo-100 inline-block pb-1">
+              Billed To
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              <div>
+                <p className="text-gray-600 font-medium">Name</p>
+                <p className="text-gray-800 font-semibold">{customer.name}</p>
+              </div>
+              <div>
+                <p className="text-gray-600 font-medium">Email</p>
+                <p className="text-blue-600">{customer.email}</p>
+              </div>
+              <div>
+                <p className="text-gray-600 font-medium">Phone</p>
+                <p className="text-gray-800">{customer.phone}</p>
+              </div>
+              <div className="md:col-span-1 sm:col-span-2">
+                <p className="text-gray-600 font-medium">Address</p>
+                <p className="text-gray-800">{customer.address}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Items Table */}
+          <div className="mb-8 overflow-x-auto rounded-lg border border-gray-200">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-blue-600 text-white uppercase text-sm font-bold">
+                  <th className="p-4 border-r border-blue-700">Item</th>
+                  <th className="p-4 border-r border-blue-700 text-center w-24">
+                    Qty
+                  </th>
+                  <th className="p-4 border-r border-blue-700 text-right w-32">
+                    Price
+                  </th>
+                  <th className="p-4 text-right w-32">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item, idx) => (
+                  <tr
+                    key={idx}
+                    className={`text-gray-700 hover:bg-gray-50 ${
+                      idx % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    }`}
+                  >
+                    <td className="p-4 border-r border-gray-200">
+                      {item.name}
+                    </td>
+                    <td className="p-4 border-r border-gray-200 text-center">
+                      {item.quantity}
+                    </td>
+                    <td className="p-4 border-r border-gray-200 text-right">
+                      {formatCurrency(item.price)}
+                    </td>
+                    <td className="p-4 text-right font-medium">
+                      {formatCurrency(item.quantity * item.price)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Summary */}
+          <div className="flex justify-end">
+            <div className="w-full sm:w-80">
+              <div className="text-sm">
+                <div className="flex justify-between mb-2">
+                  <span className="font-medium text-gray-600">Subtotal:</span>
+                  <span className="text-gray-800">
+                    {formatCurrency(subtotal)}
+                  </span>
+                </div>
+                <div className="flex justify-between mb-2">
+                  <span className="font-medium text-gray-600">
+                    Tax ({taxRate * 100}% GST):
+                  </span>
+                  <span className="text-gray-800">{formatCurrency(tax)}</span>
+                </div>
+              </div>
+              <div className="flex justify-between border-t border-blue-600 pt-4 mt-4 font-bold text-lg text-gray-900">
+                <span>TOTAL DUE:</span>
+                <span className="text-blue-600">{formatCurrency(total)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <div className="mt-10 pt-4 border-t text-sm text-gray-500">
+            <p>
+              Thank you for your business. Please remit payment within 30 days.
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-end gap-4 mt-6 print:hidden ">
+          <button
+            onClick={handlePrint}
+            className="px-6 py-2 rounded-xl bg-gray-700 text-white font-semibold shadow-md hover:bg-gray-600 transition-all flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5 4v3H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm4 7a1 1 0 11-2 0 1 1 0 012 0zm0-4a1 1 0 11-2 0 1 1 0 012 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+            Print
+          </button>
+          <button
+            onClick={handleDownloadPDF}
+            className="px-6 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition-all flex items-center gap-2 transform hover:scale-[1.02]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L10 11.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+              <path d="M10 2a1 1 0 011 1v7h-2V3a1 1 0 011-1z" />
+            </svg>
+            Download PDF
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default page;

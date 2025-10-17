@@ -7,6 +7,7 @@ import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import Navbar from "../../../components/common_component/Navbar";
+import { useDraftScreenChanges } from "../../../context/ui_context/DraftScreenContext";
 
 function page() {
   const [element, setElement] = useState(ScreenConfigdata[0].key);
@@ -14,6 +15,7 @@ function page() {
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
   const [isEdit, setIsEdit] = useState(true);
+  const { setIsDraft } = useDraftScreenChanges();
 
   // const changes = false;
   const { isActive, setIsActive } = useSaveChanges();
@@ -36,6 +38,46 @@ function page() {
       setPOpUp(true);
     }
   }, [element]);
+
+  useEffect(() => {
+    const allowNavigation = { current: false }; // tracks if user confirmed leaving
+    const hasPushedState = { current: false }; // push dummy state only once
+
+    const handlePopState = (event: PopStateEvent) => {
+      if (!isActive) {
+        // No unsaved changes → allow normal back/forward
+        return;
+      }
+
+      if (allowNavigation.current) {
+        // Navigation confirmed by user → allow it
+        allowNavigation.current = false;
+        return;
+      }
+
+      // Unsaved changes → show popup and block navigation
+      setPOpUp(true);
+
+      // Only push dummy state once to prevent infinite loop
+      if (!hasPushedState.current) {
+        window.history.pushState(null, "", window.location.href);
+        hasPushedState.current = true;
+      }
+    };
+
+    // Push initial dummy state only once
+    if (isActive && !hasPushedState.current) {
+      window.history.pushState(null, "", window.location.href);
+      hasPushedState.current = true;
+    }
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [isActive, setPOpUp]);
+
   return (
     <div className="w-full h-screen overflow-y-scroll hide-scrollbar px-5 ">
       <Navbar />
@@ -80,6 +122,7 @@ function page() {
           <div
             onClick={(e) => {
               e.stopPropagation();
+              // setIsDraft(true);
             }}
             className="w-1/4 h-fit rounded-2xl shadow-lg bg-primary p-6 mb-14 text-white"
           >
@@ -93,10 +136,22 @@ function page() {
                   setIsPOpUpdata(true);
                   setIsActive(false);
                   setPOpUp(false);
+                  // setIsDraft(true);
                 }}
                 className="px-4 py-2 rounded-lg border text-black border-black hover:bg-white hover:text-primary transition-all"
               >
                 Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setIsPOpUpdata(true);
+                  setIsActive(false);
+                  setPOpUp(false);
+                  setIsDraft(true);
+                }}
+                className="px-4 py-2 rounded-lg bg-black text-primary font-semibold hover:bg-opacity-90 shadow-md transition-all"
+              >
+                Save Draft
               </button>
 
               <button
@@ -104,6 +159,7 @@ function page() {
                   setIsPOpUpdata(true);
                   setIsActive(false);
                   setPOpUp(false);
+                  setIsDraft(false);
                 }}
                 className="px-4 py-2 rounded-lg bg-black text-primary font-semibold hover:bg-opacity-90 shadow-md transition-all"
               >

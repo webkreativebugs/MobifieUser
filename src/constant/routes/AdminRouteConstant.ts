@@ -113,7 +113,14 @@ export const admin =[
     },
     {
     
-         route:"/details",
+         route:"/build/details",
+        component: Details,
+        additional:""
+    
+}     ,
+    {
+    
+         route:"/billing/details",
         component: Details,
         additional:""
     
@@ -128,6 +135,13 @@ export const admin =[
     {
     
          route:"/project/edit-screen-config",
+        component: NewScreenConfig,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/draft-screen-config",
         component: NewScreenConfig,
         additional:""
     

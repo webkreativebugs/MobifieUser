@@ -2,15 +2,16 @@ import CustomizeMask from "../../../components/module/project_component/ConfigCo
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 
 import { useEffect, useState } from "react";
-import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
-import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
-import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
+// import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
+// import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
+// import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 import { Link } from "react-router-dom";
 import { useTabContext } from "../../../context/org_context/TabContext";
+import { useDraftScreenChanges } from "../../../context/ui_context/DraftScreenContext";
 // const { isEdit, setIsEdit } = useTabContext();
 
 const details = [
@@ -20,6 +21,7 @@ const details = [
 ];
 
 const page = () => {
+  const { isDraft } = useDraftScreenChanges();
   const { isEdit, setIsEdit } = useTabContext();
   const [element, setElement] = useState(ScreenConfigdata[0].key);
   console.log(ScreenConfigdata[0].key);
@@ -109,13 +111,25 @@ const page = () => {
               <h1 className="text-xl  font-semibold  ">Screen Configuration</h1>{" "}
               <div>
                 {" "}
-                <button className="border-black border px-4 py-1 rounded-md">
-                  <Link
-                    to="/project/edit-screen-config"
-                    state={{ projectId: 42 }}
-                  >
-                    Add New
-                  </Link>
+                <button
+                  onClick={() => setIsEdit(true)}
+                  className="border-black border px-4 py-1 rounded-md"
+                >
+                  {isDraft ? (
+                    <Link
+                      to="/project/draft-screen-config"
+                      state={{ projectId: 42 }}
+                    >
+                      Edit Draft
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/project/edit-screen-config"
+                      state={{ projectId: 42 }}
+                    >
+                      Add New
+                    </Link>
+                  )}
                 </button>
               </div>
             </div>

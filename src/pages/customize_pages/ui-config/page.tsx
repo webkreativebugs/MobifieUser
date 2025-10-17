@@ -65,7 +65,7 @@ const page = () => {
           setIsEdit={setIsEdit}
         />
       </div>
-      {popUp && isActive && (
+      {/* {popUp && isActive && (
         <div
           onClick={() => {
             setPOpUp(false);
@@ -112,7 +112,7 @@ const page = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </CustomizeMask>
   );
 };

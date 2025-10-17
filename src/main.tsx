@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/auth_context/AuthContext.tsx";
 import { OrganizationProvider } from "./context/org_context/OrganizationContext.tsx";
 import { LoaderProvider } from "./context/loader_context/LoaderContext.tsx";
 import { SaveChangesProvider } from "./context/ui_context/SaveChanges.tsx";
+import { DraftScreenChanges } from "./context/ui_context/DraftScreenContext.tsx";
 import { TabContextProvider } from "./context/org_context/TabContext.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <LoaderProvider>
               <SaveChangesProvider>
                 <TabContextProvider>
-                  <App />
+                  <DraftScreenChanges>
+                    <App />
+                  </DraftScreenChanges>
                 </TabContextProvider>
               </SaveChangesProvider>
             </LoaderProvider>
