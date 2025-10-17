@@ -1,10 +1,10 @@
-import { FaFolderOpen } from "react-icons/fa"
-import { MdNotificationsActive } from "react-icons/md"
+// import { FaFolderOpen } from "react-icons/fa"
+// import { MdNotificationsActive } from "react-icons/md"
 import { HiOutlineKey } from "react-icons/hi"
 import { FiActivity } from "react-icons/fi"
 import { FiSettings } from "react-icons/fi"
-import { MdSupportAgent } from "react-icons/md"
-import { FaMoneyBillWave } from "react-icons/fa"
+// import { MdSupportAgent } from "react-icons/md"
+// import { FaMoneyBillWave } from "react-icons/fa"
 import { FiHelpCircle } from "react-icons/fi"
 import { FaCogs } from "react-icons/fa"; // App config (gears)
 import { GoBell } from "react-icons/go";
@@ -13,7 +13,7 @@ import { HiOutlineSupport } from "react-icons/hi";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { FaRegFolderOpen } from "react-icons/fa";
 import { MdOutlineDesignServices } from "react-icons/md"; // UI config (design tools)
-import { MdScreenShare } from "react-icons/md"; // Screen config (screen display)
+// import { MdScreenShare } from "react-icons/md"; 
 import {DashboardTypeEnums} from "../../enum/DashboardLinks"
 import { CustomizeDashboardTypeEnums } from "../../enum/DashboardLinks"
 

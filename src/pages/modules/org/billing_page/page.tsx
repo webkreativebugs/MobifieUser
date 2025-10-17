@@ -4,7 +4,7 @@ import { RiMoreLine } from "react-icons/ri";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { ColumnConfig } from "../../../../components/common_component/dynamic_table/types";
-import DynamicTable from "../../../../components/common_component/dynamic_table";
+// import DynamicTable from "../../../../components/common_component/dynamic_table";
 import { useState } from "react";
 const invoices = [
   { invoicenumber: "INV001", date: "2025-10-07", status: "Paid" },
