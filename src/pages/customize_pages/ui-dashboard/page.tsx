@@ -2,9 +2,6 @@ import CustomizeMask from "../../../components/module/project_component/ConfigCo
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 
 import { useEffect, useState } from "react";
-import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
-import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
-import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
@@ -20,25 +17,25 @@ const details = [
 ];
 
 const page = () => {
-  const { isEdit, setIsEdit } = useTabContext();
-  const [element, setElement] = useState(ScreenConfigdata[0].key);
+  const {  setIsEdit } = useTabContext();
+  const [element] = useState(ScreenConfigdata[0].key);
   console.log(ScreenConfigdata[0].key);
-  const [popUp, setPOpUp] = useState(false);
-  const [ispopUpdata, setIsPOpUpdata] = useState(false);
+  const [, setPOpUp] = useState(false);
+  // const [ setIsPOpUpdata] = useState(false);
 
   // const changes = false;
-  const { isActive, setIsActive } = useSaveChanges();
+  const { isActive } = useSaveChanges();
 
-  const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
-    ScreenConfigdata.find(
-      (item) => item.key === element
-    ) as ScreenConfigInterface
+  const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface | undefined>(
+    ScreenConfigdata.find((item) => item.key === element) as unknown as ScreenConfigInterface | undefined
   );
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
     if (screenData) {
-      setscreenConfig(screenData as ScreenConfigInterface);
+      setscreenConfig(screenData as unknown as ScreenConfigInterface);
+      console.log(screenConfig);
+      
     }
   }, [element]);
 
@@ -46,7 +43,7 @@ const page = () => {
     if (isActive) {
       setPOpUp(true);
     }
-  }, [element]);
+  }, [isActive]);
 
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.DASHBOARD}>

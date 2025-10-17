@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField";
-import { ShopifyConfig } from "../../../data/CustomizeData/ClientConfiguration";
+import { ShopifyConfig } from "../../../data/CustomizeData/ApiConfig";
 import {
   ApiConfigAuth,
   ApiConfigRequest,
-} from "../../../data/CustomizeData/ClientConfiguration";
+} from "../../../data/CustomizeData/ApiConfig";
 import Navbar from "../../../components/common_component/Navbar";
 interface ConfigFormData {
   [key: string]: string;
 }
 
 function page() {
-  const [formData, setFormData] = useState<ConfigFormData>(
+  const [formData, ] = useState<ConfigFormData>(
     ShopifyConfig.reduce((acc, item) => ({ ...acc, [item.key]: "" }), {})
   );
 

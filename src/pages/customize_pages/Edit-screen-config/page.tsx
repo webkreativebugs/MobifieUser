@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
@@ -19,15 +19,15 @@ function page() {
   const { isActive, setIsActive } = useSaveChanges();
 
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
-    ScreenConfigdata.find(
+    (ScreenConfigdata.find(
       (item) => item.key === element
-    ) as ScreenConfigInterface
+    ) as unknown) as ScreenConfigInterface
   );
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
     if (screenData) {
-      setscreenConfig(screenData as ScreenConfigInterface);
+      setscreenConfig(screenData as unknown as ScreenConfigInterface);
     }
   }, [element]);
 
