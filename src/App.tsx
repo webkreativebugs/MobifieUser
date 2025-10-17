@@ -16,7 +16,7 @@ export default function App() {
   if (body) {
     body.style.overflow = "hidden";
   }
-  const { theme, secondaryColor } = useTheme();
+  const {  secondaryColor } = useTheme();
   const { role, onRoleChange } = useauth();
   const [authError, setAuthError] = useState(false);
   useEffect(() => {

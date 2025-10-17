@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import { FaFlagUsa } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import { currencies } from "../../../../../data/CustomizeData/ClientConfiguration";
+import { currencies } from "../../../../../data/CustomizeData/ApiConfig";
 import ReactCountryFlag from "react-country-flag";
 import { Dispatch, SetStateAction } from "react";
  interface SELECT{
