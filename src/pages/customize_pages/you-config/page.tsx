@@ -1,7 +1,7 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask";
 import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 import { useState } from "react";
-import { YouClientConfiguration } from "../../../data/CustomizeData/ClientConfiguration";
+import { YouClientConfiguration } from "../../../data/CustomizeData/ApiConfig";
 import CustomComponents from "../../../components/module/project_component/ConfigComponents/app/CustomComponents";
 import CustomizedPopup from "../../../components/module/project_component/ConfigComponents/app/CustomizedPopup";
 import { YouConfigType } from "../../../../enum/YouConfig.enum";

@@ -9,6 +9,7 @@ import { OrganizationProvider } from "./context/org_context/OrganizationContext.
 import { LoaderProvider } from "./context/loader_context/LoaderContext.tsx";
 import { UiContextProvider } from "./context/ui_context/UiContext.tsx";
 import { SaveChangesProvider } from "./context/ui_context/SaveChanges.tsx";
+import { TabContextProvider } from "./context/org_context/TabContext.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -16,11 +17,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <OrganizationProvider>
           <AppProvider>
             <LoaderProvider>
-              <UiContextProvider>
-                <SaveChangesProvider>
+              <SaveChangesProvider>
+                <TabContextProvider>
                   <App />
-                </SaveChangesProvider>
-              </UiContextProvider>
+                </TabContextProvider>
+              </SaveChangesProvider>
             </LoaderProvider>
           </AppProvider>
         </OrganizationProvider>

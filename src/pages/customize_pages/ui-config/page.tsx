@@ -14,20 +14,19 @@ const page = () => {
   console.log(ScreenConfigdata[0].key);
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   // const changes = false;
   const { isActive, setIsActive } = useSaveChanges();
 
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
-    ScreenConfigdata.find(
-      (item) => item.key === element
-    ) as ScreenConfigInterface
+    ScreenConfigdata.find((item) => item.key === element) as unknown as ScreenConfigInterface
   );
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
     if (screenData) {
-      setscreenConfig(screenData as ScreenConfigInterface);
+      setscreenConfig(screenData as unknown as ScreenConfigInterface);
     }
   }, [element]);
 
@@ -38,7 +37,7 @@ const page = () => {
   }, [element]);
 
   return (
-    <CustomizeMask name={CustomizeDashboardTypeEnums.UI}>
+    <CustomizeMask name={CustomizeDashboardTypeEnums.SCREEN}>
       <div className=" flex  h-[85vh]">
         <UiConfigSidebar
           element={element}
@@ -47,12 +46,22 @@ const page = () => {
           setIsPOpUpdata={setIsPOpUpdata}
           setPOpUp={setPOpUp}
           popUp={popUp}
+          isEdit={isEdit}
         />
         {/* <CustomizeSidebar active="xfbhfh" /> */}
-        <Ui screenConfig={screenConfig} setscreenConfig={setscreenConfig} />
+
+        <Ui
+          screenConfig={screenConfig}
+          setscreenConfig={setscreenConfig}
+          isEdit={isEdit}
+        />
 
         {/* Remove 'main' prop if PreviewComponent does not accept it */}
-        <PreviewComponent screenConfig={screenConfig} />
+        <PreviewComponent
+          screenConfig={screenConfig}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+        />
       </div>
       {popUp && isActive && (
         <div

@@ -1,7 +1,7 @@
 import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
 import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
 import ApiConfigInputField from "../../../components/module/project_component/ConfigComponents/app/ApiConfigInputField"
-import { ShopifyConfig } from "../../../data/CustomizeData/ClientConfiguration"
+import { ShopifyConfig } from "../../../data/CustomizeData/ApiConfig"
 import { useState } from "react"
 
 interface ConfigFormData {
