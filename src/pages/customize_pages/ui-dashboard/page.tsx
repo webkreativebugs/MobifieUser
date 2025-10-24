@@ -12,6 +12,7 @@ import HeadingMask from "../../../components/common_component/layered_components
 import { Link } from "react-router-dom";
 import { useTabContext } from "../../../context/org_context/TabContext";
 import { useDraftScreenChanges } from "../../../context/ui_context/DraftScreenContext";
+import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 // const { isEdit, setIsEdit } = useTabContext();
 
 const details = [
@@ -30,6 +31,7 @@ const page = () => {
 
   // const changes = false;
   const { isActive, setIsActive } = useSaveChanges();
+  const { drafts } = useDraftScreen();
 
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
     ScreenConfigdata.find(
@@ -115,17 +117,17 @@ const page = () => {
                   onClick={() => setIsEdit(true)}
                   className="border-black border px-4 py-1 rounded-md"
                 >
-                  {isDraft ? (
+                  {drafts.length > 0 ? (
                     <Link
                       to="/project/draft-screen-config"
-                      state={{ projectId: 42 }}
+                      state={{ key: "Draft-Screen" }}
                     >
                       Edit Draft
                     </Link>
                   ) : (
                     <Link
                       to="/project/edit-screen-config"
-                      state={{ projectId: 42 }}
+                      state={{ key: "New-Screen" }}
                     >
                       Add New
                     </Link>

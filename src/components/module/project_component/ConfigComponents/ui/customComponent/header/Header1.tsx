@@ -1,8 +1,8 @@
 import React from "react";
-import { ScreenConfigInterface } from "../../../../../../../data/interface/data.interface";
+import { HeaderConfigItem } from "../../../../../../../data/interface/data.interface";
 
-function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
-  const header = screenConfig.current_confi.header;
+function Header1({ header }: { header: HeaderConfigItem }) {
+  // const header = screenConfig.current_confi.header;
 
   return (
     <header className="shadow mt-8 h-12 w-full overflow-hidden">

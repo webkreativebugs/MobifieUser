@@ -24,6 +24,9 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
     navigate("/login-with-password", { replace: true });
     onRoleChange("");
   };
+  const hasSublinks = links.some(
+    (section) => section.sublink && section.sublink.links?.length > 0
+  );
 
   return (
     <div
@@ -32,9 +35,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
       }`}
     >
       <div className="flex flex-col justify-between w-full h-full ">
-        {/* ------------------ TOP SECTION ------------------ */}
         <div>
-          {/* ---------- Logo ---------- */}
           <div className="flex items-center justify-center border-b-2 py-2.5">
             <Link
               to="/"
@@ -53,7 +54,6 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
           <div className="p-4 pt-5 space-y-1">
             {links.map((section) => (
               <div key={section.name}>
-                {/* Main Link */}
                 <NavLink
                   to={section.link}
                   onClick={() => setActiveLinkName(section.name)}
@@ -119,15 +119,25 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
           </div>
         </div>
 
-        {/* ------------------ BOTTOM SECTION ------------------ */}
         <div className="  py-4">
-          <button
-            className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
-            onClick={handleClick}
-          >
-            <FiLogOut className="text-xl" />
-            {show && "Logout"}
-          </button>
+          {hasSublinks ? (
+            <Link
+              to="/project"
+              className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+            >
+              <FiLogOut className="text-xl" />
+              {show && "Exit"}
+            </Link>
+          ) : (
+            <button
+              className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+              onClick={handleClick}
+            >
+              <FiLogOut className="text-xl" />
+              {show && "Logout"}
+            </button>
+          )}
+
           <button
             className="normal-link flex items-center gap-3 ml-5 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
             onClick={() => setShow(!show)}
