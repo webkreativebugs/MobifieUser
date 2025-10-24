@@ -5,6 +5,8 @@ import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import { themes } from "../../../../../data/ThemeSection";
 import ThemePicker from "../../../../../components/module/org_component/theme_component/ThemePicker";
 import { useTheme } from "../../../../../context/AppContext";
+import { useDraftScreen } from "../../../../../context/ui_context/DraftScreenContext";
+import { DiVim } from "react-icons/di";
 
 type UiConfigSidebarProps = {
   element: string;
@@ -30,10 +32,11 @@ function UiConfigSidebar({
   const { isActive, setIsActive } = useSaveChanges();
   const [themePopup, setThemePopup] = useState(false);
   const { theme, secondaryColor } = useTheme();
+  const { drafts } = useDraftScreen();
 
   const handleClick = (elem: string) => {
     setTepElement(elem);
-    // console.log(isActive);
+    console.log(elem);
     if (isActive) {
       setPOpUp(true);
     }
@@ -53,17 +56,32 @@ function UiConfigSidebar({
         <div className="  xl:flex xl:flex-col  overflow-auto hide-scrollbar   w-full    pb-10 h-full    ">
           <h1 className="text-xl font-semibold m-4 mb-6 px-1">Select Screen</h1>
           <div className="p-5 pt-0 w-full relative mt-5 ">
-            {ScreenConfig.map((item, index) => (
-              <p
-                className={`text-lg  mb-4 cursor-pointer ${
-                  item.key === element && "font-semibold"
-                } ${item.key === "home" && element === "" && "font-semibold"}`}
-                key={index}
-                onClick={() => handleClick(item.key)}
-              >
-                {item.title}
-              </p>
-            ))}
+            {ScreenConfig.map((item, index) => {
+              const hasDraft = drafts.find((d) => d.screenName === item.key);
+              const isActive = item.key === element;
+
+              return (
+                <button
+                  key={index}
+                  onClick={() => handleClick(item.key)}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors duration-200 w-full text-left ${
+                    isActive
+                      ? "font-semibold bg-[#ffffff22]"
+                      : "hover:bg-[#ffffff11]"
+                  }`}
+                >
+                  {/* Draft Indicator: reserve space even if dot is not present */}
+                  <span className="w-3 h-3 flex-shrink-0">
+                    {hasDraft && (
+                      <span className="bg-red-500 h-3 w-3 rounded-full block"></span>
+                    )}
+                  </span>
+
+                  {/* Screen Title */}
+                  <span className="text-lg">{item.title}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* <div>
