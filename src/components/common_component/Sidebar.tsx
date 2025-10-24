@@ -27,7 +27,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   return (
     <div
       className={`hidden xl:flex h-screen z-50 bg-primary transition-all duration-300 ${
-        show ? "w-1/6" : "w-[80px]"
+        show ? "w-1/6" : "w-[120px]"
       }`}
     >
       <div className="flex flex-col justify-between w-full h-full shadow-xl">
@@ -48,7 +48,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
             </Link>
           </div>
 
-          {/* ---------- Links ---------- */}
+          {/* ---------- Links ---dddd------- */}
           <div className="p-4 pt-5 space-y-1">
             {links.map((section) => (
               <div key={section.name}>
@@ -64,7 +64,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                     }`
                   }
                 >
-                  <span className="theme-color text-lg min-w-[24px] flex justify-center">
+                  <span className="theme-color text-lg min-w-[24px]  flex justify-center">
                     <section.icon />
                   </span>
                   {show && (
@@ -74,10 +74,15 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
 
                 {/* ---------- Sublinks ---------- */}
                 {section.sublink && (
-                  <div className="flex flex-col pl-8 mt-2 space-y-1">
-                    <h1 className="text-[15px] font-semibold mb-1 tracking-wide">
-                      {section.sublink.title.toUpperCase()}
-                    </h1>
+                  <div className={`flex flex-col mt-2 space-y-1 ${show?'pl-6':'pl-3'}`}>
+                    <div className="flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200 ">
+                     <span className="theme-color text-lg min-w-[24px] flex justify-center">
+                    <section.sublink.sublinkIcon />
+                  </span>
+                  {show && (
+                    <span className="capitalize text-lg font-bold">{section.sublink.title}</span>
+                  )}
+                  </div>
                     {section.sublink.links.map((item) => (
                       <NavLink
                         to={item.link}

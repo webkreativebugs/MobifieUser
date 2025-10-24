@@ -14,6 +14,7 @@ export interface SidebarLink {
   sublink?: {
     title: string;
     links: SidebarLink[];
+    sublinkIcon:IconType
   };
 }
 

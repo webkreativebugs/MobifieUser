@@ -33,7 +33,7 @@ export const AdminDashboardLinks: SidebarLink[] = [
 
 export const ConfigDashboardLinks :SidebarLink[] =[
   { name: CustomizeDashboardTypeEnums.DASHBOARD, icon: MdOutlineSpaceDashboard, link: "/project/dashboard",dropdown:false ,
-    sublink:{ title:"Configuration", links:[{ name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/project/api-config",dropdown:false },
+    sublink:{ title:"Configuration",sublinkIcon:FiSettings, links:[{ name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/project/api-config",dropdown:false },
   { name: CustomizeDashboardTypeEnums.SCREEN , icon: MdOutlineDesignServices, link: "/project/ui-config",dropdown:true },]} },
   // { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/project/api-config",dropdown:false },
   // { name: CustomizeDashboardTypeEnums.SCREEN , icon: MdOutlineDesignServices, link: "/project/ui-config",dropdown:true },
