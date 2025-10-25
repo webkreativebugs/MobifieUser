@@ -14,6 +14,7 @@ import { useTabContext } from "../../../context/org_context/TabContext";
 import { useDraftScreenChanges } from "../../../context/ui_context/DraftScreenContext";
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 // const { isEdit, setIsEdit } = useTabContext();
+import { ScreenType } from "../../../../enum/AccessType.enum";
 
 const details = [
   { title: "Version Publish", value: "v1.1" },
@@ -23,7 +24,7 @@ const details = [
 
 const page = () => {
   const { isDraft } = useDraftScreenChanges();
-  const { isEdit, setIsEdit } = useTabContext();
+  // const { isEdit, setIsEdit } = useTabContext();
   const [element, setElement] = useState(ScreenConfigdata[0].key);
   console.log(ScreenConfigdata[0].key);
   const [popUp, setPOpUp] = useState(false);
@@ -77,74 +78,6 @@ const page = () => {
               </p>
             </div>
           ))}
-        </div>
-        <div className="w-full flex gap-8">
-          <div className="flex flex-col w-1/2 items-center justify-center gap-6 px-8 py-6 card-bg mt-4 rounded-xl  ">
-            {/* Left side: Text + Button */}
-
-            <div className="w-full flex  justify-between  px-3">
-              <h1 className="text-xl  font-semibold  ">App Configuration</h1>{" "}
-              <div className="">
-                {" "}
-                <button
-                  onClick={() => setIsEdit(true)}
-                  className="border-black border px-4 py-1 rounded-md"
-                >
-                  <Link to="../project/api-config" state={{ type: "draft" }}>
-                    Add New
-                  </Link>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full px-3">
-              <p>
-                <span className="text-md font-semibold">Last Edit :</span>{" "}
-                2025-05-14
-              </p>
-              <p>
-                <span className="text-md font-semibold">Edit by :</span> Anubhav
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col w-1/2 items-center justify-center gap-6 px-8 py-6 card-bg mt-4 rounded-xl  ">
-            {/* Left side: Text + Button */}
-
-            <div className="w-full flex  justify-between  px-3">
-              <h1 className="text-xl  font-semibold  ">Screen Configuration</h1>{" "}
-              <div>
-                {" "}
-                <button
-                  onClick={() => setIsEdit(true)}
-                  className="border-black border px-4 py-1 rounded-md"
-                >
-                  {drafts.length > 0 ? (
-                    <Link
-                      to="/project/draft-screen-config"
-                      state={{ key: "Draft-Screen" }}
-                    >
-                      Edit Draft
-                    </Link>
-                  ) : (
-                    <Link
-                      to="/project/edit-screen-config"
-                      state={{ key: "New-Screen" }}
-                    >
-                      Add New
-                    </Link>
-                  )}
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full px-3">
-              <p>
-                <span className="text-md font-semibold">Last Edit :</span>{" "}
-                2025-05-14
-              </p>
-              <p>
-                <span className="text-md font-semibold">Edit by :</span> Anubhav
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </CustomizeMask>

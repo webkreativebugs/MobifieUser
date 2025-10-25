@@ -19,7 +19,7 @@ function PreviewComponent({
   setIsEdit,
 }: PreviewComponentProps) {
   const [android, setAndroid] = useState(false);
-  const { isActive, setIsActive } = useSaveChanges();
+  // const { isActive, setIsActive } = useSaveChanges();
   const { theme } = useTheme();
   console.log(currentConfig);
 
@@ -31,7 +31,11 @@ function PreviewComponent({
       {/* Title + Toggle */}
       <div className="flex items-center justify-between mx-6 mb-2">
         <h1 className="text-3xl font-bold">Preview</h1>
-        {isEdit ? (
+        {/* {!isEdit && (
+         
+        )} */}
+
+        {/* {isEdit ? (
           <button
             onClick={() => setIsActive(false)}
             className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
@@ -47,7 +51,7 @@ function PreviewComponent({
           >
             Edit Screen
           </Link>
-        )}
+        )} */}
       </div>
 
       {/* Phone Preview */}

@@ -12,6 +12,7 @@ import { useMainScreenData } from "../../../context/ui_context/mainScreenContext
 // import { MainScreenDataConfig } from "../../../context/ui_context/mainScreenContext";
 import { RxCross2 } from "react-icons/rx";
 import { useLocation } from "react-router-dom";
+import { ScreenType } from "../../../../enum/AccessType.enum";
 
 function Page() {
   const [element, setElement] = useState(ScreenConfigdata[0].key);
@@ -21,11 +22,13 @@ function Page() {
   const [tab, setTab] = useState("screen");
 
   const { isActive, setIsActive } = useSaveChanges();
-  const { mainscreenData, setMainScreenData } = useMainScreenData();
+  const { setMainScreenData } = useMainScreenData();
   const { drafts, removeDraft } = useDraftScreen();
   const location = useLocation();
-  const { key } = location.state || {};
-  console.log(key);
+  const { type } = location.state || {};
+  console.log(type);
+
+  const storedData = localStorage.getItem("mainscreenData");
 
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
     ScreenConfigdata.find(
@@ -34,11 +37,72 @@ function Page() {
   );
 
   const effectiveScreenConfig = useMemo(() => {
-    const draft = drafts.find((d) => d.screenName === screenConfig.key);
-    return draft
-      ? { ...screenConfig, current_confi: draft.draftScreen }
-      : screenConfig;
-  }, [drafts, screenConfig]);
+    try {
+      let draft: any = null;
+
+      // if screen type is "draft"
+      if (type === ScreenType.DRAFT) {
+        draft = drafts.find(
+          (d) =>
+            d.screenName === screenConfig.key ||
+            d.screenName === screenConfig.key
+        );
+
+        // if draft exists -> use it; else -> just return screenConfig as-is
+        return draft
+          ? { ...screenConfig, current_config: draft.draftScreen }
+          : screenConfig;
+      }
+
+      // if screen type is MAIN and storedData exists
+      if (type === ScreenType.MAIN && storedData) {
+        const parsed = JSON.parse(storedData);
+        if (Array.isArray(parsed)) {
+          draft = parsed.find(
+            (d: any) =>
+              d.screenName === screenConfig.key ||
+              d.screenName === screenConfig.key
+          );
+        }
+
+        return draft
+          ? { ...screenConfig, current_config: draft.draftScreen }
+          : screenConfig;
+      }
+
+      // default case: just use screenConfig as-is
+      return screenConfig;
+    } catch (err) {
+      console.error("Error computing effectiveScreenConfig:", err);
+      return screenConfig;
+    }
+  }, [type, storedData, drafts, screenConfig]);
+
+  //  const effectiveScreenConfig = useMemo(() => {
+  //   try {
+  //     let draft: any = null;
+
+  //     if (type === ScreenType.MAIN && storedData) {
+  //       const parsedData = JSON.parse(storedData);
+  //       if (Array.isArray(parsedData)) {
+  //         draft = parsedData.find(
+  //           (d: any) => d.screenName === screenConfig.key || d.screenName === screenConfig.key
+  //         );
+  //       }
+  //     } else {
+  //       draft = drafts.find(
+  //         (d) => d.screenName === screenConfig.key || d.screenName === screenConfig.key
+  //       );
+  //     }
+
+  //     return draft
+  //       ? { ...screenConfig, current_config: draft.draftScreen }
+  //       : screenConfig;
+  //   } catch (err) {
+  //     console.error("Error parsing storedData or computing effectiveScreenConfig:", err);
+  //     return screenConfig;
+  //   }
+  // }, [type, storedData, drafts, screenConfig]);
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
@@ -88,37 +152,39 @@ function Page() {
   }, [isActive]);
 
   const handleSaveChanges = () => {
-    const latestConfig =
-      drafts.find((d) => d.screenName === element)?.draftScreen ||
-      screenConfig.current_confi;
+    // 1️⃣ Safely find the draft for the current screen
+    const draft = drafts.find((d) => d.screenName === element);
+    const latestConfig = draft?.draftScreen || screenConfig.current_confi;
 
-    console.log("drafts:", drafts);
+    if (!latestConfig) {
+      console.error("No valid config found for:", element);
+      return;
+    }
 
+    // 2️⃣ Use a stable update function
     setMainScreenData((prev) => {
-      console.log("prev state:", prev);
-      console.log("element to update:", element);
+      // Check if screen exists
+      const exists = prev.some((item) => item.screenName === element);
+      if (!exists) {
+        console.warn(`Screen "${element}" not found in mainScreenData.`);
+        return prev;
+      }
 
-      const updated = prev.map((item) => {
-        if (
-          item.screenName ===
-          drafts.find((d) => d.screenName === element)?.screenName
-        ) {
-          console.log("Updating screen:", item.screenName);
-          return { ...item, current_config: latestConfig };
-        }
-        return item;
-      });
+      // Replace only that one object
+      const updated = prev.map((item) =>
+        item.screenName === element
+          ? { ...item, current_config: latestConfig }
+          : item
+      );
 
-      console.log("updated state:", updated);
-      console.log("updated state:", latestConfig);
+      console.log("✅ Updated mainScreenData:", updated);
       return updated;
     });
-    const name = drafts.find((d) => d.screenName === element)?.screenName;
-    removeDraft(name || element);
-    console.log("anubhav");
+
+    // 3️⃣ Run after updating state
+    removeDraft(element);
     setPOpUp(false);
     setIsActive(false);
-    console.log("final draft:", drafts);
   };
 
   const handleSaveDraft = () => {
@@ -149,7 +215,7 @@ function Page() {
         <div className="w-2/3 relative  overflow-y-auto hide-scrollbar overflow-x-hidden mb-0 ml-14 flex flex-col items-center mt-1 border-l ">
           <div className="w-full mt-2 pb-2 flex justify-between gap-6 border-b-2 px-4">
             <div>
-              <h1 className="text text-2xl">{key}</h1>
+              <h1 className="text text-2xl">{type}</h1>
             </div>
             <div className="flex gap-4">
               {" "}
@@ -181,6 +247,14 @@ function Page() {
               setscreenConfig={setscreenConfig}
             />
           )}
+          <div className="absolute bottom-0  w-full mb-0 flex justify-end px-8">
+            <button
+              onClick={handleSaveChanges}
+              className="px-6 py-2 rounded-lg bg-black text-white font-semibold hover:bg-opacity-90 shadow-md transition-all"
+            >
+              Save Changes
+            </button>
+          </div>
         </div>
 
         <PreviewComponent

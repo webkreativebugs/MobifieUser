@@ -4,7 +4,7 @@ import HeadingMask from "../../../../components/common_component/layered_compone
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface ColumnConfig {
   key: string;
@@ -75,7 +75,15 @@ function page() {
   return (
     <DashboardMask name={DashboardTypeEnums.BUILDS}>
       <HeadingMask name={"Builds"}>
-        <div></div>
+        <div className="px-2">
+          <Link
+            className="border-black border px-4 py-1 rounded-md font-semibold"
+            to="/build/create-new-build"
+            // state={{ type: ScreenType.MAIN }}
+          >
+            Create Build
+          </Link>{" "}
+        </div>
       </HeadingMask>
 
       <div className="w-full px-2 mt-8">

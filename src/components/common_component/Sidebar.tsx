@@ -24,9 +24,10 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
     navigate("/login-with-password", { replace: true });
     onRoleChange("");
   };
-  const hasSublinks = links.some(
-    (section) => section.sublink && section.sublink.links?.length > 0
-  );
+  // const hasSublinks = links.some(
+  //   (section) => section.sublink && section.sublink.links?.length > 0
+  // );
+  const isExit = links.some((section) => section.action === "Exit");
 
   return (
     <div
@@ -74,7 +75,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                 </NavLink>
 
                 {/* ---------- Sublinks ---------- */}
-                {section.sublink && (
+                {/* {section.sublink && (
                   <div className="flex flex-col pl-6 mt-2 space-y-1">
                     <div className="flex items-center gap-3">
                       <span className="theme-color text-lg min-w-[24px] flex justify-center">
@@ -113,14 +114,14 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                       </NavLink>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             ))}
           </div>
         </div>
 
         <div className="  py-4">
-          {hasSublinks ? (
+          {isExit ? (
             <Link
               to="/project"
               className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
