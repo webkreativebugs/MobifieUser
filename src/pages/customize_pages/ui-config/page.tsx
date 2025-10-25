@@ -5,6 +5,8 @@ import UiConfigSidebar from "../../../components/module/project_component/Config
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { CurrentConfig } from "../../../data/interface/data.interface";
+import { ScreenType } from "../../../../enum/AccessType.enum";
+import { Link } from "react-router-dom";
 
 interface CurrentScreen {
   screenName: string;
@@ -16,7 +18,7 @@ const Page = () => {
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [tab, setTab] = useState("screen");
+  // const [tab, setTab] = useState("screen");
   const [currentScreen, setCurrentScreen] = useState<CurrentScreen | null>(
     null
   );
@@ -59,10 +61,15 @@ const Page = () => {
             {currentScreen.screenName}
           </h1>
 
-          <div className="px-20 border-b-2 w-full h-10">
-            <div className="w-full mt-2 pb-2 flex justify-end gap-6">
-              <button onClick={() => setTab("screen")}>Selected Screen</button>
-            </div>
+          <div className="px-20 border-b-2 w-full h-14 flex justify-end items-center">
+            <Link
+              onClick={() => setIsEdit(true)}
+              className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
+              to="/project/edit-screen-config"
+              state={{ type: ScreenType.MAIN }}
+            >
+              Edit Screen
+            </Link>
           </div>
 
           <div className="w-full px-20 pt-4 space-y-2">

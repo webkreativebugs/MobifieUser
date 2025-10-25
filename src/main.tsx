@@ -14,6 +14,7 @@ import {
 } from "./context/ui_context/DraftScreenContext.tsx";
 import { MainScreenDataProvider } from "./context/ui_context/mainScreenContext.tsx";
 import { TabContextProvider } from "./context/org_context/TabContext.tsx";
+// localStorage.clear();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
