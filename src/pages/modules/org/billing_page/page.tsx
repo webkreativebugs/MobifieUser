@@ -137,7 +137,14 @@ function page() {
                         Download
                       </button>
                       <button
-                        onClick={() => navigate("/billing/details")}
+                        onClick={() =>
+                          navigate("/billing/details", {
+                            state: {
+                              id: "12345",
+                              name: "bill",
+                            },
+                          })
+                        }
                         className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
                       >
                         see More

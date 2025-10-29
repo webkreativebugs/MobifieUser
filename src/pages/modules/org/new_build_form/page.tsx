@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
@@ -10,6 +10,9 @@ function Page() {
     app: "",
     screen: "",
   });
+  const [config, setConfig] = useState<
+    { title: string; createddate: number; createdby: string }[]
+  >([]);
 
   const [errors, setErrors] = useState({
     date: "",
@@ -17,6 +20,14 @@ function Page() {
     app: "",
     screen: "",
   });
+
+  useEffect(() => {
+    const existingData = localStorage.getItem("configDetails");
+    if (existingData) {
+      const parsed = JSON.parse(existingData);
+      setConfig(parsed);
+    }
+  }, []);
 
   // ✅ handle change safely (checkbox + select + input)
   const handleChange = (
@@ -152,9 +163,11 @@ function Page() {
               className="border rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition bg-white w-full"
             >
               <option value="">Select App</option>
-              <option value="app1">App Config 1</option>
-              <option value="app2">App Config 2</option>
-              <option value="app3">App Config 3</option>
+              {config.slice(0, 2).map((item, idx) => (
+                <option key={idx} value="app1">
+                  {item.title}
+                </option>
+              ))}
             </select>
             {errors.app && (
               <p className="text-red-500 text-sm mt-1">{errors.app}</p>
@@ -176,9 +189,11 @@ function Page() {
               className="border rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition bg-white w-full"
             >
               <option value="">Select Screen</option>
-              <option value="home">Home Screen</option>
-              <option value="profile">Profile Screen</option>
-              <option value="settings">Settings Screen</option>
+              {config.slice(0, 2).map((item, idx) => (
+                <option key={idx} value="app1">
+                  {item.title}
+                </option>
+              ))}
             </select>
             {errors.screen && (
               <p className="text-red-500 text-sm mt-1">{errors.screen}</p>

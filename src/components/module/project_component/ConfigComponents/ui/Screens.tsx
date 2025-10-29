@@ -9,38 +9,45 @@ type UiConfigSidebarProps = {
 };
 
 function Screens({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
-  const { isActive, setIsActive } = useSaveChanges();
+  const { setIsActive } = useSaveChanges();
   const { addDraft, updateDraft, drafts } = useDraftScreen();
+  console.log(screenConfig);
+
+  const currentDraft = drafts.find((d) => d.screenName === screenConfig.key);
+
+  const effectiveConfig = currentDraft
+    ? { ...screenConfig, current_confi: currentDraft.draftScreen }
+    : screenConfig;
 
   const addNewDesign = (newUrl: string) => {
-    const updated = {
-      ...screenConfig,
-      current_confi: {
-        ...screenConfig.current_confi,
-        screen: {
-          ...screenConfig.current_confi.screen,
-          image: newUrl,
-        },
+    if (newUrl === effectiveConfig.current_confi.screen.image) return; // no change if same image
+
+    const updatedConfig: ScreenConfigInterface["current_confi"] = {
+      ...effectiveConfig.current_confi,
+      screen: {
+        ...effectiveConfig.current_confi.screen,
+        image: newUrl,
       },
     };
 
-    // 1️⃣ Update normal screenConfig
-    setscreenConfig(updated);
-    setIsActive(true);
+    setscreenConfig((prev) => ({
+      ...prev,
+      current_confi: updatedConfig,
+    }));
 
-    // 2️⃣ Update or add in drafts context using 'key' instead of 'title'
-    const existing = drafts.find((d: any) => d.screenName === screenConfig.key);
-    if (existing) {
+    if (currentDraft) {
       updateDraft(screenConfig.key, {
         screenName: screenConfig.key,
-        draftScreen: updated.current_confi,
+        draftScreen: updatedConfig,
       });
     } else {
       addDraft({
         screenName: screenConfig.key,
-        draftScreen: updated.current_confi,
+        draftScreen: updatedConfig,
       });
     }
+
+    setIsActive(true);
   };
 
   return (
@@ -52,11 +59,11 @@ function Screens({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
         >
           <button
             onClick={() => addNewDesign(screenItem.image)}
-            className="w-full block"
+            className="w-full block hover:opacity-90 transition"
           >
             <img
               src={screenItem.image}
-              alt=""
+              alt={`screen-${idx}`}
               className="w-full h-auto object-contain"
             />
           </button>

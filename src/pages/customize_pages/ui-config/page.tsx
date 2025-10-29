@@ -7,8 +7,11 @@ import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { CurrentConfig } from "../../../data/interface/data.interface";
 import { ScreenType } from "../../../../enum/AccessType.enum";
 import { Link } from "react-router-dom";
+import Header1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/header/Header1";
+import BottomTab1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/bottomTab/BottomTab1";
+import { useTheme } from "../../../context/AppContext";
 
-interface CurrentScreen {
+export interface CurrentScreen {
   screenName: string;
   current_config: CurrentConfig;
 }
@@ -18,6 +21,9 @@ const Page = () => {
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [android, setAndroid] = useState(false);
+  const { theme } = useTheme();
+
   // const [tab, setTab] = useState("screen");
   const [currentScreen, setCurrentScreen] = useState<CurrentScreen | null>(
     null
@@ -183,11 +189,79 @@ const Page = () => {
           </div>
         </div>
 
-        <PreviewComponent
+        {/* <PreviewComponent
           currentConfig={currentScreen.current_config}
           isEdit={isEdit}
           setIsEdit={setIsEdit}
-        />
+        /> */}
+        <>
+          <div
+            className="border-l-2 flex flex-col justify-center pl-10 w-[25vw]"
+            style={{ height: "100%" }}
+          >
+            {/* Title + Toggle */}
+            <div className="flex items-center justify-between mx-6 mb-2">
+              <h1 className="text-3xl font-bold">Preview</h1>
+            </div>
+
+            {/* Phone Preview */}
+            <div className="flex justify-center p-4">
+              {android ? (
+                <div className="relative w-full max-w-[393px] h-[48rem] aspect-[393/820] bg-black rounded-[2rem] shadow-2xl p-[10px]">
+                  <div className="relative flex flex-col w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10 shadow-inner" />
+                    <div className={`${theme} bg-secondary`}>
+                      <Header1 header={currentScreen.current_config.header} />
+                      <div className="flex-1 overflow-y-auto hide-scrollbar mt-0 mb-1">
+                        <img
+                          src={currentScreen.current_config.screen.image}
+                          alt="home"
+                          className="w-full p-0"
+                        />
+                      </div>
+                      <div className="bg-secondary bottom-4">
+                        {currentScreen.current_config.bottomtab.isActive && (
+                          <BottomTab1 />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="relative w-full max-w-[393px] h-[48rem] aspect-[393/840] bg-black rounded-[3rem] shadow-2xl p-[10px]">
+                  <div className="relative flex flex-col w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
+                    <div className={`${theme} bg-secondary`}>
+                      <Header1 header={currentScreen.current_config.header} />
+                      <div className="flex-1 overflow-y-auto hide-scrollbar mt-0 mb-1">
+                        <img
+                          src={currentScreen.current_config.screen.image}
+                          alt="home"
+                          className="w-full p-0"
+                        />
+                      </div>
+                      <div className="bg-secondary bottom-4">
+                        {currentScreen.current_config.bottomtab.isActive && (
+                          <BottomTab1 />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Switch device button */}
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => setAndroid((prev) => !prev)}
+                className="text-sm px-4 py-3 rounded-md bg-black text-white font-semibold transition"
+              >
+                {!android ? "Switch to Android" : "Switch to iPhone"}
+              </button>
+            </div>
+          </div>
+        </>
       </div>
     </CustomizeMask>
   );
