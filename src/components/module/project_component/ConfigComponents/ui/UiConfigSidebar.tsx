@@ -28,14 +28,14 @@ function UiConfigSidebar({
   isEdit,
 }: UiConfigSidebarProps) {
   console.log(element);
-  const [tempElement, setTepElement] = useState<string>("");
+  // const [tempElement, setTepElement] = useState<string>("");
   const { isActive, setIsActive } = useSaveChanges();
   const [themePopup, setThemePopup] = useState(false);
   const { theme, secondaryColor } = useTheme();
   const { drafts } = useDraftScreen();
 
   const handleClick = (elem: string) => {
-    setTepElement(elem);
+    setElement(elem);
     console.log(elem);
     if (isActive) {
       setPOpUp(true);
@@ -44,8 +44,8 @@ function UiConfigSidebar({
 
   useEffect(() => {
     if (!isActive && !popUp) {
-      // setPOpUp(false);
-      setElement(tempElement);
+      setPOpUp(false);
+      // setElement(tempElement);
     }
   });
   return (
@@ -58,7 +58,8 @@ function UiConfigSidebar({
           <div className="p-5 pt-0 w-full relative mt-5 ">
             {ScreenConfig.map((item, index) => {
               const hasDraft = drafts.find((d) => d.screenName === item.key);
-              const isActive = item.key === element;
+              const isActive =
+                item.key === element || (item.key === "home" && element === "");
 
               return (
                 <button

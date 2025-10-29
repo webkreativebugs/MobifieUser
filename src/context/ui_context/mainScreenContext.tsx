@@ -8,13 +8,11 @@ import React, {
 import { CurrentConfig } from "../../data/interface/data.interface";
 import Screens from "../../data/CustomizeData/ScreenConfig.json";
 
-// Type for each screen data
 export interface MainScreenDataConfig {
   screenName: string;
   current_config: CurrentConfig;
 }
 
-// Context type (only what you need)
 interface MainScreenDataContextType {
   mainscreenData: MainScreenDataConfig[];
   setMainScreenData: React.Dispatch<
@@ -36,29 +34,39 @@ export const MainScreenDataProvider = ({
   );
 
   useEffect(() => {
+    if (typeof window === "undefined") return; // 🧠 Skip if SSR (Next.js)
+
     const storedData = localStorage.getItem("mainscreenData");
-    if (storedData) {
+
+    if (storedData && storedData !== "undefined") {
       try {
         const parsed = JSON.parse(storedData);
-        setMainScreenData(parsed);
-        console.log("Loaded from localStorage:", parsed);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMainScreenData(parsed);
+          console.log("✅ Loaded from localStorage:", parsed);
+          return;
+        }
       } catch (err) {
-        console.error("Failed to parse mainscreenData from localStorage", err);
+        console.error(" Failed to parse mainscreenData:", err);
       }
-    } else {
-      const newData: MainScreenDataConfig[] = Screens.map((item) => ({
-        screenName: item.key,
-        current_config: item.current_confi,
-      }));
-      setMainScreenData(newData);
-      console.log("Initialized from Screens.json");
     }
+
+    // 🧱 First-time setup only if nothing in localStorage
+    const newData: MainScreenDataConfig[] = Screens.map((item) => ({
+      screenName: item.key,
+      current_config: item.current_confi,
+    }));
+
+    setMainScreenData(newData);
+    localStorage.setItem("mainscreenData", JSON.stringify(newData));
+    console.log("🆕 Initialized from Screens.json");
   }, []);
 
+  // 💾 Automatically update localStorage when data changes
   useEffect(() => {
-    if (mainscreenData.length > 0) {
+    if (mainscreenData.length > 0 && typeof window !== "undefined") {
       localStorage.setItem("mainscreenData", JSON.stringify(mainscreenData));
-      console.log("Saved to localStorage:", mainscreenData);
+      console.log("💾 Saved updated data to localStorage");
     }
   }, [mainscreenData]);
 
