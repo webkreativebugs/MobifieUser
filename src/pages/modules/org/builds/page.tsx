@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
 import { Link, useNavigate } from "react-router-dom";
-import BuildDetailComponent from "../../../../components/module/org_component/billingComponent/BuildDetailComponent";
+// import BuildDetailComponent from "../../../../components/module/org_component/billingComponent/BuildDetailComponent";
 
 interface ColumnConfig {
   key: string;
@@ -68,9 +68,11 @@ function page() {
   const [opendV, setOpendV] = useState<string>("");
 
   const downloadBuild = (build: typeof latestBuild) => {
+    console.log(build);
+
     const doc = new jsPDF();
-    // doc.setFontSize(16);
-    // doc.text("Build Details", 14, 15);
+    doc.setFontSize(16);
+    doc.text("Build Details", 14, 15);
 
     // doc.setFontSize(12);
     // doc.text(`Version: ${build.version}`, 14, 30);
