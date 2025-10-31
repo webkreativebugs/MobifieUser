@@ -21,6 +21,7 @@ import ClientConfig from "../../pages/customize_pages/client-config/page"
 import YouConfig from "../../pages/customize_pages/you-config/page"
 import Details from '../../pages/modules/org/detail/page'
 import NewBuild from "../../pages/modules/org/new_build_form/page"
+import Review from "../../pages/modules/org/reviewChanges/page"
 export const admin =[
     {
         route:"/",
@@ -154,11 +155,18 @@ export const admin =[
         component: NewScreenConfig,
         additional:""
     
-},,
+},
     {
     
          route:"/project/configuration",
         component: Configuration,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/configuration/review",
+        component: Review,
         additional:""
     
 }

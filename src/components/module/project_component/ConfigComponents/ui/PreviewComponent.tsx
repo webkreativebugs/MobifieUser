@@ -7,28 +7,37 @@ import Header1 from "./customComponent/header/Header1";
 import BottomTab1 from "./customComponent/bottomTab/BottomTab1";
 import { CurrentConfig } from "../../../../../data/interface/data.interface";
 import CustomizePopUp from "../common/CustomizePopUp";
-import SubmitConfiguration from "../common/SubmitConfiguration";
+// import SubmitConfiguration from "../common/SubmitConfiguration";
+import {
+  ScreenConfigInterface,
+  DraftScreenConfig,
+} from "../../../../../data/interface/data.interface";
+// import {
+//   useMainScreenData,
+//   MainScreenDataConfig,
+// } from "../../../../../context/ui_context/mainScreenContext";
+import { currentViewInterface } from "../../../../../pages/customize_pages/Edit-screen-config/page";
 
 type PreviewComponentProps = {
-  currentConfig: CurrentConfig; // your current_confi type
   isEdit: boolean;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
   isSubmitActive: boolean;
   setIsSubmitActive: React.Dispatch<React.SetStateAction<boolean>>;
+  currentView: currentViewInterface;
 };
 
 function PreviewComponent({
-  currentConfig,
   isEdit,
   setIsEdit,
   isSubmitActive,
   setIsSubmitActive,
+  currentView,
 }: PreviewComponentProps) {
   const [android, setAndroid] = useState(false);
   const [submitPopup, setSubmitPOpup] = useState(false);
   // const { isActive, setIsActive } = useSaveChanges();
   const { theme } = useTheme();
-  console.log(currentConfig);
+  // console.log(currentConfig);
 
   return (
     <>
@@ -77,16 +86,18 @@ function PreviewComponent({
               <div className="relative flex flex-col w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
                 <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-4 bg-black rounded-full z-10 shadow-inner" />
                 <div className={`${theme} bg-secondary`}>
-                  <Header1 header={currentConfig.header} />
+                  <Header1 header={currentView?.current_config.header} />
                   <div className="flex-1 overflow-y-auto hide-scrollbar mt-0 mb-1">
                     <img
-                      src={currentConfig.screen.image}
+                      src={currentView?.current_config.screen.image}
                       alt="home"
                       className="w-full p-0"
                     />
                   </div>
                   <div className="bg-secondary bottom-4">
-                    {currentConfig.bottomtab.isActive && <BottomTab1 />}
+                    {currentView?.current_config.bottomtab.isActive && (
+                      <BottomTab1 />
+                    )}
                   </div>
                 </div>
               </div>
@@ -96,16 +107,18 @@ function PreviewComponent({
               <div className="relative flex flex-col w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-10" />
                 <div className={`${theme} bg-secondary`}>
-                  <Header1 header={currentConfig.header} />
+                  <Header1 header={currentView?.current_config.header} />
                   <div className="flex-1 overflow-y-auto hide-scrollbar mt-0 mb-1">
                     <img
-                      src={currentConfig.screen.image}
+                      src={currentView?.current_config.screen.image}
                       alt="home"
                       className="w-full p-0"
                     />
                   </div>
                   <div className="bg-secondary bottom-4">
-                    {currentConfig.bottomtab.isActive && <BottomTab1 />}
+                    {currentView?.current_config.bottomtab.isActive && (
+                      <BottomTab1 />
+                    )}
                   </div>
                 </div>
               </div>
@@ -135,10 +148,10 @@ function PreviewComponent({
             >
               <RxCross2 />
             </button> */}
-            <SubmitConfiguration
+            {/* <SubmitConfiguration
               setSubmitPOpup={setSubmitPOpup}
               setIsSubmitActive={setIsSubmitActive}
-            />
+            /> */}
           </div>
         </CustomizePopUp>
       )}

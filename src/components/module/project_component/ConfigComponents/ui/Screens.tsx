@@ -2,16 +2,24 @@ import React from "react";
 import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import { useDraftScreen } from "../../../../../context/ui_context/DraftScreenContext";
+import { currentViewInterface } from "../../../../../pages/customize_pages/Edit-screen-config/page";
 
 type UiConfigSidebarProps = {
   screenConfig: ScreenConfigInterface;
   setscreenConfig: React.Dispatch<React.SetStateAction<ScreenConfigInterface>>;
+  // currentView: currentViewInterface;
+  // setCurrentView: React.Dispatch<React.SetStateAction<currentViewInterface>>;
 };
 
-function Screens({ screenConfig, setscreenConfig }: UiConfigSidebarProps) {
+function Screens({
+  // currentView,
+  // setCurrentView,
+  screenConfig,
+  setscreenConfig,
+}: UiConfigSidebarProps) {
   const { setIsActive } = useSaveChanges();
   const { addDraft, updateDraft, drafts } = useDraftScreen();
-  console.log(screenConfig);
+  // console.log(currentView);
 
   const currentDraft = drafts.find((d) => d.screenName === screenConfig.key);
 
