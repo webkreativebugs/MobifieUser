@@ -1,8 +1,8 @@
+import React from "react";
+import { HeaderConfigItem } from "../../../../../../../data/interface/data.interface";
 
-import { ScreenConfigInterface } from "../../../../../../../data/interface/data.interface";
-
-function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
-  const header = screenConfig.current_confi.header;
+function Header1({ header }: { header: HeaderConfigItem }) {
+  // const header = screenConfig.current_confi.header;
 
   return (
     <header className="shadow mt-8 h-12 w-full overflow-hidden">
@@ -48,15 +48,6 @@ function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
             </span>
           )}
         </div>
-
-        {/* Center Text */}
-        {header?.center?.text?.isActive && (
-          <div className="flex-1 text-center">
-            <span className="text-lg font-semibold">
-              {header.center.text.value}
-            </span>
-          </div>
-        )}
 
         {/* Right Icons */}
         <div className="flex items-center gap-3 overflow-hidden flex-shrink-0">

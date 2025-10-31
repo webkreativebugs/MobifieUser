@@ -16,9 +16,12 @@ import UiDashboard from "../../pages/customize_pages/ui-dashboard/page"
 import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
 import DefaultConfig from "../../pages/customize_pages/default-config/page"
 import ScreenConfig from "../../pages/customize_pages/screen-config/page"
+import Configuration from "../../pages/customize_pages/configuration_page/page"
 import ClientConfig from "../../pages/customize_pages/client-config/page"
 import YouConfig from "../../pages/customize_pages/you-config/page"
 import Details from '../../pages/modules/org/detail/page'
+import NewBuild from "../../pages/modules/org/new_build_form/page"
+import Review from "../../pages/modules/org/reviewChanges/page"
 export const admin =[
     {
         route:"/",
@@ -113,7 +116,21 @@ export const admin =[
     },
     {
     
-         route:"/details",
+         route:"/build/details",
+        component: Details,
+        additional:""
+    
+}    ,
+    {
+    
+         route:"/build/create-new-build",
+        component: NewBuild,
+        additional:""
+    
+}    ,
+    {
+    
+         route:"/billing/details",
         component: Details,
         additional:""
     
@@ -129,6 +146,27 @@ export const admin =[
     
          route:"/project/edit-screen-config",
         component: NewScreenConfig,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/draft-screen-config",
+        component: NewScreenConfig,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/configuration",
+        component: Configuration,
+        additional:""
+    
+},
+    {
+    
+         route:"/project/configuration/review",
+        component: Review,
         additional:""
     
 }

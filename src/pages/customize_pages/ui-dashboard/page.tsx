@@ -2,13 +2,19 @@ import CustomizeMask from "../../../components/module/project_component/ConfigCo
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 
 import { useEffect, useState } from "react";
+// import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
+// import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
+// import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
 import { Link } from "react-router-dom";
 import { useTabContext } from "../../../context/org_context/TabContext";
+import { useDraftScreenChanges } from "../../../context/ui_context/DraftScreenContext";
+import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 // const { isEdit, setIsEdit } = useTabContext();
+import { ScreenType } from "../../../../enum/AccessType.enum";
 
 const details = [
   { title: "Version Publish", value: "v1.1" },
@@ -17,25 +23,27 @@ const details = [
 ];
 
 const page = () => {
-  const {  setIsEdit } = useTabContext();
-  const [element] = useState(ScreenConfigdata[0].key);
+  const { isDraft } = useDraftScreenChanges();
+  // const { isEdit, setIsEdit } = useTabContext();
+  const [element, setElement] = useState(ScreenConfigdata[0].key);
   console.log(ScreenConfigdata[0].key);
-  const [, setPOpUp] = useState(false);
-  // const [ setIsPOpUpdata] = useState(false);
+  const [popUp, setPOpUp] = useState(false);
+  const [ispopUpdata, setIsPOpUpdata] = useState(false);
 
   // const changes = false;
-  const { isActive } = useSaveChanges();
+  const { isActive, setIsActive } = useSaveChanges();
+  const { drafts } = useDraftScreen();
 
-  const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface | undefined>(
-    ScreenConfigdata.find((item) => item.key === element) as unknown as ScreenConfigInterface | undefined
+  const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
+    ScreenConfigdata.find(
+      (item) => item.key === element
+    ) as ScreenConfigInterface
   );
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
     if (screenData) {
-      setscreenConfig(screenData as unknown as ScreenConfigInterface);
-      console.log(screenConfig);
-      
+      setscreenConfig(screenData as ScreenConfigInterface);
     }
   }, [element]);
 
@@ -43,7 +51,7 @@ const page = () => {
     if (isActive) {
       setPOpUp(true);
     }
-  }, [isActive]);
+  }, [element]);
 
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.DASHBOARD}>
@@ -70,62 +78,6 @@ const page = () => {
               </p>
             </div>
           ))}
-        </div>
-        <div className="w-full flex gap-8">
-          <div className="flex flex-col w-1/2 items-center justify-center gap-6 px-8 py-6 card-bg mt-4 rounded-xl  ">
-            {/* Left side: Text + Button */}
-
-            <div className="w-full flex  justify-between  px-3">
-              <h1 className="text-xl  font-semibold  ">App Configuration</h1>{" "}
-              <div className="">
-                {" "}
-                <button
-                  onClick={() => setIsEdit(true)}
-                  className="border-black border px-4 py-1 rounded-md"
-                >
-                  <Link to="../project/api-config" state={{ type: "draft" }}>
-                    Add New
-                  </Link>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full px-3">
-              <p>
-                <span className="text-md font-semibold">Last Edit :</span>{" "}
-                2025-05-14
-              </p>
-              <p>
-                <span className="text-md font-semibold">Edit by :</span> Anubhav
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col w-1/2 items-center justify-center gap-6 px-8 py-6 card-bg mt-4 rounded-xl  ">
-            {/* Left side: Text + Button */}
-
-            <div className="w-full flex  justify-between  px-3">
-              <h1 className="text-xl  font-semibold  ">Screen Configuration</h1>{" "}
-              <div>
-                {" "}
-                <button className="border-black border px-4 py-1 rounded-md">
-                  <Link
-                    to="/project/edit-screen-config"
-                    state={{ projectId: 42 }}
-                  >
-                    Add New
-                  </Link>
-                </button>
-              </div>
-            </div>
-            <div className="flex flex-col w-full px-3">
-              <p>
-                <span className="text-md font-semibold">Last Edit :</span>{" "}
-                2025-05-14
-              </p>
-              <p>
-                <span className="text-md font-semibold">Edit by :</span> Anubhav
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </CustomizeMask>

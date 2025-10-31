@@ -11,7 +11,7 @@ interface ConfigFormData {
 }
 
 function page() {
-  const [formData, ] = useState<ConfigFormData>(
+  const [formData, setFormData] = useState<ConfigFormData>(
     ShopifyConfig.reduce((acc, item) => ({ ...acc, [item.key]: "" }), {})
   );
 

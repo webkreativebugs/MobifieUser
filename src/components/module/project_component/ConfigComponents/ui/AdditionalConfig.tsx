@@ -1,13 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
-import {
-  ScreenConfigInterface,
-} from "../../../../../data/interface/data.interface";
+import { useDraftScreen } from "../../../../../context/ui_context/DraftScreenContext";
 
-import type { AdditionalConfig } from "../../../../../data/interface/data.interface";
 type UiConfigSidebarProps = {
   screenConfig: ScreenConfigInterface;
-  setscreenConfig: Dispatch<SetStateAction<ScreenConfigInterface>>;
+  setscreenConfig: React.Dispatch<React.SetStateAction<ScreenConfigInterface>>;
 };
 
 function AdditionalConfig({
@@ -15,74 +13,103 @@ function AdditionalConfig({
   setscreenConfig,
 }: UiConfigSidebarProps) {
   const { setIsActive } = useSaveChanges();
+  const { drafts, addDraft, updateDraft } = useDraftScreen();
 
-  // local state for the common text input
+  // ✅ Check if there is a draft for this screen
+  const currentDraft = drafts.find((d) => d.screenName === screenConfig.key);
+  const effectiveConfig = currentDraft
+    ? { ...screenConfig, current_confi: currentDraft.draftScreen }
+    : screenConfig;
+
+  // local state for common text input
   const [commonText, setCommonText] = useState(
-    screenConfig.current_confi.header?.center?.text?.value || ""
+    effectiveConfig.current_confi.header?.center?.text?.value || ""
   );
 
-  // ✅ Update when screenConfig changes
+  // Update local state when config changes
   useEffect(() => {
-    const header = screenConfig.current_confi.header;
+    const header = effectiveConfig.current_confi.header;
     let activeText =
       header?.lefticons?.text?.value ||
       header?.center?.text?.value ||
       header?.righticons?.text?.value ||
       "";
     setCommonText(activeText);
-  }, [screenConfig]);
+  }, [effectiveConfig]);
 
-  // toggle left icon
-  const handleLeftIcon = (iconName: string) => {
-    setscreenConfig((prev) => {
-      if (!prev) return prev;
+  // Helper to update both normal config and draft
+  const updateConfig = (
+    newCurrentConfig: ScreenConfigInterface["current_confi"]
+  ) => {
+    setscreenConfig((prev) => ({ ...prev, current_confi: newCurrentConfig }));
 
-      return {
-        ...prev,
-        current_confi: {
-          ...prev.current_confi,
-          header: {
-            ...prev.current_confi.header,
-            lefticons: prev.current_confi.header.lefticons?.map((icon) =>
-              icon.name === iconName
-                ? { ...icon, isActive: !icon.isActive } // new object
-                : icon
-            ),
-          },
-        },
-      };
-    });
+    if (currentDraft) {
+      updateDraft(screenConfig.key, {
+        screenName: screenConfig.key,
+        draftScreen: newCurrentConfig,
+      });
+    } else {
+      addDraft({
+        screenName: screenConfig.key,
+        draftScreen: newCurrentConfig,
+      });
+    }
+
     setIsActive(true);
   };
 
-  // ✅ update all header texts at once
+  // ✅ Toggle left icon
+  const handleLeftIcon = (iconName: string) => {
+    const newHeader = { ...effectiveConfig.current_confi.header! };
+    newHeader.lefticons!.icons = newHeader.lefticons!.icons?.map((icon) =>
+      icon.name === iconName ? { ...icon, isActive: !icon.isActive } : icon
+    );
+    updateConfig({ ...effectiveConfig.current_confi, header: newHeader });
+  };
+
+  // ✅ Toggle right icon
+  const handleRightIcon = (iconName: string) => {
+    const newHeader = { ...effectiveConfig.current_confi.header! };
+    newHeader.righticons!.icons = newHeader.righticons!.icons?.map((icon) =>
+      icon.name === iconName ? { ...icon, isActive: !icon.isActive } : icon
+    );
+    updateConfig({ ...effectiveConfig.current_confi, header: newHeader });
+  };
+
+  // ✅ Toggle header text (only one active at a time)
+  const handleTextToggle = (
+    position: "lefticons" | "righticons" | "center"
+  ) => {
+    const newHeader = { ...effectiveConfig.current_confi.header! };
+    if (newHeader.lefticons?.text) newHeader.lefticons.text.isActive = false;
+    if (newHeader.righticons?.text) newHeader.righticons.text.isActive = false;
+    if (newHeader.center?.text) newHeader.center.text.isActive = false;
+
+    if (newHeader[position]?.text) newHeader[position].text.isActive = true;
+
+    updateConfig({ ...effectiveConfig.current_confi, header: newHeader });
+  };
+
+  // ✅ Update common header text
   const handleCommonTextChange = (value: string) => {
-    if (value.length > 100) return; // max 15 chars
+    if (value.length > 100) return;
     setCommonText(value);
 
-    setscreenConfig((prev) => {
-      const newHeader = { ...prev.current_confi.header! };
+    const newHeader = { ...effectiveConfig.current_confi.header! };
+    if (newHeader.lefticons?.text) newHeader.lefticons.text.value = value;
+    if (newHeader.center?.text) newHeader.center.text.value = value;
+    if (newHeader.righticons?.text) newHeader.righticons.text.value = value;
 
-      if (newHeader.lefticons?.text) newHeader.lefticons.text.value = value;
-      if (newHeader.center?.text) newHeader.center.text.value = value;
-      if (newHeader.righticons?.text) newHeader.righticons.text.value = value;
+    updateConfig({ ...effectiveConfig.current_confi, header: newHeader });
+  };
 
-      return {
-        ...prev,
-        current_confi: {
-          ...prev.current_confi,
-          header: {
-            ...prev.current_confi.header,
-            righticons: prev.current_confi.header.righticons?.map((icon) =>
-              icon.name === iconName
-                ? { ...icon, isActive: !icon.isActive } // new object
-                : icon
-            ),
-          },
-        },
-      };
-    });
-    setIsActive(true);
+  // ✅ Toggle bottom tab
+  const handleBottomTabToggle = () => {
+    const newBottomTab = {
+      ...effectiveConfig.current_confi.bottomtab!,
+      isActive: !effectiveConfig.current_confi.bottomtab?.isActive,
+    };
+    updateConfig({ ...effectiveConfig.current_confi, bottomtab: newBottomTab });
   };
 
   return (
@@ -92,12 +119,11 @@ function AdditionalConfig({
         <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
           Header Tab Config
         </h1>
-
         <div className="flex justify-between gap-6">
           {/* LEFT ICONS */}
           <div>
             <h2 className="text-lg mb-2">Left Icons</h2>
-            {screenConfig.current_confi.header?.lefticons?.icons?.map(
+            {effectiveConfig.current_confi.header?.lefticons?.icons?.map(
               (icon, idx) => (
                 <label key={idx} className="flex items-center space-x-2">
                   <input
@@ -108,78 +134,76 @@ function AdditionalConfig({
                   />
                   <span>{icon.name}</span>
                 </label>
-              ))}
-            </div>
-            <div>
-              <h1 className="text-xl  w-full  mb-4 pb-1">Right Icons</h1>{" "}
-              {screenConfig.current_confi.header.righticons?.map(
-                (icon, idx) => (
-                  <label key={idx} className="flex items-center space-x-2">
-                    <input
-                      type="checkbox"
-                      checked={icon.isActive}
-                      onChange={() => handleRightIcon(icon.name)}
-                      className="h-4 w-4"
-                    />
-                    <span>{icon.name}</span>
-                  </label>
-                )
-              )}
-            </div>
-
-            <div className="mb-4">
-              <h1 className="text-xl  mb-4">Header Text</h1>
-              <div className="flex items-center space-x-3">
-                {/* <label className="text-gray-700 w-32">App Logo Text:</label> */}
-
+              )
+            )}
+            {effectiveConfig.current_confi.header?.lefticons?.text && (
+              <label className="flex items-center space-x-2 mt-2">
                 <input
-                  type="text"
-                  placeholder="Enter your App logo"
-                  value={screenConfig.current_confi.header.text}
-                  onChange={(e) => {
-                    if (e.target.value.length >= 15) return;
-
-                    setscreenConfig((prev) => ({
-                      ...prev,
-                      current_confi: {
-                        ...prev.current_confi,
-                        header: {
-                          ...prev.current_confi.header,
-                          text: e.target.value,
-                        },
-                      },
-                    }));
-                    setIsActive(true);
-                  }}
-                  className="flex-1 rounded-lg border w-[17rem] border-gray-300 px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="checkbox"
+                  checked={
+                    effectiveConfig.current_confi.header.lefticons.text.isActive
+                  }
+                  onChange={() => handleTextToggle("lefticons")}
+                  className="h-4 w-4"
                 />
-              </div>
-            </div>
+                <span>Header title</span>
+              </label>
+            )}
           </div>
-        </div>
 
-        {/* <div className="bg-primary rounded-lg w-full h-60 p-4">
-          <h1 className="text-xl font-semibold w-full border-b-2 mb-4 pb-1">
-            Right View
-          </h1>
+          {/* CENTER */}
+          <div>
+            <h2 className="text-lg mb-2">Center Text</h2>
+            {effectiveConfig.current_confi.header?.center?.text && (
+              <label className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={
+                    effectiveConfig.current_confi.header.center.text.isActive
+                  }
+                  onChange={() => handleTextToggle("center")}
+                  className="h-4 w-4"
+                />
+                <span>Header title</span>
+              </label>
+            )}
+          </div>
 
-          {headerData[0].props.rightIcons.map((icon, idx) => (
-            <label key={idx} className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                checked={true}
-                // onChange={(e) =>
-                //   handleToggle("rightIcons", idx, e.target.checked)
-                // }
-                className="h-4 w-4"
-              />
-              <span>{icon.name}</span>
-            </label>
+          {/* RIGHT ICONS */}
+          <div>
+            <h2 className="text-lg mb-2">Right Icons</h2>
+            {effectiveConfig.current_confi.header?.righticons?.icons?.map(
+              (icon, idx) => (
+                <label key={idx} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={icon.isActive}
+                    onChange={() => handleRightIcon(icon.name)}
+                    className="h-4 w-4"
+                  />
+                  <span>{icon.name}</span>
+                </label>
+              )
+            )}
+            {effectiveConfig.current_confi.header?.righticons?.text && (
+              <label className="flex items-center space-x-2 mt-2">
+                <input
+                  type="checkbox"
+                  checked={
+                    effectiveConfig.current_confi.header.righticons.text
+                      .isActive
+                  }
+                  onChange={() => handleTextToggle("righticons")}
+                  className="h-4 w-4"
+                />
+                <span>Header title</span>
+              </label>
+            )}
           </div>
         </div>
       </div>
 
-      {/* input text */}
+      {/* HEADER TITLE INPUT */}
       <div className="bg-primary rounded-lg w-full p-4">
         <div className="mb-4">
           <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
@@ -189,7 +213,7 @@ function AdditionalConfig({
             type="text"
             value={commonText}
             onChange={(e) => handleCommonTextChange(e.target.value)}
-            placeholder="Enter text (max 15 chars)"
+            placeholder="Enter text (max 100 chars)"
             className="rounded border px-2 py-1 w-full"
           />
         </div>
@@ -200,15 +224,17 @@ function AdditionalConfig({
         <h1 className="text-xl font-semibold border-b-2 mb-4 pb-1">
           Bottom Tab Config
         </h1>
-        <label className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            checked={screenConfig.current_confi.bottomtab?.isActive}
-            onChange={handleBottomTabToggle}
-            className="h-4 w-4"
-          />
-          <span>{screenConfig.current_confi.bottomtab?.title}</span>
-        </label>
+        {effectiveConfig.current_confi.bottomtab && (
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              checked={effectiveConfig.current_confi.bottomtab.isActive}
+              onChange={handleBottomTabToggle}
+              className="h-4 w-4"
+            />
+            {/* <span>{effectiveConfig.current_confi.bottomtab.key}</span> */}
+          </label>
+        )}
       </div>
     </div>
   );

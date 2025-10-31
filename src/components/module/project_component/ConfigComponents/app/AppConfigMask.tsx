@@ -1,6 +1,6 @@
 import Navbar from "../../../../common_component/Navbar";
 import Sidebar from "../../../../common_component/Sidebar";
-// import CustomizeMask from "../common/CustomizeMask";
+import CustomizeMask from "../common/CustomizeMask";
 // import HeadingMask from "../../../../common_component/layered_components/HeadingMask"
 // import HeadingMask from "../../../../common_component/layered_components/HeadingMask"
 // import { useorg } from "../../../../../context/org_context/OrganizationContext";
@@ -26,7 +26,7 @@ const AppConfigMask = ({
 }) => {
   // const { orgDetails } = useorg();
 
-  const { isEdit } = useTabContext();
+  const { isEdit, setIsEdit } = useTabContext();
   const { show, setShow } = useloader();
   return (
     <div className="h-full flex hide-scrollbar">
