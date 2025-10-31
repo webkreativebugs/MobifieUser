@@ -5,6 +5,7 @@ import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
 import { Link, useNavigate } from "react-router-dom";
+import BuildDetailComponent from "../../../../components/module/org_component/billingComponent/BuildDetailComponent";
 
 interface ColumnConfig {
   key: string;
@@ -102,7 +103,7 @@ function page() {
           </Link>{" "}
         </div>
       </HeadingMask>
-
+      {/* <BuildDetailComponent /> */}
       <div className="w-full px-2 mt-8">
         {/* Latest Build */}
         <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-6 relative overflow-hidden">
@@ -206,7 +207,7 @@ function page() {
                 {latestBuild.Discription}
               </p>
               <p className="text-gray-600">
-                <span className="font-semibold">Date:</span>{" "}
+                <span className="font-semibold">Release Notes:</span>{" "}
                 {latestBuild.ReleaseNotes}
               </p>
             </div>

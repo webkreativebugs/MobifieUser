@@ -6,14 +6,18 @@ import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import {
   ScreenConfigInterface,
   CurrentConfig,
+  DraftScreenConfig,
 } from "../../../data/interface/data.interface";
 import Navbar from "../../../components/common_component/Navbar";
 import Screens from "../../../components/module/project_component/ConfigComponents/ui/Screens";
 import AdditionalConfig from "../../../components/module/project_component/ConfigComponents/ui/AdditionalConfig";
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
-import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
+import {
+  useMainScreenData,
+  MainScreenDataConfig,
+} from "../../../context/ui_context/mainScreenContext";
 import { RxCross2 } from "react-icons/rx";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ScreenType } from "../../../../enum/AccessType.enum";
 import CustomizePopUp from "../../../components/module/project_component/ConfigComponents/common/CustomizePopUp";
 import SubmitConfiguration from "../../../components/module/project_component/ConfigComponents/common/SubmitConfiguration";
@@ -23,7 +27,7 @@ enum detail {
   SAVE = "saveChanges",
   DISCART = "discartChanges",
 }
-interface CurrentScreen {
+export interface currentViewInterface {
   screenName: string;
   current_config: CurrentConfig;
 }
@@ -39,44 +43,53 @@ function Page() {
   const [display, setDisplay] = useState<JSX.Element | null>(null);
 
   const { isActive, setIsActive } = useSaveChanges();
-  const { setMainScreenData } = useMainScreenData();
-  const { drafts, removeDraft } = useDraftScreen();
+  const { mainscreenData, setMainScreenData } = useMainScreenData();
+  const { drafts, setDrafts, removeDraft } = useDraftScreen();
   const location = useLocation();
   const { type } = location.state || {};
   console.log(type);
-
-  const storedData = localStorage.getItem("mainscreenData");
-
-  const [currentScreen, setCurrentScreen] = useState<CurrentScreen | null>(
-    null
-  );
+  const [currentView, setCurrentView] = useState<
+    currentViewInterface | undefined
+  >();
+  console.log(mainscreenData);
 
   useEffect(() => {
-    if (!element) return;
-    const storedData = localStorage.getItem("mainscreenData");
+    const draft = drafts.find((d) => d.screenName === element);
 
-    if (!storedData) return;
+    if (draft) {
+      console.log("Setting from drafts:", draft);
 
-    try {
-      const parsed = JSON.parse(storedData);
-      console.log(parsed);
-      const found = parsed.find((item: any) => item.screenName === element);
+      setCurrentView({
+        screenName: draft.screenName,
+        current_config: draft.draftScreen, // or whatever field holds config
+      });
+    } else {
+      if (!mainscreenData || !Array.isArray(mainscreenData)) return;
+
+      const found = mainscreenData.find(
+        (item: any) => item.screenName === element
+      );
+
       if (found) {
-        setCurrentScreen(found);
-      }
-    } catch (err) {
-      console.error("Failed to parse mainscreenData from localStorage", err);
-    }
-  }, [element]);
+        console.log("Setting from mainscreenData:", found);
 
-  if (!currentScreen) return null;
+        setCurrentView({
+          screenName: found.screenName,
+          current_config: found.current_config,
+        });
+      }
+    }
+  }, [element, drafts, mainscreenData]);
+
+  const storedData = localStorage.getItem("mainscreenData");
 
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
     ScreenConfigdata.find(
       (item) => item.key === element
     ) as ScreenConfigInterface
   );
-
+  const change = JSON.parse(localStorage.getItem("change") || "false");
+  useEffect(() => {});
   const effectiveScreenConfig = useMemo(() => {
     try {
       let draft: any = null;
@@ -196,8 +209,7 @@ function Page() {
 
   const handleSaveDraft = () => {
     setPOpUp(false);
-    setIsActive(false);
-    console.log(drafts);
+    setIsSubmitActive(true);
   };
 
   const handleCancel = () => {
@@ -212,36 +224,20 @@ function Page() {
     if (value === detail.SAVE) {
       setDisplay(
         <>
-          <h1 className="text-xl text-black font-bold mb-10 px-1">
-            Once you submit, you won’t be able to retrieve your previous
-            changes.
-          </h1>
+          <SubmitConfiguration
+            // setSubmitPOpup={setSubmitPOpup}
+            handleSave={handleSaveDraft}
+            setIsSubmitActive={setIsSubmitActive}
+            setPOpUp2={setPOpUp2}
+            handleCancel={handleCancel}
+          />
+
           <button
             onClick={() => setPOpUp2(false)}
             className="absolute top-1 right-1 text-xl text-red-500"
           >
             <RxCross2 />
           </button>
-          <div className="flex justify-end gap-4 mt-6">
-            <button
-              onClick={() => {
-                handleSaveChanges();
-                setPOpUp2(false);
-              }}
-              className="px-8 py-2 rounded-lg bg-black text-primary font-semibold hover:bg-opacity-90 shadow-md transition-all"
-            >
-              Sure
-            </button>
-            <button
-              onClick={() => {
-                handleCancel();
-                setPOpUp2(false);
-              }}
-              className="px-4 py-2 rounded-lg border text-black border-black hover:bg-white hover:text-primary transition-all"
-            >
-              Cancel
-            </button>
-          </div>
         </>
       );
     } else if (value === detail.DRAFT) {
@@ -328,9 +324,9 @@ function Page() {
 
         <div className="w-2/3 relative overflow-y-auto hide-scrollbar overflow-x-hidden mb-0 ml-14 flex flex-col items-center mt-1 border-l ">
           <div className="w-full mt-2 pb-2 flex justify-between gap-6 border-b-2 px-4">
-            <div>
+            {/* <div>
               <h1 className="text text-2xl">{type}</h1>
-            </div>
+            </div> */}
             <div className="flex gap-4">
               <button
                 onClick={() => setTab("screen")}
@@ -347,10 +343,38 @@ function Page() {
                 Additional Config
               </button>
             </div>
+            <div className="flex gap-4">
+              {isSubmitActive && (
+                <>
+                  {" "}
+                  <button
+                    onClick={() => handleClick(detail.DISCART)}
+                    className="px-6 py-2 rounded-lg border text-black border-black hover:bg-white hover:text-primary transition-all"
+                  >
+                    Discard
+                  </button>
+                  {/* <button
+                onClick={() => handleClick(detail.DRAFT)}
+                className="px-6 py-2 rounded-lg bg-black text-white font-semibold hover:bg-opacity-90 shadow-md transition-all"
+              >
+                Save Draft
+              </button> */}
+                  <Link
+                    // onClick={() => Navigate(to="/project/configuration/review")}
+                    to="/project/configuration/review"
+                    className="px-6 py-2 rounded-lg bg-black text-white font-semibold hover:bg-opacity-90 shadow-md transition-all"
+                  >
+                    Save Draft
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
 
           {tab === "screen" ? (
             <Screens
+              // currentView={currentView}
+              // setCurrentView={setCurrentView}
               screenConfig={screenConfig}
               setscreenConfig={setscreenConfig}
             />
@@ -361,7 +385,7 @@ function Page() {
             />
           )}
 
-          {drafts.find((item) => item.screenName === element) && (
+          {drafts.find((item) => item.screenName === element && isActive) && (
             <div className="absolute bottom-0 w-full mb-0 flex justify-end gap-4 px-8">
               <button
                 onClick={() => handleClick(detail.DISCART)}
@@ -369,12 +393,7 @@ function Page() {
               >
                 Discard
               </button>
-              <button
-                onClick={() => handleClick(detail.DRAFT)}
-                className="px-6 py-2 rounded-lg bg-black text-white font-semibold hover:bg-opacity-90 shadow-md transition-all"
-              >
-                Save Draft
-              </button>
+
               <button
                 onClick={() => handleClick(detail.SAVE)}
                 className="px-6 py-2 rounded-lg bg-black text-white font-semibold hover:bg-opacity-90 shadow-md transition-all"
@@ -384,14 +403,15 @@ function Page() {
             </div>
           )}
         </div>
-
-        <PreviewComponent
-          currentConfig={effectiveScreenConfig.current_confi}
-          isEdit={isEdit}
-          setIsEdit={setIsEdit}
-          isSubmitActive={isSubmitActive}
-          setIsSubmitActive={setIsSubmitActive}
-        />
+        {currentView && (
+          <PreviewComponent
+            currentView={currentView}
+            isEdit={isEdit}
+            setIsEdit={setIsEdit}
+            isSubmitActive={isSubmitActive}
+            setIsSubmitActive={setIsSubmitActive}
+          />
+        )}
       </div>
 
       {popUp && isActive && (
@@ -400,12 +420,12 @@ function Page() {
             onClick={(e) => e.stopPropagation()}
             className="relative w-1/4 h-fit rounded-2xl shadow-lg bg-primary p-6 mb-14 text-white"
           >
-            <button
+            {/* <button
               onClick={() => setPOpUp(false)}
               className="absolute top-1 right-1 text-xl text-red-500"
             >
               <RxCross2 />
-            </button>
+            </button> */}
             <h1 className="text-xl text-black font-bold mb-10 px-1">
               Make sure to save your changes
             </h1>
@@ -420,12 +440,6 @@ function Page() {
                 onClick={handleSaveDraft}
                 className="px-4 py-2 rounded-lg bg-black text-primary font-semibold hover:bg-opacity-90 shadow-md transition-all"
               >
-                Save Draft
-              </button>
-              <button
-                onClick={handleSaveChanges}
-                className="px-4 py-2 rounded-lg bg-black text-primary font-semibold hover:bg-opacity-90 shadow-md transition-all"
-              >
                 Save Changes
               </button>
             </div>
@@ -437,7 +451,7 @@ function Page() {
         <CustomizePopUp setPOpUp={setPOpUp2}>
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-1/4 h-fit rounded-2xl shadow-lg bg-primary p-6 mb-14 text-white"
+            className={`relative w-2/3  h-fit rounded-2xl shadow-lg bg-primary p-6 mb-14 text-white`}
           >
             {display}
           </div>

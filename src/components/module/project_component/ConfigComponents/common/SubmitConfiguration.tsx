@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 
 interface Props {
-  setSubmitPOpup: React.Dispatch<React.SetStateAction<boolean>>;
+  // setSubmitPOpup: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSave: any;
   setIsSubmitActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setPOpUp2: React.Dispatch<React.SetStateAction<boolean>>;
+  handleCancel: any;
 }
 
 interface ConfigDetails {
@@ -13,7 +17,13 @@ interface ConfigDetails {
   createdby: string;
 }
 
-function SubmitConfiguration({ setSubmitPOpup, setIsSubmitActive }: Props) {
+function SubmitConfiguration({
+  handleSave,
+  setIsSubmitActive,
+  setPOpUp2,
+  handleCancel,
+}: Props) {
+  const { setIsActive } = useSaveChanges();
   const [configDetails, setConfigDetails] = useState<ConfigDetails>({
     title: "",
     description: "",
@@ -59,19 +69,16 @@ function SubmitConfiguration({ setSubmitPOpup, setIsSubmitActive }: Props) {
     console.log("📦 Updated Config Details:", updatedArray);
 
     // Close popup after successful submit
-    setSubmitPOpup(false);
+    // setSubmitPOpup(false);
     setIsSubmitActive(false);
+    setIsActive(false);
+    handleSave();
+    // handleSaveChanges();
+    setPOpUp2(false);
   };
 
   return (
     <>
-      <button
-        onClick={() => setSubmitPOpup(false)}
-        className="absolute top-4 right-4 text-2xl text-red-500 hover:text-red-600 transition-colors"
-      >
-        <RxCross2 />
-      </button>
-
       <h1 className="text-2xl font-bold text-gray-900 mb-4">Submit Changes</h1>
       <p className="text-gray-600 mb-6">
         Note: Once you submit, you won’t be able to retrieve your previous
@@ -125,13 +132,18 @@ function SubmitConfiguration({ setSubmitPOpup, setIsSubmitActive }: Props) {
       {/* Buttons */}
       <div className="flex justify-end gap-3">
         <button
-          onClick={handleSubmit}
+          onClick={() => {
+            handleSubmit();
+          }}
           className="px-5 py-2 bg-black text-white rounded-lg font-semibold hover:bg-gray-900 shadow-md transition-all"
         >
           Submit
         </button>
         <button
-          onClick={() => setSubmitPOpup(false)}
+          onClick={() => {
+            setPOpUp2(false);
+            handleCancel();
+          }}
           className="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium hover:bg-gray-300 transition-all"
         >
           Cancel
