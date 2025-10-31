@@ -1,8 +1,21 @@
 import { tablinks } from "../../../../../data/TabLinks";
-import { Link } from "react-router-dom";
+import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiConstant";
+// import { Link } from "react-router-dom";
+
 import { useorg } from "../../../../../context/org_context/OrganizationContext";
-const TabLinks = () => {
+import { Dispatch } from "react";
+
+const TabLinks = ({selectedScreen,setSelectedScreen}: {selectedScreen: string, setSelectedScreen: Dispatch<React.SetStateAction<string>>}) => {
+  console.log(selectedScreen);
+  
   const { orgDetails } = useorg();
+  const mappedData = [
+    {key:DefaultVAlues.API,name:"Api"},
+    {key:DefaultVAlues.CLIENT,name:"Client"},
+    {key:DefaultVAlues.DEFAULT,name:"Default"},
+    {key:DefaultVAlues.WEB,name:"Web"},
+    {key:DefaultVAlues.YOU, name:"You"}
+  ]
   return (
     <div className="bg-primary p-5 pb-0 mb-0 rounded-lg ">
       <p className="text-2xl font-semibold mb-2 ">{orgDetails?.data.name}</p>
@@ -11,11 +24,14 @@ const TabLinks = () => {
       </p>
       <hr />
       <div className="mt-5 mb-0 flex border-b border-gray-200">
-        {tablinks.map((item, key) => {
-          const isActive = location.pathname === item.link;
+        {mappedData.map((item, key) => {
+          const isActive = selectedScreen === item.key;
           return (
-            <Link
-              to={item.link}
+            <button 
+              // to={item.link}
+              onClick={()=>{
+                setSelectedScreen(item.key)
+              }}
               key={key}
               className={`mr-5 w-[5rem]  text-lg font-medium transition-colors `}
             >
@@ -28,7 +44,7 @@ const TabLinks = () => {
               >
                 {item.name}
               </p>
-            </Link>
+            </button>
           );
         })}
       </div>
