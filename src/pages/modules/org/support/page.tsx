@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 import { FAQResponse } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
 import Report from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Report";
 import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
-import { DiVim } from "react-icons/di";
+// import { DiVim } from "react-icons/di";
 import Toast from "../../../../components/common_component/Toast";
 
 function page() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { setLoader } = useloader();
 
   const [searchValue, setSearchValue] = useState("");
   const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
   const [apiError, setApiError] = useState<Error>();
   const [popUp, setPOpUp] = useState<boolean>(false);
-
+ console.log(apiError);
+ 
   useEffect(() => {
     setLoader(true);
 
@@ -67,23 +68,23 @@ function page() {
     // setSelectQuary({ type: "All" });
   }, []);
   const [isTost, setIsTost] = useState<boolean>(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  // const [form, setForm] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Your message has been submitted. We'll get back to you soon!");
-    setForm({ name: "", email: "", message: "" });
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   alert("Your message has been submitted. We'll get back to you soon!");
+  //   setForm({ name: "", email: "", message: "" });
+  // };
   return (
     <DashboardMask name={DashboardTypeEnums.SUPPORT}>
       <HeadingMask name={"Support Portal"}>
