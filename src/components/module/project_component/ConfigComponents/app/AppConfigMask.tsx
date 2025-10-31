@@ -6,19 +6,25 @@ import Sidebar from "../../../../common_component/Sidebar";
 // import { useorg } from "../../../../../context/org_context/OrganizationContext";
 import { ConfigDashboardLinks } from "../../../../../data/SidebarLinks";
 import TabLinks from "../common/TabLinks";
-import { useTabContext } from "../../../../../context/org_context/TabContext";
+// import { useTabContext } from "../../../../../context/org_context/TabContext";
+import { useState } from "react";
 // import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { useloader } from "../../../../../context/loader_context/LoaderContext";
 import { ReactNode } from "react";
+import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiConstant";
+import WebUrlConfig from "./WebUrlConfig";
+import ClientConfig from "./ClientConfig";
+import DefaultConfig from "./DefaultConfig";
+import YouConfig from "./YouConfig";
+import ApiConfig from "./ApiConfig";
 type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
 
 const AppConfigMask = ({
-  children,
   name,
   display,
   direction = "row",
 }: {
-  children: ReactNode;
+  
   displayName: string;
   name: string;
   display: string;
@@ -26,11 +32,21 @@ const AppConfigMask = ({
 }) => {
   // const { orgDetails } = useorg();
 
-  const { isEdit } = useTabContext();
+  // const { isEdit } = useTabContext();
+
+  const ChildComponent= ()=>{
+    if(selectedScreen===DefaultVAlues.API) return <ApiConfig/>
+    if(selectedScreen===DefaultVAlues.CLIENT) return <ClientConfig/>
+    if(selectedScreen===DefaultVAlues.DEFAULT) return <DefaultConfig/>
+    if(selectedScreen===DefaultVAlues.WEB) return <WebUrlConfig/>
+    if(selectedScreen===DefaultVAlues.YOU) return <YouConfig/>
+  }
+
   const { show, setShow } = useloader();
+  const [selectedScreen,setSelectedScreen] = useState(DefaultVAlues.API)
   return (
     <div className="h-full flex hide-scrollbar">
-      {isEdit && (
+      {true && (
         <Sidebar
           setShow={setShow}
           show={show}
@@ -42,13 +58,13 @@ const AppConfigMask = ({
         <Navbar />
         <div className=" p-6 mt-20  h-full w-full overflow-auto ">
           <div className=" w-full gap-4">
-            <TabLinks />
+            <TabLinks selectedScreen={selectedScreen} setSelectedScreen={setSelectedScreen} />
 
             <div
               className="mt-5  "
               style={{ display: `${display}`, flexDirection: `${direction}` }}
             >
-              {children}
+              {ChildComponent()}
             </div>
           </div>
         </div>
