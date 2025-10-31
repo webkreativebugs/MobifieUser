@@ -1283,6 +1283,11 @@
                 "title": "Profile",
                 "image": "/assets/screens/profile2.png",
                 "component": "Profile"
+            },
+            {
+                "title": "Profile",
+                "image": "/assets/profile/p3.png",
+                "component": "Profile"
             }
         ],
         "additional_config": {
@@ -1448,6 +1453,11 @@
             {
                 "title": "Wishlist",
                 "image": "/assets/screens/wishlist.png",
+                "component": "Wishlist"
+            },
+            {
+                "title": "Wishlist",
+                "image": "/assets/wishlist/w3.png",
                 "component": "Wishlist"
             }
         ],

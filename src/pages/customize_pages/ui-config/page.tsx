@@ -2,7 +2,7 @@ import CustomizeMask from "../../../components/module/project_component/ConfigCo
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 import { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
-import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
+
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { CurrentConfig } from "../../../data/interface/data.interface";
 import { ScreenType } from "../../../../enum/AccessType.enum";

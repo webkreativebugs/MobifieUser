@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
 import { Link } from "react-router-dom";
 
@@ -25,33 +25,6 @@ function page() {
     }
   }, []);
 
-  const homeSections = [
-    {
-      title: "Home",
-      description:
-        "Welcome to your personalized dashboard. Access your data, manage preferences, and explore features designed for you.",
-    },
-    {
-      title: "About Us",
-      description:
-        "We are a forward-thinking company committed to delivering high-quality digital solutions with creativity and efficiency.",
-    },
-    {
-      title: "Services",
-      description:
-        "Our services include web development, mobile app design, and cloud integration to help businesses grow online.",
-    },
-    {
-      title: "Contact",
-      description:
-        "Get in touch with our support team for queries, collaborations, or feedback. We’re here to help you 24/7.",
-    },
-    {
-      title: "Careers",
-      description:
-        "Join our dynamic team and build innovative products that make a real-world impact. Explore open roles today.",
-    },
-  ];
   return (
     <div>
       <Navbar />

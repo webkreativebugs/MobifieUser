@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
@@ -6,19 +6,15 @@ import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import {
   ScreenConfigInterface,
   CurrentConfig,
-  DraftScreenConfig,
 } from "../../../data/interface/data.interface";
 import Navbar from "../../../components/common_component/Navbar";
 import Screens from "../../../components/module/project_component/ConfigComponents/ui/Screens";
 import AdditionalConfig from "../../../components/module/project_component/ConfigComponents/ui/AdditionalConfig";
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
-import {
-  useMainScreenData,
-  MainScreenDataConfig,
-} from "../../../context/ui_context/mainScreenContext";
+import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
 import { RxCross2 } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
-import { ScreenType } from "../../../../enum/AccessType.enum";
+
 import CustomizePopUp from "../../../components/module/project_component/ConfigComponents/common/CustomizePopUp";
 import SubmitConfiguration from "../../../components/module/project_component/ConfigComponents/common/SubmitConfiguration";
 
@@ -43,15 +39,15 @@ function Page() {
   const [display, setDisplay] = useState<JSX.Element | null>(null);
 
   const { isActive, setIsActive } = useSaveChanges();
-  const { mainscreenData, setMainScreenData } = useMainScreenData();
-  const { drafts, setDrafts, removeDraft } = useDraftScreen();
+  const { mainscreenData } = useMainScreenData();
+  const { drafts, removeDraft } = useDraftScreen();
   const location = useLocation();
   const { type } = location.state || {};
   console.log(type);
   const [currentView, setCurrentView] = useState<
     currentViewInterface | undefined
   >();
-  console.log(mainscreenData);
+  console.log(setIsEdit);
 
   useEffect(() => {
     const draft = drafts.find((d) => d.screenName === element);
@@ -81,52 +77,11 @@ function Page() {
     }
   }, [element, drafts, mainscreenData]);
 
-  const storedData = localStorage.getItem("mainscreenData");
-
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
     ScreenConfigdata.find(
       (item) => item.key === element
     ) as ScreenConfigInterface
   );
-  const change = JSON.parse(localStorage.getItem("change") || "false");
-  useEffect(() => {});
-  const effectiveScreenConfig = useMemo(() => {
-    try {
-      let draft: any = null;
-
-      if (type === ScreenType.DRAFT) {
-        draft = drafts.find(
-          (d) =>
-            d.screenName === screenConfig.key ||
-            d.screenName === screenConfig.key
-        );
-
-        return draft
-          ? { ...screenConfig, current_config: draft.draftScreen }
-          : screenConfig;
-      }
-
-      if (type === ScreenType.MAIN && storedData) {
-        const parsed = JSON.parse(storedData);
-        if (Array.isArray(parsed)) {
-          draft = parsed.find(
-            (d: any) =>
-              d.screenName === screenConfig.key ||
-              d.screenName === screenConfig.key
-          );
-        }
-
-        return draft
-          ? { ...screenConfig, current_config: draft.draftScreen }
-          : screenConfig;
-      }
-
-      return screenConfig;
-    } catch (err) {
-      console.error("Error computing effectiveScreenConfig:", err);
-      return screenConfig;
-    }
-  }, [type, storedData, drafts, screenConfig]);
 
   useEffect(() => {
     const screenData = ScreenConfigdata.find((item) => item.key === element);
@@ -175,37 +130,37 @@ function Page() {
     };
   }, [isActive]);
 
-  const handleSaveChanges = () => {
-    const draft = drafts.find((d) => d.screenName === element);
-    const latestConfig = draft?.draftScreen || screenConfig.current_confi;
+  // const handleSaveChanges = () => {
+  //   const draft = drafts.find((d) => d.screenName === element);
+  //   const latestConfig = draft?.draftScreen || screenConfig.current_confi;
 
-    if (!latestConfig) {
-      console.error("No valid config found for:", element);
-      return;
-    }
+  //   if (!latestConfig) {
+  //     console.error("No valid config found for:", element);
+  //     return;
+  //   }
 
-    setMainScreenData((prev) => {
-      const exists = prev.some((item) => item.screenName === element);
-      if (!exists) {
-        console.warn(`Screen "${element}" not found in mainScreenData.`);
-        return prev;
-      }
+  //   setMainScreenData((prev) => {
+  //     const exists = prev.some((item) => item.screenName === element);
+  //     if (!exists) {
+  //       console.warn(`Screen "${element}" not found in mainScreenData.`);
+  //       return prev;
+  //     }
 
-      const updated = prev.map((item) =>
-        item.screenName === element
-          ? { ...item, current_config: latestConfig }
-          : item
-      );
+  //     const updated = prev.map((item) =>
+  //       item.screenName === element
+  //         ? { ...item, current_config: latestConfig }
+  //         : item
+  //     );
 
-      console.log("✅ Updated mainScreenData:", updated);
-      return updated;
-    });
+  //     console.log("✅ Updated mainScreenData:", updated);
+  //     return updated;
+  //   });
 
-    removeDraft(element);
-    setPOpUp(false);
-    setIsActive(false);
-    setIsSubmitActive(true);
-  };
+  //   removeDraft(element);
+  //   setPOpUp(false);
+  //   setIsActive(false);
+  //   setIsSubmitActive(true);
+  // };
 
   const handleSaveDraft = () => {
     setPOpUp(false);
@@ -406,10 +361,10 @@ function Page() {
         {currentView && (
           <PreviewComponent
             currentView={currentView}
-            isEdit={isEdit}
-            setIsEdit={setIsEdit}
+            // isEdit={isEdit}
+            // setIsEdit={setIsEdit}
             isSubmitActive={isSubmitActive}
-            setIsSubmitActive={setIsSubmitActive}
+            // setIsSubmitActive={setIsSubmitActive}
           />
         )}
       </div>

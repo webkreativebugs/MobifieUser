@@ -21,8 +21,6 @@ type UiConfigSidebarProps = {
 function UiConfigSidebar({
   element,
   setElement,
-  ispopUpdata,
-  setIsPOpUpdata,
   setPOpUp,
   popUp,
   isEdit,
