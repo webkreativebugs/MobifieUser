@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { HeaderConfigItem } from "../../../../../../../data/interface/data.interface";
 
 function Header1({ header }: { header: HeaderConfigItem }) {
