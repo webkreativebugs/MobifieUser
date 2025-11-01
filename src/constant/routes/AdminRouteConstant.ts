@@ -22,7 +22,13 @@ import Configuration from "../../pages/customize_pages/configuration_page/page"
 import Details from '../../pages/modules/org/detail/page'
 import NewBuild from "../../pages/modules/org/new_build_form/page"
 import Review from "../../pages/modules/org/reviewChanges/page"
-export const admin =[
+
+interface RouteProps {
+  route: { params: Record<string, any> };
+}
+
+
+export const admin:{ route: string; component: React.ComponentType<RouteProps> ;additional:string}[] =[
     {
         route:"/",
         component: LandingPage,
