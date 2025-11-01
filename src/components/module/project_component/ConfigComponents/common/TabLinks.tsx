@@ -1,10 +1,10 @@
-import { tablinks } from "../../../../../data/TabLinks";
+// import { tablinks } from "../../../../../data/TabLinks";
 import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiConstant";
 // import { Link } from "react-router-dom";
 
 import { useorg } from "../../../../../context/org_context/OrganizationContext";
 import { Dispatch } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const TabLinks = ({
   isDisable,

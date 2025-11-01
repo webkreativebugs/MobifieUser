@@ -11,19 +11,19 @@ import TabLinks from "../common/TabLinks";
 import { useState } from "react";
 // import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { useloader } from "../../../../../context/loader_context/LoaderContext";
-import { ReactNode } from "react";
+// import { ReactNode } from "react";
 import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiConstant";
 import WebUrlConfig from "./WebUrlConfig";
 import ClientConfig from "./ClientConfig";
 import DefaultConfig from "./DefaultConfig";
 import YouConfig from "./YouConfig";
 import ApiConfig from "./ApiConfig";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
 
 const AppConfigMask = ({
   isDisable,
-  displayName,
+  // displayName,
   name,
   display,
   direction = "row",
