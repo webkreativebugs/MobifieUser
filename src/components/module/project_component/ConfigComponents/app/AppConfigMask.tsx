@@ -18,22 +18,24 @@ import DefaultConfig from "./DefaultConfig";
 import YouConfig from "./YouConfig";
 import ApiConfig from "./ApiConfig";
 import { Link, Links } from "react-router-dom";
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
 
 const AppConfigMask = ({
-  isDisable,
+  // isDisable,
   displayName,
   name,
   display,
   direction = "row",
 }: {
-  isDisable: boolean;
+  // isDisable: boolean;
   displayName: string;
   name: string;
   display: string;
   direction?: FlexDirection;
 }) => {
   // const { orgDetails } = useorg();
+  const { isDisable, setIsDisable } = useSaveChanges();
 
   // const { isEdit } = useTabContext();
 
@@ -63,11 +65,11 @@ const AppConfigMask = ({
           className={` p-6 mt-20  h-full flex justify-center overflow-auto w-full`}
         >
           <div className={`w-full gap-4 ${!isDisable ? "w-3/4" : "w-full"}`}>
-            <div className="card-bg w-full p-4 shadow-md my-3">
+            <div className="card-bg w-full p-4 shadow-md my-3 flex justify-end">
               {isDisable ? (
-                <div className="card-bg mt-4">
+                <div className="card-bg mt-4 ">
                   <Link
-                    // onClick={() => setIsEdit(true)}
+                    // onClick={() => setIsDisable(true)}
                     className="text-sm px-4 py-2 rounded-md text-black  border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
                     to="/project/new-app-config"
                     // state={{ type: ScreenType.MAIN }}
@@ -77,6 +79,16 @@ const AppConfigMask = ({
                 </div>
               ) : (
                 <>
+                  {/* <div className="card-bg mt-4">
+                    <Link
+                      // onClick={() => setIsEdit(true)}
+                      className="text-sm px-4 py-2 rounded-md text-black  border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
+                      to="/project/new-app-config"
+                      // state={{ type: ScreenType.MAIN }}
+                    >
+                      Edit
+                    </Link>
+                  </div>
                   <div className="card-bg mt-4">
                     <Link
                       // onClick={() => setIsEdit(true)}
@@ -84,14 +96,13 @@ const AppConfigMask = ({
                       to="/project/new-app-config"
                       // state={{ type: ScreenType.MAIN }}
                     >
-                      Edit Config
+                      Edit
                     </Link>
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>
             <TabLinks
-              isDisable
               selectedScreen={selectedScreen}
               setSelectedScreen={setSelectedScreen}
             />

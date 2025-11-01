@@ -1,20 +1,22 @@
-import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
-import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
-import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField"
-import { ShopifyConfig } from "../../../../../data/CustomizeData/ApiConfig"
-import { useState } from "react"
+import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask";
+import {
+  ConfigTypeEnums,
+  CustomizeDashboardTypeEnums,
+} from "../../../../../../enum/DashboardLinks";
+import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField";
+import { ShopifyConfig } from "../../../../../data/CustomizeData/ApiConfig";
+import { useState } from "react";
+import CustomizePopUp from "../common/CustomizePopUp";
 
 interface ConfigFormData {
-  [key: string]: string
+  [key: string]: string;
 }
 
 const ClientConfig = () => {
+  const [popup, setPOpUp] = useState(true);
   const [formData, setFormData] = useState<ConfigFormData>(
-    ShopifyConfig.reduce(
-      (acc, item) => ({ ...acc, [item.key]:  "" }),
-      {}
-    )
-  )
+    ShopifyConfig.reduce((acc, item) => ({ ...acc, [item.key]: "" }), {})
+  );
 
   const [errors, setErrors] = useState(
     ShopifyConfig.reduce((acc, field) => {
@@ -29,7 +31,6 @@ const ClientConfig = () => {
       return acc;
     }, {} as Record<string, boolean>)
   );
-
 
   const validateField = (name: string, value: string) => {
     if (!value.trim()) return "This field is required";
@@ -85,8 +86,6 @@ const ClientConfig = () => {
     return valid;
   };
 
-
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -115,15 +114,15 @@ const ClientConfig = () => {
   const handleCopy = () => {
     const code = ShopifyConfig.map(
       (item) => `export const ${item.key}: string = '${formData[item.key]}';`
-    ).join("\n")
+    ).join("\n");
 
-    navigator.clipboard.writeText(code)
-    alert("Config copied to clipboard ✅")
-  }
+    navigator.clipboard.writeText(code);
+    alert("Config copied to clipboard ✅");
+  };
 
   return (
     <>
-    {/* <AppConfigMask
+      {/* <AppConfigMask
       name={CustomizeDashboardTypeEnums.APP}
       displayName={ConfigTypeEnums.CLIENT}
       display="flex"
@@ -173,9 +172,14 @@ const ClientConfig = () => {
           ).join("\n")}
         </pre>
       </div>
-    {/* </AppConfigMask> */}
+      {/* </AppConfigMask> */}
+      {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default ClientConfig
+export default ClientConfig;

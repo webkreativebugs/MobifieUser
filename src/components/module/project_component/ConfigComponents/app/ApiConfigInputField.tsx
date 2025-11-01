@@ -1,3 +1,5 @@
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
+
 interface PROPS {
   title: string;
   placeholder: string;
@@ -24,6 +26,7 @@ const ApiConfigInputField = ({
   disabled,
   onBlur,
 }: PROPS) => {
+  const { isDisable } = useSaveChanges();
   return (
     <div className={`flex justify-between w-full mb-4 `}>
       {type !== "select" ? (
@@ -42,7 +45,7 @@ const ApiConfigInputField = ({
             value={value}
             onChange={onChange}
             required={required}
-            disabled={disabled}
+            disabled={isDisable}
             onBlur={onBlur}
             className={`border-b w-2/3 text-md border-b-gray-300  px-3 py-3 placeholder:text-gray-500  focus:outline-none bg-transparent   focus:border-b-gray-700 transition
                      ${disabled && "placeholder:text-gray-400"}`}
