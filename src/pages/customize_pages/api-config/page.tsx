@@ -111,16 +111,19 @@ import AppConfigMask from "../../../components/module/project_component/ConfigCo
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
 import { ConfigTypeEnums } from "../../../../enum/DashboardLinks";
 import { useEffect, useState } from "react";
+import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 
 const page = () => {
-  const [isDisable, setIsDisable] = useState(true);
+  const { isDisable, setIsDisable } = useSaveChanges();
 
   useEffect(() => {
     setIsDisable(true);
   });
+  console.log(isDisable);
+
   return (
     <AppConfigMask
-      isDisable={isDisable}
+      // isDisable={isDisable}
       name={CustomizeDashboardTypeEnums.APP}
       displayName={ConfigTypeEnums.CLIENT}
       display="flex"

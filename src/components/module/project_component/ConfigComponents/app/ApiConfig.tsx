@@ -8,6 +8,7 @@ import {
 import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField";
 import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { useState } from "react";
+import CustomizePopUp from "../common/CustomizePopUp";
 // import { MdAccessTime } from "react-icons/md";
 
 // import { MdAccessTime } from "react-icons/md";
@@ -24,7 +25,7 @@ const ApiConfig = ({ isDisable }: { isDisable: boolean }) => {
     timeout: string; // Optional timeout setting
     [key: string]: string; // Index signature for dynamic access
   }
-
+  const [popup, setPOpUp] = useState(true);
   const [apiConfig, setApiConfig] = useState<ApiConfigData>({
     api_key: "",
     base_url: "",
@@ -54,52 +55,56 @@ const ApiConfig = ({ isDisable }: { isDisable: boolean }) => {
   // }
   return (
     // <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
-
-    <form className="grid grid-cols-1 w-full  gap-5">
-      <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
-        <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
-          Authentication
-        </h1>
-        <div className=" p-5 rounded-lg">
-          {ApiConfigAuth.map((item) => (
-            <ApiConfigInputField
-              title={item.title}
-              placeholder={item.placeholder as string}
-              name={item.key}
-              value={apiConfig[item.key]}
-              onChange={handleChange}
-              disabled={isDisable}
-              required={false}
-              type={item.type}
-              options={item.options}
-            />
-          ))}
+    <>
+      <form className="grid grid-cols-1 w-full  gap-5">
+        <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
+          <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
+            Authentication
+          </h1>
+          <div className=" p-5 rounded-lg">
+            {ApiConfigAuth.map((item) => (
+              <ApiConfigInputField
+                title={item.title}
+                placeholder={item.placeholder as string}
+                name={item.key}
+                value={apiConfig[item.key]}
+                onChange={handleChange}
+                disabled={isDisable}
+                required={false}
+                type={item.type}
+                options={item.options}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="bg-primary p-5 rounded-lg shadow-md  ">
-        <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
-          Request
-        </h1>
-        <div className=" p-5 rounded-lg">
-          {ApiConfigRequest.map((item) => (
-            <ApiConfigInputField
-              title={item.title}
-              placeholder={item.placeholder as string}
-              name={item.key}
-              value={apiConfig[item.key]}
-              onChange={handleChange}
-              disabled={isDisable}
-              required={false}
-              type={item.type}
+        <div className="bg-primary p-5 rounded-lg shadow-md  ">
+          <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
+            Request
+          </h1>
+          <div className=" p-5 rounded-lg">
+            {ApiConfigRequest.map((item) => (
+              <ApiConfigInputField
+                title={item.title}
+                placeholder={item.placeholder as string}
+                name={item.key}
+                value={apiConfig[item.key]}
+                onChange={handleChange}
+                disabled={isDisable}
+                required={false}
+                type={item.type}
 
-              // options={item.options}
-            />
-          ))}
+                // options={item.options}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </form>
-
-    // </AppConfigMask>
+      </form>
+      {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )}
+    </>
   );
 };
 
