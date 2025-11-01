@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 
 interface ReportProps {
   setPOpUp: React.Dispatch<React.SetStateAction<boolean>>;
@@ -57,11 +58,17 @@ function Report({ setPOpUp, setIsTost }: ReportProps) {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="w-1/2 bg-white  rounded-2xl shadow-md border border-gray-200 p-6 "
+      className="relative w-1/2 bg-white  rounded-2xl shadow-md border border-gray-200 p-6 "
     >
       <h4 className="text-lg font-semibold text-gray-800 mb-4">
-        Send us a message
+        Submit a Support Request
       </h4>
+      <button
+        onClick={() => setPOpUp(false)}
+        className="absolute top-1 right-1 text-xl text-red-500"
+      >
+        <RxCross2 />
+      </button>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -73,7 +80,8 @@ function Report({ setPOpUp, setIsTost }: ReportProps) {
             value={form.subject}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            placeholder="Enter your Subject"
+            placeholder="What’s your issue or request about?
+"
           />
           <p className="text-red-400 text-xs mt-0 px-2">{error.subject}</p>
         </div>
@@ -88,7 +96,8 @@ function Report({ setPOpUp, setIsTost }: ReportProps) {
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             rows={4}
-            placeholder="Write your message..."
+            placeholder="Please describe your issue in detail…
+"
           />
           <p className="text-red-400 mt-0 text-xs px-2">{error.message}</p>
         </div>

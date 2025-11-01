@@ -6,6 +6,11 @@ import { YouConfigType } from "../../../enum/YouConfig.enum";
 import { AiFillSetting } from "react-icons/ai";
 
 export const WebViewNavigationURL = [
+  
+
+  
+   
+
 
   {
     key: 'about_us',
@@ -115,6 +120,8 @@ export const ApiConfigRequest=[
   },
  
 ]
+ 
+
 
 export const currencies = [
   { code: "INR", name: "Indian Rupee", symbol: "₹" },

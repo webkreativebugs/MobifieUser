@@ -21,8 +21,8 @@ function page() {
   const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
   const [apiError, setApiError] = useState<Error>();
   const [popUp, setPOpUp] = useState<boolean>(false);
- console.log(apiError);
- 
+  console.log(apiError);
+
   useEffect(() => {
     setLoader(true);
 

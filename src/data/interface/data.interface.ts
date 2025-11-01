@@ -77,6 +77,12 @@ export interface ScreenConfigInterface {
   additional_config: AdditionalConfig;
 }
 
+//draft screen configuration 
+export interface DraftScreenConfig {
+  screenName:string,
+  draftScreen:CurrentConfig
+}
+
 
 
 

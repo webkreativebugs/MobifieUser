@@ -11,11 +11,7 @@ export interface SidebarLink {
   icon: IconType;
   link: string;
   dropdown: boolean;
-  sublink?: {
-    title: string;
-    links: SidebarLink[];
-    sublinkIcon:IconType
-  };
+  action:string;
 }
 
 export interface TabLinks{

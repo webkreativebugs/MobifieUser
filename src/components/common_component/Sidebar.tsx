@@ -5,6 +5,7 @@ import { GoSidebarExpand } from "react-icons/go";
 import { useauth } from "../../context/auth_context/AuthContext";
 import LogOut from "../../utils/api/LogOut";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
+import { MdOutlineScreenShare } from "react-icons/md";
 
 interface SidebarProps {
   active: string;
@@ -23,6 +24,10 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
     navigate("/login-with-password", { replace: true });
     onRoleChange("");
   };
+  // const hasSublinks = links.some(
+  //   (section) => section.sublink && section.sublink.links?.length > 0
+  // );
+  const isExit = links.some((section) => section.action === "Exit");
 
   return (
     <div
@@ -30,10 +35,8 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
         show ? "w-1/6" : "w-[120px]"
       }`}
     >
-      <div className="flex flex-col justify-between w-full h-full shadow-xl">
-        {/* ------------------ TOP SECTION ------------------ */}
+      <div className="flex flex-col justify-between w-full h-full ">
         <div>
-          {/* ---------- Logo ---------- */}
           <div className="flex items-center justify-center border-b-2 py-2.5">
             <Link
               to="/"
@@ -52,7 +55,6 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
           <div className="p-4 pt-5 space-y-1">
             {links.map((section) => (
               <div key={section.name}>
-                {/* Main Link */}
                 <NavLink
                   to={section.link}
                   onClick={() => setActiveLinkName(section.name)}
@@ -73,23 +75,28 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                 </NavLink>
 
                 {/* ---------- Sublinks ---------- */}
-                {section.sublink && (
-                  <div className={`flex flex-col mt-2 space-y-1 ${show?'pl-6':'pl-3'}`}>
-                    <div className="flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200 ">
-                     <span className="theme-color text-lg min-w-[24px] flex justify-center">
-                    <section.sublink.sublinkIcon />
-                  </span>
-                  {show && (
-                    <span className="capitalize text-lg font-bold">{section.sublink.title}</span>
-                  )}
-                  </div>
+                {/* {section.sublink && (
+                  <div className="flex flex-col pl-6 mt-2 space-y-1">
+                    <div className="flex items-center gap-3">
+                      <span className="theme-color text-lg min-w-[24px] flex justify-center">
+                        <MdOutlineScreenShare />
+                      </span>
+                      {show && (
+                        <span className="capitalize text-lg">
+                          {section.sublink.title}
+                        </span>
+                      )}
+                    </div>
+
                     {section.sublink.links.map((item) => (
                       <NavLink
                         to={item.link}
                         key={item.name}
                         onClick={() => setActiveLinkName(item.name)}
                         className={({ isActive }) =>
-                          `flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200 ${
+                          `flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200  ${
+                            !show && "ml-[-13px]"
+                          } ${
                             isActive || activeLinkName === item.name
                               ? "active-link"
                               : "normal-link hover:bg-[#ffffff22]"
@@ -107,21 +114,31 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                       </NavLink>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             ))}
           </div>
         </div>
 
-        {/* ------------------ BOTTOM SECTION ------------------ */}
-        <div className="border-t  py-4">
-          <button
-            className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
-            onClick={handleClick}
-          >
-            <FiLogOut className="text-xl" />
-            {show && "Logout"}
-          </button>
+        <div className="  py-4">
+          {isExit ? (
+            <Link
+              to="/project"
+              className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+            >
+              <FiLogOut className="text-xl" />
+              {show && "Exit"}
+            </Link>
+          ) : (
+            <button
+              className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+              onClick={handleClick}
+            >
+              <FiLogOut className="text-xl" />
+              {show && "Logout"}
+            </button>
+          )}
+
           <button
             className="normal-link flex items-center gap-3 ml-5 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
             onClick={() => setShow(!show)}
