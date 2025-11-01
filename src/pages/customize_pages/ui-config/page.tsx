@@ -6,7 +6,7 @@ import UiConfigSidebar from "../../../components/module/project_component/Config
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { CurrentConfig } from "../../../data/interface/data.interface";
 import { ScreenType } from "../../../../enum/AccessType.enum";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/header/Header1";
 import BottomTab1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/bottomTab/BottomTab1";
 import { useTheme } from "../../../context/AppContext";
@@ -23,6 +23,8 @@ const Page = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [android, setAndroid] = useState(false);
   const { theme } = useTheme();
+  const location = useLocation();
+  const { type } = location.state || {};
 
   // const [tab, setTab] = useState("screen");
   const [currentScreen, setCurrentScreen] = useState<CurrentScreen | null>(
@@ -68,14 +70,18 @@ const Page = () => {
           </h1>
 
           <div className="px-20 border-b-2 w-full h-14 flex justify-end items-center">
-            <Link
-              onClick={() => setIsEdit(true)}
-              className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
-              to="/project/edit-screen-config"
-              state={{ type: ScreenType.MAIN }}
-            >
-              Edit Screen
-            </Link>
+            {type == "Edit" ? (
+              <></>
+            ) : (
+              <Link
+                onClick={() => setIsEdit(true)}
+                className="text-sm px-4 py-2 rounded-md text-black bg-white border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
+                to="/project/edit-screen-config"
+                state={{ type: "Edit" }}
+              >
+                Edit Screen
+              </Link>
+            )}
           </div>
 
           <div className="w-full px-20 pt-4 space-y-2">

@@ -7,13 +7,15 @@ import { Dispatch } from "react";
 import { Link } from "react-router-dom";
 
 const TabLinks = ({
+  isDisable,
   selectedScreen,
   setSelectedScreen,
 }: {
+  isDisable: boolean;
   selectedScreen: string;
   setSelectedScreen: Dispatch<React.SetStateAction<string>>;
 }) => {
-  console.log(selectedScreen);
+  console.log(isDisable);
 
   const { orgDetails } = useorg();
   const mappedData = [
@@ -24,7 +26,7 @@ const TabLinks = ({
     { key: DefaultVAlues.YOU, name: "You" },
   ];
   return (
-    <div className="bg-primary p-5 pb-0 mb-0 rounded-lg ">
+    <div className={`bg-primary p-5 pb-0 mb-0 rounded-lg ${isDisable}`}>
       <div className="w-full flex justify-between">
         <div>
           <p className="text-2xl font-semibold mb-2 ">
@@ -33,16 +35,6 @@ const TabLinks = ({
           <p className="text-sm text-gray-500 mb-5">
             {"Saved at: 12 Aug 25, 04:31 pm"}
           </p>
-        </div>
-        <div className="card-bg mt-4">
-          <Link
-            // onClick={() => setIsEdit(true)}
-            className="text-sm px-4 py-2 rounded-md text-black  border shadow-md font-semibold transition hover:bg-gray-100 active:scale-95 active:bg-gray-200"
-            to="/project/edit-screen-config"
-            // state={{ type: ScreenType.MAIN }}
-          >
-            Edit Config
-          </Link>
         </div>
       </div>
 
