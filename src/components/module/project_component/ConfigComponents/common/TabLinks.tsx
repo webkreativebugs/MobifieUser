@@ -4,27 +4,18 @@ import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiCon
 
 import { useorg } from "../../../../../context/org_context/OrganizationContext";
 import { Dispatch } from "react";
-import { Link } from "react-router-dom";
 
-const TabLinks = ({
-  isDisable,
-  selectedScreen,
-  setSelectedScreen,
-}: {
-  isDisable: boolean;
-  selectedScreen: string;
-  setSelectedScreen: Dispatch<React.SetStateAction<string>>;
-}) => {
-  console.log(isDisable);
-
+const TabLinks = ({selectedScreen,setSelectedScreen}: {selectedScreen: string, setSelectedScreen: Dispatch<React.SetStateAction<string>>}) => {
+  console.log(selectedScreen);
+  
   const { orgDetails } = useorg();
   const mappedData = [
-    { key: DefaultVAlues.API, name: "Api" },
-    { key: DefaultVAlues.CLIENT, name: "Client" },
-    { key: DefaultVAlues.DEFAULT, name: "Default" },
-    { key: DefaultVAlues.WEB, name: "Web" },
-    { key: DefaultVAlues.YOU, name: "You" },
-  ];
+    {key:DefaultVAlues.API,name:"Api"},
+    {key:DefaultVAlues.CLIENT,name:"Client"},
+    {key:DefaultVAlues.DEFAULT,name:"Default"},
+    {key:DefaultVAlues.WEB,name:"Web"},
+    {key:DefaultVAlues.YOU, name:"You"}
+  ]
   return (
     <div className={`bg-primary p-5 pb-0 mb-0 rounded-lg ${isDisable}`}>
       <div className="w-full flex justify-between">
@@ -43,10 +34,10 @@ const TabLinks = ({
         {mappedData.map((item, key) => {
           const isActive = selectedScreen === item.key;
           return (
-            <button
+            <button 
               // to={item.link}
-              onClick={() => {
-                setSelectedScreen(item.key);
+              onClick={()=>{
+                setSelectedScreen(item.key)
               }}
               key={key}
               className={`mr-5 w-[5rem]  text-lg font-medium transition-colors `}

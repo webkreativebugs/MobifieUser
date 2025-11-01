@@ -9,12 +9,12 @@ import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 import HeadingMask from "../../../components/common_component/layered_components/HeadingMask";
-import { Link } from "react-router-dom";
-import { useTabContext } from "../../../context/org_context/TabContext";
+// import { Link } from "react-router-dom";
+// import { useTabContext } from "../../../context/org_context/TabContext";
 import { useDraftScreenChanges } from "../../../context/ui_context/DraftScreenContext";
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 // const { isEdit, setIsEdit } = useTabContext();
-import { ScreenType } from "../../../../enum/AccessType.enum";
+// import { ScreenType } from "../../../../enum/AccessType.enum";
 
 const details = [
   { title: "Version Publish", value: "v1.1" },
@@ -23,7 +23,7 @@ const details = [
 ];
 
 const page = () => {
-  const { isDraft } = useDraftScreenChanges();
+  // const { isDraft } = useDraftScreenChanges();
   // const { isEdit, setIsEdit } = useTabContext();
   const [element, setElement] = useState(ScreenConfigdata[0].key);
   console.log(ScreenConfigdata[0].key);

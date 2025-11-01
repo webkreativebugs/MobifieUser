@@ -5,7 +5,7 @@ import UiConfigSidebar from "../../../components/module/project_component/Config
 
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { CurrentConfig } from "../../../data/interface/data.interface";
-import { ScreenType } from "../../../../enum/AccessType.enum";
+// import { ScreenType } from "../../../../enum/AccessType.enum";
 import { Link, useLocation } from "react-router-dom";
 import Header1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/header/Header1";
 import BottomTab1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/bottomTab/BottomTab1";

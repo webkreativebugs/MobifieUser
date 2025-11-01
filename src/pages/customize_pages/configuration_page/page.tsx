@@ -15,12 +15,12 @@ import { ScreenType } from "../../../../enum/AccessType.enum";
 import { FaSearch } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const Page = () => {
-  const { isDraft } = useDraftScreenChanges();
-  const { isEdit, setIsEdit } = useTabContext();
-  const [element, setElement] = useState(ScreenConfigdata[0].key);
+  // const { isDraft } = useDraftScreenChanges();
+  const {  setIsEdit } = useTabContext();
+  const element= useState(ScreenConfigdata[0].key);
   const [query, setQuery] = useState({ app: "", screen: "" });
   const [popUp, setPOpUp] = useState(false);
   const { isActive } = useSaveChanges();
@@ -31,6 +31,9 @@ const Page = () => {
       (item) => item.key === element
     ) as ScreenConfigInterface
   );
+
+  console.log(popUp,screenConfig);
+  
 
   const [appDateRange, setAppDateRange] = useState<[Date | null, Date | null]>([
     null,
