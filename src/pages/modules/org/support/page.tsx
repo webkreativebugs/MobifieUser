@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
+// import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
@@ -11,9 +13,11 @@ import Report from "../../../../components/module/project_component/ConfigCompon
 import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 // import { DiVim } from "react-icons/di";
+// import { DiVim } from "react-icons/di";
 import Toast from "../../../../components/common_component/Toast";
 
 function page() {
+  // const navigate = useNavigate();
   // const navigate = useNavigate();
   const { setLoader } = useloader();
 
@@ -73,13 +77,28 @@ function page() {
   //   email: "",
   //   message: "",
   // });
+  // const [form, setForm] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // });
 
   // const handleChange = (
   //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   // ) => {
   //   setForm({ ...form, [e.target.name]: e.target.value });
   // };
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // };
 
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   alert("Your message has been submitted. We'll get back to you soon!");
+  //   setForm({ name: "", email: "", message: "" });
+  // };
   // const handleSubmit = (e: React.FormEvent) => {
   //   e.preventDefault();
   //   alert("Your message has been submitted. We'll get back to you soon!");
