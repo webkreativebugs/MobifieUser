@@ -159,7 +159,7 @@ function Page() {
   //   removeDraft(element);
   //   setPOpUp(false);
   //   setIsActive(false);
-  //   setIsSubmitActive(true);
+  // setIsSubmitActive(true);
   // };
 
   const handleSaveDraft = () => {
@@ -263,6 +263,12 @@ function Page() {
     }
   };
 
+  // useEffect(() => {
+  //   if (isActive) {
+  //     setIsSubmitActive(false);
+  //   }
+  // }, [isActive]);
+
   return (
     <div className="w-full h-screen overflow-y-scroll hide-scrollbar px-5">
       <Navbar />
@@ -299,7 +305,7 @@ function Page() {
               </button>
             </div>
             <div className="flex gap-4">
-              {isSubmitActive && (
+              {(isSubmitActive || drafts.length > 0) && !isActive && (
                 <>
                   {" "}
                   <button
@@ -308,12 +314,6 @@ function Page() {
                   >
                     Discard
                   </button>
-                  {/* <button
-                onClick={() => handleClick(detail.DRAFT)}
-                className="px-6 py-2 rounded-lg bg-black text-white font-semibold hover:bg-opacity-90 shadow-md transition-all"
-              >
-                Save Draft
-              </button> */}
                   <Link
                     // onClick={() => Navigate(to="/project/configuration/review")}
                     to="/project/configuration/review"
