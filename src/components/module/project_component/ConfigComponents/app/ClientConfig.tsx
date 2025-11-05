@@ -1,5 +1,5 @@
-import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
-import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
+// import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
+// import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
 import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField"
 import { ShopifyConfig } from "../../../../../data/CustomizeData/ApiConfig"
 import { useState } from "react"
@@ -8,7 +8,7 @@ interface ConfigFormData {
   [key: string]: string
 }
 
-const ClientConfig = () => {
+const ClientConfig = ({disable=false}) => {
   const [formData, setFormData] = useState<ConfigFormData>(
     ShopifyConfig.reduce(
       (acc, item) => ({ ...acc, [item.key]:  "" }),
@@ -143,6 +143,7 @@ const ClientConfig = () => {
               value={formData[data.key]}
               type="text"
               onBlur={handleBlur}
+              AreaDisable={disable}
             />
             {errors[data.key] && (
               <p className="text-red-500 text-sm">{errors[data.key]}</p>

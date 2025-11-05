@@ -32,7 +32,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   return (
     <div
       className={`hidden xl:flex h-screen z-50 bg-primary transition-all duration-300 ${
-        show ? "w-1/6" : "w-[80px]"
+        show ? "w-1/6" : "w-[120px]"
       }`}
     >
       <div className="flex flex-col justify-between w-full h-full ">
@@ -51,7 +51,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
             </Link>
           </div>
 
-          {/* ---------- Links ---------- */}
+          {/* ---------- Links ---dddd------- */}
           <div className="p-4 pt-5 space-y-1">
             {links.map((section) => (
               <div key={section.name}>
@@ -66,7 +66,7 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
                     }`
                   }
                 >
-                  <span className="theme-color text-lg min-w-[24px] flex justify-center">
+                  <span className="theme-color text-lg min-w-[24px]  flex justify-center">
                     <section.icon />
                   </span>
                   {show && (

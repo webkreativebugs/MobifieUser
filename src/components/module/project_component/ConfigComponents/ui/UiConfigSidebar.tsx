@@ -3,9 +3,11 @@ import  { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ScreenConfig from "../../../../../data/CustomizeData/ScreenConfig.json";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 // import { themes } from "../../../../../data/ThemeSection";
+// import { themes } from "../../../../../data/ThemeSection";
 import ThemePicker from "../../../../../components/module/org_component/theme_component/ThemePicker";
 import { useTheme } from "../../../../../context/AppContext";
 import { useDraftScreen } from "../../../../../context/ui_context/DraftScreenContext";
+// import { DiVim } from "react-icons/di";
 // import { DiVim } from "react-icons/di";
 
 type UiConfigSidebarProps = {
@@ -27,9 +29,11 @@ function UiConfigSidebar({
 }: UiConfigSidebarProps) {
   console.log(element);
   // const [tempElement, setTepElement] = useState<string>("");
+  // const { isActive } = useSaveChanges();
   const { isActive } = useSaveChanges();
   const [themePopup, setThemePopup] = useState(false);
   const { theme } = useTheme();
+  // const { theme } = useTheme();
   const { drafts } = useDraftScreen();
 
   const handleClick = (elem: string) => {

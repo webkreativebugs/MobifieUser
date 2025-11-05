@@ -1,5 +1,5 @@
-import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
-import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
+// import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
+// import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
 import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField" 
 import { WebViewNavigationURL } from "../../../../../data/CustomizeData/ApiConfig"
 import { useState } from "react"
@@ -21,7 +21,7 @@ interface WebViewNavigationItem {
   key: ConfigFormKeys;
 }
 
-const WebUrlConfig = () => {
+const WebUrlConfig = ({disable=false}) => {
   const [configFormData, setConfigFormData] = useState<Record<ConfigFormKeys, string>>({
     edit_profile: "",
     orders: "",
@@ -135,6 +135,7 @@ const WebUrlConfig = () => {
                 value={configFormData[item.key]}
                 onChange={handleChange}
                 required={false}
+                AreaDisable={disable}
               />
             </div>
             {errors[item.key] && (

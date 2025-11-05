@@ -11,7 +11,7 @@ import { FaEdit } from "react-icons/fa";
 // import { useEffect } from "react";
 // import {YouConfigType} from "../../../../enum/YouConfig.enum"
 // type YouConfigKeys = keyof typeof YouClientConfiguration;
-const YouConfig = () => {
+const YouConfig = ({disable=false}) => {
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const [leftChecked, setLeftChecked] = useState<Record<string, boolean>>({});
   const [rightChecked, setRightChecked] = useState<Record<string, boolean>>({});
@@ -66,6 +66,7 @@ const YouConfig = () => {
         <div
           key={item.key}
           className="border-b border-slate-200 pb-4 last:border-none"
+          aria-disabled={disable}
         >
           {/* Row */}
           <div className="flex gap-6">
@@ -86,7 +87,7 @@ const YouConfig = () => {
               <>
               <div className={`flex w-full justify-end   rounded-md  p-4 pt-1 pb-1 `}>
                 <CustomComponents data={customData[item.key]} />
-                <button className="px-4  py-2 ml-5 flex text-xl  w-fit   transition"
+                <button disabled={disable} className="px-4  py-2 ml-5 flex text-xl  w-fit   transition"
                onClick={()=> {setPopped(true) ; setPopData(item.key)}}
                 >
                  <FaEdit/>

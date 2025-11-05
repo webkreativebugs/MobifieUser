@@ -1,11 +1,11 @@
-import { tablinks } from "../../../../../data/TabLinks";
+// import { tablinks } from "../../../../../data/TabLinks";
 import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiConstant";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useorg } from "../../../../../context/org_context/OrganizationContext";
 import { Dispatch } from "react";
 
-const TabLinks = ({selectedScreen,setSelectedScreen}: {selectedScreen: string, setSelectedScreen: Dispatch<React.SetStateAction<string>>}) => {
+const TabLinks = ({selectedScreen,setSelectedScreen,disable}: {selectedScreen: string, setSelectedScreen: Dispatch<React.SetStateAction<string>>,disable:boolean}) => {
   console.log(selectedScreen);
   
   const { orgDetails } = useorg();
@@ -17,7 +17,7 @@ const TabLinks = ({selectedScreen,setSelectedScreen}: {selectedScreen: string, s
     {key:DefaultVAlues.YOU, name:"You"}
   ]
   return (
-    <div className={`bg-primary p-5 pb-0 mb-0 rounded-lg ${isDisable}`}>
+    <div className={`bg-primary p-5 pb-0 mb-0 rounded-lg `}>
       <div className="w-full flex justify-between">
         <div>
           <p className="text-2xl font-semibold mb-2 ">
@@ -27,6 +27,12 @@ const TabLinks = ({selectedScreen,setSelectedScreen}: {selectedScreen: string, s
             {"Saved at: 12 Aug 25, 04:31 pm"}
           </p>
         </div>
+        {disable&&
+          <Link to="/api-config-edit">
+          Edit config
+        </Link>
+        }
+
       </div>
 
       <hr />

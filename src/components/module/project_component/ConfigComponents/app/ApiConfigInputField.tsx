@@ -10,6 +10,7 @@ interface PROPS {
   disabled?: boolean;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   rounded?: boolean;
+  AreaDisable:boolean
 }
 
 const ApiConfigInputField = ({
@@ -22,6 +23,7 @@ const ApiConfigInputField = ({
   required = false,
   options,
   disabled,
+  AreaDisable=false,
   onBlur,
 }: PROPS) => {
   return (
@@ -42,7 +44,7 @@ const ApiConfigInputField = ({
             value={value}
             onChange={onChange}
             required={required}
-            disabled={disabled}
+            disabled={disabled||AreaDisable}
             onBlur={onBlur}
             className={`border-b w-2/3 text-md border-b-gray-300  px-3 py-3 placeholder:text-gray-500  focus:outline-none bg-transparent   focus:border-b-gray-700 transition
                      ${disabled && "placeholder:text-gray-400"}`}

@@ -22,7 +22,14 @@ import Configuration from "../../pages/customize_pages/configuration_page/page"
 import Details from '../../pages/modules/org/detail/page'
 import NewBuild from "../../pages/modules/org/new_build_form/page"
 import Review from "../../pages/modules/org/reviewChanges/page"
-export const admin =[
+import ApiConfigEdit from '../../pages/customize_pages/api-config-edit/page'
+
+interface RouteProps {
+  route: { params: Record<string, any> };
+}
+
+
+export const admin:{ route: string; component: React.ComponentType<RouteProps> ;additional:string}[] =[
     {
         route:"/",
         component: LandingPage,
@@ -165,11 +172,18 @@ export const admin =[
 },
     {
     
-         route:"/project/configuration/review",
+        route:"/project/configuration/review",
         component: Review,
         additional:""
     
-}
+    },
+    {
+        route:"/api-config-edit",
+        component:ApiConfigEdit,
+        additional:""
+
+    }
+
     
 
 

@@ -1,17 +1,20 @@
-// import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
-// import { ConfigTypeEnums } from "../../../../../../enum/DashboardLinks"
+// import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask";
+// import { ConfigTypeEnums } from "../../../../../../enum/DashboardLinks";
 // import ApiRequestForms from "../../../components/module/project_component/ConfigComponents/app/ApiRequestForm"
-import { ApiConfigAuth,ApiConfigRequest } from "../../../../../data/CustomizeData/ApiConfig"
-import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField"
-// import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
-import { useState } from "react"
+import {
+  ApiConfigAuth,
+  ApiConfigRequest,
+} from "../../../../../data/CustomizeData/ApiConfig";
+import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField";
+// import { CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
+import { useState } from "react";
 // import { MdAccessTime } from "react-icons/md";
 
 
 // import { MdAccessTime } from "react-icons/md";
 
 
-const ApiConfig = () => {
+const ApiConfig = ({disable=false}) => {
    
 interface ApiConfigData {
   api_key: string;       // Authentication
@@ -75,6 +78,7 @@ interface ApiConfigData {
                     required={false}
                     type={item.type}
                     options={item.options}
+                    AreaDisable={disable}
                   />
                   
                 ))}
@@ -95,6 +99,7 @@ interface ApiConfigData {
                     onChange={handleChange}
                     required={false}
                     type={item.type}
+                    AreaDisable={disable}
                    
                     // options={item.options}
                   />
