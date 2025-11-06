@@ -2,89 +2,128 @@ import { useEffect, useState } from "react";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
-import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
+// import { modifiedUrlConfig } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.api";
+import { MdMoreHoriz } from "react-icons/md";
 // import { useNavigate } from "react-router-dom";
-import fetchAllFaqs from "../../../../utils/api/Faqs";
+// import fetchAllFaqs from "../../../../utils/api/Faqs";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
-import { FAQResponse } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
+// import { FAQResponse } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
 import Report from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Report";
 import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
-import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
+// import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
+// import createSupport from "../../../../utils/api/supportticketApi/CreateNewSupportTicket";
 // import { DiVim } from "react-icons/di";
 import Toast from "../../../../components/common_component/Toast";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+import {
+  ListAllSupportTicketsResponse,
+  ListAllSupportTicketsCallback,
+} from "../../../../../network/public/project_api/getsupportTicket/GetSupportTicket.interface";
+import getSupport from "../../../../utils/api/supportticketApi/GetSupportTickets";
+import UpdateSupportTicket from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/UpdateSupportTicket";
+
+enum popupComponent {
+  DELETE = "deleteTicket",
+  UPDATE = "updateTicket",
+  CREATE = "createnewTicket",
+}
+interface SupportTicket {
+  customer_id: string;
+
+  description: string;
+
+  escalation_level: string;
+
+  priority: string;
+
+  project_id: string;
+
+  status: string;
+
+  subject: string;
+
+  _id: string;
+}
+
+const dummy = {
+  customer_id: "",
+
+  description: "",
+
+  escalation_level: "",
+
+  priority: "",
+
+  project_id: "",
+
+  status: "",
+
+  subject: "",
+
+  _id: "",
+};
 
 function page() {
   // const navigate = useNavigate();
   const { setLoader } = useloader();
+  var count = 1;
 
   const [searchValue, setSearchValue] = useState("");
-  const [apiResponse, setApiResponse] = useState<FAQResponse | undefined>();
+  const [Popupdisplay, setPopupdisplay] = useState("");
+  const [supportTicketData, setSupportTicketData] = useState<SupportTicket>();
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [apiResponse, setApiResponse] =
+    useState<ListAllSupportTicketsResponse>();
   const [apiError, setApiError] = useState<Error>();
   const [popUp, setPOpUp] = useState<boolean>(false);
+
   console.log(apiError);
 
   useEffect(() => {
-    setLoader(true);
+    // setLoader(true);
 
-    const type = "All";
+    // const type = "All";
 
-    if (type === "All") {
-      modifiedUrlConfig.search = "";
-    } else {
-      modifiedUrlConfig.search = `&category=${encodeURIComponent(type || "")}`;
-      if (searchValue) {
-        modifiedUrlConfig.search += `&search=${encodeURIComponent(
-          searchValue
-        )}`;
-      }
-    }
+    // if (type === "All") {
+    //   modifiedUrlConfig.search = "";
+    // } else {
+    //   modifiedUrlConfig.search = `&category=${encodeURIComponent(type || "")}`;
+    //   if (searchValue) {
+    //     modifiedUrlConfig.search += `&search=${encodeURIComponent(
+    //       searchValue
+    //     )}`;
+    //   }
+    // }
 
-    fetchAllFaqs(setApiResponse, setApiError, setLoader);
+    getSupport(setApiResponse, setApiError, setLoader);
     // setClicked(1);
-    // setLoader(false);
+    // if (apiResponse) {
+    //   setLoader(false);
+    // }
   }, []);
 
-  useEffect(() => {
-    if (!searchValue.trim()) return;
+  // useEffect(() => {
+  //   if (!searchValue.trim()) return;
 
-    const type = "All";
-    const categoryParam =
-      type && type !== "All"
-        ? `&category=${encodeURIComponent(type)}`
-        : "?category=";
-    const searchParam = `&search=${encodeURIComponent(searchValue.trim())}`;
+  //   const type = "All";
+  //   const categoryParam =
+  //     type && type !== "All"
+  //       ? `&category=${encodeURIComponent(type)}`
+  //       : "?category=";
+  //   const searchParam = `&search=${encodeURIComponent(searchValue.trim())}`;
 
-    modifiedUrlConfig.search = `${categoryParam}${searchParam}`;
+  //   modifiedUrlConfig.search = `${categoryParam}${searchParam}`;
 
-    // setLoader(true);
-    fetchAllFaqs(setApiResponse, setApiError, setLoader);
-    // setLoader(false);
-    console.log(apiResponse);
-  }, [searchValue, OrganizationDetailsConfig.orgName]);
+  //   // setLoader(true);
+  //   // fetchAllFaqs(setApiResponse, setApiError, setLoader);
+  //   // setLoader(false);
+  //   console.log(apiResponse);
+  // }, [searchValue, OrganizationDetailsConfig.orgName]);
 
-  useEffect(() => {
-    // modifiedUrlConfig.orgName=orgDetails!==undefined?orgDetails.data._id:""
-    // setLoader(true);
-    // setSelectQuary({ type: "All" });
-  }, []);
+  useEffect(() => {}, []);
   const [isTost, setIsTost] = useState<boolean>(false);
-  // const [form, setForm] = useState({
-  //   name: "",
-  //   email: "",
-  //   message: "",
-  // });
 
-  // const handleChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   setForm({ ...form, [e.target.name]: e.target.value });
-  // };
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   alert("Your message has been submitted. We'll get back to you soon!");
-  //   setForm({ name: "", email: "", message: "" });
-  // };
   return (
     <DashboardMask name={DashboardTypeEnums.SUPPORT}>
       <HeadingMask name={"Support Portal"}>
@@ -109,34 +148,105 @@ function page() {
               <></>
             )} */}
             <>
-              {apiResponse && apiResponse.data?.faqs?.length > 0 ? (
+              {apiResponse && apiResponse.data?.tickets?.length > 0 ? (
                 <div className="space-y-1">
-                  {apiResponse.data.faqs.slice(0, 4).map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-300"
-                    >
-                      <h4 className="text-lg font-semibold text-gray-900 flex items-start">
-                        <span className="mr-2 text-blue-500 font-bold">Q.</span>
-                        {item.question}
-                      </h4>
-                      <p className="mt-1 text-gray-700 leading-relaxed flex items-start">
-                        <span className="mr-2 text-green-500 font-bold">
-                          A.
-                        </span>
-                        {item.answer}
-                      </p>
-                    </div>
+                  {apiResponse.data.tickets.slice(0, 4).map((item, idx) => (
+                    <>
+                      <div
+                        key={idx}
+                        className="bg-white border relative border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-300"
+                      >
+                        <h4 className="text-lg font-semibold text-gray-900 flex items-start">
+                          <span className="mr-2 text-blue-500 font-bold">
+                            Q.
+                          </span>
+                          {item.subject}
+                        </h4>
+                        <p className="mt-1 text-gray-700 leading-relaxed flex items-start">
+                          <span className="mr-2 text-green-500 font-bold">
+                            A.
+                          </span>
+                          {item.description}
+                        </p>
+                        <button
+                          className="absolute top-2 right-3 text-xl font-semibold p-1 rounded-full hover:bg-gray-100"
+                          onMouseEnter={() => setOpenId(item._id)}
+                          onMouseLeave={() => setOpenId("")}
+                        >
+                          <MdMoreHoriz />
+                        </button>
+
+                        {/* --- Dropdown Menu --- */}
+                        {openId == item._id && (
+                          <div
+                            className="absolute right-0 mt-[-45px] w-28 bg-white flex flex-col  rounded-lg border shadow-xl border-gray-200 z-50"
+                            onMouseEnter={() => setOpenId(item._id)}
+                            onMouseLeave={() => setOpenId("")}
+                          >
+                            <button
+                              onClick={() => {
+                                setSupportTicketData(item);
+                                setPOpUp(true);
+                                setPopupdisplay(popupComponent.UPDATE);
+                              }}
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              Update Ticket
+                            </button>
+
+                            <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                              Delete Ticket
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </>
                   ))}
                 </div>
               ) : (
-                <div className="w-full text-center text-gray-500 mt-20"></div>
+                <div className="w-full text-center text-gray-500 mt-20">
+                  <h1>Support ticket is Loading...</h1>
+                </div>
               )}
             </>
+            <>
+              {apiResponse && apiResponse.data?.tickets?.length > 0 && (
+                <div className="w-full flex justify-center items-center gap-6 mt-4">
+                  {/* Previous Button */}
+                  <button
+                    className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200 disabled:opacity-50"
+                    // disabled={!apiResponse?.data.pageInfo.hasPreviousPage}
+                    onClick={() => {
+                      // handlePrev()
+                    }}
+                  >
+                    <IoIosArrowBack className="text-2xl text-[#7ed957]" />
+                    <span>Prev</span>
+                  </button>
+
+                  {/* Next Button */}
+                  {apiResponse?.data.pageInfo.hasNextPage && (
+                    <button
+                      onClick={() => {
+                        getSupport(setApiResponse, setApiError, setLoader);
+                      }}
+                      className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200"
+                    >
+                      <span>Next</span>
+                      <IoIosArrowForward className="text-2xl text-[#7ed957]" />
+                    </button>
+                  )}
+                </div>
+              )}
+            </>
+
             <div className="w-full text-center text-gray-500 mt-20">
               <button
-                onClick={() => setPOpUp(true)}
-                className="px-8 py-1.5 border border-black text-black font-medium rounded-xl hover:bg-blue-50 transition-all duration-200"
+                onClick={() => {
+                  setPOpUp(true);
+                  setPopupdisplay(popupComponent.CREATE);
+                }}
+                className="px-8 py-1.5 border-2 border-gray-500 text-black font-medium rounded-xl hover:bg-blue-50 transition-all duration-200"
               >
                 Create New
               </button>
@@ -188,7 +298,16 @@ function page() {
           }}
           className="fixed inset-0 bg-black bg-opacity-55 flex items-center justify-center z-50 mt-[-5rem] "
         >
-          <Report setPOpUp={setPOpUp} setIsTost={setIsTost} />
+          {Popupdisplay === popupComponent.UPDATE && (
+            <UpdateSupportTicket
+              setPOpUp={setPOpUp}
+              setIsTost={setIsTost}
+              supportTicketData={supportTicketData ? supportTicketData : dummy}
+            />
+          )}
+          {Popupdisplay === popupComponent.CREATE && (
+            <Report setPOpUp={setPOpUp} setIsTost={setIsTost} />
+          )}
         </div>
       )}
       {/* {tost && } */}
