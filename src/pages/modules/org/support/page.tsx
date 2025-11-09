@@ -22,6 +22,7 @@ import {
 } from "../../../../../network/public/project_api/getsupportTicket/GetSupportTicket.interface";
 import getSupport from "../../../../utils/api/supportticketApi/GetSupportTickets";
 import UpdateSupportTicket from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/UpdateSupportTicket";
+import { Link } from "react-router-dom";
 
 enum popupComponent {
   DELETE = "deleteTicket",
@@ -197,6 +198,26 @@ function page() {
                             <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                               Delete Ticket
                             </button>
+                            {/* <button
+                        onClick={() =>
+                          navigate("/billing/details", {
+                            state: {
+                              id: "12345",
+                              name: "bill",
+                            },
+                          })
+                        }
+                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                      >
+                       View Details
+                      </button> */}
+                            <Link
+                              to="/support/ticket_details"
+                              state={{ id: item._id, name: "supportticket" }}
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              View Details
+                            </Link>
                           </div>
                         )}
                       </div>

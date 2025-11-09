@@ -1,10 +1,14 @@
 import { useState } from "react";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
-import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
+import {
+  CustomizeDashboardTypeEnums,
+  DashboardTypeEnums,
+} from "../../../../../enum/DashboardLinks";
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
 import { Link, useNavigate } from "react-router-dom";
+import CustomizeMask from "../../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 // import BuildDetailComponent from "../../../../components/module/org_component/billingComponent/BuildDetailComponent";
 
 interface ColumnConfig {
@@ -92,13 +96,14 @@ function page() {
     { key: "updatedBy", title: "Updated By" },
     // { key: "action", title: "Action" },
   ];
+
   return (
-    <DashboardMask name={DashboardTypeEnums.BUILDS}>
+    <CustomizeMask name={CustomizeDashboardTypeEnums.BUILD}>
       <HeadingMask name={"Builds"}>
         <div className="px-2">
           <Link
             className="border-black border px-4 py-1 rounded-md font-semibold"
-            to="/build/create-new-build"
+            to="/project/build/create-new-build"
             // state={{ type: ScreenType.MAIN }}
           >
             Create Build
@@ -137,7 +142,7 @@ function page() {
                     </button>
                     <button
                       onClick={() =>
-                        navigate("/build/details", {
+                        navigate("/project/build/details", {
                           state: {
                             id: "12345",
                             name: "build",
@@ -291,7 +296,7 @@ function page() {
                       </button>
                       <button
                         onClick={() =>
-                          navigate("/build/details", {
+                          navigate("/project/build/details", {
                             state: {
                               id: "12345",
                               name: "build",
@@ -310,7 +315,7 @@ function page() {
           ))}
         </div>
       </div>
-    </DashboardMask>
+    </CustomizeMask>
   );
 }
 

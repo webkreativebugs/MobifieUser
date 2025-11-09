@@ -86,4 +86,6 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
     `${BASE_URL}/user/organization/${orgName}/support-ticket/list-all/68e8b7d24af82ab3832039ed?sort=${sort}&limit=${limit}&after=${page}&search=${search}`,
   UPDATESUPPORTTICKET: (orgName) =>
     `${BASE_URL}/user/organization/${orgName}/support-ticket/690af2767dfab846cfd3c293`,
+  GETSUPPORTTICKETBYID: (id, orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/support-ticket/${id}`,
 };
