@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
-import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
+import {
+  CustomizeDashboardTypeEnums,
+  DashboardTypeEnums,
+} from "../../../../../enum/DashboardLinks";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import Toast from "../../../../components/common_component/Toast";
+import CustomizeMask from "../../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 
 function Page() {
   const [displayToast, setDisplayToast] = useState(false);
@@ -98,7 +102,7 @@ function Page() {
   };
 
   return (
-    <DashboardMask name={DashboardTypeEnums.BUILDS}>
+    <CustomizeMask name={CustomizeDashboardTypeEnums.BUILD}>
       <HeadingMask name={"Create New Build"}>
         <div className="px-2"></div>
       </HeadingMask>
@@ -220,7 +224,7 @@ function Page() {
         onClose={() => setDisplayToast(false)}
         duration={500}
       />
-    </DashboardMask>
+    </CustomizeMask>
   );
 }
 
