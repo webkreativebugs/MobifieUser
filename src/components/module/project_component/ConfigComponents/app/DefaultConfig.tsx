@@ -6,6 +6,7 @@
 import CurrencySelector from "../../../project_component/ConfigComponents/app/CurrencySelector";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
+import CustomizePopUp from "../common/CustomizePopUp";
 // import { getEmojiByCurrencyCode } from 'country-currency-emoji-flags';
 // import { currencies } from "../../../data/CustomizeData/ClientConfiguration";
 interface SELECT {
@@ -36,11 +37,7 @@ const DefaultConfig = ({disable=false}) => {
     setMaxCartQuantity(e.target.value);
   }
   return (
-    // <AppConfigMask
-    //   display="flex"
-    //   name={CustomizeDashboardTypeEnums.APP}
-    //   displayName={ConfigTypeEnums.BOTTOM}
-    // >
+    <>
       <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-primary p-6 shadow-md">
         <CurrencySelector selected={selected} setSelected={setSelected} disable={disable} />
         <div>
@@ -58,7 +55,12 @@ const DefaultConfig = ({disable=false}) => {
           />
         </div>
       </div>
-    // </AppConfigMask>
+      {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} */}
+    </>
   );
 };
 

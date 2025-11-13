@@ -7,10 +7,10 @@
 // import { useState } from "react"
 // // import { MdAccessTime } from "react-icons/md";
 
-
 // // import { MdAccessTime } from "react-icons/md";
 
 // const page = () => {
+
 
 // interface ApiConfigData {
 //   api_key: string;       // Authentication
@@ -45,6 +45,7 @@
 //     }));
 //   };
 
+
 //   // const addForm = () => {
 //   //   setNumOfForms((prev) => [...prev, prev.length]); // add next index
 //   // };
@@ -55,7 +56,9 @@
 
 //     <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
 
+
 //         <form className="grid grid-cols-1 w-full  gap-5" >
+
 
 //         <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
 //           <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
@@ -63,6 +66,7 @@
 //           </h1>
 //           <div className=" p-5 rounded-lg">
 //                 {(ApiConfigAuth).map((item) => (
+
 
 //                   <ApiConfigInputField
 //                     title={item.title}
@@ -75,6 +79,7 @@
 //                     options={item.options}
 //                   />
 
+
 //                 ))}
 //                 </div>
 //                 </div>
@@ -85,6 +90,7 @@
 //           <div className=" p-5 rounded-lg">
 //                 {(ApiConfigRequest).map((item) => (
 
+
 //                   <ApiConfigInputField
 //                     title={item.title}
 //                     placeholder={item.placeholder as string}
@@ -94,13 +100,16 @@
 //                     required={false}
 //                     type={item.type}
 
+
 //                     // options={item.options}
 //                   />
+
 
 //                 ))}
 //                 </div>
 //                 </div>
 //               </form>
+
 
 //     </AppConfigMask>
 //   )
@@ -117,14 +126,15 @@ const page = () => {
 
 
   return (
-   <AppConfigMask
+    <AppConfigMask
+      // isDisable={isDisable}
       name={CustomizeDashboardTypeEnums.APP}
       displayName={ConfigTypeEnums.CLIENT}
       display="flex"
       direction="column"
       disable={true}
     />
-  )
-}
+  );
+};
 
-export default page
+export default page;

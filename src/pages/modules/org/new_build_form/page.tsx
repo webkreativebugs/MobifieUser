@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
+import Toast from "../../../../components/common_component/Toast";
 
 function Page() {
+  const [displayToast, setDisplayToast] = useState(false);
   const [formData, setFormData] = useState({
     date: "",
     platform: "", // single selection only
@@ -85,7 +87,7 @@ function Page() {
     e.preventDefault();
     if (validateForm()) {
       console.log("✅ Form Data Submitted:", formData);
-      alert("Form submitted successfully!");
+      setDisplayToast(true);
       setFormData({
         date: "",
         platform: "",
@@ -211,6 +213,13 @@ function Page() {
           </div>
         </form>
       </div>
+
+      <Toast
+        msg="New build is created"
+        show={displayToast}
+        onClose={() => setDisplayToast(false)}
+        duration={500}
+      />
     </DashboardMask>
   );
 }

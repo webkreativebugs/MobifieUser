@@ -5,8 +5,9 @@ import { YouClientConfiguration } from "../../../../../data/CustomizeData/ApiCon
 import CustomComponents from "../../../project_component/ConfigComponents/app/CustomComponents";
 import CustomizedPopup from "../../../project_component/ConfigComponents/app/CustomizedPopup";
 import { YouConfigType } from "../../../../../../enum/YouConfig.enum";
-import menuConfig from "../../../../../data/CustomizeData/YouCards.json"
+import menuConfig from "../../../../../data/CustomizeData/YouCards.json";
 import { FaEdit } from "react-icons/fa";
+import CustomizePopUp from "../common/CustomizePopUp";
 // import { IconType } from "react-icons";
 // import { useEffect } from "react";
 // import {YouConfigType} from "../../../../enum/YouConfig.enum"
@@ -15,15 +16,15 @@ const YouConfig = ({disable=false}) => {
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const [leftChecked, setLeftChecked] = useState<Record<string, boolean>>({});
   const [rightChecked, setRightChecked] = useState<Record<string, boolean>>({});
-  const [popped,setPopped]=useState<boolean>(false)
-  const [popData,setPopData]=useState<YouConfigType>(YouConfigType.PROFILE);
-  const [customData,setCustomData]=useState({
-    [YouConfigType.PROFILE]:menuConfig[YouConfigType.PROFILE].default.html,
-    [YouConfigType.ORDER]:menuConfig[YouConfigType.ORDER].default.html,
-    [YouConfigType.ADDRESS]:menuConfig[YouConfigType.ADDRESS].default.html,
-    [YouConfigType.SETTING]:menuConfig[YouConfigType.SETTING].default.html,
-    variant:"default"
-    })
+  const [popped, setPopped] = useState<boolean>(false);
+  const [popData, setPopData] = useState<YouConfigType>(YouConfigType.PROFILE);
+  const [customData, setCustomData] = useState({
+    [YouConfigType.PROFILE]: menuConfig[YouConfigType.PROFILE].default.html,
+    [YouConfigType.ORDER]: menuConfig[YouConfigType.ORDER].default.html,
+    [YouConfigType.ADDRESS]: menuConfig[YouConfigType.ADDRESS].default.html,
+    [YouConfigType.SETTING]: menuConfig[YouConfigType.SETTING].default.html,
+    variant: "default",
+  });
   const toggleSelection = (key: string) => {
     const updated = new Set(selectedKeys);
     if (updated.has(key)) {
@@ -45,22 +46,21 @@ const YouConfig = ({disable=false}) => {
   //   setRightChecked((prev) => ({ ...prev, [key]: !prev[key] }));
   // };
 
-  function onClose()
-  {
-    setPopped(false)
+  function onClose() {
+    setPopped(false);
   }
-  
+
   return (
     <>
-    {/* <AppConfigMask
+      {/* <AppConfigMask
   name={CustomizeDashboardTypeEnums.APP}
   displayName={ConfigTypeEnums.YOU}
   display="flex"
   direction="column"
 > */}
-  <div className="flex flex-col gap-6 bg-primary  shadow-md p-10  ">
-    {YouClientConfiguration.map((item) => {
-      const isSelected = selectedKeys.has(item.key);
+      <div className="flex flex-col gap-6 bg-primary  shadow-md p-10  ">
+        {YouClientConfiguration.map((item) => {
+          const isSelected = selectedKeys.has(item.key);
 
       return (
         <div
@@ -109,70 +109,77 @@ const YouConfig = ({disable=false}) => {
     })}
   </div>
 
-  <section className="mt-8">
-    <div className="flex justify-between items-center mb-2">
-      <h3 className="font-bold text-gray-800">Debug State</h3>
-      <button
-        className="px-3 py-1 bg-gray-600 text-white text-xs rounded hover:bg-gray-500 transition"
-        onClick={() => {
-          const exportData = YouClientConfiguration.filter((item) =>
-            selectedKeys.has(item.key)
-          ).map((item) => ({
-            key: item.key,
-            icon: item.icon,
-            navigationData: "{}",
-            title: item.title,
-          
-            ...(leftChecked[item.key] && {
-              leftIcon: "KBIconName.Edit",
-              leftIconSet: "KBIconSet.MaterialIcons",
-            }),
-            ...(rightChecked[item.key] && {
-              rightIcon: "KBIconName.ArrowForward",
-              rightIconSet: "KBIconSet.MaterialIcons",
-            }),
-          }));
+      <section className="mt-8">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="font-bold text-gray-800">Debug State</h3>
+          <button
+            className="px-3 py-1 bg-gray-600 text-white text-xs rounded hover:bg-gray-500 transition"
+            onClick={() => {
+              const exportData = YouClientConfiguration.filter((item) =>
+                selectedKeys.has(item.key)
+              ).map((item) => ({
+                key: item.key,
+                icon: item.icon,
+                navigationData: "{}",
+                title: item.title,
 
-          navigator.clipboard.writeText(
-            JSON.stringify(exportData, null, 2)
-          );
-        }}
-      >
-        Copy
-      </button>
-    </div>
+                ...(leftChecked[item.key] && {
+                  leftIcon: "KBIconName.Edit",
+                  leftIconSet: "KBIconSet.MaterialIcons",
+                }),
+                ...(rightChecked[item.key] && {
+                  rightIcon: "KBIconName.ArrowForward",
+                  rightIconSet: "KBIconSet.MaterialIcons",
+                }),
+              }));
 
-    <div className="relative bg-gray-900 text-green-400 rounded-lg p-4 font-mono text-sm shadow-inner overflow-x-auto">
-      <pre>
-        {JSON.stringify(
-          YouClientConfiguration.filter((item) =>
-            selectedKeys.has(item.key)
-          ).map((item) => ({
-            key: item.key,
-            icon: item.icon,
-            navigationData: "{}",
-            title: item.title,
-            
-            ...(leftChecked[item.key] && {
-              leftIcon: "KBIconName.Edit",
-              leftIconSet: "KBIconSet.MaterialIcons",
-            }),
-            ...(rightChecked[item.key] && {
-              rightIcon: "KBIconName.ArrowForward",
-              rightIconSet: "KBIconSet.MaterialIcons",
-            }),
-          })),
-          null,
-          2
-        )}
-      </pre>
-    </div>
-  </section>
-{/* </AppConfigMask> */}
-  {/* ✅ Debug Output Section */}
+              navigator.clipboard.writeText(
+                JSON.stringify(exportData, null, 2)
+              );
+            }}
+          >
+            Copy
+          </button>
+        </div>
 
-</>
+        <div className="relative bg-gray-900 text-green-400 rounded-lg p-4 font-mono text-sm shadow-inner overflow-x-auto">
+          <pre>
+            {JSON.stringify(
+              YouClientConfiguration.filter((item) =>
+                selectedKeys.has(item.key)
+              ).map((item) => ({
+                key: item.key,
+                icon: item.icon,
+                navigationData: "{}",
+                title: item.title,
 
+                ...(leftChecked[item.key] && {
+                  leftIcon: "KBIconName.Edit",
+                  leftIconSet: "KBIconSet.MaterialIcons",
+                }),
+                ...(rightChecked[item.key] && {
+                  rightIcon: "KBIconName.ArrowForward",
+                  rightIconSet: "KBIconSet.MaterialIcons",
+                }),
+              })),
+              null,
+              2
+            )}
+          </pre>
+        </div>
+      </section>
+      {/* </AppConfigMask> */}
+      {/* ✅ Debug Output Section */}
+      {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} */}
+    </>
   );
 };
 

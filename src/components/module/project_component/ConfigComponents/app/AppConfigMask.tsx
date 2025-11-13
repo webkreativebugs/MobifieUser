@@ -19,15 +19,19 @@ import ClientConfig from "./ClientConfig";
 import DefaultConfig from "./DefaultConfig";
 import YouConfig from "./YouConfig";
 import ApiConfig from "./ApiConfig";
+// import { Link } from "react-router-dom";
+import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
 
 const AppConfigMask = ({
+  // isDisable,
+  displayName,
   name,
   display,
   direction = "row",
   disable
 }: {
-  
+  // isDisable: boolean;
   displayName: string;
   name: string;
   display: string;
@@ -35,6 +39,7 @@ const AppConfigMask = ({
   disable:boolean
 }) => {
   // const { orgDetails } = useorg();
+  const { isDisable, setIsDisable } = useSaveChanges();
 
   // const { isEdit } = useTabContext();
 
@@ -47,10 +52,10 @@ const AppConfigMask = ({
   }
 
   const { show, setShow } = useloader();
-  const [selectedScreen,setSelectedScreen] = useState(DefaultVAlues.API)
+  const [selectedScreen, setSelectedScreen] = useState(DefaultVAlues.API);
   return (
     <div className="h-full flex hide-scrollbar">
-      {true && (
+      {!isDisable && (
         <Sidebar
           setShow={setShow}
           show={show}

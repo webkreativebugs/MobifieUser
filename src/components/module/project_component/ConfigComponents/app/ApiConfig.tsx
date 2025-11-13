@@ -10,7 +10,6 @@ import ApiConfigInputField from "../../../project_component/ConfigComponents/app
 import { useState } from "react";
 // import { MdAccessTime } from "react-icons/md";
 
-
 // import { MdAccessTime } from "react-icons/md";
 
 
@@ -41,14 +40,14 @@ interface ApiConfigData {
 
   // const [numOfForms , setNumOfForms]=useState([0]);
 
-      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setApiConfig((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
-  
+
   // const addForm = () => {
   //   setNumOfForms((prev) => [...prev, prev.length]); // add next index
   // };
@@ -56,12 +55,9 @@ interface ApiConfigData {
   //   setNumOfForms((prev) => prev.filter((formId) => formId !== id));
   // }
   return (
-
     // <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
-   
-   
-        <form className="grid grid-cols-1 w-full  gap-5" >
-        
+    <>
+      <form className="grid grid-cols-1 w-full  gap-5">
         <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
           <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
             Authentication
@@ -108,10 +104,9 @@ interface ApiConfigData {
                 </div>
                 </div>
               </form>
-             
-             
+             </>
     // </AppConfigMask>
   )
 }
 
-export default ApiConfig
+export default ApiConfig;
