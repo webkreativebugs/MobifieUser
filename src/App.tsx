@@ -16,38 +16,38 @@ export default function App() {
   if (body) {
     body.style.overflow = "hidden";
   }
-  const { theme, secondaryColor } = useTheme();
+  const {  secondaryColor } = useTheme();
   const { role, onRoleChange } = useauth();
-  const [authError,setAuthError]=useState(false);
+  const [authError, setAuthError] = useState(false);
   useEffect(() => {
     if (role) {
-      AuthMe(onRoleChange,setAuthError);
-      AuthMe(onRoleChange,setAuthError);
+      AuthMe(onRoleChange, setAuthError);
+      AuthMe(onRoleChange, setAuthError);
     }
-  
   }, [role]);
- 
+
   // useEffect(()=>{
   //     if(role!==AccessType.ADMIN)
   //     window.location.replace("/")
-    
-  // },[])
-  useEffect(()=>{
-    if(authError)
-    {
-       window.location.replace("/")
-       console.log("auth error");
-       
-    }
-  },[authError])
 
-  
+  // },[])
+  useEffect(() => {
+    if (authError) {
+      window.location.replace("/");
+      console.log("auth error");
+    }
+  }, [authError]);
+
   //  isLoggedIn
   return (
     <>
-      <section className={`${theme} ${secondaryColor} ${ decoder(role)!==AccessType.ADMIN?"flex":""}`}>
+      <section
+        className={`white-light ${secondaryColor} ${
+          decoder(role) !== AccessType.ADMIN ? "flex" : ""
+        }`}
+      >
         {processLoggedInUser(role)}
-       {  decoder(role)!==AccessType.ADMIN&&<AuthRight />}
+        {decoder(role) !== AccessType.ADMIN && <AuthRight />}
       </section>
     </>
   );
@@ -66,7 +66,7 @@ function processLoggedInUser(role: string) {
     // console.log(sessionStorage, role);
     // console.log(sessionStorage, role);
 
-    return <AuthRoutes/>;
-    return <AuthRoutes/>;
+    return <AuthRoutes />;
+    return <AuthRoutes />;
   }
 }

@@ -5,7 +5,7 @@
         "current_confi": {
             "screen": {
                 "title": "Home",
-                "image": "/assets/home/h1.png",
+                "image": "/assets/screens/home1.png",
                 "component": "Home"
             },
             "header": {
@@ -19,9 +19,24 @@
                     },
                     "icons": [
                         {
-                            "name": "List Icon",
-                            "url": "https://up.yimg.com/ib/th/id/OIP.UVCWaE9HTt67mOeETHKlPgHaHa?pid=Api&rs=1&c=1&qlt=95&w=123&h=123",
+                            "name": "Menu Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'  viewBox='0 0 24 24' fill='currentColor'><path d='M3.75 5.25a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5H3.75Zm0 6a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5H3.75Zm0 6a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5H3.75Z'/></svg>",
                             "isActive": true
+                        },
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path d='M15.28 5.22a.75.75 0 0 1 0 1.06L9.56 12l5.72 5.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.75.75 0 0 1 1.06 0Z'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path d='M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='currentColor'><path d='M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z'/></svg>",
+                            "isActive": false
                         }
                     ]
                 },
@@ -32,13 +47,28 @@
                     },
                     "icons": [
                         {
-                            "name": "Cart",
-                            "url": "https://up.yimg.com/ib/th/id/OIP.qpklrXXr1jSlYjBOrDNxLQHaGE?pid=Api&rs=1&c=1&qlt=95&w=142&h=116",
-                            "isActive": true
+                            "name": "Search Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'  viewBox='0 0 24 24 ' fill='currentColor'><path d='M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2ZM3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0Z'/></svg>",
+                            "isActive": false
                         },
                         {
-                            "name": "Alerts",
-                            "url": "https://up.yimg.com/ib/th/id/OIP.Od5BN0ez2WapogRBlqjJ-wHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121",
+                            "name": "Notification Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path d='M12 1c3.681 0 7 2.565 7 6v4.539c0 .642.189 1.269.545 1.803l2.2 3.298A1.517 1.517 0 0 1 20.482 19H15.5a3.5 3.5 0 1 1-7 0H3.519a1.518 1.518 0 0 1-1.265-2.359l2.2-3.299A3.25 3.25 0 0 0 5 11.539V7c0-3.435 3.318-6 7-6ZM6.5 7v4.539a4.75 4.75 0 0 1-.797 2.635l-2.2 3.298-.003.01.001.007.004.006.006.004.007.001h16.964l.007-.001.006-.004.004-.006.001-.006a.017.017 0 0 0-.003-.01l-2.199-3.299a4.753 4.753 0 0 1-.798-2.635V7c0-2.364-2.383-4.5-5.5-4.5S6.5 4.636 6.5 7ZM14 19h-4a2 2 0 1 0 4 0Z'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='currentColor' ><path d='M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Share Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path d='M20 5.5a3.498 3.498 0 0 1-6.062 2.385l-5.112 3.021a3.498 3.498 0 0 1 0 2.188l5.112 3.021a3.5 3.5 0 1 1-.764 1.29l-5.112-3.02a3.499 3.499 0 1 1-3.843-5.642 3.499 3.499 0 0 1 3.843.872l5.112-3.021A3.5 3.5 0 1 1 20 5.5Zm-1.5 13a2 2 0 1 0-3.999-.001 2 2 0 0 0 3.999.001Zm0-13a2 2 0 1 0-3.999-.001A2 2 0 0 0 18.5 5.5ZM5.5 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 5.5 14Z'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' aria-hidden='true' role='img'><title>More</title><circle cx='12' cy='5' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='19' r='1.5' fill='currentColor'/> </svg>",
                             "isActive": true
                         }
                     ]
@@ -52,19 +82,19 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Home",
-                "image": "/assets/home/h1.png",
+                "image": "/assets/screens/home1.png",
                 "component": "Home"
             },
             {
                 "title": "Home",
-                "image": "/assets/home/h2.png",
+                "image": "/assets/screens/home2.png",
                 "component": "Home"
             }
         ],
@@ -78,14 +108,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -97,7 +169,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -109,7 +181,7 @@
         "current_confi": {
             "screen": {
                 "title": "Product List",
-                "image": "/assets/product/p1.png",
+                "image": "/assets/screens/product_list1.png",
                 "component": "ProductList"
             },
             "header": {
@@ -121,14 +193,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -139,24 +253,19 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Product List",
-                "image": "/assets/product/p1.png",
+                "image": "/assets/screens/product_list1.png",
                 "component": "ProductList"
             },
             {
                 "title": "Product List",
-                "image": "/assets/product/p2.png",
-                "component": "ProductList"
-            },
-            {
-                "title": "Product List",
-                "image": "/assets/product/p3.png",
+                "image": "/assets/screens/product_list2.png",
                 "component": "ProductList"
             }
         ],
@@ -170,14 +279,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -189,7 +340,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -201,7 +352,7 @@
         "current_confi": {
             "screen": {
                 "title": "Category",
-                "image": "/assets/category/c1.png",
+                "image": "/assets/screens/category.png",
                 "component": "Category"
             },
             "header": {
@@ -213,14 +364,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -231,11 +424,22 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
-        "Screen": [],
+        "Screen": [
+            {
+                "title": "Category",
+                "image": "/assets/screens/category.png",
+                "component": "Category"
+            },
+            {
+                "title": "Category",
+                "image": "/assets/screens/category2.png",
+                "component": "Category"
+            }
+        ],
         "additional_config": {
             "header": {
                 "title": "Header",
@@ -246,14 +450,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -265,7 +511,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -277,7 +523,7 @@
         "current_confi": {
             "screen": {
                 "title": "Login",
-                "image": "/assets/login/l1.png",
+                "image": "/assets/screens/login.png",
                 "component": "Login"
             },
             "header": {
@@ -289,14 +535,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -307,11 +595,17 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
-        "Screen": [],
+        "Screen": [
+            {
+                "title": "Login",
+                "image": "/assets/screens/login.png",
+                "component": "ProductList"
+            }
+        ],
         "additional_config": {
             "header": {
                 "title": "Header",
@@ -322,14 +616,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -341,7 +677,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -353,7 +689,7 @@
         "current_confi": {
             "screen": {
                 "title": "Search",
-                "image": "/assets/searchScreen/s1.png",
+                "image": "/assets/screens/search.png",
                 "component": "Search"
             },
             "header": {
@@ -365,14 +701,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -383,24 +761,19 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Search",
-                "image": "/assets/searchScreen/s1.png",
+                "image": "/assets/screens/search.png",
                 "component": "Search"
             },
             {
                 "title": "Search",
-                "image": "/assets/searchScreen/s3.png",
-                "component": "Search"
-            },
-            {
-                "title": "Search",
-                "image": "/assets/searchScreen/s4.png",
+                "image": "/assets/screens/search2.png",
                 "component": "Search"
             }
         ],
@@ -414,14 +787,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -433,7 +848,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -445,7 +860,7 @@
         "current_confi": {
             "screen": {
                 "title": "Checkout",
-                "image": "/assets/checkout/c1.png",
+                "image": "/assets/screens/checkout1.png",
                 "component": "Checkout"
             },
             "header": {
@@ -457,14 +872,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -475,29 +932,14 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Checkout",
-                "image": "/assets/checkout/c1.png",
-                "component": "Checkout"
-            },
-            {
-                "title": "Checkout",
-                "image": "/assets/checkout/c2.png",
-                "component": "Checkout"
-            },
-            {
-                "title": "Checkout",
-                "image": "/assets/checkout/c3.png",
-                "component": "Checkout"
-            },
-            {
-                "title": "Checkout",
-                "image": "/assets/checkout/c4.png",
+                "image": "/assets/screens/checkout1.png",
                 "component": "Checkout"
             }
         ],
@@ -511,14 +953,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -530,19 +1014,19 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
         }
     },
     {
-        "key": "setting",
-        "title": "Setting",
+        "key": "cart",
+        "title": "Cart",
         "current_confi": {
             "screen": {
                 "title": "Settings",
-                "image": "/assets/setting/s1.png",
+                "image": "/assets/screens/cart.png",
                 "component": "Settings"
             },
             "header": {
@@ -554,14 +1038,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -572,24 +1098,19 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
-                "title": "Settings",
-                "image": "/assets/setting/s1.png",
+                "title": "cart",
+                "image": "/assets/screens/cart.png",
                 "component": "Settings"
             },
             {
-                "title": "Settings",
-                "image": "/assets/setting/s2.png",
-                "component": "Settings"
-            },
-            {
-                "title": "Settings",
-                "image": "/assets/setting/s3.png",
+                "title": "cart",
+                "image": "/assets/screens/cart2.png",
                 "component": "Settings"
             }
         ],
@@ -603,14 +1124,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -622,7 +1185,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -634,7 +1197,7 @@
         "current_confi": {
             "screen": {
                 "title": "Profile",
-                "image": "/assets/profile/p1.png",
+                "image": "/assets/screens/profile.png",
                 "component": "Profile"
             },
             "header": {
@@ -646,14 +1209,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -664,19 +1269,19 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Profile",
-                "image": "/assets/profile/p1.png",
+                "image": "/assets/screens/profile.png",
                 "component": "Profile"
             },
             {
                 "title": "Profile",
-                "image": "/assets/profile/p2.png",
+                "image": "/assets/screens/profile2.png",
                 "component": "Profile"
             },
             {
@@ -695,14 +1300,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -714,99 +1361,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
-                    "isActive": true
-                }
-            ]
-        }
-    },
-    {
-        "key": "flash",
-        "title": "Flash",
-        "current_confi": {
-            "screen": {
-                "title": "Flash",
-                "image": "/assets/flash/f1.png",
-                "component": "Flash"
-            },
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
-            },
-            "bottomtab": {
-                "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
-                "isActive": true
-            }
-        },
-        "Screen": [
-            {
-                "title": "Flash",
-                "image": "/assets/flash/f1.png",
-                "component": "Flash"
-            },
-            {
-                "title": "Flash",
-                "image": "/assets/flash/f2.png",
-                "component": "Flash"
-            },
-            {
-                "title": "Flash",
-                "image": "/assets/flash/f3.png",
-                "component": "Flash"
-            }
-        ],
-        "additional_config": {
-            "header": {
-                "title": "Header",
-                "image": "/assets/headerComponent/h1.png",
-                "component": "Header",
-                "lefticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "righticons": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": false
-                    },
-                    "icons": []
-                },
-                "center": {
-                    "text": {
-                        "value": "Quitiz",
-                        "isActive": true
-                    }
-                }
-            },
-            "bottomtab": [
-                {
-                    "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]
@@ -818,7 +1373,7 @@
         "current_confi": {
             "screen": {
                 "title": "Wishlist",
-                "image": "/assets/wishlist/w1.png",
+                "image": "/assets/screens/wishlist.png",
                 "component": "Wishlist"
             },
             "header": {
@@ -830,14 +1385,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -848,19 +1445,14 @@
             },
             "bottomtab": {
                 "title": "Bottom Tab",
-                "image": "/assets/footernavigation/footer1.png",
+                "image": "/assets/footer_images/home_footer.png",
                 "isActive": true
             }
         },
         "Screen": [
             {
                 "title": "Wishlist",
-                "image": "/assets/wishlist/w1.png",
-                "component": "Wishlist"
-            },
-            {
-                "title": "Wishlist",
-                "image": "/assets/wishlist/w2.png",
+                "image": "/assets/screens/wishlist.png",
                 "component": "Wishlist"
             },
             {
@@ -879,14 +1471,56 @@
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Back Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Back</title><path d='M15 18l-6-6 6-6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Forward Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Forward</title><path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Home Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Home</title><path d='M3 12l9-9 9 9v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Menu Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M3 6h18M3 12h18M3 18h18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "righticons": {
                     "text": {
                         "value": "Quitiz",
                         "isActive": false
                     },
-                    "icons": []
+                    "icons": [
+                        {
+                            "name": "Search Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Search</title><circle cx='11' cy='11' r='6' fill='none' stroke='currentColor' stroke-width='2'/><path d='M21 21l-4.35-4.35' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Notification Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Notifications</title><path d='M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M13.73 21a2 2 0 0 1-3.46 0' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "Profile Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>Profile</title><circle cx='12' cy='8' r='4' fill='none' stroke='currentColor' stroke-width='2'/><path d='M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+                            "isActive": false
+                        },
+                        {
+                            "name": "More Icon",
+                            "url": "<svg viewBox='0 0 24 24' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><title>More</title><circle cx='12' cy='6' r='1.5' fill='currentColor'/><circle cx='12' cy='12' r='1.5' fill='currentColor'/><circle cx='12' cy='18' r='1.5' fill='currentColor'/></svg>",
+                            "isActive": true
+                        }
+                    ]
                 },
                 "center": {
                     "text": {
@@ -898,7 +1532,7 @@
             "bottomtab": [
                 {
                     "title": "Bottom Tab",
-                    "image": "/assets/home/h1.png",
+                    "image": "/assets/footer_images/home_footer.png",
                     "isActive": true
                 }
             ]

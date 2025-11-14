@@ -14,6 +14,9 @@ import SearchMask from "../../../../components/common_component/layered_componen
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
 import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
+import ShimmerTiles from "../../../../components/common_component/Shimmer";
+import PageNotFound from "../../../../components/common_component/PageNotFound";
+const noData = '../../../../../public/assets/oops_no_data/no-access.png'
 interface Quary {
   search?: string;
   type?: string;
@@ -111,7 +114,7 @@ function page() {
         />
       </HeadingMask>
 
-      {apiResponse && (
+      {apiResponse && apiResponse.data.pagination.total_pages>=1 ? 
         <>
           <div className="mt-10">
             <DynamicTable
@@ -122,6 +125,8 @@ function page() {
               page={"access-manager"}
             />
           </div>
+          {
+            apiResponse.data.pagination.total_pages>1 &&
           <Pagination
             length={apiResponse.data.pagination.total_pages}
             setApiResponse={setApiResponse}
@@ -129,8 +134,15 @@ function page() {
             clicked={clicked}
             setClicked={setClicked}
           />
-        </>
-      )}
+          }
+        </>:
+       <>
+            { apiResponse ?
+            <PageNotFound noData={noData} />:
+            <ShimmerTiles />
+              }
+              </>
+      }
     </DashboardMask>
   );
 }

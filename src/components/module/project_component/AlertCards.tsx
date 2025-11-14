@@ -12,33 +12,36 @@ interface PROPS {
     data:Alert[];
 
 }
+
+import { changeTimezone } from "../../../utils/dashboard/TimezoneConverter";
+
 const AlertCards = ({data}:PROPS) => {
-     function timeAgo(value:any) {
-  const now = new Date();
-  const date = new Date(value);
+//      function timeAgo(value:any) {
+//   const now = new Date();
+//   const date = new Date(value);
 
-  const diffMs = now.getTime() - date.getTime(); // difference in milliseconds
-  const diffSec = Math.floor(diffMs / 1000);
-  const diffMin = Math.floor(diffSec / 60);
-  const diffHrs = Math.floor(diffMin / 60);
-  const diffDays = Math.floor(diffHrs / 24);
+//   const diffMs = now.getTime() - date.getTime(); 
+//   const diffSec = Math.floor(diffMs / 1000);
+//   const diffMin = Math.floor(diffSec / 60);
+//   const diffHrs = Math.floor(diffMin / 60);
+//   const diffDays = Math.floor(diffHrs / 24);
 
-  if (diffDays > 1) {
-    return `${diffDays} days ago`;
-  } else if (diffDays === 1) {
-    return `1 day ago`;
-  } else if (diffHrs > 1) {
-    return `${diffHrs} hours ago`;
-  } else if (diffHrs === 1) {
-    return `1 hour ago`;
-  } else if (diffMin > 1) {
-    return `${diffMin} minutes ago`;
-  } else if (diffMin === 1) {
-    return `1 minute ago`;
-  } else {
-    return `just now`;
-  }
-}
+//   if (diffDays > 1) {
+//     return `${diffDays} days ago`;
+//   } else if (diffDays === 1) {
+//     return `1 day ago`;
+//   } else if (diffHrs > 1) {
+//     return `${diffHrs} hours ago`;
+//   } else if (diffHrs === 1) {
+//     return `1 hour ago`;
+//   } else if (diffMin > 1) {
+//     return `${diffMin} minutes ago`;
+//   } else if (diffMin === 1) {
+//     return `1 minute ago`;
+//   } else {
+//     return `just now`;
+//   }
+// }
 
 // const [popupData,setPopupData]=useState({})
 
@@ -64,7 +67,11 @@ const statusColors = {
   return (
     <div>
       {
- data.map((alert, index) => (
+ data.map((alert, index) =>{
+
+  //  const date = changeTimezone(alert.created_at)
+ 
+ return (
   <div 
     key={index} 
     className="mt-4 flex justify-between gap-2 mb-5  w-full rounded-[20px] card-bg card px-6 py-6"
@@ -96,11 +103,11 @@ const statusColors = {
     
     </div>
       <div className="flex justify-center items-center">
-        {timeAgo(alert.created_at)}
+       {changeTimezone(alert.created_at)|| "long ago"}
       </div>
 
   </div>
-))
+)})
       }
     </div>
   )

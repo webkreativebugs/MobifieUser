@@ -8,6 +8,14 @@ import { AuthProvider } from "./context/auth_context/AuthContext.tsx";
 import { OrganizationProvider } from "./context/org_context/OrganizationContext.tsx";
 import { LoaderProvider } from "./context/loader_context/LoaderContext.tsx";
 import { SaveChangesProvider } from "./context/ui_context/SaveChanges.tsx";
+import {
+  DraftScreenChanges,
+  DraftScreenProvider,
+} from "./context/ui_context/DraftScreenContext.tsx";
+import { MainScreenDataProvider } from "./context/ui_context/mainScreenContext.tsx";
+import { TabContextProvider } from "./context/org_context/TabContext.tsx";
+localStorage.clear();
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -16,7 +24,16 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <AppProvider>
             <LoaderProvider>
               <SaveChangesProvider>
-                <App />
+                <TabContextProvider>
+                  <DraftScreenChanges>
+                    {" "}
+                    <DraftScreenProvider>
+                      <MainScreenDataProvider>
+                        <App />
+                      </MainScreenDataProvider>
+                    </DraftScreenProvider>
+                  </DraftScreenChanges>
+                </TabContextProvider>
               </SaveChangesProvider>
             </LoaderProvider>
           </AppProvider>
