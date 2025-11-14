@@ -10,7 +10,7 @@ import Builds from "../../pages/modules/org/builds/page"
 import Support from "../../pages/modules/org/support/page"
 import UiConfig from '../../pages/customize_pages/ui-config/page'
 import ApiConfig from "../../pages/customize_pages/api-config/page"
-import NewAppConfig from "../../pages/customize_pages/new-app-config/page"
+// import NewAppConfig from "../../pages/customize_pages/new-app-config/page"
 import NewScreenConfig from "../../pages/customize_pages/Edit-screen-config/page"
 import UiDashboard from "../../pages/customize_pages/ui-dashboard/page"
 // import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
@@ -22,6 +22,7 @@ import Configuration from "../../pages/customize_pages/configuration_page/page"
 import Details from '../../pages/modules/org/detail/page'
 import NewBuild from "../../pages/modules/org/new_build_form/page"
 import Review from "../../pages/modules/org/reviewChanges/page"
+import ApiConfigEdit from '../../pages/customize_pages/api-config-edit/page'
 
 interface RouteProps {
   route: { params: Record<string, any> };
@@ -61,7 +62,7 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
         additional:""
     },
      {
-        route:"/builds",
+        route:"/project/builds",
         component: Builds,
         additional:""
     },
@@ -122,14 +123,21 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
     // },
     {
     
-         route:"/build/details",
+         route:"/project/build/details",
+        component: Details,
+        additional:""
+    
+}    ,
+ {
+    
+         route:"/support/ticket_details",
         component: Details,
         additional:""
     
 }    ,
     {
     
-         route:"/build/create-new-build",
+         route:"/project/build/create-new-build",
         component: NewBuild,
         additional:""
     
@@ -141,13 +149,13 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
         additional:""
     
 },
-    {
+//     {
     
-         route:"/project/new-app-config",
-        component: NewAppConfig,
-        additional:""
+//          route:"/project/new-app-config",
+//         component: NewAppConfig,
+//         additional:""
     
-},
+// },
     {
     
          route:"/project/edit-screen-config",
@@ -171,11 +179,18 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
 },
     {
     
-         route:"/project/configuration/review",
+        route:"/project/configuration/review",
         component: Review,
         additional:""
     
-}
+    },
+    {
+        route:"/api-config-edit",
+        component:ApiConfigEdit,
+        additional:""
+
+    }
+
     
 
 

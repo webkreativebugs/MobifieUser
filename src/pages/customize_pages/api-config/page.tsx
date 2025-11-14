@@ -11,6 +11,7 @@
 
 // const page = () => {
 
+
 // interface ApiConfigData {
 //   api_key: string;       // Authentication
 //   base_url: string;      // Base domain for the API
@@ -44,6 +45,7 @@
 //     }));
 //   };
 
+
 //   // const addForm = () => {
 //   //   setNumOfForms((prev) => [...prev, prev.length]); // add next index
 //   // };
@@ -54,7 +56,9 @@
 
 //     <AppConfigMask name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.API} display="flex">
 
+
 //         <form className="grid grid-cols-1 w-full  gap-5" >
+
 
 //         <div className="bg-primary p-5 rounded-lg shadow-md mb-2">
 //           <h1 className="text-2xl font-semibold border-b-gray-200 border-b  pb-6">
@@ -62,6 +66,7 @@
 //           </h1>
 //           <div className=" p-5 rounded-lg">
 //                 {(ApiConfigAuth).map((item) => (
+
 
 //                   <ApiConfigInputField
 //                     title={item.title}
@@ -74,6 +79,7 @@
 //                     options={item.options}
 //                   />
 
+
 //                 ))}
 //                 </div>
 //                 </div>
@@ -84,6 +90,7 @@
 //           <div className=" p-5 rounded-lg">
 //                 {(ApiConfigRequest).map((item) => (
 
+
 //                   <ApiConfigInputField
 //                     title={item.title}
 //                     placeholder={item.placeholder as string}
@@ -93,13 +100,16 @@
 //                     required={false}
 //                     type={item.type}
 
+
 //                     // options={item.options}
 //                   />
+
 
 //                 ))}
 //                 </div>
 //                 </div>
 //               </form>
+
 
 //     </AppConfigMask>
 //   )
@@ -107,24 +117,22 @@
 
 // export default page
 
-import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask";
-import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
-import { ConfigTypeEnums } from "../../../../enum/DashboardLinks";
-import { useEffect, useState } from "react";
+
+import AppConfigMask from "../../../components/module/project_component/ConfigComponents/app/AppConfigMask"
+import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks"
+import { ConfigTypeEnums } from "../../../../enum/DashboardLinks"
 
 const page = () => {
-  const [isDisable, setIsDisable] = useState(true);
 
-  useEffect(() => {
-    setIsDisable(true);
-  });
+
   return (
     <AppConfigMask
-      isDisable={isDisable}
+      // isDisable={isDisable}
       name={CustomizeDashboardTypeEnums.APP}
       displayName={ConfigTypeEnums.CLIENT}
       display="flex"
       direction="column"
+      disable={true}
     />
   );
 };

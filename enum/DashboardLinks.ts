@@ -12,6 +12,7 @@ enum DashboardTypeEnums {
 
 enum CustomizeDashboardTypeEnums {
   DASHBOARD="dashboard",
+  BUILD="builds",
  CONFIGURATION ="Configuration",
   APP = "app",
   SCREEN  = "screen",

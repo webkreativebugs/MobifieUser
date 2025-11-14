@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
-import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
+import {
+  CustomizeDashboardTypeEnums,
+  DashboardTypeEnums,
+} from "../../../../../enum/DashboardLinks";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
+import Toast from "../../../../components/common_component/Toast";
+import CustomizeMask from "../../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 
 function Page() {
+  const [displayToast, setDisplayToast] = useState(false);
   const [formData, setFormData] = useState({
     date: "",
     platform: "", // single selection only
@@ -85,7 +91,7 @@ function Page() {
     e.preventDefault();
     if (validateForm()) {
       console.log("✅ Form Data Submitted:", formData);
-      alert("Form submitted successfully!");
+      setDisplayToast(true);
       setFormData({
         date: "",
         platform: "",
@@ -96,7 +102,7 @@ function Page() {
   };
 
   return (
-    <DashboardMask name={DashboardTypeEnums.BUILDS}>
+    <CustomizeMask name={CustomizeDashboardTypeEnums.BUILD}>
       <HeadingMask name={"Create New Build"}>
         <div className="px-2"></div>
       </HeadingMask>
@@ -211,7 +217,14 @@ function Page() {
           </div>
         </form>
       </div>
-    </DashboardMask>
+
+      <Toast
+        msg="New build is created"
+        show={displayToast}
+        onClose={() => setDisplayToast(false)}
+        duration={500}
+      />
+    </CustomizeMask>
   );
 }
 

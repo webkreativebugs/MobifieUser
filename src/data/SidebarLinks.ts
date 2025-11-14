@@ -29,7 +29,7 @@ export const AdminDashboardLinks: SidebarLink[] = [
   { name: DashboardTypeEnums.ACTIVITY, icon: FiActivity,link:"/activity",dropdown:false, action:"LogOut" },
   { name: DashboardTypeEnums.ACCESS, icon: HiOutlineKey,link:"/access-manager",dropdown:false, action:"LogOut" },
   { name: DashboardTypeEnums.BILLING, icon: TfiReceipt,link:"/billings",dropdown:false, action:"LogOut" },
-  { name: DashboardTypeEnums.BUILDS, icon: TfiReceipt,link:"/builds",dropdown:false, action:"LogOut" },
+ 
   { name: DashboardTypeEnums.SUPPORT, icon: HiOutlineSupport ,link:"/support",dropdown:false, action:"LogOut"},
   { name: DashboardTypeEnums.SETTINGS, icon: FiSettings,link:"/settings",dropdown:false, action:"LogOut" },
   { name: DashboardTypeEnums.HELP, icon: FiHelpCircle,link:"/help" ,dropdown:false, action:"LogOut"},
@@ -37,6 +37,7 @@ export const AdminDashboardLinks: SidebarLink[] = [
 
 export const ConfigDashboardLinks :SidebarLink[] =[
   { name: CustomizeDashboardTypeEnums.DASHBOARD, icon: MdOutlineSpaceDashboard, link: "/project/dashboard",dropdown:false , action:"Exit"},
+   { name: DashboardTypeEnums.BUILDS, icon: TfiReceipt,link:"/project/builds",dropdown:false, action:"LogOut" },
   { name: CustomizeDashboardTypeEnums.CONFIGURATION, icon: MdOutlineScreenShare , link: "/project/configuration",dropdown:false , action:"Exit"},
   { name: CustomizeDashboardTypeEnums.APP, icon: FaCogs, link: "/project/api-config",dropdown:false, action:"Exit" },
   { name: CustomizeDashboardTypeEnums.SCREEN , icon: MdOutlineDesignServices, link: "/project/ui-config",dropdown:true , action:"Exit" }
