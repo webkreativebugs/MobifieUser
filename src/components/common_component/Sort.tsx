@@ -1,18 +1,26 @@
 import React, { useEffect, useRef } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { TbArrowsSort } from "react-icons/tb";
+interface Sort {
+  sortQuery: string;
+  setSortQuery: Dispatch<SetStateAction<string>>;
+}
 
-export default function Sort() {
+export default function Sort({ sortQuery, setSortQuery }: Sort) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("Sort by");
+
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const options = ["Date", "Priority", "Name", "Status"];
 
   const handleSelect = (option: string) => {
-    setSelected(option);
+    console.log(option);
+
+    setSortQuery(option);
     setIsOpen(false);
   };
+  console.log(sortQuery);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -38,7 +46,7 @@ export default function Sort() {
       >
         <div className="flex items-center gap-2 font-bold text-gray-500">
           <TbArrowsSort />
-          {selected}
+          {sortQuery}
           <svg
             className={`w-4 h-4 ml-2 transition-transform ${
               isOpen ? "rotate-180" : "rotate-0"

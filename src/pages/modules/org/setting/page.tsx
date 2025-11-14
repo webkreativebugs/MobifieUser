@@ -71,6 +71,8 @@ function page() {
   };
   const currentTime = "2024-11-29T13:10:00.000Z";
   const [timeZone, setTimeZone] = useState("GMT");
+  const current = "DD/MM/YYYY";
+  const [dateFormat, setDateFormat] = useState(current);
   function getTimezoneAbbrFromISO(isoString: string) {
     const date = new Date(isoString);
 
@@ -207,7 +209,8 @@ function page() {
           {/* //timezone */}
           <div className="w-full relative rounded-[20px] card-bg  card h-[8rem] p-4 px-6 mt-5 flex flex-col gap-4">
             <div className="flex justify-end items-center absolute top-5 right-2">
-              {getTimezoneAbbrFromISO(currentTime) !== timeZone && (
+              {(getTimezoneAbbrFromISO(currentTime) !== timeZone ||
+                dateFormat !== current) && (
                 <div className=" w-1/3 flex justify-end items-start  h-full ">
                   {" "}
                   <button
@@ -224,7 +227,7 @@ function page() {
             </div>
             <div className="flex gap-4 items-center">
               <div>
-                <p className="text-lgmb-2">Select Timezone</p>{" "}
+                <p className="text-xl font-medium mb-2">Select Timezone</p>{" "}
                 <select
                   value={timeZone}
                   onChange={(e) => setTimeZone(e.target.value)}
@@ -239,10 +242,12 @@ function page() {
               </div>
               <div>
                 {" "}
-                <p className="text-xl  mb-2">Select Date Formate</p>{" "}
+                <p className="text-xl font-medium  mb-2">
+                  Select Date Formate
+                </p>{" "}
                 <select
-                  // value={dateFormat}
-                  // onChange={(e) => setDateFormat(e.target.value)}
+                  value={dateFormat}
+                  onChange={(e) => setDateFormat(e.target.value)}
                   className="w-full mb-4 p-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 >
                   {[
