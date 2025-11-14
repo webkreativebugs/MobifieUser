@@ -62,7 +62,7 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
         additional:""
     },
      {
-        route:"/builds",
+        route:"/project/builds",
         component: Builds,
         additional:""
     },
@@ -123,14 +123,21 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
     // },
     {
     
-         route:"/build/details",
+         route:"/project/build/details",
+        component: Details,
+        additional:""
+    
+}    ,
+ {
+    
+         route:"/support/ticket_details",
         component: Details,
         additional:""
     
 }    ,
     {
     
-         route:"/build/create-new-build",
+         route:"/project/build/create-new-build",
         component: NewBuild,
         additional:""
     

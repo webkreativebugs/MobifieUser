@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { LuPrinter } from "react-icons/lu";
+import { FaArrowDown } from "react-icons/fa";
 
 function DisplayBillingDetails() {
   const printRef = useRef(null);
@@ -49,37 +51,14 @@ function DisplayBillingDetails() {
           onClick={handlePrint}
           className="px-6 py-2 rounded-xl bg-gray-700 text-white font-semibold shadow-md hover:bg-gray-600 transition-all flex items-center gap-2"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5 4v3H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm4 7a1 1 0 11-2 0 1 1 0 012 0zm0-4a1 1 0 11-2 0 1 1 0 012 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <LuPrinter />
           Print
         </button>
         <button
           onClick={handleDownloadPDF}
           className="px-6 py-2 rounded-xl bg-[#7ed957] text-white font-semibold shadow-lg hover:bg-[#89d966] transition-all flex items-center gap-2 transform hover:scale-[1.02]"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L10 11.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-            <path d="M10 2a1 1 0 011 1v7h-2V3a1 1 0 011-1z" />
-          </svg>
+          <FaArrowDown />
           Download PDF
         </button>
       </div>

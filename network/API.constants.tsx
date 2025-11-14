@@ -68,14 +68,24 @@ export const API_ENDPOINTS: Record<string, FetchFunction> = {
   ORG_DETAILS: (orgName) => `${BASE_URL}/user/organization/${orgName}`,
   ORG_UPDATE: (orgName) => `${BASE_URL}/user/organization/${orgName}`,
   ORG_DELETE: (orgName) => `${BASE_URL}/user/organization/${orgName}/delete`,
-  ORG_DEACTIVATE: (orgName) => `${BASE_URL}/user/organization/${orgName}/deactivate`,
-  ALL_FAQS: (search, page, limit,orgName) =>
+  ORG_DEACTIVATE: (orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/deactivate`,
+  ALL_FAQS: (search, page, limit, orgName) =>
     `${BASE_URL}/user/organization/${orgName}/faqs?page=${page}&limit${limit}${search}`,
-  ACCESS_Manager: (page, limit, search,orgName) =>
+  ACCESS_Manager: (page, limit, search, orgName) =>
     `${BASE_URL}/user/organization/${orgName}/members?page=${page}&limit=${limit}${search}`,
-  ALERTS: (search, page, limit,orgName) =>
+  ALERTS: (search, page, limit, orgName) =>
     `${BASE_URL}/user/organization/${orgName}/alerts?page=${page}&limit${limit}${search}`,
-  ACTIVITY: (search, page, limit,orgName) =>
+  ACTIVITY: (search, page, limit, orgName) =>
     `${BASE_URL}/user/organization/${orgName}/activity?page=${page}&limit${limit}${search}`,
-  PROJECT: (orgName) => `${BASE_URL}/user/organization/${orgName}/project/project001`,
+  PROJECT: (orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/project/project001`,
+  CREATESUPPORTTICKET: (orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/support-ticket`,
+  GETSUPPORTTICKET: (sort, limit, page, search, orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/support-ticket/list-all/68e8b7d24af82ab3832039ed?sort=${sort}&limit=${limit}&after=${page}&search=${search}`,
+  UPDATESUPPORTTICKET: (orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/support-ticket/690af2767dfab846cfd3c293`,
+  GETSUPPORTTICKETBYID: (id, orgName) =>
+    `${BASE_URL}/user/organization/${orgName}/support-ticket/${id}`,
 };
