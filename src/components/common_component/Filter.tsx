@@ -20,9 +20,9 @@ export default function Filter({
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const filters: FilterOptions = {
-    Status: ["Active", "Inactive", "Pending"],
-    Priority: ["High", "Medium", "Low"],
-    Department: ["HR", "Finance", "IT", "Marketing", "Social Media"],
+    Status: ["Open", "Closed", "Pending", "In Progress", "Reopen"],
+    Priority: ["Critical", "High", "Medium", "Low"],
+    Department: ["Support Team", "Manager", "Engineering", "Executive"],
   };
 
   // ✅ Add/Remove filter options

@@ -15,6 +15,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Search from "../../../../components/common_component/Search";
 import Filter from "../../../../components/common_component/Filter";
 import Sort from "../../../../components/common_component/Sort";
+import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
 
 interface ColumnConfig {
   key: string;
@@ -398,12 +399,7 @@ function page() {
         {/* search filter  */}
         <>
           <div className="mb-2 flex gap-4">
-            <Search />
-            <Filter
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
-            />
-            <Sort />
+            <FilterSortSearchRapper />
           </div>
           <div className="flex gap-2 mb-4 flex-wrap">
             {Object.entries(selectedFilters).map(([category, options]) => (

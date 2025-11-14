@@ -7,6 +7,8 @@ function FilterSortSearchRapper() {
   const [selectedFilters, setSelectedFilters] = useState<
     Record<string, string[]>
   >({});
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortQuery, setSortQuery] = useState<string>("Select");
 
   const handleRemoveFilter = (category: string, option: string) => {
     setSelectedFilters((prev) => {
@@ -25,13 +27,13 @@ function FilterSortSearchRapper() {
   return (
     <div className="flex flex-col w-full gap-4 ">
       <div className="flex gap-4">
-        <Search />
+        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
         <Filter
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
         />
-        <Sort />
+        <Sort sortQuery={sortQuery} setSortQuery={setSortQuery} />
       </div>
       <div>
         <div className=" flex  gap-2 mb-4 ">
