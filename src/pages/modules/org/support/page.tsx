@@ -23,6 +23,7 @@ import {
 import getSupport from "../../../../utils/api/supportticketApi/GetSupportTickets";
 import UpdateSupportTicket from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/UpdateSupportTicket";
 import { Link } from "react-router-dom";
+import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
 
 enum popupComponent {
   DELETE = "deleteTicket",
@@ -136,7 +137,8 @@ function page() {
         <div className="flex-1 flex flex-col  rounded-2xl  p-1 overflow-hidden">
           {/* Search Bar */}
           <div className="w-full  mx-auto mb-4 ">
-            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+            <FilterSortSearchRapper />
+            {/* <Search searchValue={searchValue} setSearchValue={setSearchValue} /> */}
           </div>
 
           {/* FAQ List */}
@@ -195,9 +197,6 @@ function page() {
                               Update Ticket
                             </button>
 
-                            <button className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                              Delete Ticket
-                            </button>
                             {/* <button
                         onClick={() =>
                           navigate("/billing/details", {

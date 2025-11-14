@@ -3,6 +3,7 @@ import supportticket from "../../../../../../utils/api/supportticketApi/GetSuppo
 import { useloader } from "../../../../../../context/loader_context/LoaderContext";
 import { SupportTicketByIdResponse } from "../../../../../../../network/public/project_api/getSupportTicketbyId/GetSupportTicketById.interface";
 import { supportTicketId } from "../../../../../../../network/public/project_api/getSupportTicketbyId/GetSupportTicketById.api";
+import TextEditor from "../../../../../../components/common_component/TextEditor";
 
 function SupportTicketDetail({ id }: { id: string }) {
   const { setLoader } = useloader();
@@ -103,10 +104,19 @@ function SupportTicketDetail({ id }: { id: string }) {
 
             <div className="mt-6 card-bg rounded-2xl shadow-md p-6 border border-gray-100">
               <h2 className="font-semibold text-gray-700 mb-2">Description:</h2>
-              <p className="text-gray-600 leading-relaxed">
+              {apiResponse?.data.ticket.description && (
+                <TextEditor
+                  description={
+                    apiResponse?.data.ticket.description ||
+                    "No description provided."
+                  }
+                />
+              )}
+
+              {/* <p className="text-gray-600 leading-relaxed">
                 {apiResponse?.data.ticket.description ||
                   "No description provided."}
-              </p>
+              </p> */}
             </div>
             <div className="mt-6 card-bg rounded-2xl shadow-md p-6 border border-gray-100">
               <h2 className="font-semibold text-gray-700 mb-2">Attachments</h2>
@@ -116,7 +126,7 @@ function SupportTicketDetail({ id }: { id: string }) {
               </p>
             </div>
             <div className="mt-6 card-bg rounded-2xl shadow-md p-6 border border-gray-100">
-              <h2 className="font-semibold text-gray-700 mb-2">Activity</h2>
+              {/* <h2 className="font-semibold text-gray-700 mb-2">Activity</h2> */}
 
               {/* Tab Container */}
               <div className="flex border-b border-gray-200 gap-8 px-3">
@@ -126,19 +136,9 @@ function SupportTicketDetail({ id }: { id: string }) {
       after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:w-full after:h-[2px] after:bg-[#7ed957]
       bg-blue-50/60 rounded-t-md backdrop-blur-sm"
                 >
-                  All
-                </button>
-
-                {/* Inactive Tabs */}
-                <button className="text-gray-500 hover:text-blue-500 px-3 py-2 font-medium">
                   Comments
                 </button>
-                <button className="text-gray-500 hover:text-blue-500 px-3 py-2 font-medium">
-                  Work Log
-                </button>
-                <button className="text-gray-500 hover:text-blue-500 px-3 py-2 font-medium">
-                  History
-                </button>
+
                 <button className="text-gray-500 hover:text-blue-500 px-3 py-2 font-medium">
                   Activity
                 </button>
