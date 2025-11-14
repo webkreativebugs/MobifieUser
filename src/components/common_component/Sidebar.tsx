@@ -1,17 +1,12 @@
-import { useState} from "react";
-import { Link, NavLink } from "react-router-dom";
-// import { MdOutlineCancel } from "react-icons/md";
-// import { AdminDashboardLinks } from "../../data/SidebarLinks";
-import { useNavigate } from "react-router-dom";
-import { useauth } from "../../context/auth_context/AuthContext";
-const logo = "../../../../public/assets/MobifieLogo.svg";
-import LogOut from "../../utils/api/LogOut";
+import { useState, Dispatch, SetStateAction } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
-import { Dispatch, SetStateAction } from "react";
-// import { GoSidebarCollapse } from "react-icons/go";
 import { GoSidebarExpand } from "react-icons/go";
+import { useauth } from "../../context/auth_context/AuthContext";
+import LogOut from "../../utils/api/LogOut";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
-// import { useSearchParams } from "react-router-dom";
+// import { MdOutlineScreenShare } from "react-icons/md";
+
 interface SidebarProps {
   active: string;
   show: boolean;
@@ -22,89 +17,138 @@ interface SidebarProps {
 const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
   const navigate = useNavigate();
   const { onRoleChange } = useauth();
-  //  const [searchParams] = useSearchParams();
-  //  console.log(DropName);
-   
-  // const [showDropdown , setShowDropdown] = useState<boolean|null>(false)
   const [activeLinkName, setActiveLinkName] = useState(active);
-  // const [dropActiveLinkName,setDropActiveLinkName]=useState<string|null>("")
-  // const [show,setShow] = useState(true)
-  function handleClick() {
+
+  const handleClick = () => {
     LogOut();
     navigate("/login-with-password", { replace: true });
     onRoleChange("");
-  }
-  // const normalLink = 'flex items-center gap-3 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 hover:bg-gray-100 m-2';
+  };
+  // const hasSublinks = links.some(
+  //   (section) => section.sublink && section.sublink.links?.length > 0
+  // );
+  const isExit = links.some((section) => section.action === "Exit");
 
   return (
-    <>
-      <div className={`hidden xl:flex h-screen z-50   ${show ? "w-1/6" : ""}`}>
-        <div className="  xl:flex xl:flex-col overflow-auto hide-scrollbar  w-full justify-between  bg-primary pb-10 h-full shadow-xl    ">
-          <div className="  xl:flex xl:flex-col   ">
-            <div className=" pl-5 border-b-2 flex justify-between items-center   ">
-              <Link
-                to="/"
-                className="mt-4 flex  text-xl text-[#7ed957] font-extrabold tracking-tight"
-              >
-                <img src={logo} alt="Mobifie Logo" className="w-[60px] " />
-                {show && <span className="mt-4 text-xl ">Mobifie</span>}
-              </Link>
-            </div>
-
-            <div className="p-5 pt-0 w-full relative ">
-              {links.map((section) => (
-                <div key={section.name}>
-                  {/* <p className="text-color-secondary mt-4 uppercase">{section.title}</p> */}
-                 
-                    <NavLink
-                      to={section.link}
-                      key={section.name}
-                      onClick={() => setActiveLinkName(section.name)}
-                      className={` ${
-                        activeLinkName === section.name
-                          ? "active-link   "
-                          : "normal-link"
-                      }`}
-                    >
-                      <span
-                        className={` ${
-                          activeLinkName === section.name
-                            ? "theme-color"
-                            : "theme-color"
-                        }`}
-                      >
-                        {" "}
-                        <section.icon />
-                      </span>
-                      {show ? (
-                        <span className="capitalize text-lg">
-                          {section.name}
-                        </span>
-                      ) : (
-                        <span className="capitalize text-lg"></span>
-                      )}
-                    </NavLink>
-               
-                   
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <button className="normal-link mt-6 ml-6 " onClick={handleClick}>
-              <FiLogOut />
-              {show && "Logout"}
-            </button>
-            <button
-              className="normal-link mt-6 ml-6 "
-              onClick={() => setShow(!show)}
+    <div
+      className={`hidden xl:flex h-screen z-50 bg-primary transition-all duration-300 ${
+        show ? "w-1/6" : "w-[120px]"
+      }`}
+    >
+      <div className="flex flex-col justify-between w-full h-full ">
+        <div>
+          <div className="flex items-center justify-center border-b-2 py-2.5">
+            <Link
+              to="/"
+              className="flex items-center gap-2 text-xl text-[#7ed957] font-extrabold tracking-tight"
             >
-              <GoSidebarExpand style={{ fontSize: "20px" }} />
-            </button>
+              <img
+                src="/assets/MobifieLogo.svg"
+                alt="Mobifie Logo"
+                className="w-[55px]"
+              />
+              {show && <span className="text-xl leading-none">Mobifie</span>}
+            </Link>
+          </div>
+
+          {/* ---------- Links ---dddd------- */}
+          <div className="p-4 pt-5 space-y-1">
+            {links.map((section) => (
+              <div key={section.name}>
+                <NavLink
+                  to={section.link}
+                  onClick={() => setActiveLinkName(section.name)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-4 py-2 rounded-lg text-md transition-all duration-200 ${
+                      isActive || activeLinkName === section.name
+                        ? "active-link"
+                        : "normal-link hover:bg-[#ffffff22]"
+                    }`
+                  }
+                >
+                  <span className="theme-color text-lg min-w-[24px]  flex justify-center">
+                    <section.icon />
+                  </span>
+                  {show && (
+                    <span className="capitalize text-lg">{section.name}</span>
+                  )}
+                </NavLink>
+
+                {/* ---------- Sublinks ---------- */}
+                {/* {section.sublink && (
+                  <div className="flex flex-col pl-6 mt-2 space-y-1">
+                    <div className="flex items-center gap-3">
+                      <span className="theme-color text-lg min-w-[24px] flex justify-center">
+                        <MdOutlineScreenShare />
+                      </span>
+                      {show && (
+                        <span className="capitalize text-lg">
+                          {section.sublink.title}
+                        </span>
+                      )}
+                    </div>
+
+                    {section.sublink.links.map((item) => (
+                      <NavLink
+                        to={item.link}
+                        key={item.name}
+                        onClick={() => setActiveLinkName(item.name)}
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 py-1.5 px-3 rounded-md text-md transition-all duration-200  ${
+                            !show && "ml-[-13px]"
+                          } ${
+                            isActive || activeLinkName === item.name
+                              ? "active-link"
+                              : "normal-link hover:bg-[#ffffff22]"
+                          }`
+                        }
+                      >
+                        <span className="theme-color text-base min-w-[24px] flex justify-center">
+                          <item.icon />
+                        </span>
+                        {show && (
+                          <span className="capitalize text-[16px]">
+                            {item.name}
+                          </span>
+                        )}
+                      </NavLink>
+                    ))}
+                  </div>
+                )} */}
+              </div>
+            ))}
           </div>
         </div>
+
+        <div className="  py-4">
+          {isExit ? (
+            <Link
+              to="/project"
+              className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+            >
+              <FiLogOut className="text-xl" />
+              {show && "Exit"}
+            </Link>
+          ) : (
+            <button
+              className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+              onClick={handleClick}
+            >
+              <FiLogOut className="text-xl" />
+              {show && "Logout"}
+            </button>
+          )}
+
+          <button
+            className="normal-link flex items-center gap-3 ml-5 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
+            onClick={() => setShow(!show)}
+          >
+            <GoSidebarExpand style={{ fontSize: "20px" }} />
+            {show && "Collapse"}
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
