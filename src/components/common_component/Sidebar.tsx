@@ -6,6 +6,7 @@ import { useauth } from "../../context/auth_context/AuthContext";
 import LogOut from "../../utils/api/LogOut";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
 import { MdOutlineScreenShare } from "react-icons/md";
+import { GoOrganization } from "react-icons/go";
 
 interface SidebarProps {
   active: string;
@@ -126,8 +127,8 @@ const Sidebar = ({ setShow, active, show, links }: SidebarProps) => {
               to="/project"
               className="normal-link flex items-center gap-3 ml-5 mb-3 text-lg hover:bg-[#ffffff22] transition-all duration-200 py-2 px-3 rounded-md"
             >
-              <FiLogOut className="text-xl" />
-              {show && "Exit"}
+              <GoOrganization className="text-xl " />
+              {show && " Go to Organization "}
             </Link>
           ) : (
             <button

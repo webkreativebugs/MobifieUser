@@ -9,7 +9,12 @@ import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
 import { Link, useNavigate } from "react-router-dom";
 import CustomizeMask from "../../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+// import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 // import BuildDetailComponent from "../../../../components/module/org_component/billingComponent/BuildDetailComponent";
+import Search from "../../../../components/common_component/Search";
+import Filter from "../../../../components/common_component/Filter";
+import Sort from "../../../../components/common_component/Sort";
 
 interface ColumnConfig {
   key: string;
@@ -22,7 +27,6 @@ const builds = [
     ios_version: "2.0.1",
     android_BuildNo: "34",
     ios_BuildNo: "34",
-
     date: "2025-10-09",
     history: "Bug fixes",
     status: "Stable",
@@ -62,6 +66,159 @@ const builds = [
     status: "Stable",
     updatedBy: "Aakash",
   },
+
+  // ----------------- 15 NEW OBJECTS -----------------
+
+  {
+    android_version: "2.0.5",
+    ios_version: "2.0.5",
+    android_BuildNo: "40",
+    ios_BuildNo: "40",
+    date: "2025-10-01",
+    history: "UI enhancements",
+    status: "Stable",
+    updatedBy: "Neha",
+  },
+  {
+    android_version: "2.0.6",
+    ios_version: "2.0.6",
+    android_BuildNo: "41",
+    ios_BuildNo: "41",
+    date: "2025-09-28",
+    history: "Security patch",
+    status: "Stable",
+    updatedBy: "Aniket",
+  },
+  {
+    android_version: "2.0.7",
+    ios_version: "2.0.7",
+    android_BuildNo: "42",
+    ios_BuildNo: "42",
+    date: "2025-09-25",
+    history: "New dashboard module added",
+    status: "Beta",
+    updatedBy: "Simran",
+  },
+  {
+    android_version: "2.0.8",
+    ios_version: "2.0.8",
+    android_BuildNo: "43",
+    ios_BuildNo: "43",
+    date: "2025-09-22",
+    history: "Analytics improvements",
+    status: "Stable",
+    updatedBy: "Rohit",
+  },
+  {
+    android_version: "2.0.9",
+    ios_version: "2.0.9",
+    android_BuildNo: "44",
+    ios_BuildNo: "44",
+    date: "2025-09-19",
+    history: "Notification bugs fixed",
+    status: "Stable",
+    updatedBy: "Sanya",
+  },
+  {
+    android_version: "2.1.0",
+    ios_version: "2.1.0",
+    android_BuildNo: "45",
+    ios_BuildNo: "45",
+    date: "2025-09-16",
+    history: "Major feature rollout",
+    status: "Beta",
+    updatedBy: "Arjun",
+  },
+  {
+    android_version: "2.1.1",
+    ios_version: "2.1.1",
+    android_BuildNo: "48",
+    ios_BuildNo: "48",
+    date: "2025-09-14",
+    history: "Payment flow optimized",
+    status: "Stable",
+    updatedBy: "Meera",
+  },
+  {
+    android_version: "2.1.2",
+    ios_version: "2.1.2",
+    android_BuildNo: "49",
+    ios_BuildNo: "49",
+    date: "2025-09-10",
+    history: "Chat module updated",
+    status: "Stable",
+    updatedBy: "Vikram",
+  },
+  {
+    android_version: "2.1.3",
+    ios_version: "2.1.3",
+    android_BuildNo: "50",
+    ios_BuildNo: "50",
+    date: "2025-09-08",
+    history: "Voice call improvements",
+    status: "Beta",
+    updatedBy: "Sneha",
+  },
+  {
+    android_version: "2.1.4",
+    ios_version: "2.1.4",
+    android_BuildNo: "51",
+    ios_BuildNo: "51",
+    date: "2025-09-05",
+    history: "Performance tweaks",
+    status: "Stable",
+    updatedBy: "Tarun",
+  },
+  {
+    android_version: "2.1.5",
+    ios_version: "2.1.5",
+    android_BuildNo: "52",
+    ios_BuildNo: "52",
+    date: "2025-09-02",
+    history: "Database syncing improved",
+    status: "Stable",
+    updatedBy: "Jasmine",
+  },
+  {
+    android_version: "2.1.6",
+    ios_version: "2.1.6",
+    android_BuildNo: "55",
+    ios_BuildNo: "55",
+    date: "2025-08-30",
+    history: "Map module updated",
+    status: "Stable",
+    updatedBy: "Nikhil",
+  },
+  {
+    android_version: "2.1.7",
+    ios_version: "2.1.7",
+    android_BuildNo: "56",
+    ios_BuildNo: "56",
+    date: "2025-08-28",
+    history: "Crash fixes",
+    status: "Stable",
+    updatedBy: "Divya",
+  },
+  {
+    android_version: "2.1.8",
+    ios_version: "2.1.8",
+    android_BuildNo: "57",
+    ios_BuildNo: "57",
+    date: "2025-08-26",
+    history: "Dark mode enhancement",
+    status: "Stable",
+    updatedBy: "Karan",
+  },
+  {
+    android_version: "2.1.9",
+    ios_version: "2.1.9",
+    android_BuildNo: "60",
+    ios_BuildNo: "60",
+    date: "2025-08-23",
+    history: "Search speed optimized",
+    status: "Stable",
+    updatedBy: "Aditi",
+  },
 ];
 
 function page() {
@@ -70,6 +227,9 @@ function page() {
   const olderBuilds = builds.slice(1);
   const [isMore, setIsMore] = useState<boolean>(false);
   const [opendV, setOpendV] = useState<string>("");
+  const [selectedFilters, setSelectedFilters] = useState<
+    Record<string, string[]>
+  >({});
 
   const downloadBuild = (build: typeof latestBuild) => {
     console.log(build);
@@ -97,6 +257,20 @@ function page() {
     // { key: "action", title: "Action" },
   ];
 
+  const handleRemoveFilter = (category: string, option: string) => {
+    setSelectedFilters((prev) => {
+      const updatedOptions = prev[category].filter((o) => o !== option);
+
+      if (updatedOptions.length === 0) {
+        const updated = { ...prev };
+        delete updated[category];
+        return updated;
+      }
+
+      return { ...prev, [category]: updatedOptions };
+    });
+  };
+
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.BUILD}>
       <HeadingMask name={"Builds"}>
@@ -111,9 +285,9 @@ function page() {
         </div>
       </HeadingMask>
       {/* <BuildDetailComponent /> */}
-      <div className="w-full px-2 mt-8">
+      <div className="w-full px-2 mt-1">
         {/* Latest Build */}
-        <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-6 relative overflow-hidden">
+        <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-1 relative overflow-hidden">
           {/* Ribbon or Label */}
           <div className="absolute top-0 left-0 bg-[#7ed957] text-black text-xs font-semibold px-3 py-1 rounded-br-lg">
             Latest Build
@@ -218,19 +392,46 @@ function page() {
                 {latestBuild.ReleaseNotes}
               </p>
             </div>
-            {/* <div className="px-3 py-4 flex items-center">
-              <button
-                onClick={() => downloadBuild(latestBuild)}
-                className="  text-blue-600 text-md  px-4 py-1 font-semibold underline underline-offset-1  rounded-lg "
-              >
-                Download
-              </button>
-            </div> */}
           </div>
         </div>
 
+        {/* search filter  */}
+        <>
+          <div className="mb-2 flex gap-4">
+            <Search />
+            <Filter
+              selectedFilters={selectedFilters}
+              setSelectedFilters={setSelectedFilters}
+            />
+            <Sort />
+          </div>
+          <div className="flex gap-2 mb-4 flex-wrap">
+            {Object.entries(selectedFilters).map(([category, options]) => (
+              <div key={category} className="bg-white">
+                <div className="flex flex-wrap gap-2">
+                  {options.map((option) => (
+                    <span
+                      key={option}
+                      className="flex items-center gap-0 px-3 py-1 bg-red-100 text-red-600 font-medium rounded-full text-sm shadow-sm hover:bg-red-200 transition"
+                    >
+                      {option}
+
+                      <button
+                        onClick={() => handleRemoveFilter(category, option)}
+                        className="text-red-500 hover:text-red-700 font-bold ml-1"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+
         {/* Older Builds Table */}
-        <div className="bg-white rounded-2xl shadow-md border border-gray-200 ">
+        <div className="bg-white rounded-2xl shadow-md border border-gray-200  overflow-hidden">
           <div className="grid grid-cols-6 bg-gray-50 text-gray-700 text-xl font-bold border-b border-gray-200">
             {columns.map((col) => (
               <>
@@ -245,7 +446,7 @@ function page() {
             <div className="h-full text-right px-4 py-2">Action</div>
           </div>
 
-          {olderBuilds.map((build, index) => (
+          {olderBuilds.slice(0, 8).map((build, index) => (
             <div
               key={index}
               className={`grid grid-cols-6 text-sm ${
@@ -313,6 +514,32 @@ function page() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="w-full flex justify-center items-center gap-6 mt-4">
+          {/* Previous Button */}
+          <button
+            className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200 disabled:opacity-50"
+            // disabled={!apiResponse?.data.pageInfo.hasPreviousPage}
+            onClick={() => {
+              // handlePrev()
+            }}
+          >
+            <IoIosArrowBack className="text-2xl text-[#7ed957]" />
+            <span>Prev</span>
+          </button>
+
+          {/* Next Button */}
+          {/* {apiResponse?.data.pageInfo.hasNextPage && ( */}
+          <button
+            onClick={() => {
+              // getSupport(setApiResponse, setApiError, setLoader);
+            }}
+            className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200"
+          >
+            <span>Next</span>
+            <IoIosArrowForward className="text-2xl text-[#7ed957]" />
+          </button>
+          {/* )} */}
         </div>
       </div>
     </CustomizeMask>

@@ -13,10 +13,11 @@ import AdditionalConfig from "../../../components/module/project_component/Confi
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
 import { RxCross2 } from "react-icons/rx";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Links, useLocation } from "react-router-dom";
 
 import CustomizePopUp from "../../../components/module/project_component/ConfigComponents/common/CustomizePopUp";
 import SubmitConfiguration from "../../../components/module/project_component/ConfigComponents/common/SubmitConfiguration";
+import { IoArrowBack } from "react-icons/io5";
 
 enum detail {
   DRAFT = "draftChanges",
@@ -270,7 +271,19 @@ function Page() {
   // }, [isActive]);
 
   return (
-    <div className="w-full h-screen overflow-y-scroll hide-scrollbar px-5">
+    <div className="w-full relative h-screen overflow-y-scroll hide-scrollbar px-5">
+      <div
+        className="absolute z-50 flex items-center gap-2 mt-6 cursor-pointer 
+  text-gray-600 hover:text-gray-900 transition"
+      >
+        <Link to={"/project/ui-config"}>
+          {" "}
+          <IoArrowBack className="text-xl" />
+        </Link>
+
+        <span className="text-lg font-medium">Back to Project</span>
+      </div>
+
       <Navbar />
       <div className="flex h-[85vh] mt-24">
         <UiConfigSidebar
