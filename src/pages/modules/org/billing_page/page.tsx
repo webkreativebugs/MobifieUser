@@ -7,6 +7,8 @@ import { ColumnConfig } from "../../../../components/common_component/dynamic_ta
 // import DynamicTable from "../../../../components/common_component/dynamic_table";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const invoices = [
   { invoicenumber: "INV001", date: "2025-10-07", status: "Paid" },
   { invoicenumber: "INV002", date: "2025-10-06", status: "Pending" },
@@ -49,7 +51,9 @@ function page() {
       </HeadingMask>
       <div className="w-full px-2 mt-8">
         {/* Page Title */}
-
+        <div>
+          <FilterSortSearchRapper />
+        </div>
         {/* Header Section */}
         <div className="flex items-center justify-between bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-4 rounded-t-2xl border border-gray-200 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-800">
@@ -103,15 +107,6 @@ function page() {
                 </span>
               </div>
 
-              {/* <div className="px-3 py-4 flex items-center">
-                <button
-                 
-                  className="  text-blue-600 text-md  px-4 py-1 font-semibold underline underline-offset-1  rounded-lg "
-                >
-                  Download
-                </button>
-              </div> */}
-
               <div className="flex justify-end items-center">
                 <div
                   key={index}
@@ -156,6 +151,36 @@ function page() {
             </div>
           ))}
         </div>
+        <>
+          {/* {apiResponse && apiResponse.data?.tickets?.length > 0 && ( */}
+          <div className="w-full flex justify-center items-center gap-6 mt-4">
+            {/* Previous Button */}
+            <button
+              className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200 disabled:opacity-50"
+              // disabled={!apiResponse?.data.pageInfo.hasPreviousPage}
+              onClick={() => {
+                // handlePrev()
+              }}
+            >
+              <IoIosArrowBack className="text-2xl text-[#7ed957]" />
+              <span>Prev</span>
+            </button>
+
+            {/* Next Button */}
+            {/* {apiResponse?.data.pageInfo.hasNextPage && ( */}
+            <button
+              onClick={() => {
+                // getSupport(setApiResponse, setApiError, setLoader);
+              }}
+              className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200"
+            >
+              <span>Next</span>
+              <IoIosArrowForward className="text-2xl text-[#7ed957]" />
+            </button>
+            {/* )} */}
+          </div>
+          {/* )} */}
+        </>
       </div>
     </DashboardMask>
   );
