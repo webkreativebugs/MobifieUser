@@ -1,17 +1,14 @@
 import CustomizeMask from "../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { CustomizeDashboardTypeEnums } from "../../../../enum/DashboardLinks";
-
 import { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
-import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
-import Ui from "../../../components/module/project_component/ConfigComponents/ui/Ui";
+
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 
 const page = () => {
   const [element, setElement] = useState(ScreenConfigdata[0].key);
-  console.log(ScreenConfigdata[0].key);
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
 
@@ -25,21 +22,28 @@ const page = () => {
   );
 
   useEffect(() => {
-    const screenData = ScreenConfigdata.find((item) => item.key === element);
-    if (screenData) {
-      setscreenConfig(screenData as ScreenConfigInterface);
+    if (!element) return;
+    const storedData = localStorage.getItem("mainscreenData");
+
+    if (!storedData) return;
+
+    try {
+      const parsed = JSON.parse(storedData);
+      console.log(parsed);
+      const found = parsed.find((item: any) => item.screenName === element);
+      if (found) {
+        setCurrentScreen(found);
+      }
+    } catch (err) {
+      console.error("Failed to parse mainscreenData from localStorage", err);
     }
   }, [element]);
 
-  useEffect(() => {
-    if (isActive) {
-      setPOpUp(true);
-    }
-  }, [element]);
+  if (!currentScreen) return null;
 
   return (
-    <CustomizeMask name={CustomizeDashboardTypeEnums.UI}>
-      <div className=" flex  h-[85vh]">
+    <CustomizeMask name={CustomizeDashboardTypeEnums.SCREEN}>
+      <div className="flex h-[85vh]">
         <UiConfigSidebar
           element={element}
           setElement={setElement}
@@ -89,21 +93,17 @@ const page = () => {
               </button>
 
               <button
-                onClick={() => {
-                  setIsPOpUpdata(true);
-                  setIsActive(false);
-                  setPOpUp(false);
-                }}
-                className="px-4 py-2 rounded-lg bg-black text-primary font-semibold hover:bg-opacity-90 shadow-md transition-all"
+                onClick={() => setAndroid((prev) => !prev)}
+                className="text-sm px-4 py-3 rounded-md bg-black text-white font-semibold transition"
               >
-                Save Changes
+                {!android ? "Switch to Android" : "Switch to iPhone"}
               </button>
             </div>
           </div>
-        </div>
-      )}
+        </>
+      </div>
     </CustomizeMask>
   );
 };
 
-export default page;
+export default Page;

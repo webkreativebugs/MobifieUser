@@ -5,7 +5,7 @@ import { AlertCallback , AlertResponse} from "../../../network/public/organizati
 import { Dispatch, SetStateAction } from "react";
 
 // import { customAuthorizationConfig } from "../../../network/FetchRequest";
-function getAlerts(setApiResponse:Dispatch<SetStateAction<AlertResponse|undefined>>,setApiError:Dispatch<SetStateAction<Error|undefined>>, setLoader: (loading: boolean) => void){
+function getAlerts(setApiResponse:Dispatch<SetStateAction<AlertResponse|undefined>>,setApiError:Dispatch<SetStateAction<Error|undefined>>){
     
 const handleUserInfoResponse:AlertCallback= (  response: AlertResponse | null, error: Error | null | undefined) => {
     if (error) {
@@ -17,7 +17,7 @@ const handleUserInfoResponse:AlertCallback= (  response: AlertResponse | null, e
     {
     //   customAuthorizationConfig.kb_authorization=response.data;
       setApiResponse(response)
-      setLoader(false)
+      // setLoader(false)
     }
    
   };

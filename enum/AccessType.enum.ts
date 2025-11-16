@@ -7,3 +7,13 @@ enum AccessType{
 }
 
 export {AccessType}
+
+enum ScreenType{
+    DRAFT = "draftScreen",
+    MAIN = "mainScreen",
+    EDITED= "editedScreen"
+
+
+}
+
+export {ScreenType}

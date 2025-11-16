@@ -1,48 +1,66 @@
-import React from "react";
-import { ScreenConfigInterface } from "../../../../../../../data/interface/data.interface";
+// import React from "react";
+import { HeaderConfigItem } from "../../../../../../../data/interface/data.interface";
 
-function Header1({ screenConfig }: { screenConfig: ScreenConfigInterface }) {
+function Header1({ header }: { header: HeaderConfigItem }) {
+  // const header = screenConfig.current_confi.header;
+
   return (
-    <header className="bg-white shadow p-2 mt-4 px-3 py-4 h-12">
-      <div className="flex items-center justify-between">
-        {/* Left Side */}
-        <div className="flex items-center gap-3">
-          {screenConfig.current_confi.header.lefticons?.map((item, idx) => (
-            <>
-              <button key={idx}>
-                {item.isActive && (
-                  <img src={item.url} alt="" className="w-7 h-7" />
-                )}
-              </button>
-            </>
-          ))}
-
-          <span className="text-red-600 text-xl font-bold  flex items-center">
-            {screenConfig.current_confi.header.text}
-          </span>
+    <header className="shadow mt-8 h-12 w-full overflow-hidden">
+      <div className="grid grid-cols-[auto_1fr_auto] items-center w-full max-w-full h-full px-3 py-4 overflow-hidden">
+        {/* Left Icons */}
+        <div className="flex items-center gap-3 overflow-hidden flex-shrink-0">
+          {header?.lefticons?.icons?.map(
+            (item, idx) =>
+              item.isActive && (
+                <div
+                  key={idx}
+                  className="text-color flex-shrink-0"
+                  dangerouslySetInnerHTML={{ __html: item.url }}
+                />
+              )
+          )}
         </div>
 
-        {/* Right Side */}
+        {/* Center Text (constrained by grid's 1fr, will truncate, won't expand header) */}
+        <div className="min-w-0 px-2 overflow-hidden">
+          {header?.lefticons?.text?.isActive && (
+            <span
+              title={header.lefticons.text.value}
+              className="block w-full text-left text-lg font-semibold truncate whitespace-nowrap"
+            >
+              {header.lefticons.text.value}
+            </span>
+          )}
+          {header?.center?.text?.isActive && (
+            <span
+              title={header.center.text.value}
+              className="block w-full text-center text-lg font-semibold truncate whitespace-nowrap"
+            >
+              {header.center.text.value}
+            </span>
+          )}
+          {header?.righticons?.text?.isActive && (
+            <span
+              title={header.righticons.text.value}
+              className="block w-full text-right text-lg font-semibold truncate whitespace-nowrap"
+            >
+              {header.righticons.text.value}
+            </span>
+          )}
+        </div>
 
-        <div className="flex items-center gap-5 text-gray-700">
-          {screenConfig.current_confi.header.righticons?.map((item, idx) => (
-            <>
-              <button key={idx}>
-                {item.isActive && (
-                  <img src={item.url} alt="" className="w-7 h-7" />
-                )}
-              </button>
-            </>
-          ))}
-          {/* {rightIcons.map((icon, i) =>
-            icon.svg !== "" ? (
-              <button
-                key={i}
-                className="w-6 h-6 text-gray-700"
-                dangerouslySetInnerHTML={{ __html: icon.svg }}
-              />
-            ) : null
-          )} */}
+        {/* Right Icons */}
+        <div className="flex items-center gap-3 overflow-hidden flex-shrink-0">
+          {header?.righticons?.icons?.map(
+            (item, idx) =>
+              item.isActive && (
+                <div
+                  key={idx}
+                  className="text-color flex-shrink-0"
+                  dangerouslySetInnerHTML={{ __html: item.url }}
+                />
+              )
+          )}
         </div>
       </div>
     </header>

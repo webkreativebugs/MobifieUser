@@ -14,9 +14,12 @@ import HeadingMask from "../../../../components/common_component/layered_compone
 import SearchMask from "../../../../components/common_component/layered_components/SearchMask";
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
+import ShimmerTiles from "../../../../components/common_component/Shimmer";
+import PageNotFound from "../../../../components/common_component/PageNotFound";
+const noData = '../../../../../public/assets/oops_no_data/no-activity.png'
 interface Quary {
   search?: string;
-  type?:string
+  type?: string;
 }
 function page() {
   const { setLoader } = useloader();
@@ -31,31 +34,30 @@ function page() {
     console.log(apiError);
   }
   const columns: ColumnConfig[] = [
-  { key: "activity_details", title: "Activity" },
-  { key: "email", title: "Email" },
-  { key: "submodule", title: "Module" },
-  { key: "created_at", title:"Created At"}
-];
+    { key: "activity_details", title: "Activity" },
+    { key: "email", title: "Email" },
+    { key: "submodule", title: "Module" },
+    { key: "created_at", title: "Created At" },
+  ];
   // console.log(apiError);
 
- const handleInputChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-) => {
-  const { name, value } = e.target;
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
 
-  if (e.target.tagName === "INPUT") {
-    setInputQuary((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  } else {
-    setSelectQuary((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-};
-
+    if (e.target.tagName === "INPUT") {
+      setInputQuary((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    } else {
+      setSelectQuary((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
 
   useEffect(() => {
     // console.log(inputQuary.search);
@@ -70,26 +72,30 @@ function page() {
     fetchAllActivity(setApiResponse, setApiError, setLoader);
   }, [inputQuary]);
 
-   useEffect(() => {
-  if (!selectQuary) return;
+  useEffect(() => {
+    if (!selectQuary) return;
 
-  setLoader(true);
+    setLoader(true);
 
-  const type = selectQuary?.type?.toString();
+    const type = selectQuary?.type?.toString();
 
-  if (type === "All") {
-    ActivitymodifiedUrlConfig.search = "";
-  } else {
-    ActivitymodifiedUrlConfig.search = `&category=${encodeURIComponent(type || "")}`;
-    if (selectQuary.search) {
-      ActivitymodifiedUrlConfig.search += `&search=${encodeURIComponent(selectQuary.search)}`;
+    if (type === "All") {
+      ActivitymodifiedUrlConfig.search = "";
+    } else {
+      ActivitymodifiedUrlConfig.search = `&category=${encodeURIComponent(
+        type || ""
+      )}`;
+      if (selectQuary.search) {
+        ActivitymodifiedUrlConfig.search += `&search=${encodeURIComponent(
+          selectQuary.search
+        )}`;
+      }
     }
-  }
-  
-  fetchAllActivity(setApiResponse, setApiError,setLoader);
-  setClicked(1)
-  // setLoader(false);
-}, [selectQuary]);
+
+    fetchAllActivity(setApiResponse, setApiError, setLoader);
+    setClicked(1);
+    // setLoader(false);
+  }, [selectQuary]);
 
   useEffect(() => {
     setLoader(true);
@@ -100,30 +106,50 @@ function page() {
   }, [OrganizationDetailsConfig.orgName]);
 
   return (
-  <DashboardMask name={"Activity"}>
-           <HeadingMask name={"Activity Feed"}>
-           <SearchMask handler={handleInputChange} value={inputQuary?.search?.toString() ?? ""} />
-           <FilterMask handler={handleInputChange} value={selectQuary?.type?.toString()||" "} optionsArray={["All","Project","Organization"]} />
-           </HeadingMask>
-  
-         {
-         apiResponse &&
-       <>
-      <div className="mt-10">
-        <DynamicTable  data={apiResponse.data.activities} columns={columns} globalSearch={false} emptyMessage="No Alert" page={"activity"} />
-      </div>
-      <Pagination 
-      length={apiResponse.data.pagination.total_pages} 
-      setApiResponse={setApiResponse} 
-      type={"activity"} 
-      clicked={clicked}
-      setClicked={setClicked}
-      />
-      </>
-     }
+    <DashboardMask name={"Activity"}>
+      <HeadingMask name={"Activity Feed"}>
+        <SearchMask
+          handler={handleInputChange}
+          value={inputQuary?.search?.toString() ?? ""}
+        />
+        <FilterMask
+          handler={handleInputChange}
+          value={selectQuary?.type?.toString() || " "}
+          optionsArray={["All", "Project", "Organization"]}
+        />
+      </HeadingMask>
 
-  </DashboardMask>
-       
+       {apiResponse && apiResponse.data.pagination.total_pages>=1  ? 
+        <>
+          <div className="mt-10">
+            <DynamicTable
+              data={apiResponse.data.activities}
+              columns={columns}
+              globalSearch={false}
+              emptyMessage="No Alert"
+              page={"activity"}
+            />
+          </div>
+          {apiResponse.data.pagination.total_pages>1 &&
+
+          <Pagination
+            length={apiResponse.data.pagination.total_pages}
+            setApiResponse={setApiResponse}
+            type={"activity"}
+            clicked={clicked}
+            setClicked={setClicked}
+          />
+        }
+        </>:
+        <>
+            { apiResponse ?
+   <PageNotFound noData={noData}/>
+    :
+            <ShimmerTiles />
+              }
+              </>
+      }
+    </DashboardMask>
   );
 }
 
