@@ -21,7 +21,7 @@ interface WebViewNavigationItem {
   key: ConfigFormKeys;
 }
 
-const WebUrlConfig = () => {
+const WebUrlConfig = ({ disable = false }) => {
   const [configFormData, setConfigFormData] = useState<
     Record<ConfigFormKeys, string>
   >({
@@ -110,53 +110,59 @@ const WebUrlConfig = () => {
   };
 
   return (
-    // <AppConfigMask display="flex" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.WEB} >
-    <form
-      className="w-full gap-5 pb-9 rounded-md bg-primary shadow-md p-6 pt-9"
-      onSubmit={handleSubmit}
-    >
-      {(WebViewNavigationURL as WebViewNavigationItem[]).map((item) => (
-        <div key={item.key} className="flex flex-col">
-          <div className="flex">
-            <input
-              type="checkbox"
-              id={item.key}
-              name={item.key}
-              checked={checkboxForm[item.key]}
-              onChange={() =>
-                setCheckboxForm((prev) => ({
-                  ...prev,
-                  [item.key]: !prev[item.key],
-                }))
-              }
-              className="w-4 mr-7 flex h-12 justify-center items-center"
-            />
-            <ApiConfigInputField
-              disabled={!checkboxForm[item.key]}
-              title={item.title}
-              placeholder={item.url}
-              name={item.key}
-              value={configFormData[item.key]}
-              onChange={handleChange}
-              required={false}
-            />
-          </div>
-          {errors[item.key] && (
-            <span className="text-red-500 text-sm ml-9 mt-0 pt-0">
-              {errors[item.key]}
-            </span>
-          )}
-        </div>
-      ))}
-
-      <button
-        type="submit"
-        className="col-span-2 mt-6 button w-1/12 py-3 rounded-md"
+    <>
+      <form
+        className="w-full gap-5 pb-9 rounded-md bg-primary shadow-md p-6 pt-9"
+        onSubmit={handleSubmit}
       >
-        Submit
-      </button>
-    </form>
-    // </AppConfigMask>
+        {(WebViewNavigationURL as WebViewNavigationItem[]).map((item) => (
+          <div key={item.key} className="flex flex-col">
+            <div className="flex">
+              <input
+                type="checkbox"
+                id={item.key}
+                name={item.key}
+                checked={checkboxForm[item.key]}
+                onChange={() =>
+                  setCheckboxForm((prev) => ({
+                    ...prev,
+                    [item.key]: !prev[item.key],
+                  }))
+                }
+                className="w-4 mr-7 flex h-12 justify-center items-center"
+              />
+              <ApiConfigInputField
+                disabled={!checkboxForm[item.key]}
+                title={item.title}
+                placeholder={item.url}
+                name={item.key}
+                value={configFormData[item.key]}
+                onChange={handleChange}
+                required={false}
+                AreaDisable={disable}
+              />
+            </div>
+            {errors[item.key] && (
+              <span className="text-red-500 text-sm ml-9 mt-0 pt-0">
+                {errors[item.key]}
+              </span>
+            )}
+          </div>
+        ))}
+
+        <button
+          type="submit"
+          className="col-span-2 mt-6 button w-1/12 py-3 rounded-md"
+        >
+          Submit
+        </button>
+      </form>
+      {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} */}
+    </>
   );
 };
 

@@ -8,7 +8,7 @@ interface ConfigFormData {
   [key: string]: string;
 }
 
-const ClientConfig = () => {
+const ClientConfig = ({ disable = false }) => {
   const [formData, setFormData] = useState<ConfigFormData>(
     ShopifyConfig.reduce((acc, item) => ({ ...acc, [item.key]: "" }), {})
   );
@@ -137,6 +137,7 @@ const ClientConfig = () => {
               value={formData[data.key]}
               type="text"
               onBlur={handleBlur}
+              AreaDisable={disable}
             />
             {errors[data.key] && (
               <p className="text-red-500 text-sm">{errors[data.key]}</p>
@@ -168,6 +169,11 @@ const ClientConfig = () => {
         </pre>
       </div>
       {/* </AppConfigMask> */}
+      {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} */}
     </>
   );
 };

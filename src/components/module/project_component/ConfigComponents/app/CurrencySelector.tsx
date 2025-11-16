@@ -12,10 +12,11 @@ import { Dispatch, SetStateAction } from "react";
 }
 interface PROPS{
     selected:SELECT,
-    setSelected:Dispatch<SetStateAction<SELECT>>
+    setSelected:Dispatch<SetStateAction<SELECT>>,
+    disable:boolean
 }
 
-export default function CurrencySelector({selected,setSelected}:PROPS) {
+export default function CurrencySelector({selected,setSelected,disable}:PROPS) {
  
 
   const [open, setOpen] = useState(false);
@@ -42,6 +43,7 @@ export default function CurrencySelector({selected,setSelected}:PROPS) {
       {/* Selected Currency Button */}
       <button
         onClick={() => setOpen(!open)}
+        disabled={disable}
         className="w-full flex items-center justify-between border rounded-lg px-3 py-2 bg-white shadow-sm hover:border-gray-400"
       >
         <div className="flex items-center  gap-2">

@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Search from "./Search";
 import Filter from "./Filter";
 import Sort from "./Sort";
+// import { FilterFields } from "../../data/Filter.data";
 
-function FilterSortSearchRapper() {
+interface props {
+  FilteringField: string;
+}
+
+function FilterSortSearchRapper({ FilteringField }: props) {
   const [selectedFilters, setSelectedFilters] = useState<
     Record<string, string[]>
   >({});
@@ -32,6 +37,7 @@ function FilterSortSearchRapper() {
         <Filter
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
+          FilteringField={FilteringField}
         />
         <Sort sortQuery={sortQuery} setSortQuery={setSortQuery} />
       </div>

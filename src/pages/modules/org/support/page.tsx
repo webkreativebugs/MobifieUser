@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
@@ -9,7 +11,7 @@ import { MdMoreHoriz } from "react-icons/md";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 // import { FAQResponse } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
 import Report from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Report";
-import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
+// import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 // import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 // import createSupport from "../../../../utils/api/supportticketApi/CreateNewSupportTicket";
 // import { DiVim } from "react-icons/di";
@@ -24,9 +26,6 @@ import getSupport from "../../../../utils/api/supportticketApi/GetSupportTickets
 import UpdateSupportTicket from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/UpdateSupportTicket";
 import { Link } from "react-router-dom";
 import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
-import PageNotFound from "../../../../components/common_component/PageNotFound";
-import ShimmerTiles from "../../../../components/common_component/Shimmer";
-const noData = "../../../../../public/assets/oops_no_data/no-access.png";
 
 enum popupComponent {
   DELETE = "deleteTicket",
@@ -71,6 +70,8 @@ const dummy = {
 
 function page() {
   // const navigate = useNavigate();
+  // const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { setLoader } = useloader();
   var count = 1;
 
@@ -93,7 +94,7 @@ function page() {
     // if (type === "All") {
     //   modifiedUrlConfig.search = "";
     // } else {
-    //   modifiedUrlConfig.search = `&category=${encodeURIComponent(type || "")}`;
+    //   modifiedUrlConfig.search = &category=${encodeURIComponent(type || "")};
     //   if (searchValue) {
     //     modifiedUrlConfig.search += `&search=${encodeURIComponent(
     //       searchValue
@@ -114,11 +115,11 @@ function page() {
   //   const type = "All";
   //   const categoryParam =
   //     type && type !== "All"
-  //       ? `&category=${encodeURIComponent(type)}`
+  //       ? &category=${encodeURIComponent(type)}
   //       : "?category=";
-  //   const searchParam = `&search=${encodeURIComponent(searchValue.trim())}`;
+  //   const searchParam = &search=${encodeURIComponent(searchValue.trim())};
 
-  //   modifiedUrlConfig.search = `${categoryParam}${searchParam}`;
+  //   modifiedUrlConfig.search = ${categoryParam}${searchParam};
 
   //   // setLoader(true);
   //   // fetchAllFaqs(setApiResponse, setApiError, setLoader);
@@ -140,12 +141,19 @@ function page() {
         <div className="flex-1 flex flex-col  rounded-2xl  p-1 overflow-hidden">
           {/* Search Bar */}
           <div className="w-full  mx-auto mb-4 ">
-            <FilterSortSearchRapper />
+            <FilterSortSearchRapper FilteringField="support" />
             {/* <Search searchValue={searchValue} setSearchValue={setSearchValue} /> */}
           </div>
 
           {/* FAQ List */}
-          <div className="flex-1 overflow-y-auto hide-scrollbar w-full py-2 mx-auto ">
+          <div className="flex-1 overflow-y-auto hide-scrollbar w-full py-6 mx-auto ">
+            {/* {!apiResponse && searchValue !== null ? (
+              <>
+                <Report />
+              </>
+            ) : (
+              <></>
+            )} */}
             <>
               {apiResponse && apiResponse.data?.tickets?.length > 0 ? (
                 <div className="space-y-1">
@@ -220,12 +228,8 @@ function page() {
                   ))}
                 </div>
               ) : (
-                <div className="mt-[-3rem]">
-                  {apiResponse ? (
-                    <PageNotFound noData={noData} />
-                  ) : (
-                    <ShimmerTiles />
-                  )}
+                <div className="w-full text-center text-gray-500 mt-20">
+                  <h1>Support ticket is Loading...</h1>
                 </div>
               )}
             </>

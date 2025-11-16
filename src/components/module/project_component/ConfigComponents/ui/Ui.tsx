@@ -1,8 +1,8 @@
-import React, { useState, Dispatch, SetStateAction, useEffect } from "react";
+import  { useState, Dispatch, SetStateAction } from "react";
 import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
 
-import Screens from "./Screens";
-import AdditionalConfig from "./AdditionalConfig";
+// import Screens from "./Screens";
+// import AdditionalConfig from "./AdditionalConfig";
 
 export type UiConfigSidebarProps = {
   screenConfig: ScreenConfigInterface;

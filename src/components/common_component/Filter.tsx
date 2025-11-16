@@ -1,5 +1,6 @@
 import { Dispatch, useState, SetStateAction, useRef, useEffect } from "react";
 import { FiFilter } from "react-icons/fi";
+import { FilterFields } from "../../data/Filter.data";
 
 interface FilterOptions {
   [key: string]: string[];
@@ -8,22 +9,26 @@ interface FilterOptions {
 interface FilterKeyword {
   selectedFilters: FilterOptions;
   setSelectedFilters: Dispatch<SetStateAction<FilterOptions>>;
+  FilteringField: string;
 }
 
 export default function Filter({
   selectedFilters,
   setSelectedFilters,
+  FilteringField,
 }: FilterKeyword) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>("Status");
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    FilterFields[FilteringField as keyof typeof FilterFields][0]
+  );
 
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  const filters: FilterOptions = {
-    Status: ["Open", "Closed", "Pending", "In Progress", "Reopen"],
-    Priority: ["Critical", "High", "Medium", "Low"],
-    Department: ["Support Team", "Manager", "Engineering", "Executive"],
-  };
+  // const filters: FilterOptions = {
+  //   Status: ["Open", "Closed", "Pending", "In Progress", "Reopen"],
+  //   Priority: ["Critical", "High", "Medium", "Low"],
+  //   Department: ["Support Team", "Manager", "Engineering", "Executive"],
+  // };
 
   // ✅ Add/Remove filter options
   const handleCheckboxChange = (category: string, option: string) => {
@@ -92,19 +97,21 @@ export default function Filter({
             {/* Categories */}
             <div className="w-1/2 border-r border-gray-200 pr-3">
               <h4 className="font-semibold text-gray-700 mb-2">Category</h4>
-              {Object.keys(filters).map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`w-full text-left px-3 py-2 rounded-md mb-1 transition ${
-                    selectedCategory === cat
-                      ? "bg-[#7ed957] text-black font-semibold"
-                      : "hover:bg-gray-100 text-gray-700"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
+              {FilterFields[FilteringField as keyof typeof FilterFields].map(
+                (cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`w-full text-left px-3 py-2 rounded-md mb-1 transition ${
+                      selectedCategory === cat
+                        ? "bg-[#7ed957] text-black font-semibold"
+                        : "hover:bg-gray-100 text-gray-700"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                )
+              )}
             </div>
 
             {/* Options */}
@@ -113,7 +120,9 @@ export default function Filter({
                 {selectedCategory} Options
               </h4>
               <div className="flex flex-col gap-2 max-h-40 overflow-y-auto">
-                {filters[selectedCategory]?.map((option) => (
+                {FilterFields[
+                  selectedCategory as keyof typeof FilterFields
+                ]?.map((option) => (
                   <label key={option} className="flex items-center gap-2">
                     <input
                       type="checkbox"
