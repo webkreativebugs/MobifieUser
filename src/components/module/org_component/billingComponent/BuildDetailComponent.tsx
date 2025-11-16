@@ -89,7 +89,7 @@ function BuildDetailComponent() {
 
   return (
     <div className="overflow-scroll">
-      <div className="w-full px-2 mt-8">
+      <div className="w-full px-2 mt-8 bg-white">
         {/* Latest Build */}
         <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-6 relative ">
           {/* Ribbon or Label */}

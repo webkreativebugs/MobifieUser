@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../../../components/common_component/Navbar";
 import { Link } from "react-router-dom";
+import { useMainScreenData } from "../../../../context/ui_context/mainScreenContext";
+import { useDraftScreen } from "../../../../context/ui_context/DraftScreenContext";
+import { useSaveChanges } from "../../../../context/ui_context/SaveChanges";
+import Toast from "../../../../components/common_component/Toast";
 
 function page() {
+  const { setMainScreenData } = useMainScreenData();
+  const { drafts, setDrafts, removeDraft } = useDraftScreen();
   const [saveChange, setSaveChange] = useState(false);
+  const [displayToast, setDisplayToast] = useState(false);
+  const { isActive, setIsActive } = useSaveChanges();
   useEffect(() => {
     localStorage.setItem("change", JSON.stringify(saveChange));
   });
@@ -24,6 +32,43 @@ function page() {
       setConfig(parsed);
     }
   }, []);
+
+  //submit final changes
+  const handleSaveChanges = () => {
+    if (!drafts || drafts.length === 0) {
+      console.warn("No drafts available to save.");
+      return;
+    }
+
+    setMainScreenData((prev) => {
+      const updated = prev.map((item) => {
+        const matchedDraft = drafts.find(
+          (draft) => draft.screenName === item.screenName
+        );
+
+        if (matchedDraft) {
+          return {
+            ...item,
+            current_config: matchedDraft.draftScreen,
+          };
+        }
+
+        return item;
+      });
+
+      setDrafts(() => []);
+
+      console.log(
+        "✅ Updated mainScreenData with all drafts:",
+        updated,
+        drafts
+      );
+      return updated;
+    });
+
+    setIsActive(false);
+    // setIsSubmitActive(true);
+  };
 
   return (
     <div>
@@ -105,13 +150,25 @@ function page() {
         >
           Edit Changes
         </Link>
-        <button
-          onClick={() => setSaveChange(true)}
-          className="px-6 py-2 rounded-lg border text-white bg-black  hover:text-primary transition-all mr-2"
-        >
-          Submit
-        </button>
+        {drafts.length > 0 && (
+          <button
+            onClick={() => {
+              setDisplayToast(true);
+              setSaveChange(true);
+              handleSaveChanges();
+            }}
+            className="px-6 py-2 rounded-lg border text-white bg-black  hover:text-primary transition-all mr-2"
+          >
+            Submit
+          </button>
+        )}
       </div>
+      <Toast
+        msg="Changes are submitted"
+        show={displayToast}
+        onClose={() => setDisplayToast(false)}
+        duration={300}
+      />
     </div>
   );
 }

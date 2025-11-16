@@ -5,15 +5,15 @@ import { WebViewNavigationURL } from "../../../../../data/CustomizeData/ApiConfi
 import { useState } from "react"
 
 type ConfigFormKeys =
-  | 'edit_profile'
-  | 'orders'
-  | 'address'
-  | 'about_us'
-  | 'faq_page'
-  | 'terms_and_conditions'
-  | 'privacy_policy'
-  | 'returns_policy'
-  | 'contact_us';
+  | "edit_profile"
+  | "orders"
+  | "address"
+  | "about_us"
+  | "faq_page"
+  | "terms_and_conditions"
+  | "privacy_policy"
+  | "returns_policy"
+  | "contact_us";
 
 interface WebViewNavigationItem {
   title: string;
@@ -21,7 +21,7 @@ interface WebViewNavigationItem {
   key: ConfigFormKeys;
 }
 
-const WebUrlConfig = () => {
+const WebUrlConfig = ({disable=false}) => {
   const [configFormData, setConfigFormData] = useState<Record<ConfigFormKeys, string>>({
     edit_profile: "",
     orders: "",
@@ -31,10 +31,12 @@ const WebUrlConfig = () => {
     terms_and_conditions: "",
     privacy_policy: "",
     returns_policy: "",
-    contact_us: ""
+    contact_us: "",
   });
 
-  const [checkboxForm, setCheckboxForm] = useState<Record<ConfigFormKeys, boolean>>({
+  const [checkboxForm, setCheckboxForm] = useState<
+    Record<ConfigFormKeys, boolean>
+  >({
     edit_profile: true,
     orders: true,
     address: true,
@@ -55,14 +57,14 @@ const WebUrlConfig = () => {
     terms_and_conditions: "",
     privacy_policy: "",
     returns_policy: "",
-    contact_us: ""
+    contact_us: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setConfigFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -77,7 +79,7 @@ const WebUrlConfig = () => {
       terms_and_conditions: "",
       privacy_policy: "",
       returns_policy: "",
-      contact_us: ""
+      contact_us: "",
     };
 
     (WebViewNavigationURL as WebViewNavigationItem[]).forEach((item) => {
@@ -106,7 +108,7 @@ const WebUrlConfig = () => {
   };
 
   return (
-    // <AppConfigMask display="flex" name={CustomizeDashboardTypeEnums.APP} displayName={ConfigTypeEnums.WEB} >
+    <>
       <form
         className="w-full gap-5 pb-9 rounded-md bg-primary shadow-md p-6 pt-9"
         onSubmit={handleSubmit}
@@ -135,10 +137,13 @@ const WebUrlConfig = () => {
                 value={configFormData[item.key]}
                 onChange={handleChange}
                 required={false}
+                AreaDisable={disable}
               />
             </div>
             {errors[item.key] && (
-              <span className="text-red-500 text-sm ml-9 mt-0 pt-0">{errors[item.key]}</span>
+              <span className="text-red-500 text-sm ml-9 mt-0 pt-0">
+                {errors[item.key]}
+              </span>
             )}
           </div>
         ))}
@@ -150,7 +155,12 @@ const WebUrlConfig = () => {
           Submit
         </button>
       </form>
-    // </AppConfigMask>
+      {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} */}
+    </>
   );
 };
 

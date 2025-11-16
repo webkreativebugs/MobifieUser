@@ -5,7 +5,7 @@ import UiConfigSidebar from "../../../components/module/project_component/Config
 
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
 import { ScreenConfigInterface } from "../../../data/interface/data.interface";
-import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
+// import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 
 const page = () => {
   const [element, setElement] = useState(ScreenConfigdata[0].key);
@@ -13,7 +13,7 @@ const page = () => {
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
 
   // const changes = false;
-  const { isActive, setIsActive } = useSaveChanges();
+  // const { isActive, setIsActive } = useSaveChanges();
 
   const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
     ScreenConfigdata.find(

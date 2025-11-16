@@ -1,7 +1,15 @@
-import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
-import { ScreenConfigInterface } from "../../../../../data/interface/data.interface";
+import React from "react";
+import {
+  ScreenConfigInterface,
+  CurrentConfig,
+} from "../../../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import { useDraftScreen } from "../../../../../context/ui_context/DraftScreenContext";
+
+interface currentViewInterface {
+  screenName: string;
+  current_config: CurrentConfig;
+}
 
 type UiConfigSidebarProps = {
   screenConfig: ScreenConfigInterface;
@@ -27,7 +35,7 @@ function Screens({
     : screenConfig;
 
   const addNewDesign = (newUrl: string) => {
-    if (newUrl === effectiveConfig.current_confi.screen.image) return; // no change if same image
+    if (newUrl === effectiveConfig.current_confi.screen.image) return;
 
     const updatedConfig: ScreenConfigInterface["current_confi"] = {
       ...effectiveConfig.current_confi,

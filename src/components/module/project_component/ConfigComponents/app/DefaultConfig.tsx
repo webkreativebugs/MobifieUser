@@ -6,6 +6,7 @@
 import CurrencySelector from "../../../project_component/ConfigComponents/app/CurrencySelector";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
+import CustomizePopUp from "../common/CustomizePopUp";
 // import { getEmojiByCurrencyCode } from 'country-currency-emoji-flags';
 // import { currencies } from "../../../data/CustomizeData/ClientConfiguration";
 interface SELECT {
@@ -14,7 +15,7 @@ interface SELECT {
   icon: React.ReactNode;
   symbol: string;
 }
-const DefaultConfig = () => {
+const DefaultConfig = ({disable=false}) => {
   const [maxCartQuantity, setMaxCartQuantity] = useState("");
   const [selected, setSelected] = useState<SELECT>({
     code: "USD",
@@ -36,13 +37,9 @@ const DefaultConfig = () => {
     setMaxCartQuantity(e.target.value);
   }
   return (
-    // <AppConfigMask
-    //   display="flex"
-    //   name={CustomizeDashboardTypeEnums.APP}
-    //   displayName={ConfigTypeEnums.BOTTOM}
-    // >
+    <>
       <div className="w-full grid grid-cols-2 gap-5 pb-[10rem] rounded-md bg-primary p-6 shadow-md">
-        <CurrencySelector selected={selected} setSelected={setSelected} />
+        <CurrencySelector selected={selected} setSelected={setSelected} disable={disable} />
         <div>
           <label className="flex text-md font-bold mb-2 text-gray-700 items-center space-x-1 text-lg cursor-pointer">
             Cart Quanity
@@ -53,11 +50,17 @@ const DefaultConfig = () => {
             value={maxCartQuantity}
             name="Cart"
             onChange={handleChange}
+            disabled={disable}
             className="w-full flex items-center justify-between border rounded-lg px-3 py-2 bg-white shadow-sm hover:border-gray-400"
           />
         </div>
       </div>
-    // </AppConfigMask>
+      {/* {popup && (
+        <CustomizePopUp setPOpUp={setPOpUp}>
+          <div>dfgdfgfd</div>
+        </CustomizePopUp>
+      )} */}
+    </>
   );
 };
 
