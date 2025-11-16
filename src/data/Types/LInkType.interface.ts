@@ -4,7 +4,7 @@ import { IconType } from 'react-icons';
 //   name: string;
 //   icon: IconType;
 //   link:string;
-//   dropdown:boolean
+//   dropdown:booleannnn
 // }
 export interface SidebarLink {
   name: string;

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { admin } from '../constant/routes/AdminRouteConstant'
 
+
 function AdminRoutes() {
   return (
     <Routes>

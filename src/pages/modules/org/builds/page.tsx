@@ -1,9 +1,10 @@
+
 import { useState } from "react";
-import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import {
   CustomizeDashboardTypeEnums,
-  DashboardTypeEnums,
+  
 } from "../../../../../enum/DashboardLinks";
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
@@ -12,9 +13,7 @@ import CustomizeMask from "../../../../components/module/project_component/Confi
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 // import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 // import BuildDetailComponent from "../../../../components/module/org_component/billingComponent/BuildDetailComponent";
-import Search from "../../../../components/common_component/Search";
-import Filter from "../../../../components/common_component/Filter";
-import Sort from "../../../../components/common_component/Sort";
+
 import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
 
 interface ColumnConfig {
@@ -235,7 +234,11 @@ function page() {
   const downloadBuild = (build: typeof latestBuild) => {
     console.log(build);
 
+    console.log(build);
+
     const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Build Details", 14, 15);
     doc.setFontSize(16);
     doc.text("Build Details", 14, 15);
 

@@ -1,8 +1,5 @@
-import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask";
-import {
-  ConfigTypeEnums,
-  CustomizeDashboardTypeEnums,
-} from "../../../../../../enum/DashboardLinks";
+// import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask";
+// import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks";
 import { useState } from "react";
 import { YouClientConfiguration } from "../../../../../data/CustomizeData/ApiConfig";
 import CustomComponents from "../../../project_component/ConfigComponents/app/CustomComponents";
@@ -10,13 +7,11 @@ import CustomizedPopup from "../../../project_component/ConfigComponents/app/Cus
 import { YouConfigType } from "../../../../../../enum/YouConfig.enum";
 import menuConfig from "../../../../../data/CustomizeData/YouCards.json";
 import { FaEdit } from "react-icons/fa";
-import CustomizePopUp from "../common/CustomizePopUp";
 // import { IconType } from "react-icons";
 // import { useEffect } from "react";
 // import {YouConfigType} from "../../../../enum/YouConfig.enum"
 // type YouConfigKeys = keyof typeof YouClientConfiguration;
 const YouConfig = () => {
-  const [popup, setPOpUp] = useState(true);
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
   const [leftChecked, setLeftChecked] = useState<Record<string, boolean>>({});
   const [rightChecked, setRightChecked] = useState<Record<string, boolean>>({});
@@ -178,11 +173,6 @@ const YouConfig = () => {
       </section>
       {/* </AppConfigMask> */}
       {/* ✅ Debug Output Section */}
-      {popup && (
-        <CustomizePopUp setPOpUp={setPOpUp}>
-          <div>dfgdfgfd</div>
-        </CustomizePopUp>
-      )}
     </>
   );
 };

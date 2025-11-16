@@ -1,6 +1,9 @@
 import { useState } from "react";
 // import { RiMoreLine } from "react-icons/ri";
+
+// import { RiMoreLine } from "react-icons/ri";
 import CustomizePopUp from "../../project_component/ConfigComponents/common/CustomizePopUp";
+
 import { RxCross2 } from "react-icons/rx";
 
 function BuildDetailComponent() {
@@ -84,12 +87,14 @@ function BuildDetailComponent() {
   const handleView = (item: any) => {
     console.log(item);
 
+    console.log(item);
+
     setPOpUp(true);
   };
 
   return (
-    <div className="overflow-scroll">
-      <div className="w-full px-2 mt-8 bg-white">
+    <div>
+      <div className="w-full px-2 mt-8">
         {/* Latest Build */}
         <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-6 relative ">
           {/* Ribbon or Label */}

@@ -13,16 +13,22 @@ import ApiConfig from "../../pages/customize_pages/api-config/page"
 import NewAppConfig from "../../pages/customize_pages/new-app-config/page"
 import NewScreenConfig from "../../pages/customize_pages/Edit-screen-config/page"
 import UiDashboard from "../../pages/customize_pages/ui-dashboard/page"
-import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
-import DefaultConfig from "../../pages/customize_pages/default-config/page"
+// import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
+// import DefaultConfig from "../../pages/customize_pages/default-config/page"
 import ScreenConfig from "../../pages/customize_pages/screen-config/page"
 import Configuration from "../../pages/customize_pages/configuration_page/page"
-import ClientConfig from "../../pages/customize_pages/client-config/page"
-import YouConfig from "../../pages/customize_pages/you-config/page"
+// import ClientConfig from "../../pages/customize_pages/client-config/page"
+// import YouConfig from "../../pages/customize_pages/you-config/page"
 import Details from '../../pages/modules/org/detail/page'
 import NewBuild from "../../pages/modules/org/new_build_form/page"
 import Review from "../../pages/modules/org/reviewChanges/page"
-export const admin =[
+
+interface RouteProps {
+  route: { params: Record<string, any> };
+}
+
+
+export const admin:{ route: string; component: React.ComponentType<RouteProps> ;additional:string}[] =[
     {
         route:"/",
         component: LandingPage,
@@ -89,31 +95,31 @@ export const admin =[
         component:ApiConfig,
         additional:""
     },
-     {
-        route:"/project/weburl-config",
-        component:WebUrlConfig,
-        additional:""
-    },
-     {
-        route:"/project/default-config",
-        component:DefaultConfig,
-        additional:""
-    },
+    //  {
+    //     route:"/project/weburl-config",
+    //     component:WebUrlConfig,
+    //     additional:""
+    // },
+    //  {
+    //     route:"/project/default-config",
+    //     component:DefaultConfig,
+    //     additional:""
+    // },
      {
         route:"/project/screen-config",
         component: ScreenConfig,
         additional:""
     },
-     {
-        route:"/project/you-config",
-        component: YouConfig,
-        additional:""
-    },
-     {
-        route:"/project/client-config",
-        component: ClientConfig,
-        additional:""
-    },
+    //  {
+    //     route:"/project/you-config",
+    //     component: YouConfig,
+    //     additional:""
+    // },
+    //  {
+    //     route:"/project/client-config",
+    //     component: ClientConfig,
+    //     additional:""
+    // },
     {
     
          route:"/project/build/details",

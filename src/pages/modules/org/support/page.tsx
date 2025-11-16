@@ -24,6 +24,9 @@ import getSupport from "../../../../utils/api/supportticketApi/GetSupportTickets
 import UpdateSupportTicket from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/UpdateSupportTicket";
 import { Link } from "react-router-dom";
 import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
+import PageNotFound from "../../../../components/common_component/PageNotFound";
+import ShimmerTiles from "../../../../components/common_component/Shimmer";
+const noData = "../../../../../public/assets/oops_no_data/no-access.png";
 
 enum popupComponent {
   DELETE = "deleteTicket",
@@ -142,14 +145,7 @@ function page() {
           </div>
 
           {/* FAQ List */}
-          <div className="flex-1 overflow-y-auto hide-scrollbar w-full py-6 mx-auto ">
-            {/* {!apiResponse && searchValue !== null ? (
-              <>
-                <Report />
-              </>
-            ) : (
-              <></>
-            )} */}
+          <div className="flex-1 overflow-y-auto hide-scrollbar w-full py-2 mx-auto ">
             <>
               {apiResponse && apiResponse.data?.tickets?.length > 0 ? (
                 <div className="space-y-1">
@@ -224,8 +220,12 @@ function page() {
                   ))}
                 </div>
               ) : (
-                <div className="w-full text-center text-gray-500 mt-20">
-                  <h1>Support ticket is Loading...</h1>
+                <div className="mt-[-3rem]">
+                  {apiResponse ? (
+                    <PageNotFound noData={noData} />
+                  ) : (
+                    <ShimmerTiles />
+                  )}
                 </div>
               )}
             </>

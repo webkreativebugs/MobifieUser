@@ -1,20 +1,20 @@
-import { tablinks } from "../../../../../data/TabLinks";
+// import { tablinks } from "../../../../../data/TabLinks";
 import { DefaultVAlues } from "../../../../../constant/APiConfigConstants/ApiConstant";
 // import { Link } from "react-router-dom";
 
 import { useorg } from "../../../../../context/org_context/OrganizationContext";
 import { Dispatch } from "react";
-import { Link } from "react-router-dom";
-import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
+// import { Link } from "react-router-dom";
 
 const TabLinks = ({
+  isDisable,
   selectedScreen,
   setSelectedScreen,
 }: {
+  isDisable: boolean;
   selectedScreen: string;
   setSelectedScreen: Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { isDisable, setIsDisable } = useSaveChanges();
   console.log(isDisable);
 
   const { orgDetails } = useorg();

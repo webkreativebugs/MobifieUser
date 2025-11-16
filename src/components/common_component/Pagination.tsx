@@ -57,10 +57,10 @@ const Pagination = ({
       fetchAllFaqs(setApiResponse, setApiError, setLoader);
     }
     if (type === "alert") {
-      setLoader(true);
+      // setLoader(true);
       AlertmodifiedUrlConfig.page = clicked.toString();
       AlertmodifiedUrlConfig.limit = "10";
-      getAlerts(setApiResponse, setApiError, setLoader);
+      getAlerts(setApiResponse, setApiError);
     }
     if(type==="activity")
     {
@@ -110,7 +110,8 @@ const Pagination = ({
      <div className="pagination-container container mt-10 mb-10 flex items-center gap-2">
       {/* Prev button */}
       <button
-        className={`px-2 pagination ${clicked !== 1 ? "" : "hidden"}`}
+        className={`px-2 pagination ${clicked !== 1 ? "" : "hover:cursor-not-allowed "}`}
+        disabled={clicked===1}
         style={{ width: "40px" }}
         onClick={() => clicked > 1 && setClicked(clicked - 1)}
       >
@@ -141,8 +142,9 @@ const Pagination = ({
       {/* Next button */}
       <button
         className={`pagination px-2 ${
-          clicked !== Math.floor(length) ? "" : "hidden"
+          clicked !== Math.floor(length) ? "" : "hover:cursor-not-allowed"
         }`}
+        disabled={ Math.floor(length)===1}
         style={{ width: "40px" }}
         onClick={() => clicked < length && setClicked(clicked + 1)}
       >

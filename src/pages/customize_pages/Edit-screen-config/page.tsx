@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 import PreviewComponent from "../../../components/module/project_component/ConfigComponents/ui/PreviewComponent";
@@ -12,6 +13,7 @@ import Screens from "../../../components/module/project_component/ConfigComponen
 import AdditionalConfig from "../../../components/module/project_component/ConfigComponents/ui/AdditionalConfig";
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
+// import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
 import { RxCross2 } from "react-icons/rx";
 import { Link, Links, useLocation } from "react-router-dom";
 
@@ -42,12 +44,15 @@ function Page() {
   const { isActive, setIsActive } = useSaveChanges();
   const { mainscreenData } = useMainScreenData();
   const { drafts, removeDraft } = useDraftScreen();
+  // const { mainscreenData } = useMainScreenData();
+  // const { drafts, removeDraft } = useDraftScreen();
   const location = useLocation();
   const { type } = location.state || {};
   console.log(type);
   const [currentView, setCurrentView] = useState<
     currentViewInterface | undefined
   >();
+  console.log(setIsEdit);
   console.log(setIsEdit);
 
   useEffect(() => {
@@ -134,12 +139,25 @@ function Page() {
   // const handleSaveChanges = () => {
   //   const draft = drafts.find((d) => d.screenName === element);
   //   const latestConfig = draft?.draftScreen || screenConfig.current_confi;
+  // const handleSaveChanges = () => {
+  //   const draft = drafts.find((d) => d.screenName === element);
+  //   const latestConfig = draft?.draftScreen || screenConfig.current_confi;
 
   //   if (!latestConfig) {
   //     console.error("No valid config found for:", element);
   //     return;
   //   }
+  //   if (!latestConfig) {
+  //     console.error("No valid config found for:", element);
+  //     return;
+  //   }
 
+  //   setMainScreenData((prev) => {
+  //     const exists = prev.some((item) => item.screenName === element);
+  //     if (!exists) {
+  //       console.warn(`Screen "${element}" not found in mainScreenData.`);
+  //       return prev;
+  //     }
   //   setMainScreenData((prev) => {
   //     const exists = prev.some((item) => item.screenName === element);
   //     if (!exists) {
@@ -152,7 +170,15 @@ function Page() {
   //         ? { ...item, current_config: latestConfig }
   //         : item
   //     );
+  //     const updated = prev.map((item) =>
+  //       item.screenName === element
+  //         ? { ...item, current_config: latestConfig }
+  //         : item
+  //     );
 
+  //     console.log("✅ Updated mainScreenData:", updated);
+  //     return updated;
+  //   });
   //     console.log("✅ Updated mainScreenData:", updated);
   //     return updated;
   //   });
@@ -376,7 +402,10 @@ function Page() {
             currentView={currentView}
             // isEdit={isEdit}
             // setIsEdit={setIsEdit}
+            // isEdit={isEdit}
+            // setIsEdit={setIsEdit}
             isSubmitActive={isSubmitActive}
+            // setIsSubmitActive={setIsSubmitActive}
             // setIsSubmitActive={setIsSubmitActive}
           />
         )}

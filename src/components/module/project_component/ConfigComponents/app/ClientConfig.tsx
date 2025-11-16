@@ -1,19 +1,14 @@
-import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask";
-import {
-  ConfigTypeEnums,
-  CustomizeDashboardTypeEnums,
-} from "../../../../../../enum/DashboardLinks";
+// import AppConfigMask from "../../../project_component/ConfigComponents/app/AppConfigMask"
+// import { ConfigTypeEnums, CustomizeDashboardTypeEnums } from "../../../../../../enum/DashboardLinks"
 import ApiConfigInputField from "../../../project_component/ConfigComponents/app/ApiConfigInputField";
 import { ShopifyConfig } from "../../../../../data/CustomizeData/ApiConfig";
 import { useState } from "react";
-import CustomizePopUp from "../common/CustomizePopUp";
 
 interface ConfigFormData {
   [key: string]: string;
 }
 
 const ClientConfig = () => {
-  const [popup, setPOpUp] = useState(true);
   const [formData, setFormData] = useState<ConfigFormData>(
     ShopifyConfig.reduce((acc, item) => ({ ...acc, [item.key]: "" }), {})
   );
@@ -173,11 +168,6 @@ const ClientConfig = () => {
         </pre>
       </div>
       {/* </AppConfigMask> */}
-      {popup && (
-        <CustomizePopUp setPOpUp={setPOpUp}>
-          <div>dfgdfgfd</div>
-        </CustomizePopUp>
-      )}
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import Navbar from "../../../../components/common_component/Navbar";
 // import Sidebar from "../../../../components/common_component/Sidebar";
-import { useloader } from "../../../../context/loader_context/LoaderContext";
+// import { useloader } from "../../../../context/loader_context/LoaderContext";
 // import { MemberResponse } from "../../../../../network/public/accessManager_api/AccessManager.interface";
 import { AlertResponse } from "../../../../../network/public/organization_api/alerts/Alerts.interface";
 // import { CustomConfigPageLimits } from "../../../../../network/public/accessManager_api/AccessManager.api";
@@ -16,12 +16,16 @@ import SearchMask from "../../../../components/common_component/layered_componen
 import FilterMask from "../../../../components/common_component/layered_components/FilterMask";
 import AlertCards from "../../../../components/module/project_component/AlertCards";
 import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
+import ShimmerTiles from "../../../../components/common_component/Shimmer";
+import PageNotFound from "../../../../components/common_component/PageNotFound";
+const noData = '../../../../../public/assets/oops_no_data/no-alerts.png'
+// import { changeTimezone } from "../../../../utils/dashboard/TimezoneConverter";
 interface Quary {
   search?: string;
     type?: string;
 }
 function page() {
-  const { setLoader } = useloader();
+  // const { setLoader } = useloader();
   const [apiError, setApiError] = useState<Error>();
   const [clicked, setClicked] = useState(1);
   const [apiResponse, setApiResponse] = useState<AlertResponse | undefined>();
@@ -66,13 +70,13 @@ const handleInputChange = (
 
     AlertmodifiedUrlConfig.search = `${searchParam}`;
 
-    getAlerts(setApiResponse, setApiError, setLoader);
+    getAlerts(setApiResponse, setApiError);
   }, [inputQuary]);
 
    useEffect(() => {
   if (!selectQuary) return;
 
-  setLoader(true);
+  // setLoader(true);
 
   const type = selectQuary?.type?.toString();
 
@@ -85,19 +89,21 @@ const handleInputChange = (
     }
   }
   
-  getAlerts(setApiResponse, setApiError,setLoader);
+  getAlerts(setApiResponse, setApiError);
   setClicked(1)
   // setLoader(false);
 }, [selectQuary]);
 
 
   useEffect(() => {
-    setLoader(true);
+    // setLoader(true);
     AlertmodifiedUrlConfig.page = "1";
     AlertmodifiedUrlConfig.limit = "10";
     AlertmodifiedUrlConfig.search = "";
-    getAlerts(setApiResponse, setApiError, setLoader);
+    getAlerts(setApiResponse, setApiError);
+   
   }, [OrganizationDetailsConfig.orgName]);
+
 
   return (
           <DashboardMask name={"Alerts"}>
@@ -108,7 +114,7 @@ const handleInputChange = (
            
             {/* Search Input */}
            
-           {apiResponse && (
+           {apiResponse && apiResponse.data.pagination.total_pages>=1 ?  (
             <>
               <div className="mt-10">
                 {/* <DynamicTable
@@ -120,6 +126,9 @@ const handleInputChange = (
                 /> */}
                 <AlertCards data={apiResponse.data.alerts} />
               </div>
+            { 
+             apiResponse && apiResponse.data.pagination.total_pages>1 &&
+
               <Pagination
                 length={apiResponse.data.pagination.total_pages}
                 setApiResponse={setApiResponse}
@@ -127,8 +136,17 @@ const handleInputChange = (
                 clicked={clicked}
                 setClicked={setClicked}
               />
-            </>
-          )}
+            }
+            </>):
+            (
+            <>
+              { apiResponse ?
+            <PageNotFound noData={noData} />:
+            <ShimmerTiles />
+              }
+              </>
+            )
+          }
 
           </DashboardMask>
   );

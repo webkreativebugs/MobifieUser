@@ -12,6 +12,7 @@ export type UiConfigSidebarProps = {
 
 function Ui({ screenConfig, setscreenConfig, isEdit }: UiConfigSidebarProps) {
   const [tab, setTab] = useState("screen");
+  console.log(tab);
 
   console.log(setscreenConfig, screenConfig);
   console.log(screenConfig);
