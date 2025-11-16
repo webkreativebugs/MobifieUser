@@ -4,31 +4,21 @@ import { useEffect, useState } from "react";
 import UiConfigSidebar from "../../../components/module/project_component/ConfigComponents/ui/UiConfigSidebar";
 
 import ScreenConfigdata from "../../../data/CustomizeData/ScreenConfig.json";
-import { CurrentConfig } from "../../../data/interface/data.interface";
-import { ScreenType } from "../../../../enum/AccessType.enum";
-import { Link, useLocation } from "react-router-dom";
-import Header1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/header/Header1";
-import BottomTab1 from "../../../components/module/project_component/ConfigComponents/ui/customComponent/bottomTab/BottomTab1";
-import { useTheme } from "../../../context/AppContext";
+import { ScreenConfigInterface } from "../../../data/interface/data.interface";
+// import { useSaveChanges } from "../../../context/ui_context/SaveChanges";
 
-export interface CurrentScreen {
-  screenName: string;
-  current_config: CurrentConfig;
-}
-
-const Page = () => {
+const page = () => {
   const [element, setElement] = useState(ScreenConfigdata[0].key);
   const [popUp, setPOpUp] = useState(false);
   const [ispopUpdata, setIsPOpUpdata] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
-  const [android, setAndroid] = useState(false);
-  const { theme } = useTheme();
-  const location = useLocation();
-  const { type } = location.state || {};
 
-  // const [tab, setTab] = useState("screen");
-  const [currentScreen, setCurrentScreen] = useState<CurrentScreen | null>(
-    null
+  // const changes = false;
+  // const { isActive, setIsActive } = useSaveChanges();
+
+  const [screenConfig, setscreenConfig] = useState<ScreenConfigInterface>(
+    ScreenConfigdata.find(
+      (item) => item.key === element
+    ) as ScreenConfigInterface
   );
 
   useEffect(() => {

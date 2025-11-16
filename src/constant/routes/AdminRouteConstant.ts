@@ -15,8 +15,12 @@ import NewScreenConfig from "../../pages/customize_pages/Edit-screen-config/page
 import UiDashboard from "../../pages/customize_pages/ui-dashboard/page"
 // import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
 // import DefaultConfig from "../../pages/customize_pages/default-config/page"
+// import WebUrlConfig from "../../pages/customize_pages/web-url-config/page"
+// import DefaultConfig from "../../pages/customize_pages/default-config/page"
 import ScreenConfig from "../../pages/customize_pages/screen-config/page"
 import Configuration from "../../pages/customize_pages/configuration_page/page"
+// import ClientConfig from "../../pages/customize_pages/client-config/page"
+// import YouConfig from "../../pages/customize_pages/you-config/page"
 // import ClientConfig from "../../pages/customize_pages/client-config/page"
 // import YouConfig from "../../pages/customize_pages/you-config/page"
 import Details from '../../pages/modules/org/detail/page'
@@ -96,6 +100,16 @@ export const admin:{ route: string; component: React.ComponentType<RouteProps> ;
         component:ApiConfig,
         additional:""
     },
+    //  {
+    //     route:"/project/weburl-config",
+    //     component:WebUrlConfig,
+    //     additional:""
+    // },
+    //  {
+    //     route:"/project/default-config",
+    //     component:DefaultConfig,
+    //     additional:""
+    // },
     //  {
     //     route:"/project/weburl-config",
     //     component:WebUrlConfig,

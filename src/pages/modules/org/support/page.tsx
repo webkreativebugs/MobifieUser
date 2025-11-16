@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 // import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import { DashboardTypeEnums } from "../../../../../enum/DashboardLinks";
@@ -68,6 +69,7 @@ const dummy = {
 };
 
 function page() {
+  // const navigate = useNavigate();
   // const navigate = useNavigate();
   // const navigate = useNavigate();
   const { setLoader } = useloader();
