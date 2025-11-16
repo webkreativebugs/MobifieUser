@@ -10,7 +10,7 @@ import { MdMoreHoriz } from "react-icons/md";
 import { useloader } from "../../../../context/loader_context/LoaderContext";
 // import { FAQResponse } from "../../../../../network/public/organization_api/faqs/allfaqs/AllFaqs.interface";
 import Report from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Report";
-import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
+// import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 // import { OrganizationDetailsConfig } from "../../../../../network/public/organization_api/organization_detail/OrganizationalDetails.api";
 // import createSupport from "../../../../utils/api/supportticketApi/CreateNewSupportTicket";
 // import { DiVim } from "react-icons/di";
@@ -139,7 +139,7 @@ function page() {
         <div className="flex-1 flex flex-col  rounded-2xl  p-1 overflow-hidden">
           {/* Search Bar */}
           <div className="w-full  mx-auto mb-4 ">
-            <FilterSortSearchRapper />
+            <FilterSortSearchRapper FilteringField="support" />
             {/* <Search searchValue={searchValue} setSearchValue={setSearchValue} /> */}
           </div>
 
