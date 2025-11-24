@@ -40,7 +40,7 @@ const AppConfigMask = ({
   disable: boolean;
 }) => {
   // const { orgDetails } = useorg();
-  // const { isDisable, setIsDisable } = useSaveChanges();
+  const { isDisable, setIsDisable } = useSaveChanges();
 
   // const { isEdit } = useTabContext();
 

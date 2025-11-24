@@ -20,7 +20,6 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import {
   ListAllSupportTicketsResponse,
-  ListAllSupportTicketsCallback,
 } from "../../../../../network/public/project_api/getsupportTicket/GetSupportTicket.interface";
 import getSupport from "../../../../utils/api/supportticketApi/GetSupportTickets";
 import UpdateSupportTicket from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/UpdateSupportTicket";
@@ -73,9 +72,9 @@ function page() {
   // const navigate = useNavigate();
   // const navigate = useNavigate();
   const { setLoader } = useloader();
-  var count = 1;
+  // var count = 1;
 
-  const [searchValue, setSearchValue] = useState("");
+  // const [searchValue, setSearchValue] = useState("");
   const [Popupdisplay, setPopupdisplay] = useState("");
   const [supportTicketData, setSupportTicketData] = useState<SupportTicket>();
   const [openId, setOpenId] = useState<string | null>(null);

@@ -1,15 +1,15 @@
 import React from "react";
 import {
   ScreenConfigInterface,
-  CurrentConfig,
+  // CurrentConfig,
 } from "../../../../../data/interface/data.interface";
 import { useSaveChanges } from "../../../../../context/ui_context/SaveChanges";
 import { useDraftScreen } from "../../../../../context/ui_context/DraftScreenContext";
 
-interface currentViewInterface {
-  screenName: string;
-  current_config: CurrentConfig;
-}
+// interface currentViewInterface {
+//   screenName: string;
+//   current_config: CurrentConfig;
+// }
 
 type UiConfigSidebarProps = {
   screenConfig: ScreenConfigInterface;

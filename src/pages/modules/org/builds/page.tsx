@@ -9,8 +9,6 @@ import {
 import { RiMoreLine } from "react-icons/ri";
 import jsPDF from "jspdf";
 import { Link, useNavigate } from "react-router-dom";
-import CustomizeMask from "../../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 // import Search from "../../../../components/module/project_component/ConfigComponents/ui/supportComponent/Search";
 import CustomizeMask from "../../../../components/module/project_component/ConfigComponents/common/CustomizeMask";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -386,9 +384,6 @@ function page() {
   const [selectedFilters, setSelectedFilters] = useState<
     Record<string, string[]>
   >({});
-  const [selectedFilters, setSelectedFilters] = useState<
-    Record<string, string[]>
-  >({});
 
   const downloadBuild = (build: typeof latestBuild) => {
     console.log(build);
@@ -420,19 +415,19 @@ function page() {
     // { key: "action", title: "Action" },
   ];
 
-  const handleRemoveFilter = (category: string, option: string) => {
-    setSelectedFilters((prev) => {
-      const updatedOptions = prev[category].filter((o) => o !== option);
+  // const handleRemoveFilter = (category: string, option: string) => {
+  //   setSelectedFilters((prev) => {
+  //     const updatedOptions = prev[category].filter((o) => o !== option);
 
-      if (updatedOptions.length === 0) {
-        const updated = { ...prev };
-        delete updated[category];
-        return updated;
-      }
+  //     if (updatedOptions.length === 0) {
+  //       const updated = { ...prev };
+  //       delete updated[category];
+  //       return updated;
+  //     }
 
-      return { ...prev, [category]: updatedOptions };
-    });
-  };
+  //     return { ...prev, [category]: updatedOptions };
+  //   });
+  // };
 
 
   const handleRemoveFilter = (category: string, option: string) => {
@@ -451,13 +446,12 @@ function page() {
 
   return (
     <CustomizeMask name={CustomizeDashboardTypeEnums.BUILD}>
-    <CustomizeMask name={CustomizeDashboardTypeEnums.BUILD}>
       <HeadingMask name={"Builds"}>
         <div className="px-2">
           <Link
             className="border-black border px-4 py-1 rounded-md font-semibold"
             to="/project/build/create-new-build"
-            to="/project/build/create-new-build"
+            // to="/project/build/create-new-build"
             // state={{ type: ScreenType.MAIN }}
           >
             Create Build
@@ -466,9 +460,7 @@ function page() {
       </HeadingMask>
       {/* <BuildDetailComponent /> */}
       <div className="w-full px-2 mt-1">
-      <div className="w-full px-2 mt-1">
         {/* Latest Build */}
-        <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-1 relative overflow-hidden">
         <div className=" bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-1 relative overflow-hidden">
           {/* Ribbon or Label */}
           <div className="absolute top-0 left-0 bg-[#7ed957] text-black text-xs font-semibold px-3 py-1 rounded-br-lg">
@@ -498,7 +490,6 @@ function page() {
                     </button>
                     <button
                       onClick={() =>
-                        navigate("/project/build/details", {
                         navigate("/project/build/details", {
                           state: {
                             id: "12345",
@@ -579,39 +570,10 @@ function page() {
         </div>
 
         {/* search filter  */}
-        <>
-          <div className="mb-2 flex gap-4">
-            <FilterSortSearchRapper />
-          </div>
-          <div className="flex gap-2 mb-4 flex-wrap">
-            {Object.entries(selectedFilters).map(([category, options]) => (
-              <div key={category} className="bg-white">
-                <div className="flex flex-wrap gap-2">
-                  {options.map((option) => (
-                    <span
-                      key={option}
-                      className="flex items-center gap-0 px-3 py-1 bg-red-100 text-red-600 font-medium rounded-full text-sm shadow-sm hover:bg-red-200 transition"
-                    >
-                      {option}
-
-                      <button
-                        onClick={() => handleRemoveFilter(category, option)}
-                        className="text-red-500 hover:text-red-700 font-bold ml-1"
-                      >
-                        ×
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-
         {/* search filter  */}
         <>
           <div className="mb-2 flex gap-4">
-            <FilterSortSearchRapper />
+            <FilterSortSearchRapper FilteringField="alerts" />
           </div>
           <div className="flex gap-2 mb-4 flex-wrap">
             {Object.entries(selectedFilters).map(([category, options]) => (
@@ -637,7 +599,6 @@ function page() {
             ))}
           </div>
         </>
-
         {/* Older Builds Table */}
         <div className="bg-white rounded-2xl shadow-md border border-gray-200  overflow-hidden">
         <div className="bg-white rounded-2xl shadow-md border border-gray-200  overflow-hidden">
@@ -655,76 +616,74 @@ function page() {
             <div className="h-full text-right px-4 py-2">Action</div>
           </div>
 
-          {olderBuilds.slice(0, 8).map((build, index) => (
-          {olderBuilds.slice(0, 8).map((build, index) => (
-            <div
-              key={index}
-              className={`grid grid-cols-6 text-sm ${
-                index % 2 === 0 ? "bg-white" : "bg-gray-50"
-              } hover:bg-gray-100 transition-all duration-200`}
-            >
-              <div className="px-6 py-4 font-medium text-gray-800">
-                {build.android_version}
-              </div>
-              <div className="px-6 py-4 text-gray-600">{build.date}</div>
-              <div className="px-6 py-4 text-gray-600">{build.history}</div>
-              <div className="px-6 py-4">
-                <span
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${
-                    build.status === "Stable"
-                      ? "bg-emerald-100 text-emerald-700"
-                      : "bg-amber-100 text-amber-700"
-                  }`}
-                >
-                  {build.status}
-                </span>
-              </div>
-              <div className="px-6 py-4 text-gray-600">{build.updatedBy}</div>
+        {olderBuilds.slice(0, 8).map((build, index) => (
+          <div
+            key={index}
+            className={`grid grid-cols-6 text-sm ${
+              index % 2 === 0 ? "bg-white" : "bg-gray-50"
+            } hover:bg-gray-100 transition-all duration-200`}
+          >
+            <div className="px-6 py-4 font-medium text-gray-800">
+              {build.android_version}
+            </div>
+            <div className="px-6 py-4 text-gray-600">{build.date}</div>
+            <div className="px-6 py-4 text-gray-600">{build.history}</div>
+            <div className="px-6 py-4">
+              <span
+                className={`px-2 py-1 rounded-lg text-xs font-semibold ${
+                  build.status === "Stable"
+                    ? "bg-emerald-100 text-emerald-700"
+                    : "bg-amber-100 text-amber-700"
+                }`}
+              >
+                {build.status}
+              </span>
+            </div>
+            <div className="px-6 py-4 text-gray-600">{build.updatedBy}</div>
 
-              <div className="flex justify-end items-center">
-                <div
-                  key={index}
-                  className="relative  mr-10"
-                  onMouseEnter={() => {
-                    setIsMore(true);
-                    setOpendV(build.android_version);
-                  }}
-                  onMouseLeave={() => setIsMore(false)}
-                >
-                  {/* Icon */}
-                  <div className="flex justify-end pr-0">
-                    <RiMoreLine className="text-black text-2xl cursor-pointer" />
-                  </div>
-
-                  {/* Floating Dropdown */}
-                  {isMore && opendV === build.android_version && (
-                    <div className="absolute right-0 top-full mt-[-0px] z-20 border rounded-md shadow-lg bg-white w-28">
-                      <button
-                        onClick={() => downloadBuild(build)}
-                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
-                      >
-                        Download
-                      </button>
-                      <button
-                        onClick={() =>
-                          navigate("/project/build/details", {
-                          navigate("/project/build/details", {
-                            state: {
-                              id: "12345",
-                              name: "build",
-                            },
-                          })
-                        }
-                        className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
-                      >
-                        see More
-                      </button>
-                    </div>
-                  )}
+            <div className="flex justify-end items-center">
+              <div
+                key={index}
+                className="relative  mr-10"
+                onMouseEnter={() => {
+                  setIsMore(true);
+                  setOpendV(build.android_version);
+                }}
+                onMouseLeave={() => setIsMore(false)}
+              >
+                {/* Icon */}
+                <div className="flex justify-end pr-0">
+                  <RiMoreLine className="text-black text-2xl cursor-pointer" />
                 </div>
+
+                {/* Floating Dropdown */}
+                {isMore && opendV === build.android_version && (
+                  <div className="absolute right-0 top-full mt-[-0px] z-20 border rounded-md shadow-lg bg-white w-28">
+                    <button
+                      onClick={() => downloadBuild(build)}
+                      className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                    >
+                      Download
+                    </button>
+                    <button
+                      onClick={() =>
+                        navigate("/project/build/details", {
+                          state: {
+                            id: "12345",
+                            name: "build",
+                          },
+                        })
+                      }
+                      className="block w-full px-3 py-2 text-sm text-gray-800 hover:bg-gray-100"
+                    >
+                      see More
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
-          ))}
+          </div>
+        ))}
         </div>
         <div className="w-full flex justify-center items-center gap-6 mt-4">
           {/* Previous Button */}
@@ -752,34 +711,9 @@ function page() {
           </button>
           {/* )} */}
         </div>
-        <div className="w-full flex justify-center items-center gap-6 mt-4">
-          {/* Previous Button */}
-          <button
-            className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200 disabled:opacity-50"
-            // disabled={!apiResponse?.data.pageInfo.hasPreviousPage}
-            onClick={() => {
-              // handlePrev()
-            }}
-          >
-            <IoIosArrowBack className="text-2xl text-[#7ed957]" />
-            <span>Prev</span>
-          </button>
-
-          {/* Next Button */}
-          {/* {apiResponse?.data.pageInfo.hasNextPage && ( */}
-          <button
-            onClick={() => {
-              // getSupport(setApiResponse, setApiError, setLoader);
-            }}
-            className="flex items-center gap-2 px-4 py-2 text-lg font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-200"
-          >
-            <span>Next</span>
-            <IoIosArrowForward className="text-2xl text-[#7ed957]" />
-          </button>
-          {/* )} */}
-        </div>
+        
       </div>
-    </CustomizeMask>
+      </div>
     </CustomizeMask>
   );
 }
