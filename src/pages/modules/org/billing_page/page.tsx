@@ -7,7 +7,7 @@ import { ColumnConfig } from "../../../../components/common_component/dynamic_ta
 // import DynamicTable from "../../../../components/common_component/dynamic_table";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
+// import FilterSortSearchRapper from "../../../../components/common_component/FilterSortSearchRapper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const invoices = [
   { invoicenumber: "INV001", date: "2025-10-07", status: "Paid" },
@@ -52,7 +52,7 @@ function page() {
       <div className="w-full px-2 mt-8">
         {/* Page Title */}
         <div>
-          <FilterSortSearchRapper />
+          {/* <FilterSortSearchRapper /> */}
         </div>
         {/* Header Section */}
         <div className="flex items-center justify-between bg-gradient-to-r from-gray-100 to-gray-200 px-6 py-4 rounded-t-2xl border border-gray-200 shadow-sm">

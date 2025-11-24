@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import updateSupport from "../../../../../../utils/api/supportticketApi/updateTicket";
+import updateSupport from "../../../../../../utils/api/supportticketApi/UpdateTicket";
 
 import {
-  UpdateSupportTicketRequest,
+  // UpdateSupportTicketRequest,
   UpdateSupportTicketResponse,
-  UpdateSupportTicketCallback,
+  // UpdateSupportTicketCallback,
 } from "../../../../../../../network/public/project_api/updateSupportTicket/UpdateSupportTicket.interface";
 import { useloader } from "../../../../../../context/loader_context/LoaderContext";
 
@@ -65,6 +65,8 @@ function UpdateSupportTicket({
   const { setLoader } = useloader();
   const [apiResponse, setApiResponse] = useState<UpdateSupportTicketResponse>();
   const [apiError, setApiError] = useState<Error>();
+  console.log(apiResponse, apiError);
+  
   const [formData, setFormData] = useState({
     escalation_level: supportTicketData.escalation_level || "",
     priority: supportTicketData.priority || "",

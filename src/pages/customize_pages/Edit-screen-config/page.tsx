@@ -15,7 +15,7 @@ import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
 // import { useMainScreenData } from "../../../context/ui_context/mainScreenContext";
 import { RxCross2 } from "react-icons/rx";
-import { Link, Links, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import CustomizePopUp from "../../../components/module/project_component/ConfigComponents/common/CustomizePopUp";
 import SubmitConfiguration from "../../../components/module/project_component/ConfigComponents/common/SubmitConfiguration";

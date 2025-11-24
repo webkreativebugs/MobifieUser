@@ -9,10 +9,10 @@ import Toast from "../../../../components/common_component/Toast";
 
 function page() {
   const { setMainScreenData } = useMainScreenData();
-  const { drafts, setDrafts, removeDraft } = useDraftScreen();
+  const { drafts, setDrafts } = useDraftScreen();
   const [saveChange, setSaveChange] = useState(false);
   const [displayToast, setDisplayToast] = useState(false);
-  const { isActive, setIsActive } = useSaveChanges();
+  const { setIsActive } = useSaveChanges();
   useEffect(() => {
     localStorage.setItem("change", JSON.stringify(saveChange));
   });

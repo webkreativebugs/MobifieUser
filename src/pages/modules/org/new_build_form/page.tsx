@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
+// import DashboardMask from "../../../../components/common_component/layered_components/DashboardMask";
 import {
   CustomizeDashboardTypeEnums,
-  DashboardTypeEnums,
+  // DashboardTypeEnums,
 } from "../../../../../enum/DashboardLinks";
 import HeadingMask from "../../../../components/common_component/layered_components/HeadingMask";
 import Toast from "../../../../components/common_component/Toast";

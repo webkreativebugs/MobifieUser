@@ -6,7 +6,7 @@
 import CurrencySelector from "../../../project_component/ConfigComponents/app/CurrencySelector";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
-import CustomizePopUp from "../common/CustomizePopUp";
+// import CustomizePopUp from "../common/CustomizePopUp";
 // import { getEmojiByCurrencyCode } from 'country-currency-emoji-flags';
 // import { currencies } from "../../../data/CustomizeData/ClientConfiguration";
 interface SELECT {

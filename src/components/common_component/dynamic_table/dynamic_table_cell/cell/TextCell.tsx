@@ -7,7 +7,7 @@ interface TextCellProps {
 }
 
 const TextCell: React.FC<TextCellProps> = ({ data, value }) => {
-  // console.log(data);
+  console.log(data);
   
   return (
     <p className="max-w-[800px] "

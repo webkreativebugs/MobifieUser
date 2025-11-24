@@ -9,6 +9,8 @@ function SupportTicketDetail({ id }: { id: string }) {
   const { setLoader } = useloader();
   const [apiResponse, setApiResponse] = useState<SupportTicketByIdResponse>();
   const [apiError, setApiError] = useState<Error>();
+  console.log(apiError);
+  
 
   useEffect(() => {
     supportTicketId._id = id;

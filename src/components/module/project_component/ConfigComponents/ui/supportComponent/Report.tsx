@@ -7,7 +7,7 @@ import {
 import { useloader } from "../../../../../../context/loader_context/LoaderContext";
 
 import createSupport from "../../../../../../utils/api/supportticketApi/CreateNewSupportTicket";
-import CustomizePopUp from "../../common/CustomizePopUp";
+// import CustomizePopUp from "../../common/CustomizePopUp";
 
 interface ReportProps {
   setPOpUp: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,6 +19,8 @@ function Report({ setPOpUp, setIsTost }: ReportProps) {
   const [apiResponse, setApiResponse] = useState<CreateSupportTicketResponse>();
   const [apiError, setApiError] = useState<Error>();
   const [responseloder, setResponseloder] = useState(false);
+  console.log(apiError,responseloder);
+  
   const [formData, setForm] = useState<CreateSupportTicketRequest>({
     project_id: "68e8b7d24af82ab3832039ed",
     customer_id: "679677c921e409b74ef66d6e",

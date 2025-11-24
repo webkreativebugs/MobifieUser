@@ -16,13 +16,13 @@ import { useTabContext } from "../../../context/org_context/TabContext";
 import { useDraftScreen } from "../../../context/ui_context/DraftScreenContext";
 import { ScreenType } from "../../../../enum/AccessType.enum";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import FilterSortSearchRapper from "../../../components/common_component/FilterSortSearchRapper";
+// import FilterSortSearchRapper from "../../../components/common_component/FilterSortSearchRapper";
 // import "react-datepicker/dist/react-datepicker.css";
 
 const Page = () => {
   const { setIsEdit } = useTabContext();
-  const [element, setElement] = useState(ScreenConfigdata[0].key);
-  const [query, setQuery] = useState({ app: "", screen: "" });
+  const element= ScreenConfigdata[0].key;
+  const query = { app: "", screen: "" };
   const [popUp, setPopUp] = useState(false);
   const { isActive } = useSaveChanges();
   const { drafts } = useDraftScreen();
@@ -33,14 +33,14 @@ const Page = () => {
     ) as ScreenConfigInterface
   );
 
-  const [appDateRange, setAppDateRange] = useState<[Date | null, Date | null]>([
+  console.log(screenConfig , popUp);
+  
+  const appDateRange:[Date | null, Date | null] = [
     null,
     null,
-  ]);
+  ];
 
-  const [screenDateRange, setScreenDateRange] = useState<
-    [Date | null, Date | null]
-  >([null, null]);
+  const screenDateRange:  [Date | null, Date | null] = [null, null];
 
   const [config, setConfig] = useState<
     { title: string; createddate: number; createdby: string }[]

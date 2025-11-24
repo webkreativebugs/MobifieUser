@@ -26,7 +26,7 @@ type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
 
 const AppConfigMask = ({
   // isDisable,
-  displayName,
+  // displayName,
   name,
   display,
   direction = "row",
@@ -40,7 +40,7 @@ const AppConfigMask = ({
   disable: boolean;
 }) => {
   // const { orgDetails } = useorg();
-  const { isDisable, setIsDisable } = useSaveChanges();
+  const { isDisable } = useSaveChanges();
 
   // const { isEdit } = useTabContext();
 

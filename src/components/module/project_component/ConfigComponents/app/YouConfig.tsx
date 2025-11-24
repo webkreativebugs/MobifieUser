@@ -7,7 +7,7 @@ import CustomizedPopup from "../../../project_component/ConfigComponents/app/Cus
 import { YouConfigType } from "../../../../../../enum/YouConfig.enum";
 import menuConfig from "../../../../../data/CustomizeData/YouCards.json";
 import { FaEdit } from "react-icons/fa";
-import CustomizePopUp from "../common/CustomizePopUp";
+// import CustomizePopUp from "../common/CustomizePopUp";
 // import { IconType } from "react-icons";
 // import { useEffect } from "react";
 // import {YouConfigType} from "../../../../enum/YouConfig.enum"

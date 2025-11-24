@@ -5,7 +5,7 @@ import { GoSidebarExpand } from "react-icons/go";
 import { useauth } from "../../context/auth_context/AuthContext";
 import LogOut from "../../utils/api/LogOut";
 import { SidebarLink } from "../../data/Types/LInkType.interface";
-import { MdOutlineScreenShare } from "react-icons/md";
+// import { MdOutlineScreenShare } from "react-icons/md";
 import { GoOrganization } from "react-icons/go";
 
 interface SidebarProps {

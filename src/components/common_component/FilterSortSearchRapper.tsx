@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Search from "./Search";
 import Filter from "./Filter";
 import Sort from "./Sort";
